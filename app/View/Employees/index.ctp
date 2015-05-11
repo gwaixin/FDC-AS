@@ -63,5 +63,8 @@ function add_employee() {
 }
 
 </script>
-
+<select id="suggested">
+	<option value="">Joshua Abella</option>
+	<option value="">Joshua Abella</option>
+</select>
 <div id="adv_example"></div>
