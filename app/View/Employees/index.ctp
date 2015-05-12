@@ -6,12 +6,54 @@
 <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
 <script>
+var selected_row = null;
+
 $(document).ready(function () {
 
-	var advancedData = [];
+	$(document).click(function(e) {
+
+		if(selected_row === null) {
+			$("#adv-example textarea").keyup(function() {
+				if(e.toElement.className === "txt-name current") {
+					$("#suggested-names").css({'display':'block',
+						'margin-top':selected_row.offsetTop+$("#suggested-names").height() + 65 + 'px',
+					  'margin-left':e.toElement.offsetLeft + 20 + 'px',});
+					$.post("employees/suggestNames",{name:$("#adv-example textarea").val()},
+						function(data) {
+
+							$("#suggested-names").html(data);
+							$("#suggested-names").val("");
+
+						});
+				}
+
+			});
+		}
+		var className = e.toElement.className.split(' ')[e.toElement.className.split(' ').length-1];
+		if(className === "current") {
+			selected_row = e.toElement.parentNode;
+			saveChanges();
+		}
+
+	});
+
+
+	$("#suggested-names").change(function() {
+
+		if($("#suggested-names").val().length > 0) {
+			$("#adv-example textarea").val($("#suggested-names").val());
+			$("#suggested-names").css('display','none');
+			var index = $("tbody").children().index(selected_row);
+			selected_row.childNodes[1].innerHTML = $("#adv-example textarea").val();
+			advancedData[index]['name'] = $("#adv-example textarea").val();
+		}
+
+	});
+	
+
 	function get_employees() {
 
-		$.post('employees/get_employees',function(data) {
+		$.post('employees/getEmployees',function(data) {
 
 			advancedData = data;
 			display_employees();
@@ -24,18 +66,18 @@ $(document).ready(function () {
 
 	function display_employees() {
 
-	  var hot = new Handsontable($("#adv_example")[0], {
+	  var hot = new Handsontable($("#adv-example")[0], {
 	    data: advancedData,
 	    height: 396,
-	    colHeaders: ["Employee ID","Name", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "SSS", "Insurance ID","Position","Position Level","Contract"],
+	    colHeaders: ["Name","Employee ID", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "SSS", "Insurance ID","Position","Position Level","Contract"],
 	    rowHeaders: true,
 	    stretchH: 'all',
 	    columnSorting: true,
 	    contextMenu: true,
 	    className: "htCenter htMiddle",
 	    columns: [
-		    {data: 'id', type: 'text'},
-	      {data: 'name', type: 'text'},
+	      {data: 'name', type: 'text', className:'txt-name'},
+		    {data: 'employee_id', type: 'text'},
 	      {data: 'tin', type: 'text'},
 	      {data: 'salary', type: 'text'},
 	      {data: 'drug_test', type: 'text'},
@@ -52,19 +94,30 @@ $(document).ready(function () {
   
 });
 
-function add_employee() {
-	var data = {tin:'',salary:'',profile_id:1,drug_test:'',philhealth:'',
-							sss:'',insurance_id:'',role:1,position_id:1,position_level:1,
-							current_contract:1};
-	$.post('employees/add_employee',data,
-		function(data) {
+var advancedData = [];
+function saveChanges() {
 
+	var index = $("tbody").children().index(selected_row);
+	if(advancedData[index].name !== null) {
+		$.post('employees/saveChanges',{employee:advancedData[index]},function(data) {
+
+
+			
 		});
-}
+	}
+
+};
 
 </script>
-<select id="suggested">
-	<option value="">Joshua Abella</option>
-	<option value="">Joshua Abella</option>
-</select>
-<div id="adv_example"></div>
+<style>
+#suggested-names {
+	display: none;
+	position: fixed;
+	z-index: 999;
+	width: 300px;
+	left: 0;
+	top: 0;
+}
+</style>
+<div id="adv-example"></div>
+<select id="suggested-names"></select>
