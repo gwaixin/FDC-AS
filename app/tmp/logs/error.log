@@ -439,3 +439,12 @@ Request URL: /FDC_AS/employee
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-11 08:41:10 Error: [MissingControllerException] Controller class AttendanceController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/attendance/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
