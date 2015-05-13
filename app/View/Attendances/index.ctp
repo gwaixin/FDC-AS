@@ -1,11 +1,10 @@
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<link href="http://handsontable.com//styles/main.css" rel="stylesheet">
-<link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+<link href="<?php echo $this->webroot;?>css/hotMain.css" rel="stylesheet">
+<link href="<?php echo $this->webroot;?>css/hot.full.min.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/jquery.timepicker.css" rel="stylesheet"/>
 
-<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+<script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
 <script src="<?php echo $this->webroot;?>js/jquery.timepicker.min.js"></script>
 <script>
 var selected_row = null;
@@ -138,19 +137,22 @@ $(document).ready(function () {
 	
 	//getEmployeeData();
 	//getAttendanceList('2015-05-15');
-	getAttendanceList(0);
-	function getAttendanceList(currentDate) {
-		$.post('attendanceList', {date:currentDate}, function(data) {
+	getAttendanceList(formAttendance);
+	function getAttendanceList(formAttendance) {
+		$.post('attendanceList', formAttendance, function(data) {
 			list = data;
 			attendanceList();
 		}, 'JSON');
 	}
 
-	var currentDate = $('#current-date').val();
+	var formAttendance = new FormData();
 
-	$('.f-timein').click(function() {
-		alert('testing');
+
+	$('#btn-search').click(function(e) {
+		e.preventDefault();
 	});
+	
+	
 });
 </script>
 <style>
@@ -162,16 +164,39 @@ $(document).ready(function () {
 	display: none;
 }
 </style>
-<input type='text' placeholder='Search' />
-<input type='text' placeholder='Choose Date' />
-<select>
-	<option selected='selected'>Status</option>
-	<?php foreach($attendanceStat as $as) { ?>
-	<option><?php echo $as; ?></option>
-	<?php }?>
-</select>
+<div class='col-lg-12'>
+	<h3> Attendance</h3>
+	<div class='col-lg-8'>
+		<form class='form-horizontal'>
+			<div class='form-group'>
+				<div class='col-lg-6'>
+					<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
+				</div>
+				<div class='col-lg-6'>
+					<select>
+						<option selected='selected'>Status</option>
+						<?php foreach($attendanceStat as $as) { ?>
+						<option><?php echo $as; ?></option>
+						<?php }?>
+					</select>
+				</div>
+			</div>
+			<div class='form-group'>
+				<div class='col-lg-6'>
+					<input type='text' placeholder='Choose Date' />
+				</div>
+				<div class='col-lg-6'>
+						<input type='text' placeholder='Start of Time in' />
+				</div>
+			</div>
+			<div class='form-group'>
+				<button id='btn-search'>Search</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class='col-lg-12'>
+	<div id="employee-attendance"></div>
+	<div id="error"></div>
+</div>
 
-<button>Search</button>
-<br/>
-<div id="employee-attendance"></div>
-<div id="error"></div>

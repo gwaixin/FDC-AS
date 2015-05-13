@@ -2,9 +2,11 @@
 class AttendancesController extends AppController {
 	
 	public function index($date = 0) {
+		$this->layout = 'main';
 		if ($date == 0) {
 			$date = date('Y-m-d');	
 		}
+		
 		$this->set('title', 'FDC : ATTENDANCE');
 		$this->set('attendanceStat', $this->getAttendanceStatus());
 	}

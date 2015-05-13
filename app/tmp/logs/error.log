@@ -1183,3 +1183,67 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 >>>>>>> FDC-AS-2
 #1 {main}
+2015-05-13 07:44:46 Error: Fatal Error (4): syntax error, unexpected 'if' (T_IF) in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 6]
+2015-05-13 07:44:46 Error: [FatalErrorException] syntax error, unexpected 'if' (T_IF)
+Request URL: /FDC_AS/attendances/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 6)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 6, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 6, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-13 07:50:57 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 07:50:59 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 07:51:00 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 07:51:01 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 07:52:31 Error: [MissingControllerException] Controller class Hot.full.min.cssController could not be found.
+Exception Attributes: array (
+  'class' => 'Hot.full.min.cssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/hot.full.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 07:52:32 Error: [MissingControllerException] Controller class Hot.full.min.cssController could not be found.
+Exception Attributes: array (
+  'class' => 'Hot.full.min.cssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/hot.full.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
