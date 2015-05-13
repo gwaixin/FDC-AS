@@ -1,0 +1,48 @@
+@CHARSET "ISO-8859-1";
+.profile-container{
+	max-width:500px;
+	margin:0 auto;
+	padding: 5px 15px;
+	box-shadow: 2px 2px 5px #919191;
+}
+
+.prof-table{
+	display: table;
+	max-width: 200px;
+  	margin: 0 auto;
+}
+.box-shadow-cont{
+	box-shadow: 2px 2px 5px #919191;
+} 
+.prof-img-cont{
+  height: 200px;
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+}
+
+.img-cont {
+	max-width: 150px;
+	margin-bottom:15px;
+}
+
+.bg-padd{
+	padding: 10px;
+	margin:10px 0;
+	box-shadow: 2px 2px 5px #919191;
+	border-radius: 5px;
+}
+
+.bg-padd p{
+  margin: 0;
+  font-weight: 600;
+}
+.paginate{
+	height:60px;
+	max-width:500px;
+	display:block;
+	margin:0 auto;
+}
+.disabled{
+	display:none !important;
+}
