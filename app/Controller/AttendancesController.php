@@ -168,7 +168,7 @@ class AttendancesController extends AppController {
 	
 	private function createAttendance($date) {
 		$presentDate = date('Y-m-d');
-		if ($presentDate <= $date) {
+		if (strtotime($presentDate) < strtotime($date)) {
 			$this->Session->setFlash(__('No attendance for this date'));
 			return 'FAIL';
 		}
