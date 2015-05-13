@@ -121,8 +121,7 @@ class ProfilesController extends AppController{
 			
 			$imgPic = $data['Profile']['picture'];
 			$data['Profile']['picture'] = ($imgPic)? $this->webroot.'upload/'.$imgPic : $this->webroot.'img/emptyprofile.jpg' ;
-			
-			pr($data);
+
 			$this->set('data',$data);
 			
 			$this->set('errors', $errors);
