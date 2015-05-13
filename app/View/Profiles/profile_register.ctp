@@ -36,7 +36,7 @@
 								 'size' => 16,
 								 'label' => false,
 								 'after' => '',
-								 'value' => $data['Profile']['first_name'],
+								 'value' => $data['first_name'],
 								 'placeholder' => 'First Name'
 							)
 						);
@@ -49,7 +49,7 @@
 											'class' => 'form-control',
 											'size' => 16,
 											'label' => false,
-											'value' => $data['Profile']['last_name'],
+											'value' => $data['last_name'],
 											'placeholder' => 'Last Name'
 									)
 							);
@@ -62,7 +62,7 @@
 												'class' => 'form-control',
 												'size' => 16,
 												'label' => false,
-												'value' => $data['Profile']['middle_name'],
+												'value' => $data['middle_name'],
 												'placeholder' => 'Middle Name'
 										)
 								);
@@ -78,7 +78,7 @@
 										'class' => 'form-control',
 										'size' => 16,
 										'label' => false,
-										'value' => $data['Profile']['birthdate'],
+										'value' => $data['birthdate'],
 										'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
 										'placeholder' => 'Birth Date'
 								)
@@ -92,7 +92,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['contact'],
+		    				'value' => $data['contact'],
 		    				'placeholder' => 'Contact'
 		    		)
 		    );
@@ -105,7 +105,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['facebook'],
+		    				'value' => $data['facebook'],
 		    				'placeholder' => 'Facebook'
 		    		)
 		    );
@@ -118,7 +118,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['email'],
+		    				'value' => $data['email'],
 		    				'placeholder' => 'Email'
 		    		)
 		    );
@@ -129,7 +129,7 @@
 								'class' => 'form-control',
 								'label' => false,
 							    'name' => 'gender',
-								'value' => $data['Profile']['gender'],
+								'value' => $data['gender'],
 								'options' => array(
 										'M' => 'MALE',
 										'F' => 'FEMALE',
@@ -146,7 +146,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['address'],
+		    				'value' => $data['address'],
 		    				'placeholder' => 'Address'
 		    		)
 		    );
@@ -159,7 +159,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['contact_person'],
+		    				'value' => $data['contact_person'],
 		    				'placeholder' => 'Contact Person'
 		    		)
 		    );
@@ -172,7 +172,7 @@
 		    				'class' => 'form-control',
 		    				'size' => 16,
 		    				'label' => false,
-		    				'value' => $data['Profile']['contact_person_no'],
+		    				'value' => $data['contact_person_no'],
 		    				'placeholder' => 'Contact Person Number'
 		    		)
 		    );
@@ -185,7 +185,7 @@
 	    				'class' => 'form-control',
 	    				'size' => 16,
 	    				'label' => false,
-	    				'value' => $data['Profile']['signature'],
+	    				'value' => $data['signature'],
 	    				'placeholder' => 'Signature'
 	    		)
 	    );

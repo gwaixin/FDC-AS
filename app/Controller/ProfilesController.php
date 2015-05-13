@@ -26,11 +26,29 @@ class ProfilesController extends AppController{
 		
 		$this->layout = 'profile';
 		$errors = '';
+		
+		$data = array(
+				'first_name' => '',
+				'last_name' => '',
+				'middle_name' => '',
+				'birthdate' => '',
+				'contact' => '',
+				'facebook' => '',
+				'picture' => '',
+				'email' => '',
+				'gender' => '',
+				'address' => '',
+				'contact_person' => '',
+				'contact_person_no' => '',
+				'signature' => '',
+		);
+		
 		if($this->request->is('post')){
 			$row = $this->request->data;
 
 			$this->Profile->create();
 			$this->imgpath = '';
+			
 			$data = array(
 					'first_name' => $row['first_name'],
 					'last_name' => $row['last_name'],
@@ -52,13 +70,13 @@ class ProfilesController extends AppController{
 				$this->Session->setFlash('Data Successfully added');
 				return $this->redirect('/');
 			}else{
-				$this->set('data', $data);
 				$errors = $this->Profile->validationErrors;
 			}
 			
 			
 		}
-		
+
+		$this->set('data', $data);
 		$this->set('errors', $errors);
 		
 	}
@@ -138,8 +156,10 @@ class ProfilesController extends AppController{
 		if($this->request->is('post')){
 			
 			$data = $this->request->data;
-
+			$dataImg = $this->Profile->findById($data['dataID']);
 			if($this->Profile->delete($data['dataID'])){
+				$file = new File(WWW_ROOT .'upload/'.$dataImg['Profile']['picture'], false, 0777);
+				$file->delete();
 				echo '1';
 				exit();
 			}
