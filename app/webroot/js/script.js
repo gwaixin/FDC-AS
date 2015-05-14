@@ -1,5 +1,7 @@
 $(function(){
 	
+	var weburl = $('#url').val();
+	
 	$('#dp3').datepicker();
 
 	
@@ -26,10 +28,10 @@ $(function(){
 	
 	$('.delete-list').on('click',function(e){
 		var dataID = $(this).data('profid');
-
+		var posturl = weburl+'profiles/delete';
 		if(confirm('Are you sure you want to delete this profile?')){
 		
-			$.post('profiles/delete',{dataID:dataID},function(data){
+			$.post(posturl,{dataID:dataID},function(data){
 
 				if(data == 1){
 					$('.pro-id-'+dataID).remove();
