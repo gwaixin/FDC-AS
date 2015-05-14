@@ -56,7 +56,7 @@ $(document).ready(function () {
 	
 	var hot;
 	function attendanceList() {
-
+		$('#employee-attendance').html('');
 		var statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
@@ -81,24 +81,25 @@ $(document).ready(function () {
 		    	if (sources === 'loadData') {
 		            return; //don't do anything as this is called when table is loaded
 		        }
-		    	
-		    	rowIndex = change[0][0];
-		    	colClass = change[0][1];
-		    	
-			  	if (colClass == 'status') {
-			  		var statIndex = statusArr.indexOf(change[0][3]);
-			  		if (statIndex < 0) {
-				  		$('#error').html('DELE PWEDE!! status na ing.ana');
-				  		return;
-				  	}
-			    	console.log(statIndex + rowIndex);
-			    	updateValue = statIndex;
-				} else {
-					updateValue = list[rowIndex][colClass];
-				}
-				
-				updateEmployeeData();
-				
+		    	setTimeout(function() {
+				   
+			    	rowIndex = change[0][0];
+			    	colClass = change[0][1];
+			    	
+				  	if (colClass == 'status') {
+				  		var statIndex = statusArr.indexOf(change[0][3]);
+				  		if (statIndex < 0) {
+					  		$('#error').html('DELE PWEDE!! status na ing.ana');
+					  		return;
+					  	}
+				    	console.log(statIndex + rowIndex);
+				    	updateValue = statIndex;
+					} else {
+						updateValue = list[rowIndex][colClass];
+					}
+					
+					updateEmployeeData();
+		    	 }, 300);
 			}
 	  	});
 	}
@@ -150,9 +151,11 @@ $(document).ready(function () {
 
 	$('#btn-search').click(function(e) {
 		e.preventDefault();
+		getAttendanceList($('#attendance-form').serialize());
+		
 	});
 	
-	
+	$('#date').datepicker();
 });
 </script>
 <style>
@@ -167,23 +170,23 @@ $(document).ready(function () {
 <div class='col-lg-12'>
 	<h3> Attendance</h3>
 	<div class='col-lg-8'>
-		<form class='form-horizontal'>
+		<form class='form-horizontal' id='attendance-form'>
 			<div class='form-group'>
 				<div class='col-lg-6'>
 					<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
 				</div>
 				<div class='col-lg-6'>
-					<select>
-						<option selected='selected'>Status</option>
-						<?php foreach($attendanceStat as $as) { ?>
-						<option><?php echo $as; ?></option>
+					<select name='status'>
+						<option selected='selected' disabled>Choose Status</option>
+						<?php foreach($attendanceStat as $key => $as) { ?>
+						<option value='<?php echo $key;?>'><?php echo $as; ?></option>
 						<?php }?>
 					</select>
 				</div>
 			</div>
 			<div class='form-group'>
 				<div class='col-lg-6'>
-					<input type='text' placeholder='Choose Date' />
+					<input type='text' id='date' placeholder='Choose Date' name='date' />
 				</div>
 				<div class='col-lg-6'>
 						<input type='text' placeholder='Start of Time in' />
