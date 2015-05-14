@@ -26,11 +26,29 @@ class ProfilesController extends AppController{
 		
 		$this->layout = 'profile';
 		$errors = '';
+		
+		$data = array(
+				'first_name' => '',
+				'last_name' => '',
+				'middle_name' => '',
+				'birthdate' => '',
+				'contact' => '',
+				'facebook' => '',
+				'picture' => '',
+				'email' => '',
+				'gender' => '',
+				'address' => '',
+				'contact_person' => '',
+				'contact_person_no' => '',
+				'signature' => '',
+		);
+		
 		if($this->request->is('post')){
 			$row = $this->request->data;
 
 			$this->Profile->create();
 			$this->imgpath = '';
+			
 			$data = array(
 					'first_name' => $row['first_name'],
 					'last_name' => $row['last_name'],
@@ -52,13 +70,13 @@ class ProfilesController extends AppController{
 				$this->Session->setFlash('Data Successfully added');
 				return $this->redirect('/');
 			}else{
-				$this->set('data', $data);
 				$errors = $this->Profile->validationErrors;
 			}
 			
 			
 		}
-		
+
+		$this->set('data', $data);
 		$this->set('errors', $errors);
 		
 	}
@@ -70,6 +88,22 @@ class ProfilesController extends AppController{
 		if(!$id){
 			return $this->redirect('/');
 		}
+		
+		$data = array(
+				'first_name' => '',
+				'last_name' => '',
+				'middle_name' => '',
+				'birthdate' => '',
+				'contact' => '',
+				'facebook' => '',
+				'picture' => '',
+				'email' => '',
+				'gender' => '',
+				'address' => '',
+				'contact_person' => '',
+				'contact_person_no' => '',
+				'signature' => '',
+		);
 		
 		$data = $this->Profile->findById($id);
 		
@@ -88,20 +122,22 @@ class ProfilesController extends AppController{
 					$imgorig = $this->file($row['Profile']['picture']);
 				}
 				
-				$data = array(
-						'first_name' => $row['first_name'],
-						'last_name' => $row['last_name'],
-						'middle_name' => $row['middle_name'],
-						'birthdate' => $row['birthdate'],
-						'contact' => $row['contact'],
-						'facebook' => $row['facebook'],
-						'picture' => $imgorig,
-						'email' => $row['email'],
-						'gender' => $row['gender'],
-						'address' => $row['address'],
-						'contact_person' => $row['contact_person'],
-						'contact_person_no' => $row['contact_person_no'],
-						'signature' => $row['signature'],
+				$data = array(					
+						'Profile' =>array(
+							'first_name' => $row['first_name'],
+							'last_name' => $row['last_name'],
+							'middle_name' => $row['middle_name'],
+							'birthdate' => $row['birthdate'],
+							'contact' => $row['contact'],
+							'facebook' => $row['facebook'],
+							'picture' => $imgorig,
+							'email' => $row['email'],
+							'gender' => $row['gender'],
+							'address' => $row['address'],
+							'contact_person' => $row['contact_person'],
+							'contact_person_no' => $row['contact_person_no'],
+							'signature' => $row['signature']
+						)
 				);
 				
 				if($this->Profile->save($data)){
@@ -112,9 +148,7 @@ class ProfilesController extends AppController{
 					
 					return $this->redirect('/');
 				}else{
-					
-					$errors = $this->Profile->validationErrors;
-					
+					$errors = $this->Profile->validationErrors;	
 				}
 				$this->Session->setFlash(__('Unable to update your post'));	
 			}
@@ -122,13 +156,13 @@ class ProfilesController extends AppController{
 			$imgPic = $data['Profile']['picture'];
 			$data['Profile']['picture'] = ($imgPic)? $this->webroot.'upload/'.$imgPic : $this->webroot.'img/emptyprofile.jpg' ;
 
-			$this->set('data',$data);
-			
 			$this->set('errors', $errors);
 			
 		}else{
 			return $this->redirect('/');
 		}
+
+		$this->set('data',$data);
 		
 	}
 	
@@ -138,8 +172,10 @@ class ProfilesController extends AppController{
 		if($this->request->is('post')){
 			
 			$data = $this->request->data;
-
+			$dataImg = $this->Profile->findById($data['dataID']);
 			if($this->Profile->delete($data['dataID'])){
+				$file = new File(WWW_ROOT .'upload/'.$dataImg['Profile']['picture'], false, 0777);
+				$file->delete();
 				echo '1';
 				exit();
 			}
