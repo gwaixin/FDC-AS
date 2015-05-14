@@ -2210,3 +2210,256 @@ Stack Trace:
 #3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-05-14 06:17:56 Error: [MissingControllerException] Controller class EmployeeController could not be found.
+Exception Attributes: array (
+  'class' => 'EmployeeController',
+  'plugin' => NULL,
+)
+Request URL: /employee/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:18:03 Error: [MissingActionException] Action EmployeesController::employees() could not be found.
+Exception Attributes: array (
+  'controller' => 'EmployeesController',
+  'action' => 'employees',
+)
+Request URL: /employees/employees/getDropdownValues
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-14 06:18:19 Error: [MissingActionException] Action EmployeesController::employees() could not be found.
+Exception Attributes: array (
+  'controller' => 'EmployeesController',
+  'action' => 'employees',
+)
+Request URL: /employees/employees/getDropdownValues
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-14 06:21:54 Error: Fatal Error (4): syntax error, unexpected '&&' (T_BOOLEAN_AND), expecting ')' in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 49]
+2015-05-14 06:21:54 Error: [FatalErrorException] syntax error, unexpected '&&' (T_BOOLEAN_AND), expecting ')'
+Request URL: /attendances/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 06:21:55 Error: Fatal Error (4): syntax error, unexpected '&&' (T_BOOLEAN_AND), expecting ')' in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 49]
+2015-05-14 06:21:55 Error: [FatalErrorException] syntax error, unexpected '&&' (T_BOOLEAN_AND), expecting ')'
+Request URL: /attendances/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 49, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 06:29:24 Error: [MissingControllerException] Controller class EmployeeController could not be found.
+Exception Attributes: array (
+  'class' => 'EmployeeController',
+  'plugin' => NULL,
+)
+Request URL: /employee/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:33:57 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:33:57 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:00 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:01 Error: [MissingActionException] Action ProfilesController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProfilesController',
+  'action' => 'index',
+)
+Request URL: /profiles
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-14 06:37:12 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:15 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:16 Error: [MissingActionException] Action ProfilesController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProfilesController',
+  'action' => 'index',
+)
+Request URL: /profiles
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-14 06:37:24 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:24 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:29 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:31 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:34 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:37:52 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:38:08 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:39:29 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:39:31 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:39:45 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:39:48 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:39:50 Error: [MissingControllerException] Controller class AttendanceListController could not be found.
+Exception Attributes: array (
+  'class' => 'AttendanceListController',
+  'plugin' => NULL,
+)
+Request URL: /attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:40:50 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 06:40:50 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

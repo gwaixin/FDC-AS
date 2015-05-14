@@ -2,10 +2,11 @@
 
 <link href="<?php echo $this->webroot;?>css/hot.full.min.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/bootstrap-timepicker.min.css" rel="stylesheet"/>
-<link href="<?php echo $this->webroot;?>css/twitter-bootstrap.min.css" rel="stylesheet"/>
+<!-- <link href="<?php echo $this->webroot;?>css/twitter-bootstrap.min.css" rel="stylesheet"/>  -->
 <script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
 <script src="<?php echo $this->webroot;?>js/bootstrap-timepicker.js"></script>
 <script>
+var webroot = '<?php echo $this->webroot;?>';
 var selected_row = null;
 
 $(document).ready(function () {
@@ -105,7 +106,7 @@ $(document).ready(function () {
 	
 	var list = [];
 	function getEmployeeData() {
-		$.post('getEmployee', {}, function(data) {
+		$.post(webroot+'attendances/getEmployee', {}, function(data) {
 			$('#error').html(data);
 		});
 	}
@@ -121,7 +122,7 @@ $(document).ready(function () {
 		formData.append('value', updateValue);
 		formData.append('field', colClass);
 		updateAjax = $.ajax({
-			url: 'updateAttendance',
+			url: webroot+'attendances/updateAttendance',
 			data: formData,
 			processData: false,
 			contentType: false,
@@ -139,7 +140,7 @@ $(document).ready(function () {
 	//getAttendanceList('2015-05-15');
 	getAttendanceList(formAttendance);
 	function getAttendanceList(formAttendance) {
-		$.post('attendanceList', formAttendance, function(data) {
+		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
 			list = data;
 			attendanceList();
 		}, 'JSON');

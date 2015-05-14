@@ -46,6 +46,9 @@ class AttendancesController extends AppController {
 				if (!empty($data['status']) && $data['status'] >= 0) {
 					$conditions['attendances.status ='] = $data['status'];
 				}
+				if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
+					$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+				}
 			}
 			if (!$this->hasAttendance($currentDate)) {
 				$this->createAttendance($currentDate);
