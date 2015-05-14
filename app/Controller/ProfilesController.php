@@ -12,7 +12,7 @@ class ProfilesController extends AppController{
 	/**
 	 * list of profile
 	 */
-	public function list_profile(){
+	public function index(){
 		$this->layout = 'profile';
 		$this->Paginator->settings = array(
 					'limit' => 8, 
@@ -45,10 +45,12 @@ class ProfilesController extends AppController{
 		
 		if($this->request->is('post')){
 			$row = $this->request->data;
-
+			pr($row);
 			$this->Profile->create();
 			$this->imgpath = '';
-			
+	
+			$ext = $row['Profile']['picture']['type'];
+
 			$data = array(
 					'first_name' => $row['first_name'],
 					'last_name' => $row['last_name'],
@@ -56,7 +58,7 @@ class ProfilesController extends AppController{
 					'birthdate' => $row['birthdate'],
 					'contact' => $row['contact'],
 					'facebook' => $row['facebook'],
-					'picture' => $this->file($row['Profile']['picture']),
+					'picture' => $this->Profile->resize($row['Profile']['picture'], 250, 250),
 					'email' => $row['email'],
 					'gender' => $row['gender'],
 					'address' => $row['address'],
@@ -66,8 +68,7 @@ class ProfilesController extends AppController{
 			);
 			
 			if($this->Profile->save($data)){
-				$this->upload($row['Profile']['picture']['tmp_name']);
-				$this->Session->setFlash('Data Successfully added');
+				$this->Profile->UploadProcess($ext);
 				return $this->redirect('/');
 			}else{
 				$errors = $this->Profile->validationErrors;
@@ -130,7 +131,7 @@ class ProfilesController extends AppController{
 							'birthdate' => $row['birthdate'],
 							'contact' => $row['contact'],
 							'facebook' => $row['facebook'],
-							'picture' => $imgorig,
+							'picture' => $this->Profile->imgsrc,
 							'email' => $row['email'],
 							'gender' => $row['gender'],
 							'address' => $row['address'],
@@ -167,8 +168,9 @@ class ProfilesController extends AppController{
 	}
 	
 	public function delete(){
-		$this->layout = 'ajax';
 		
+		$this->autoRender = false;
+			
 		if($this->request->is('post')){
 			
 			$data = $this->request->data;
@@ -177,7 +179,6 @@ class ProfilesController extends AppController{
 				$file = new File(WWW_ROOT .'upload/'.$dataImg['Profile']['picture'], false, 0777);
 				$file->delete();
 				echo '1';
-				exit();
 			}
 		}
 
@@ -185,7 +186,7 @@ class ProfilesController extends AppController{
 	
 	public function view(){
 		
-		$this->layout = 'ajax';
+		$this->autoRender = false;		
 		
 		if($this->request->is('ajax')){
 			
@@ -193,9 +194,7 @@ class ProfilesController extends AppController{
 			
 			$result = $this->Profile->findById($data['dataId']);
 			
-			echo json_encode($result) ;
-			
-			exit();
+			echo json_encode($result);
 		
 		}
 		
@@ -256,5 +255,29 @@ class ProfilesController extends AppController{
 		} else {
 			$this->Session->setFlash('There was a problem uploading file. Please try again.');
 		}
+	}
+
+	public function uploadFile( $check ) {
+	
+		$uploadData = array_shift($check);
+	
+		if ( $uploadData['size'] == 0 || $uploadData['error'] !== 0) {
+			return false;
+		}
+	
+		$uploadFolder = 'files'. DS .'your_directory';
+		$fileName = time() . '.pdf';
+		$uploadPath =  $uploadFolder . DS . $fileName;
+	
+		if( !file_exists($uploadFolder) ){
+			mkdir($uploadFolder);
+		}
+	
+		if (move_uploaded_file($uploadData['tmp_name'], $uploadPath)) {
+			$this->set('pdf_path', $fileName);
+			return true;
+		}
+	
+		return false;
 	}
 }
