@@ -1,6 +1,7 @@
 <?php
+App::uses('AppController', 'Controller');
 class AttendancesController extends AppController {
-	
+	public $helpers = array('Html', 'Form');
 	public function index($date = 0) {
 		$this->layout = 'main';
 		if ($date == 0) {
@@ -94,10 +95,10 @@ class AttendancesController extends AppController {
 			$employees_arr = [];
 			$statusArr = $this->getAttendanceStatus();
 			foreach($employees as $key => $employee) {
-				$ftimein 	= $employee['attendances']['f_time_in'] ? $employee['attendances']['f_time_in'] : '--------';
-				$ftimeout 	= $employee['attendances']['f_time_out'] ? $employee['attendances']['f_time_out'] : '--------';
-				$ltimein 	= $employee['attendances']['l_time_in'] ? $employee['attendances']['l_time_in'] : '--------';
-				$ltimeout 	= $employee['attendances']['l_time_out'] ? $employee['attendances']['l_time_out'] : '--------';
+				$ftimein 	= $employee['attendances']['f_time_in'] ? date('g:i A', strtotime($employee['attendances']['f_time_in'])) : '--------';
+				$ftimeout 	= $employee['attendances']['f_time_out'] ? date('g:i A', strtotime($employee['attendances']['f_time_out'])) : '--------';
+				$ltimein 	= $employee['attendances']['l_time_in'] ? date('g:i A', strtotime($employee['attendances']['l_time_in'])) : '--------';
+				$ltimeout 	= $employee['attendances']['l_time_out'] ? date('g:i A', strtotime($employee['attendances']['l_time_out'])) : '--------';
 			
 				$firstLog 	= $this->getTotalTime($ftimein, $ftimeout);
 				$lastLog 	= $this->getTotalTime($ltimein, $ltimeout);
@@ -126,16 +127,20 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$this->Attendance->id = $data['id'];
+			
+			$val = ($data['field'] != 'status') ? date('H:i:s', strtotime($data['value'])) : $data['value'];
 			$attendanceData = array(
-				$data['field'] => $data['value']	
+					'Attendance' => array(
+						$data['field'] => $val
+					)
 			);
+			
+			$this->Attendance->id = $data['id'];
 			if ($this->Attendance->save($attendanceData)) {
 				echo 'success';
 			} else {
-				echo 'fail';
+				echo json_encode($this->Attendance->validationErrors);
 			}
-			//echo json_encode($value);
 		}
 	}
 	

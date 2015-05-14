@@ -1,11 +1,10 @@
 
 
-<link href="<?php echo $this->webroot;?>css/hotMain.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/hot.full.min.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/jquery.timepicker.css" rel="stylesheet"/>
-
+<link href="<?php echo $this->webroot;?>css/bootstrap-timepicker.min.css" rel="stylesheet"/>
+<link href="<?php echo $this->webroot;?>css/twitter-bootstrap.min.css" rel="stylesheet"/>
 <script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/jquery.timepicker.min.js"></script>
+<script src="<?php echo $this->webroot;?>js/bootstrap-timepicker.js"></script>
 <script>
 var selected_row = null;
 
@@ -16,7 +15,7 @@ $(document).ready(function () {
 	var rowIndex;
 	var colClass;
 
-	
+	var currentTime;
 	
 	$(document).on('click', '#employee-attendance td', function(e) {
 		colClass = $(this).attr('class').split(' ')[0];
@@ -25,14 +24,20 @@ $(document).ready(function () {
 		if (
 			colClass == 'f_time_in' 	|| 
 			colClass == 'f_time_out' 	||
-			colClass == 'l_time_in'	||
+			colClass == 'l_time_in'		||
 			colClass == 'l_time_out'
 		) {
-			focusElem = $(this);
-			htTextarea.select();
-			htTextarea.timepicker({ 'timeFormat': 'H:i:s' });
-			htTextarea.on('changeTime', function() {
-			    $('#onselectTarget').text($(this).val());
+			console.log(htTextarea.val());
+			htTextarea.timepicker({
+                minuteStep: 1,
+                disableFocus: true
+			});
+			
+			htTextarea.timepicker().on('changeTime.timepicker', function(e) {
+				currentTime = e.time.value;
+			});
+			htTextarea.timepicker().on('hide.timepicker', function(e) {
+				hot.setDataAtRowProp(rowIndex, colClass, e.time.value);
 			});
 			
 		} else {
@@ -42,13 +47,6 @@ $(document).ready(function () {
 		}
 		
 		
-	});
-	
-	$(document).on('click', '.ui-timepicker-list li', function() {
-		var time = $(this).html();
-		list[rowIndex][colClass] = time;
-		hot.render();
-		console.log(colClass + ":" + list[rowIndex][colClass]);
 	});
 
 
@@ -78,9 +76,10 @@ $(document).ready(function () {
 		      {data: 'status', type: 'dropdown', source: statusArr, className:'status hrCenter htMidlle'},
 		      {data: 'id', type: 'numeric', className:'htHidden', readOnly: true}
 		    ], afterChange: function(change, sources) {
-		    	if (sources === 'loadData') {
+			    if (sources === 'loadData' || change[0][2] == change[0][3]) {
 		            return; //don't do anything as this is called when table is loaded
 		        }
+		        
 		    	setTimeout(function() {
 				   
 			    	rowIndex = change[0][0];
@@ -156,6 +155,14 @@ $(document).ready(function () {
 	});
 	
 	$('#date').datepicker();
+	$('#time-in').timepicker({
+		defaultTime: false
+	});
+
+	function validateTime(time) {
+		return time.match(/^(0?[1-9]|1[012])(:[0-5]\d) [APap][mM]$/) ? true: false;
+		
+	}
 });
 </script>
 <style>
@@ -165,6 +172,10 @@ $(document).ready(function () {
 
 .htCore thead tr th:nth-child(10) {
 	display: none;
+}
+
+.bootstrap-timepicker-widget table td input {
+	width: 55px;
 }
 </style>
 <div class='col-lg-12'>
@@ -189,7 +200,7 @@ $(document).ready(function () {
 					<input type='text' id='date' placeholder='Choose Date' name='date' />
 				</div>
 				<div class='col-lg-6'>
-						<input type='text' placeholder='Start of Time in' />
+						<input type='text' placeholder='Start of Time in' id='time-in' name='time-in'/>
 				</div>
 			</div>
 			<div class='form-group'>

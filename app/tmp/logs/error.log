@@ -1794,3 +1794,419 @@ Request URL: /FDC_AS/upload/fdc101155Image%2010_958642.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-14 01:48:34 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 01:50:35 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:01:25 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:04:59 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:15:29 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:16:06 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:17:26 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:18:49 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:19:03 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:19:08 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:20:54 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:21:36 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:21:49 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:21:55 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:23:45 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:24:12 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:25:37 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:26:36 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:28:00 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:29:47 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:30:17 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:30:41 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:30:56 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:31:10 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:33:22 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/bootsrap-timepicker.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:33:23 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:33:32 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/bootsrap-timepicker.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:33:43 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:33:56 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:36:06 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:36:44 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:37:22 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:37:47 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:37:58 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:38:36 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:38:53 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:39:34 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:46:49 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/glyphicons-halflings.png
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:49:54 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/glyphicons-halflings.png
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 02:49:58 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/glyphicons-halflings.png
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-14 05:25:12 Error: Fatal Error (1): Call to a member function set() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 135]
+2015-05-14 05:25:12 Error: [FatalErrorException] Call to a member function set() on a non-object
+Request URL: /attendances/updateAttendance
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 135)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 135, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\wamp\www\FDC...', 135, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 05:34:37 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'validationErrors' at line 1
+Request URL: /attendances/updateAttendance
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('validationError...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('validationError...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(611): DboSource->fetchAll('validationError...', Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): DboSource->query('validationError...', Array, Object(AppModel))
+#5 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(137): Model->__call('validationError...', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(137): AppModel->validationErrors()
+#7 [internal function]: AttendancesController->updateAttendance()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 05:44:22 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO) in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 138]
+2015-05-14 05:44:22 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /attendances/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 05:44:23 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO) in [C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php, line 138]
+2015-05-14 05:44:23 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /attendances/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 138, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 05:56:59 Error: Fatal Error (64): Cannot redeclare class AttendanceModel in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 12]
+2015-05-14 05:56:59 Error: [FatalErrorException] Cannot redeclare class AttendanceModel
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 12)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 12, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 12, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
