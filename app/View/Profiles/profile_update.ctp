@@ -19,7 +19,7 @@
 			echo '</div>';
 		}
 		echo $this->Form->create('Profile',array('type' => 'file'));
-		echo $this->Form->file('picture', array('id' => 'uploadFile','accept' => "image/*",'style' => 'display:none;','value'=>$data['Profile']['picture']));
+		echo $this->Form->file('picture', array('id' => 'uploadFile','required' => false,'accept' => "image/*",'style' => 'display:none;','value'=>$data['Profile']['picture']));
 		echo $this->Form->button('Browse Photo', 
 									array(
 										'id' => 'BrowsePhoto',
@@ -176,17 +176,11 @@
 		    				'placeholder' => 'Contact Person Number'
 		    		)
 		    );
-	    echo $this->Form->input('text',
-	    		array('div' => array(
-	    				'class' => 'form-group'
-	    		),
-	    				'name' => 'signature',
-	    				'id' => 'txtSignature',
-	    				'class' => 'form-control',
-	    				'size' => 16,
-	    				'label' => false,
-	    				'value' => $data['Profile']['signature'],
-	    				'placeholder' => 'Signature'
+	    echo $this->Form->file('signature', array('id' => 'uploadSignature','required' => false,'accept' => "image/*",'style' => 'display:none;'));
+	    echo $this->Form->button('Browse Signature',
+	    		array(
+	    				'id' => 'BrowseSignature',
+	    				'class' => 'btn btn-default'
 	    		)
 	    );
 	    echo $this->Form->button('Submit', array('type' => 'submit','class' => 'btn btn-primary'));

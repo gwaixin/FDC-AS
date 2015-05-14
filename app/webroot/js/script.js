@@ -26,6 +26,11 @@ $(function(){
 		$("#uploadFile").click();
 	});
 	
+	$('#BrowseSignature').on('click',function(e){
+		e.preventDefault();
+		$("#uploadSignature").click();
+	});
+	
 	$('.delete-list').on('click',function(e){
 		var dataID = $(this).data('profid');
 		var posturl = weburl+'profiles/delete';
@@ -35,9 +40,6 @@ $(function(){
 
 				if(data == 1){
 					$('.pro-id-'+dataID).remove();
-					if($(this).closest('col-md-3').length == 0){
-						location.reload();
-					}
 				}
 			});
 			
@@ -61,7 +63,7 @@ $(function(){
 			$('#address').html(result.Profile.address);
 			$('#c_p').html(result.Profile.contact_person);
 			$('#c_p_no').html(result.Profile.contact_person_no);
-			$('#sig').html(result.Profile.signature);
+			$('#sig .sig-prev').attr('src','upload/'+result.Profile.signature);
 		});
 		
 	});

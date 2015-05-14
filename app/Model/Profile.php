@@ -19,6 +19,10 @@ class Profile extends AppModel{
 					'rule' => array('email', true),
 					'message' => 'Please provide a valid email address.'
 			),
+			'birthday' => array(
+					'rule' => array('datetime', 'y-m-d'),
+					'message' => 'Please enter a valid date and time.'
+			),
 			'facebook' => array(
 					'rule' => array('email', true),
 					'message' => 'Please provide a valid email address.'
@@ -26,9 +30,17 @@ class Profile extends AppModel{
 			'picture' => array(
 					    'extension' => array(
 					        'rule' => array('extension', array('jpeg','jpg','png','gif')),
-					        'message' => 'Only image files',
+					    	'allowEmpty' => true,
+					        'message' => 'Please supply valid image file',
 					     ),
 					),
+			'signature' => array(
+					'extension' => array(
+							'rule' => array('extension', array('jpeg','jpg','png','gif')),
+							'allowEmpty' => true,
+							'message' => 'Please supply valid image file for signature',
+					),
+			),
 			'contact' => array(
 					'min_length' => array(
 							'rule' => array('minLength', '8'),
@@ -47,22 +59,34 @@ class Profile extends AppModel{
 	public function resize($src, $width, $height){
 		
 		$file = $src;
-
+		$tmppath = 'upload/';
+		
+		if(empty($file['tmp_name'])){
+			return '';
+		}
 		/* Get original image x y*/
 		list($w, $h) = getimagesize($file['tmp_name']);
+		
 		/* calculate new image size with ratio */
 		$ratio = max($width/$w, $height/$h);
 		$h = ceil($height / $ratio);
 		$x = ($w - $width / $ratio) / 2;
 		$w = ceil($width / $ratio);
+		
+		
+		$extension = $this->getExtenstion($file['tmp_name']);
+		
 		/* new file name */
-		$this->imgsrc = 'upload/'.$width.'x'.$height.'_'.$file['name'];
+		$this->imgsrc = 'upload/'.$width.'x'.$height.'_'.time().'.'.$extension;
+		
 		/* read binary data from image file */
 		$imgString = file_get_contents($file['tmp_name']);
+		
 		/* create image from string */
 		$image = imagecreatefromstring($imgString);
 		$this->tmp = imagecreatetruecolor($width, $height);
 		imagecopyresampled($this->tmp, $image,0, 0,$x, 0,$width, $height, $w, $h);
+		
 		
 		return str_replace('upload/', '', $this->imgsrc);
 
@@ -86,4 +110,13 @@ class Profile extends AppModel{
 		}
 	}
 
+	function getExtenstion($file) {
+		$ext = 'jpg';
+		switch(exif_imagetype($file)) {
+			case IMAGETYPE_GIF: $ext = 'gif'; break;
+			case IMAGETYPE_JPEG: $ext = 'jpg'; break;
+			case IMAGETYPE_PNG: $ext = 'png'; break;
+		}
+		return $ext;
+	}
 }

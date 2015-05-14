@@ -13,7 +13,7 @@ class ProfilesController extends AppController{
 	 * list of profile
 	 */
 	public function index(){
-		$this->layout = 'profile';
+		$this->layout = 'main';
 		$this->Paginator->settings = array(
 					'limit' => 8, 
 				);
@@ -44,13 +44,14 @@ class ProfilesController extends AppController{
 		);
 		
 		if($this->request->is('post')){
+
 			$row = $this->request->data;
-			pr($row);
+			
 			$this->Profile->create();
 			$this->imgpath = '';
 	
 			$ext = $row['Profile']['picture']['type'];
-
+			
 			$data = array(
 					'first_name' => $row['first_name'],
 					'last_name' => $row['last_name'],
@@ -64,7 +65,7 @@ class ProfilesController extends AppController{
 					'address' => $row['address'],
 					'contact_person' => $row['contact_person'],
 					'contact_person_no' => $row['contact_person_no'],
-					'signature' => $row['signature'],
+					'signature' => $this->Profile->resize($row['Profile']['signature'], 250, 250),
 			);
 			
 			if($this->Profile->save($data)){
@@ -115,13 +116,20 @@ class ProfilesController extends AppController{
 				
 				$row = $this->request->data;
 				
-				$this->imgpath = '';
+				$ext = $row['Profile']['picture']['type'];
 				
 				if(empty($row['Profile']['picture']['name'])){
 					$imgorig = $data['Profile']['picture'];
 				}else{
-					$imgorig = $this->file($row['Profile']['picture']);
+					$imgorig = $this->Profile->resize($row['Profile']['picture'], 250, 250);
 				}
+				
+				if(empty($row['Profile']['signature']['name'])){
+					$imgSig = $data['Profile']['signature'];
+				}else{
+					$imgSig = $this->Profile->resize($row['Profile']['signature'], 250, 250);
+				}
+				
 				
 				$data = array(					
 						'Profile' =>array(
@@ -131,20 +139,20 @@ class ProfilesController extends AppController{
 							'birthdate' => $row['birthdate'],
 							'contact' => $row['contact'],
 							'facebook' => $row['facebook'],
-							'picture' => $this->Profile->imgsrc,
+							'picture' => $imgorig,
 							'email' => $row['email'],
 							'gender' => $row['gender'],
 							'address' => $row['address'],
 							'contact_person' => $row['contact_person'],
 							'contact_person_no' => $row['contact_person_no'],
-							'signature' => $row['signature']
+							'signature' => $imgSig
 						)
 				);
 				
 				if($this->Profile->save($data)){
 					
 					if(!empty($row['Profile']['picture']['name'])){
-						$this->upload($row['Profile']['picture']['tmp_name']);
+						$this->Profile->UploadProcess($ext);
 					}
 					
 					return $this->redirect('/');
@@ -201,83 +209,4 @@ class ProfilesController extends AppController{
 		
 	}
 	
-	/**
-	 * Initialize image path 
-	 * @param unknown $params
-	 * @return boolean|string
-	 */
-	public function file($params) {
-		$image = $params;
-
-		$imageTypes = array("image/gif", "image/jpeg", "image/png");
-		$uploadFolder = "upload";
-		
-		if(empty($image['name'])){
-			return false;
-		}
-		
-		$uploadPath = WWW_ROOT . $uploadFolder;
-		foreach ($imageTypes as $type) {
-
-			if ($type == $image['type']) {
-				 
-				if ($image['error'] == 0) {
-
-					$imageName = $image['name'];
-
-					$imageName = 'fdc'.date('His') . $imageName;
-		
-					$full_image_path = $uploadPath . '/' . $imageName;
-					
-					$this->imgpath = $full_image_path;
-					
-					return $imageName;
-
-				} else {
-					$this->Session->setFlash('Error uploading file.');
-				}
-				break;
-			} else {
-				$this->Session->setFlash('Unacceptable file type');
-			}
-		}
-	}
-	
-	/**
-	 * Upload final Image
-	 * @param unknown $params
-	 * @return boolean
-	 */
-	public function upload($params){
-		
-		if (move_uploaded_file($params, $this->imgpath)) {
-			return true;
-		} else {
-			$this->Session->setFlash('There was a problem uploading file. Please try again.');
-		}
-	}
-
-	public function uploadFile( $check ) {
-	
-		$uploadData = array_shift($check);
-	
-		if ( $uploadData['size'] == 0 || $uploadData['error'] !== 0) {
-			return false;
-		}
-	
-		$uploadFolder = 'files'. DS .'your_directory';
-		$fileName = time() . '.pdf';
-		$uploadPath =  $uploadFolder . DS . $fileName;
-	
-		if( !file_exists($uploadFolder) ){
-			mkdir($uploadFolder);
-		}
-	
-		if (move_uploaded_file($uploadData['tmp_name'], $uploadPath)) {
-			$this->set('pdf_path', $fileName);
-			return true;
-		}
-	
-		return false;
-	}
 }
