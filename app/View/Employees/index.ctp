@@ -158,15 +158,18 @@ $(document).ready(function () {
 
 	}
 
-	function validateField(field,value,index) {
+	function validateField(index) {
 
-		$.post('employees/validateField',{field:field,value:value},
-			function(valid) {
+		$.post('employees/validateFields',{employee:advancedData[index]},
+			function(errors) {
 
-				if(valid) {
+				if(!errors) {
 					saveChanges(index);
 				} else {
-					//console.log(fields[field]);
+					for(var field in errors) {
+						//var fieldIndex = fields[field];
+						//$("#table-employees tr")[index+1].childNodes[fieldIndex].style.background = "#FF3333";
+					}
 				}
 
 			},'JSON');
@@ -177,7 +180,7 @@ $(document).ready(function () {
 
 		$.post('employees/saveChanges',{employee:advancedData[index]},function(data) {
 						
-				if(data.errors) {
+				if(data.error) {
 					//selected_cell.style.background = "rgb(208,0,0)";
 				} else {
 					if(data.action === "add") {
@@ -235,20 +238,16 @@ $(document).ready(function () {
 	      {data: 'l_time_in', type: 'text', className: 'time htCenter'},
 	      {data: 'l_time_out', type: 'text', className: 'time htCenter'},
 	      {data: 'role', type: 'text'},
-	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive', 'Trash']}
+	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
 	    ]
 	  });
 
 		hot.addHook('afterChange',function(e) {
 
 			var index = e[0][0];
-			var field = e[0][1];
-			var fieldIndex = fields[field];
 
-			// /console.log(e[0][1] + " - " + $("#table-employees tr")[index].childNodes[fieldIndex].innerHTML);
-			// console.log(hot.getCell(index,0));
 			if(advancedData[index].name !== null) {
-				validateField(e[0][1],e[0][3],e[0][0]);
+				validateField(index);
 			}
 
 		});
@@ -261,11 +260,13 @@ $(document).ready(function () {
 					if(c === true) {
 						$.post('employees/deleteEmployee',{id:advancedData[e].id});
 						advancedData[e].status = "Trash";
+					} else {
+						hot.undo();
 					}
 				} else {
+					hot.undo();
 					alert("Employee is already trash");
 				}
-				hot.undo();
 			}
 		});
 
@@ -325,7 +326,6 @@ $(document).ready(function () {
 		<option value="" disabled> Status </option>
 		<option value="2"> Active </option>
 		<option value="1"> Inactive </option>
-		<option value="0"> Trash </option>
 	</select>
 </div>
 <div id="table-employees"></div>

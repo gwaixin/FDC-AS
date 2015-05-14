@@ -40,13 +40,13 @@ class EmployeesController extends AppController {
 													)
 												)
 											);
-			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%'");
+			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and employee.status != 0");
 			switch($this->request->data['field']) {
 				case "name":
-					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%'");
+					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and employee.status != 0");
 				break;
 				case "employee_id":
-					$conditions = array("employee_id LIKE '%" . $this->request->data['value'] . "%'");
+					$conditions = array("employee_id LIKE '%" . $this->request->data['value'] . "%' and employee.status != 0");
 				break;
 				case "position":
 					if($this->request->data['value']) {
@@ -54,11 +54,11 @@ class EmployeesController extends AppController {
 						if($this->request->data['position_level']) {
 							$positionLevelCondition = "and position_levels.description = '" . $this->request->data['position_level'] . "'";
 						}
-						$conditions = array("positions.description = '" . $this->request->data['value'] . "' $positionLevelCondition");
+						$conditions = array("positions.description = '" . $this->request->data['value'] . "' $positionLevelCondition and employee.status != 0");
 					}
 				break;
 				case "status":
-					$conditions = array("employee.status = '" . $this->request->data['value'] . "' ");
+					$conditions = array("employee.status = '" . $this->request->data['value'] . "' and employee.status != 0");
 				break;
 			}
 			$employees = $this->Employee->find('all',array(
@@ -70,11 +70,7 @@ class EmployeesController extends AppController {
 			$employees_arr = [];
 			foreach($employees as $key => $employee) {
 				$status = "Trash";
-				if($employee['Employee']['status'] == 1) {
-					$status = "Inactive";
-				} else if($employee['Employee']['status'] == 2) {
-					$status = "Active";
-				}
+				$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
 				$data = array(
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
@@ -207,17 +203,16 @@ class EmployeesController extends AppController {
 
 	}
 
-	public function validateField() {
+	public function validateFields() {
 
 		if($this->request->is('ajax')) {
 			$this->autoRender = false;
-			$field = array(
-									$this->request->data['field'] => $this->request->data['value']
-								);
+			$employee = $this->request->data['employee'];
 			$this->loadModel('Employee');
-			$this->Employee->set($field);
+			$this->Employee->set($employee);
 			$validate = $this->Employee->validates();
-			echo json_encode($validate);
+			$errors = $this->Employee->validationErrors;
+			echo json_encode($errors);
 		}
 
 	}
@@ -245,7 +240,7 @@ class EmployeesController extends AppController {
 			if($searchPositionLevel) {
 				$position_level = $searchPositionLevel['Position_level']['id'];
 			}
-			$errors = "";
+			$error = "";
 			$status = 0;
 			if($employee['status'] === "Inactive") {
 				$status = 1;
@@ -277,9 +272,7 @@ class EmployeesController extends AppController {
 								'status' => $status
 							);
 				if(!$this->Employee->save($data)) {
-					foreach($this->Employee->validationErrors as $error) {
-						$errors .= $error[0]."\n";
-					}
+					$error = 1;
 				}
 			} else {
 				$profile_id = "";
@@ -312,16 +305,14 @@ class EmployeesController extends AppController {
 							'status' => $status
 						);
 				if(!$this->Employee->save($data)) {
-					foreach($this->Employee->validationErrors as $error) {
-						$errors .= $error[0]."\n";
-					}
+					$error = 1;
 				} else {
 					$action = "add";
 					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
 					$json['id'] = $employeeInfo['Employee']['id'];
 				}
 			}
-			$json['errors'] = $errors;
+			$json['error'] = $error;
 			$json['action'] = $action;
 			echo json_encode($json);
 		}
