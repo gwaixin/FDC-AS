@@ -2,9 +2,9 @@
 	<div class='row'>
 		<div class="list-container">
 			<div class="col-md-12">
-				<h2>Profile list</h2>
+				<h4>Profile list</h4>
 				<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
-				<?php echo $this->Html->link('ADD',array('action'=>'profile_register'),array('class'=>'btn btn-primary')); ?>
+				<a href="<?php echo $this->webroot.'profiles/profile_register'; ?>" ><i class="fa fa-plus-square"></i> ADD</a>
 			</div>
 	<?php
 		foreach($data as $row) {
