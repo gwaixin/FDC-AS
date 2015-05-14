@@ -3304,3 +3304,1490 @@ Request URL: /bower_components/font-awesome/css/font-awesome.min.css
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-13 10:43:07 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 10:43:14 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 10:43:44 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 10:43:44 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(AppModel), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(187): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(41): AttendancesController->createAttendance('2015-05-13')
+#9 [internal function]: AttendancesController->attendanceList()
+#10 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2015-05-13 10:44:24 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:04:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-timepicker.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:09:39 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-timepicker.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:09:46 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-timepicker.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:17:35 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-2.2.2.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:21:02 Error: [MissingControllerException] Controller class BowerComponentsController could not be found.
+Exception Attributes: array (
+  'class' => 'BowerComponentsController',
+  'plugin' => NULL,
+)
+Request URL: /bower_components/font-awesome/css/font-awesome.min.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:21:49 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-2.2.2.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:21:57 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-2.2.2.min.js
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-13 11:45:02 Error: [MissingActionException] Action EmployeesController::deleteEmployee() could not be found.
+Exception Attributes: array (
+  'controller' => 'EmployeesController',
+  'action' => 'deleteEmployee',
+)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-13 11:47:56 Error: Fatal Error (1): Call to a member function delete() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 339]
+2015-05-13 11:47:56 Error: [FatalErrorException] Call to a member function delete() on a non-object
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 339)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 339, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 339, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-13 11:50:52 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:51:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:51:17 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:55:58 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:56:15 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:57:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:58:06 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 11:59:34 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-13 12:03:46 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-14 03:07:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`fdc_as`.`attendances`, CONSTRAINT `fk_attendances_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Employe...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(Employee), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete()
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-14 03:13:00 Error: [MissingTableException] Table attendaces for model Attendace was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'attendaces',
+  'class' => 'Attendace',
+  'ds' => 'default',
+)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3644): Model->setSource('attendaces')
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): Model->getDataSource()
+#2 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(338): Model->__call('findByEmployees...', Array)
+#3 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(338): AppModel->findByEmployees_id('46')
+#4 [internal function]: EmployeesController->deleteEmployee()
+#5 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-05-14 03:13:45 Error: Fatal Error (1): Call to a member function findByEmployees_id() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 338]
+2015-05-14 03:13:45 Error: [FatalErrorException] Call to a member function findByEmployees_id() on a non-object
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 338)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 338, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 338, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 03:15:50 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Attendance' in 'where clause'
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(AppModel), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2829): Model->find('all', Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->deleteAll(Array)
+#8 [internal function]: EmployeesController->deleteEmployee()
+#9 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-05-14 03:26:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Attendance' in 'where clause'
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(AppModel), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2829): Model->find('all', Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->deleteAll(Array)
+#8 [internal function]: EmployeesController->deleteEmployee()
+#9 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-05-14 03:27:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('DELETE `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(455): DboSource->execute('DELETE `Attenda...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2709): Mysql->delete(Object(AppModel), Array)
+#4 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->delete(Array)
+#5 [internal function]: EmployeesController->deleteEmployee()
+#6 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-05-14 03:27:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Attendance' in 'where clause'
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(AppModel), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2829): Model->find('all', Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(339): Model->deleteAll(Array)
+#8 [internal function]: EmployeesController->deleteEmployee()
+#9 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-05-14 03:43:20 Error: Fatal Error (4): syntax error, unexpected ';', expecting ')' in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 92]
+2015-05-14 03:43:20 Error: [FatalErrorException] syntax error, unexpected ';', expecting ')'
+Request URL: /employees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 92)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 92, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 92, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 03:48:35 Error: Fatal Error (4): syntax error, unexpected 'name' (T_STRING), expecting ')' in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 45]
+2015-05-14 03:48:35 Error: [FatalErrorException] syntax error, unexpected 'name' (T_STRING), expecting ')'
+Request URL: /employees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 45)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 45, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 45, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 03:50:19 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 03:50:32 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 03:51:00 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 03:51:17 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 03:51:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 03:51:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT * FROM `...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT * FROM `...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT * FROM `...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(69): Model->find('all', Array)
+#7 [internal function]: EmployeesController->getEmployees()
+#8 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-05-14 04:09:56 Error: [MissingViewException] View file "Employees\get_positions.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\get_positions.ctp',
+)
+Request URL: /employees/getPositions
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 04:13:22 Error: [MissingActionException] Action EmployeesController::getPositions() could not be found.
+Exception Attributes: array (
+  'controller' => 'EmployeesController',
+  'action' => 'getPositions',
+)
+Request URL: /employees/getPositions
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-14 04:42:59 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201542' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:43:00 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201542' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:43:02 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201542' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:43:03 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201542' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:47:51 Error: Fatal Error (4): syntax error, unexpected '=', expecting ')' in [C:\wamp\www\FDC_AS\app\Model\Employee.php, line 78]
+2015-05-14 04:47:51 Error: [FatalErrorException] syntax error, unexpected '=', expecting ')'
+Request URL: /employees/getEmployees
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 78)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 78, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 78, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 04:52:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201241' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:54:03 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:54:30 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:55:18 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:55:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:57:30 Error: Fatal Error (4): syntax error, unexpected '$employeeInfo' (T_VARIABLE) in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 306]
+2015-05-14 04:57:30 Error: [FatalErrorException] syntax error, unexpected '$employeeInfo' (T_VARIABLE)
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 306)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 306, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 306, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 04:57:41 Error: Fatal Error (4): syntax error, unexpected '$json' (T_VARIABLE) in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 307]
+2015-05-14 04:57:41 Error: [FatalErrorException] syntax error, unexpected '$json' (T_VARIABLE)
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 307)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 307, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 307, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 04:57:46 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 04:59:26 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(300): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:00:08 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-201011' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:01:24 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:01:41 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:01:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:06 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:10 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:19 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:24 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:44 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20111' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20111' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:49 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20111' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:02:52 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20111' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:05:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:05:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:05:24 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:05:25 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:06:44 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:07:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:09:37 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:05 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:08 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:18 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:24 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:25 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:26 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:27 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:29 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:31 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:33 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:41 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:46 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:48 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:10:59 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20121' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:02 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:50 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20105' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:11:51 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:12:38 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15-20128' for key 'employee_id_UNIQUE'
+Request URL: /employees/saveChanges
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(299): Model->save(Array)
+#6 [internal function]: EmployeesController->saveChanges()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 05:24:01 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 05:24:22 Error: Fatal Error (1): Call to undefined method EmployeesController::validates() in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 218]
+2015-05-14 05:24:22 Error: [FatalErrorException] Call to undefined method EmployeesController::validates()
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 05:24:25 Error: Fatal Error (1): Call to undefined method EmployeesController::validates() in [C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php, line 218]
+2015-05-14 05:24:25 Error: [FatalErrorException] Call to undefined method EmployeesController::validates()
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\\wamp\\www\\FDC...', 218, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-14 05:24:36 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 05:24:40 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 05:25:03 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 05:25:10 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-14 06:45:49 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`employees`, CONSTRAINT `fk_employees_profiles` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(338): Model->save(Array)
+#6 [internal function]: EmployeesController->deleteEmployee()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 06:47:45 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`employees`, CONSTRAINT `fk_employees_profiles` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /employees/deleteEmployee
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Employee), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\EmployeesController.php(338): Model->save(Array)
+#6 [internal function]: EmployeesController->deleteEmployee()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(EmployeesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-14 06:52:33 Error: [MissingViewException] View file "Employees\validate_field.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Employees\\validate_field.ctp',
+)
+Request URL: /employees/validateField
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EmployeesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

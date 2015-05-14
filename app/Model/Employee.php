@@ -57,6 +57,26 @@ class Employee extends AppModel {
 	  'position_level_id' => array(
             'rule' => 'notEmpty',
             'message' => 'Invalid position level'
-         )
+         ),
+      'f_time_in' => array(
+            'rule' => array('minLength',5),
+            'message' => 'Invalid Time'
+         ),
+      'f_time_out' => array(
+            'rule' => array('minLength',5),
+            'message' => 'Invalid Time'
+         ),
+      'l_time_in' => array(
+            'rule' => array('minLength',5),
+            'message' => 'Invalid Time'
+         ),
+      'l_time_out' => array(
+            'rule' => array('minLength',5),
+            'message' => 'Invalid Time'
+         ),
+      'status' => array(
+            'rule' => 'notEmpty',
+            'message' => 'Invalid Status'
+        )
     );
 }

@@ -58,7 +58,7 @@ class EmployeesController extends AppController {
 					}
 				break;
 				case "status":
-					$conditions = array("employee.status = '" . $this->request->data['value'] . "'");
+					$conditions = array("employee.status = '" . $this->request->data['value'] . "' ");
 				break;
 			}
 			$employees = $this->Employee->find('all',array(
@@ -69,6 +69,12 @@ class EmployeesController extends AppController {
 																				);
 			$employees_arr = [];
 			foreach($employees as $key => $employee) {
+				$status = "Trash";
+				if($employee['Employee']['status'] == 1) {
+					$status = "Inactive";
+				} else if($employee['Employee']['status'] == 2) {
+					$status = "Active";
+				}
 				$data = array(
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
@@ -84,12 +90,12 @@ class EmployeesController extends AppController {
 										'position' => $employee['positions']['description'],
 										'position_level' => $employee['position_levels']['description'],
 										'contract' => $employee['contract_logs']['description'],
-										'first_time_in' => $employee['Employee']['f_time_in'],
-										'first_time_out' => $employee['Employee']['f_time_out'],
-										'last_time_in' => $employee['Employee']['l_time_in'],
-										'last_time_out' => $employee['Employee']['l_time_out'],
+										'f_time_in' => $employee['Employee']['f_time_in'],
+										'f_time_out' => $employee['Employee']['f_time_out'],
+										'l_time_in' => $employee['Employee']['l_time_in'],
+										'l_time_out' => $employee['Employee']['l_time_out'],
 										'role' => $employee['Employee']['role'],
-										'status' => ($employee['Employee']['status']) ? "Active" : "Inactive"
+										'status' => $status
 									);
 				array_push($employees_arr,$data);
 			}
@@ -109,10 +115,10 @@ class EmployeesController extends AppController {
 										'position' => null,
 										'position_level' => null,
 										'contract' => null,
-										'first_time_in' => null,
-										'first_time_out' => null,
-										'last_time_in' => null,
-										'last_time_out' => null,
+										'f_time_in' => null,
+										'f_time_out' => null,
+										'l_time_in' => null,
+										'l_time_out' => null,
 										'role' => null,
 										'status' => null
 									);
@@ -184,21 +190,6 @@ class EmployeesController extends AppController {
 
 	}
 
-	public function getPositions() {
-
-		if($this->request->is('ajax')) {
-			$this->autoRender = false;
-			$this->loadModel('Position');
-			$positions = $this->Position->find('all');
-			$position_arr = [];
-			foreach($positions as $position) {
-				array_push($position_arr,$position['Position']['description']);
-			}
-			return $position_arr;
-		}
-
-	}
-
 	public function getPositionLevelLists() {
 
 			$this->autoRender = false;
@@ -216,25 +207,17 @@ class EmployeesController extends AppController {
 
 	}
 
-	public function getPositionLevels() {
+	public function validateField() {
 
 		if($this->request->is('ajax')) {
 			$this->autoRender = false;
-			$this->loadModel('Position');
-			$this->loadModel('Position_level');
-			$level_arr = [];
-			$position = $this->Position->findByDescription($this->request->data['position']);
-			if($position) {
-				$levels = $this->Position_level->find('all',array(
-																												'conditions' => array("positions_id = '" . $position['Position']['id'] . "'"
-																																						)
-																													)
-																										);
-				foreach($levels as $level) {
-					array_push($level_arr,$level['Position_level']['description']);
-				}
-			}
-			echo json_encode($level_arr);
+			$field = array(
+									$this->request->data['field'] => $this->request->data['value']
+								);
+			$this->loadModel('Employee');
+			$this->Employee->set($field);
+			$validate = $this->Employee->validates();
+			echo json_encode($validate);
 		}
 
 	}
@@ -263,8 +246,15 @@ class EmployeesController extends AppController {
 				$position_level = $searchPositionLevel['Position_level']['id'];
 			}
 			$errors = "";
-			$exists = $this->Employee->findById($employee['id']);
-				if($exists) {
+			$status = 0;
+			if($employee['status'] === "Inactive") {
+				$status = 1;
+			} else if($employee['status'] === "Active") {
+				$status = 2;
+			}
+			$id = (isset($employee['id'])) ? $employee['id'] : 0;
+			$exists = $this->Employee->findById($id);
+			if($exists) {
 				$this->Employee->id = $employee['id'];
 				$data = array(
 								'employee_id' => $employee['employee_id'],
@@ -279,11 +269,12 @@ class EmployeesController extends AppController {
 								'position_id' => $position,
 								'position_level_id' => $position_level,
 								'current_contract' => 'null',
-								'f_time_in' => $employee['first_time_in'],
-								'f_time_out' => $employee['first_time_out'],
-								'l_time_in' => $employee['last_time_in'],
-								'l_time_out' => $employee['last_time_out'],
-								'status' => ($employee['status'] === "Active") ? 1 : 0
+								'f_time_in' => $employee['f_time_in'],
+								'f_time_out' => $employee['f_time_out'],
+								'l_time_in' => $employee['l_time_in'],
+								'l_time_out' => $employee['l_time_out'],
+								'role' => $employee['role'],
+								'status' => $status
 							);
 				if(!$this->Employee->save($data)) {
 					foreach($this->Employee->validationErrors as $error) {
@@ -301,7 +292,6 @@ class EmployeesController extends AppController {
 					$profile_id = $employeeInfo['Profile']['id'];
 				}
 				$data = array(
-							'id' => $employee['id'],
 							'employee_id' => $employee['employee_id'],
 							'profile_id' => $profile_id,
 							'tin' => $employee['tin'],
@@ -312,7 +302,14 @@ class EmployeesController extends AppController {
 							'sss' => $employee['sss'],
 							'insurance_id' => $employee['insurance_id'],
 							'position_id' => $position,
-							'position_level_id' => $position_level
+							'position_level_id' => $position_level,
+							'current_contract' => 'null',
+							'f_time_in' => $employee['f_time_in'],
+							'f_time_out' => $employee['f_time_out'],
+							'l_time_in' => $employee['l_time_in'],
+							'l_time_out' => $employee['l_time_out'],
+							'role' => $employee['role'],
+							'status' => $status
 						);
 				if(!$this->Employee->save($data)) {
 					foreach($this->Employee->validationErrors as $error) {
@@ -320,11 +317,26 @@ class EmployeesController extends AppController {
 					}
 				} else {
 					$action = "add";
+					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
+					$json['id'] = $employeeInfo['Employee']['id'];
 				}
 			}
 			$json['errors'] = $errors;
 			$json['action'] = $action;
 			echo json_encode($json);
+		}
+
+	}
+
+	function deleteEmployee() {
+
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->loadModel('Employee');
+			$status = array('status' => 0);
+			$this->Employee->id = $this->request->data['id'];
+			$success = $this->Employee->save($status);
+			echo json_encode($success);
 		}
 
 	}

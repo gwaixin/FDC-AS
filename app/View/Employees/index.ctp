@@ -5,23 +5,32 @@
 <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
 <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
+
 <script>
 var selected_row = null;
 var selected_cell = null;
 var dropdownIndex = 0;
+var advancedData = [];
+
 $(document).ready(function () {
-
-
-	var advancedData = [];
 
 	var searchValue = "";
 	var names = [];
 	var positions = [];
 	var positionLevels = [];
 	fillDropDown();
-	
-	$(document).click(function() {
 
+	var fields = {'name':1,'employee_id':2,'tin':3,'salary':4,'drug_test':5,'pagibig':6,'philhealth':7,
+								'medical':8,'sss':9,'insurance_id':10	 
+							 };
+
+
+	$(document).click(function(e) {
+
+		if(e.toElement.className.match('time')) {
+			e.toElement.id = "timepicker";
+			// $('#timepicker').timepicker();
+		}
 		if(selected_row = null) {
 			$("#table-employees texarea").blur(saveChanges);
 			$("#table-employees texarea").change(saveChanges);
@@ -31,6 +40,7 @@ $(document).ready(function () {
 
 	$("#cbo-position").change(function() {
 
+		$("#cbo-position-level").val("");
 		getPositionLevels();
 		searchValue = $(this).val();
 		getEmployees();
@@ -43,6 +53,7 @@ $(document).ready(function () {
 
 	});
 
+	$("#cbo-status").val("");
 	$("#cbo-status").change(function() {
 
 		searchValue = $("#cbo-status").val();
@@ -57,41 +68,33 @@ $(document).ready(function () {
 			names = data.names;
 			positions = data.positions;
 			positionLevels = data.positionLevels;
+			getEmployees();
+			getPositions();
+			getPositionLevels();
 
 		},'JSON');
 
 	}
-	
+
 	function getPositions() {
 
-		$.post("employees/getPositions",{value:""},function(data) {
-
-			$("#cbo-position").append("<option value=''> Position </option>");
-			for(var x in data) {
-				$("#cbo-position").append("<option value='" + data[x] + "'>" + data[x] + "</option>");
-			}
-			getEmployees();
-
-		});
+		$("#cbo-position").append("<option value='' disabled> Position </option>");
+		for(var x in positions) {
+			$("#cbo-position").append("<option value='" + positions[x] + "'> " + positions[x] + " </option>");
+		}
 
 	}
 
 	function getPositionLevels() {
 
-		$.post("employees/getPositionLevels",{value:"",position:$(".cbo-position").val()},
-			function(data) {
-
-				$("#cbo-position-level").html("");
-				$("#cbo-position-level").append("<option value=''> Position Level </option>");
-				for(var x in data) {
-					$("#cbo-position-level").append("<option value='" + data[x] + "'>" + data[x] + "</option>");
-				}
-
-		},'JSON');
+		$("#cbo-position-level").html("");
+		$("#cbo-position-level").append( "<option value='' disabled> Level </option>");
+		for(var x in positions) { 
+			$("#cbo-position-level").append("<option value='" + positionLevels[x] + "'> " + positionLevels[x] + " </option>");
+		}
 
 	}
-	
-	getPositions();
+
 
 	$("#cbo-category").change(function() {
 
@@ -155,6 +158,37 @@ $(document).ready(function () {
 
 	}
 
+	function validateField(field,value,index) {
+
+		$.post('employees/validateField',{field:field,value:value},
+			function(valid) {
+
+				if(valid) {
+					saveChanges(index);
+				} else {
+					//console.log(fields[field]);
+				}
+
+			},'JSON');
+
+	}
+
+	function saveChanges(index) {
+
+		$.post('employees/saveChanges',{employee:advancedData[index]},function(data) {
+						
+				if(data.errors) {
+					//selected_cell.style.background = "rgb(208,0,0)";
+				} else {
+					if(data.action === "add") {
+						advancedData[index].id = data.id;
+					}
+				}
+
+			},'JSON');
+
+	}
+
 
 	function displayEmployees() {
 
@@ -173,7 +207,8 @@ $(document).ready(function () {
 	   			data: 'name', 
 	   			type: 'autocomplete',
 	   			source: names,
-	   			strict: false
+	   			strict: false,
+	   			className : 'htLeft'
 	   		},
 		    {data: 'employee_id', type: 'text'},
 	      {data: 'tin', type: 'numeric'},
@@ -195,39 +230,49 @@ $(document).ready(function () {
 	      	source: positionLevels
 	      },
 	      {data: 'contract', type: 'text'},
-	      {data: 'first_time_in', type: 'text'},
-	      {data: 'first_time_out', type: 'text'},
-	      {data: 'last_time_in', type: 'text'},
-	      {data: 'last_time_out', type: 'text'},
+	      {data: 'f_time_in', type: 'text', className: 'time htCenter'},
+	      {data: 'f_time_out', type: 'text', className: 'time htCenter'},
+	      {data: 'l_time_in', type: 'text', className: 'time htCenter'},
+	      {data: 'l_time_out', type: 'text', className: 'time htCenter'},
 	      {data: 'role', type: 'text'},
-	      {
-	      	data: 'status', 
-	      	type: 'dropdown',
-	      	source: ['Active', 'Inactive']
-	      }
+	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive', 'Trash']}
 	    ]
 	  });
 
 		hot.addHook('afterChange',function(e) {
 
 			var index = e[0][0];
+			var field = e[0][1];
+			var fieldIndex = fields[field];
+
+			// /console.log(e[0][1] + " - " + $("#table-employees tr")[index].childNodes[fieldIndex].innerHTML);
+			// console.log(hot.getCell(index,0));
 			if(advancedData[index].name !== null) {
-				$.post('employees/saveChanges',{employee:advancedData[index]},function(data) {
-					
-					if(data.errors) {
-						//selected_cell.style.background = "rgb(208,0,0)";
-					} else {
-
-					}
-
-				},'JSON');
+				validateField(e[0][1],e[0][3],e[0][0]);
 			}
 
+		});
+
+		hot.addHook('beforeRemoveRow',function(e) {
+
+			if(advancedData[e].id !== null || advancedData[e].id) {
+				if(advancedData[e].status !== "Trash") {
+					var c = confirm('Are you sure you want to remove this employee?');
+					if(c === true) {
+						$.post('employees/deleteEmployee',{id:advancedData[e].id});
+						advancedData[e].status = "Trash";
+					}
+				} else {
+					alert("Employee is already trash");
+				}
+				hot.undo();
+			}
 		});
 
 	}
   
 });
+
 
 </script>
 <style>
@@ -267,7 +312,7 @@ $(document).ready(function () {
 <div id="search-container">
 	<label for="txt-search"></label>
 	<select id="cbo-category">
-		<option value=""> Search By </option>
+		<option value="" disabled> Search By </option>
 		<option value="employee_id"> Employee ID </option>
 		<option value="name"> Name </option>
 		<option value="position"> Position </option>
@@ -277,9 +322,10 @@ $(document).ready(function () {
 	<select id="cbo-position" class="cbo-position"></select>
 	<select id="cbo-position-level"  class="cbo-position"></select>
 	<select id="cbo-status">
-		<option value=""> Status </option>
-		<option value="1"> Active </option>
-		<option value="0"> Inactive </option>
+		<option value="" disabled> Status </option>
+		<option value="2"> Active </option>
+		<option value="1"> Inactive </option>
+		<option value="0"> Trash </option>
 	</select>
 </div>
 <div id="table-employees"></div>
