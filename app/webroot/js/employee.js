@@ -269,8 +269,10 @@ $(document).ready(function () {
 					for(var x in data) {
 						var index = data[x].index
 						var field = data[x].field;
-						validatedCells.push({'index':index,'field':data[x].field});
-						$("#table-employees tr")[parseInt(index)+1].childNodes[fields[field]].style.background = "#FF3333";
+						if(typeof(fields[field]) !== 'undefined' && typeof(fields[field]) !== null) {
+							validatedCells.push({'index':index,'field':data[x].field});
+							$("#table-employees tr")[parseInt(index)+1].childNodes[fields[field]].style.background = "#FF3333";
+						}
 					}
 
 				},'JSON');
