@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//app/webroot/js/moment.js=UTF-8
+=======
+encoding//app/View/Profiles/index.ctp=UTF-8
+encoding//app/View/Profiles/list_profile.ctp=UTF-8
+>>>>>>> 6049ffd55221f3a326b87b26d23daf843090f2fa

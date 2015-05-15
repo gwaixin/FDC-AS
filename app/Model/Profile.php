@@ -30,15 +30,20 @@ class Profile extends AppModel{
 			'picture' => array(
 					    'extension' => array(
 					        'rule' => array('extension', array('jpeg','jpg','png','gif')),
-					    	'allowEmpty' => true,
+					    	'notEmpty ' => false,
 					        'message' => 'Please supply valid image file',
+				    		'type' => 'image',
+				    		'filesize' => 5242880
 					     ),
+
 					),
 			'signature' => array(
 					'extension' => array(
 							'rule' => array('extension', array('jpeg','jpg','png','gif')),
-							'allowEmpty' => true,
+							'notEmpty ' => true,
 							'message' => 'Please supply valid image file for signature',
+							'type' => 'image',
+							'filesize' => 5242880
 					),
 			),
 			'contact' => array(
@@ -64,8 +69,13 @@ class Profile extends AppModel{
 		if(empty($file['tmp_name'])){
 			return '';
 		}
+
 		/* Get original image x y*/
 		list($w, $h) = getimagesize($file['tmp_name']);
+		
+		if(empty($w) || empty($h)){
+			return false;
+		}
 		
 		/* calculate new image size with ratio */
 		$ratio = max($width/$w, $height/$h);
@@ -73,11 +83,11 @@ class Profile extends AppModel{
 		$x = ($w - $width / $ratio) / 2;
 		$w = ceil($width / $ratio);
 		
-		
-		$extension = $this->getExtenstion($file['tmp_name']);
+		$ext = $file['type'];
+		$extension = $this->getExtenstion($file['type']);
 		
 		/* new file name */
-		$this->imgsrc = 'upload/'.$width.'x'.$height.'_'.time().'.'.$extension;
+		$this->imgsrc = 'upload/'.$width.'x'.$height.'_'.$w.$h.'.'.$extension;
 		
 		/* read binary data from image file */
 		$imgString = file_get_contents($file['tmp_name']);
@@ -86,14 +96,16 @@ class Profile extends AppModel{
 		$image = imagecreatefromstring($imgString);
 		$this->tmp = imagecreatetruecolor($width, $height);
 		imagecopyresampled($this->tmp, $image,0, 0,$x, 0,$width, $height, $w, $h);
-		
+
+		$this->UploadProcess($ext);
 		
 		return str_replace('upload/', '', $this->imgsrc);
+		
 
 	}
 	
 	public function UploadProcess($ext){
-		
+
 		switch ($ext) {
 			case 'image/jpeg':
 				imagejpeg($this->tmp, $this->imgsrc, 100);
@@ -112,10 +124,19 @@ class Profile extends AppModel{
 
 	function getExtenstion($file) {
 		$ext = 'jpg';
-		switch(exif_imagetype($file)) {
-			case IMAGETYPE_GIF: $ext = 'gif'; break;
-			case IMAGETYPE_JPEG: $ext = 'jpg'; break;
-			case IMAGETYPE_PNG: $ext = 'png'; break;
+
+		switch ($file) {
+			case 'image/jpeg':
+				$ext = 'jpeg';
+				break;
+			case 'image/png':
+				$ext = 'png'; break;
+				break;
+			case 'image/gif':
+				$ext = 'gif';
+				break;
+			default:
+				return false;	
 		}
 		return $ext;
 	}
