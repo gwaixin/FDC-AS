@@ -1,123 +1,40 @@
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<?php 
 
-<link href="http://handsontable.com//styles/main.css" rel="stylesheet">
-<link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+	echo $this->Html->css('main');
+	echo $this->Html->css('employee');
+	echo $this->Html->css('hot.full.min');
+	echo $this->Html->css('bootstrap-timepicker.min');
+	echo $this->Html->script('hot.full.min');
+	echo $this->Html->script('employee');
+	echo $this->Html->script('bootstrap-timepicker');
+	echo $this->Html->script('bootstrap-timepicker.min');
+
+?>
 
 <script>
-var selected_row = null;
-
-$(document).ready(function () {
-
-	$(document).click(function(e) {
-
-		if(selected_row === null) {
-			$("#adv-example textarea").keyup(function() {
-				if(e.toElement.className === "txt-name current") {
-					$("#suggested-names").css({'display':'block',
-						'margin-top':selected_row.offsetTop+$("#suggested-names").height() + 65 + 'px',
-					  'margin-left':e.toElement.offsetLeft + 20 + 'px',});
-					$.post("employees/suggestNames",{name:$("#adv-example textarea").val()},
-						function(data) {
-
-							$("#suggested-names").html(data);
-							$("#suggested-names").val("");
-
-						});
-				}
-
-			});
-		}
-		var className = e.toElement.className.split(' ')[e.toElement.className.split(' ').length-1];
-		if(className === "current") {
-			selected_row = e.toElement.parentNode;
-			saveChanges();
-		}
-
-	});
-
-
-	$("#suggested-names").change(function() {
-
-		if($("#suggested-names").val().length > 0) {
-			$("#adv-example textarea").val($("#suggested-names").val());
-			$("#suggested-names").css('display','none');
-			var index = $("tbody").children().index(selected_row);
-			selected_row.childNodes[1].innerHTML = $("#adv-example textarea").val();
-			advancedData[index]['name'] = $("#adv-example textarea").val();
-		}
-
-	});
-	
-
-	function get_employees() {
-
-		$.post('employees/getEmployees',function(data) {
-
-			advancedData = data;
-			display_employees();
-
-		},'JSON')
-
-	}
-
-	get_employees();
-
-	function display_employees() {
-
-	  var hot = new Handsontable($("#adv-example")[0], {
-	    data: advancedData,
-	    height: 396,
-	    colHeaders: ["Name","Employee ID", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "SSS", "Insurance ID","Position","Position Level","Contract"],
-	    rowHeaders: true,
-	    stretchH: 'all',
-	    columnSorting: true,
-	    contextMenu: true,
-	    className: "htCenter htMiddle",
-	    columns: [
-	      {data: 'name', type: 'text', className:'txt-name'},
-		    {data: 'employee_id', type: 'text'},
-	      {data: 'tin', type: 'text'},
-	      {data: 'salary', type: 'text'},
-	      {data: 'drug_test', type: 'text'},
-	      {data: 'pagibig', type: 'text'},
-	      {data: 'philhealth', type: 'text'},
-	      {data: 'sss', type: 'text'},
-	      {data: 'insurance_id', type: 'text'},
-	      {data: 'position', type: 'text'},
-	      {data: 'position_level', type: 'text'},
-	      {data: 'contract', type: 'text'}
-	    ]
-	  });
-	}
-  
-});
-
-var advancedData = [];
-function saveChanges() {
-
-	var index = $("tbody").children().index(selected_row);
-	if(advancedData[index].name !== null) {
-		$.post('employees/saveChanges',{employee:advancedData[index]},function(data) {
-
-
-			
-		});
-	}
-
-};
-
+var baseUrl = "<?php echo $this->webroot; ?>";
 </script>
-<style>
-#suggested-names {
-	display: none;
-	position: fixed;
-	z-index: 999;
-	width: 300px;
-	left: 0;
-	top: 0;
-}
-</style>
-<div id="adv-example"></div>
-<select id="suggested-names"></select>
+
+<div id="employee-container">
+	<div id="search-container" class="form-control">
+		<label for="txt-search"></label>
+		<select id="cbo-category" class="form-control">
+			<option value="" disabled> Search By </option>
+			<option value="employee_id"> Employee ID </option>
+			<option value="name"> Name </option>
+			<option value="position"> Position </option>
+			<option value="status"> Status </option>
+		</select>
+		<select id="cbo-status" class="form-control">
+			<option value="" disabled> Status </option>
+			<option value="2"> Active </option>
+			<option value="1"> Inactive </option>
+		</select>
+		<select id="cbo-position" class="cbo-position"></select>
+		<select id="cbo-position-level"  class="cbo-position"></select>
+		
+		<input type="text" id="txt-search" placeholder="Search" class="form-control">
+	</div>
+	<div id="table-employees"></div>
+</div>
