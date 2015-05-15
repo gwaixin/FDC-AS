@@ -7796,3 +7796,21 @@ Request URL: /FDC_AS/upload/250x250_1431660554.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-15 06:08:59 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_1431662783.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 06:09:01 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_1431662783.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
