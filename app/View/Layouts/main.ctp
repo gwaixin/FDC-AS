@@ -27,7 +27,8 @@
 	<?php
 
 		echo $this->Html->meta('icon');
-		echo $this->Html->css('twitter-bootstrap.min');
+		echo $this->Html->css('bootstrap.min');
+
 		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
 		
@@ -39,33 +40,10 @@
 	?>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="<?php echo $this->webroot;?>">FDC AS</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="<?php echo $this->webroot;?>employees">Employee</a>
-              </li>
-              <li class="">
-                <a href="<?php echo $this->webroot;?>profiles">Profiles</a>
-              </li>
-              <li class="">
-                <a href="<?php echo $this->webroot;?>attendances/">Attendance</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 	<div id="container">
-		
+		<div id="header">
+
+		</div>
 		<div id="content">
 			<?php echo $this->fetch('content'); ?>
 		</div>

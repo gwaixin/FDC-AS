@@ -71,9 +71,9 @@ class ProfilesController extends AppController{
 			if($this->Profile->save($data)){
 				$this->Profile->UploadProcess($ext);
 				return $this->redirect('/');
-			}else{
-				$errors = $this->Profile->validationErrors;
 			}
+			
+			$errors = $this->Profile->validationErrors;
 			
 			
 		}
