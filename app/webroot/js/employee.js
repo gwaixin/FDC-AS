@@ -22,8 +22,8 @@ $(document).ready(function () {
 		if(e.toElement.className.match("time")) {
 			// $("#table-employees textarea").attr('id','time');
 			// $("#time").timepicker();
-		} else {		
-			$("#time").unbind();
+		} else {
+			$("#time").timepicker('destroy');
 		}
 
 	});
