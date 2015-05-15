@@ -59,8 +59,8 @@
 		
 	<div class='span12' >
 		<div class="paginate">
-				<nav>
-					<ul class="pagination">
+				<div class="pagination">
+					<ul>
 						<?php echo $this->Paginator->prev('« ', array('tag'=>'li'), null, array('class'=>'disabled'));?>
 							
 						<?php echo $this->Paginator->numbers(
@@ -75,7 +75,7 @@
 						?>
 						<?php echo $this->Paginator->next('»', array('tag'=>'li',), null, array('class'=>'disabled'));?>
 					</ul>		
-				</nav>
+				</div>
 			</div>
 	</div>	
 	</div>

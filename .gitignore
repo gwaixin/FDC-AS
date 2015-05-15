@@ -26,6 +26,7 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+<<<<<<< HEAD
 .settings/org.eclipse.core.resources.prefs
 *.prefs
 .settings/org.eclipse.core.resources.prefs
@@ -33,3 +34,14 @@ app/tmp/cache/models/myapp_cake_model_default_fdc_as_list
 *.prefs
 app/tmp/cache/models/myapp_cake_model_default_fdc_as_list
 app/tmp/logs/error.log
+=======
+app/webroot/upload/250x250_29922992.jpeg
+app/webroot/upload/250x250_300300.gif
+app/webroot/upload/250x250_302302.jpeg
+app/webroot/upload/250x250_597597.jpeg
+app/tmp/cache/models/myapp_cake_model_default_fdc_as_list
+app/tmp/cache/models/myapp_cake_model_default_fdc_as_list
+app/tmp/cache/models/myapp_cake_model_default_fdc_as_list
+app/tmp/cache/persistent/myapp_cake_core_file_map
+app/tmp/cache/persistent/myapp_cake_core_method_cache
+>>>>>>> FDC-AS-2v1
