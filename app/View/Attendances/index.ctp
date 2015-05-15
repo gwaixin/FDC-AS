@@ -2,10 +2,18 @@
 
 <link href="<?php echo $this->webroot;?>css/hotMain.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/hot.full.min.css" rel="stylesheet">
+<<<<<<< HEAD
 <link href="<?php echo $this->webroot;?>css/jquery.timepicker.css" rel="stylesheet"/>
 
 <script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
 <script src="<?php echo $this->webroot;?>js/jquery.timepicker.min.js"></script>
+=======
+<link href="<?php echo $this->webroot;?>css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<!-- <link href="<?php echo $this->webroot;?>css/twitter-bootstrap.min.css" rel="stylesheet"/>  -->
+<script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
+<script src="<?php echo $this->webroot;?>js/moment.js"></script>
+<script src="<?php echo $this->webroot;?>js/bootstrap-datetimepicker.js"></script>
+>>>>>>> 27eb62a9280065e1b3a5943210263340afde1305
 <script>
 var selected_row = null;
 var list = [];
@@ -17,6 +25,7 @@ $(document).ready(function () {
 	var htTextarea;
 	
 	var colClass;
+<<<<<<< HEAD
 
 	
 	
@@ -50,10 +59,32 @@ $(document).ready(function () {
 				hot.setDataAtRowProp(rowIndex, colClass, e.time.value);
 >>>>>>> 050ff347c7aee211ef4c1520b03f11934875a191
 			});
+=======
+	var currentTime;
+	$(document).on('click', '#employee-attendance td.time', function(e) {
+		colClass = $(this).attr('class').split(' ')[0];
+		htTextarea = $("#employee-attendance textarea");
+		rowIndex = $(this).closest('tr').index();
+		console.log('testing');
+		var hotInputHolder = htTextarea.parent();
+		if ($(this).hasClass('time') && hotInputHolder.is(':visible')) {
+			focusElem = $(this);
+			var offset = hotInputHolder.offset();
+			$('#datetimepicker').css('left', (offset.left - 800) +'px');
+			$('#datetimepicker').css('top', (offset.top+ 40) +'px');
+			/*hotInputHolder.find("input").remove();
+			hotInputHolder.prepend("<input type='text' style='position: absolute; visibility:hidden;' value='"+list[rowIndex][colClass]+"'>");
+			hotInputHolder.find("input").datetimepicker('show');*/
+			//htTextarea.datetimepicker().click();
+			//htTextarea.click();
+			$('#datetimepicker').focus();
+			
+			
+>>>>>>> 27eb62a9280065e1b3a5943210263340afde1305
 			
 		} else {
 			//if (htTextarea.hasClass('ui-timepicker-input')) {
-				htTextarea.timepicker().remove();
+				//htTextarea.timepicker().remove();
 			//}
 		}
 		
@@ -86,14 +117,19 @@ $(document).ready(function () {
 		    columns: [
 		      {data: 'employee_id', type: 'text', className:'txt-name', readOnly: true},
 			  {data: 'name', type: 'text', readOnly: true},
-		      {data: 'f_time_in', type: 'text', className:'f_time_in hrCenter htMiddle'},
-		      {data: 'f_time_out', type: 'text', className:'f_time_out hrCenter htMiddle'},
-		      {data: 'l_time_in', type: 'text', className:'l_time_in hrCenter htMiddle'},
-		      {data: 'l_time_out', type: 'text', className:'l_time_out hrCenter htMidlle'},
-		      {data: 'total_time', type: 'text', className:'hrCenter htMidlle total_time', readOnly: true},
+		      {data: 'f_time_in', type: 'text', className:'f_time_in time hrCenter htMiddle'},
+		      {data: 'f_time_out', type: 'text', className:'f_time_out time hrCenter htMiddle'},
+		      {data: 'l_time_in', type: 'text', className:'l_time_in time hrCenter htMiddle'},
+		      {data: 'l_time_out', type: 'text', className:'l_time_out time hrCenter htMidlle'},
+		      {data: 'total_time', type: 'text', className:'hrCenter time htMidlle total_time', readOnly: true},
 		      {data: 'status', type: 'dropdown', source: statusArr, className:'status hrCenter htMidlle'}
 		    ], afterChange: function(change, sources) {
+<<<<<<< HEAD
 		    	if (sources === 'loadData') {
+=======
+			    console.log('testing2');
+			    if (sources === 'loadData' || change[0][2] == change[0][3]) {
+>>>>>>> 27eb62a9280065e1b3a5943210263340afde1305
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		    	setTimeout(function() {
@@ -182,10 +218,13 @@ $(document).ready(function () {
 	
 	$('#date').datepicker();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	$('#time-in').timepicker({
 		defaultTime: false
 	});
+=======
+>>>>>>> 27eb62a9280065e1b3a5943210263340afde1305
 
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();
@@ -193,6 +232,22 @@ $(document).ready(function () {
 			resetAttendance($('#attendance-form').serialize());
 		}
 	});
+
+	$('#datetimepicker').datetimepicker({
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+	}).on('changeDate', function(ev){
+    	$('#datetimepicker').blur();
+    	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
+    }).on('hide', function(ev) {
+    	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
+    });
+    
 	
 >>>>>>> 050ff347c7aee211ef4c1520b03f11934875a191
 });
@@ -225,6 +280,30 @@ function getTotalTime() {
 		});
 	}
 }
+
+function formatDate(date, fmt) {
+    function pad(value) {
+        return (value.toString().length < 2) ? '0' + value : value;
+    }
+    return fmt.replace(/%([a-zA-Z])/g, function (_, fmtCode) {
+        switch (fmtCode) {
+        case 'Y':
+            return date.getUTCFullYear();
+        case 'M':
+            return pad(date.getUTCMonth() + 1);
+        case 'd':
+            return pad(date.getUTCDate());
+        case 'H':
+            return pad(date.getUTCHours());
+        case 'm':
+            return pad(date.getUTCMinutes());
+        case 's':
+            return pad(date.getUTCSeconds());
+        default:
+            throw new Error('Unsupported format code: ' + fmtCode);
+        }
+    });
+}
 </script>
 <style>
 .htHidden {
@@ -235,7 +314,6 @@ function getTotalTime() {
 	display: none;
 }
 </style>
-
 <div class="container-fluid">
 	<div class="row-fluid">
 		<form class='form-horizontal' id='attendance-form'>
@@ -269,7 +347,10 @@ function getTotalTime() {
 				<div id="error" class="pull-right"></div>
 			</div>
 		</form>
+		
+		<input type="text" style="margin:0 auto; position:absolute; right:0px; value="" id="datetimepicker">
 		<div id="employee-attendance"></div>
 	</div>
 </div>
+
 

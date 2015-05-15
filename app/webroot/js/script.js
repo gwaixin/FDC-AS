@@ -53,7 +53,8 @@ $(function(){
 		var dataID = $(this).data('view-id');
 		$.post(posturl,{dataId:dataID},function(data){
 			var result = JSON.parse(data);
-			$('#img_preview').attr('src','upload/'+result.Profile.picture);
+			console.log(result);
+			$('#img_preview').attr('src',weburl+'upload/'+result.Profile.picture);
 			$('#f_name').html(result.Profile.last_name+', '+result.Profile.first_name+' '+result.Profile.middle_name);
 			$('#birth').html(result.Profile.birthdate);
 			$('#c_no').html(result.Profile.contact);
@@ -63,7 +64,7 @@ $(function(){
 			$('#address').html(result.Profile.address);
 			$('#c_p').html(result.Profile.contact_person);
 			$('#c_p_no').html(result.Profile.contact_person_no);
-			$('#sig .sig-prev').attr('src','upload/'+result.Profile.signature);
+			$('#sig .sig-prev').attr('src',weburl+'upload/'+result.Profile.signature);
 		});
 		
 	});
