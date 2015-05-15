@@ -49,8 +49,6 @@ class ProfilesController extends AppController{
 			
 			$this->Profile->create();
 			$this->imgpath = '';
-	
-			$ext = $row['Profile']['picture']['type'];
 			
 			$data = array(
 					'first_name' => $row['first_name'],
@@ -67,9 +65,8 @@ class ProfilesController extends AppController{
 					'contact_person_no' => $row['contact_person_no'],
 					'signature' => $this->Profile->resize($row['Profile']['signature'], 250, 250),
 			);
-			
+
 			if($this->Profile->save($data)){
-				$this->Profile->UploadProcess($ext);
 				return $this->redirect('/');
 			}else{
 				$errors = $this->Profile->validationErrors;
@@ -150,11 +147,6 @@ class ProfilesController extends AppController{
 				);
 				
 				if($this->Profile->save($data)){
-					
-					if(!empty($row['Profile']['picture']['name'])){
-						$this->Profile->UploadProcess($ext);
-					}
-					
 					return $this->redirect('/');
 				}else{
 					$errors = $this->Profile->validationErrors;	

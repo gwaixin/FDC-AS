@@ -53,6 +53,7 @@ $(function(){
 		var dataID = $(this).data('view-id');
 		$.post(posturl,{dataId:dataID},function(data){
 			var result = JSON.parse(data);
+			console.log(result);
 			$('#img_preview').attr('src','upload/'+result.Profile.picture);
 			$('#f_name').html(result.Profile.last_name+', '+result.Profile.first_name+' '+result.Profile.middle_name);
 			$('#birth').html(result.Profile.birthdate);
