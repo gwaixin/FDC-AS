@@ -70,7 +70,7 @@ class EmployeesController extends AppController {
 																						'fields' => array('*')
 																						)
 																				);
-			$employees_arr = [];
+			$employees_arr = array();
 			foreach($employees as $key => $employee) {
 			$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
 				$data = array(
@@ -88,10 +88,10 @@ class EmployeesController extends AppController {
 										'position' => $employee['positions']['description'],
 										'position_level' => $employee['position_levels']['description'],
 										'contract' => $employee['contract_logs']['description'],
-										'f_time_in' => $employee['Employee']['f_time_in'],
-										'f_time_out' => $employee['Employee']['f_time_out'],
-										'l_time_in' => $employee['Employee']['l_time_in'],
-										'l_time_out' => $employee['Employee']['l_time_out'],
+										'f_time_in' => $this->convertTimeToMilitary($employee['Employee']['f_time_in']),
+										'f_time_out' => $this->convertTimeToMilitary($employee['Employee']['f_time_out']),
+										'l_time_in' => $this->convertTimeToMilitary($employee['Employee']['l_time_in']),
+										'l_time_out' => $this->convertTimeToMilitary($employee['Employee']['l_time_out']),
 										'role' => $employee['Employee']['role'],
 										'status' => $status
 									);
@@ -123,6 +123,50 @@ class EmployeesController extends AppController {
 				array_push($employees_arr,$data);
 			}
 			echo json_encode($employees_arr);
+		}
+
+	}
+
+	public function convertTimeToMilitary($time = '') {
+
+		if($time) {
+			$this->autoRender = false;
+			$hours = split(':',$time)[0];
+			$minutes = split(':',$time)[1];
+			$period = 'AM';
+			if($hours >= 12) {
+				if($hours > 12) {
+					$hours -= 12;
+					$period = 'PM';
+				}
+			}
+			if($hours == 12 && $period === 'AM') {
+				$period = 'PM';
+			}
+			$hours = str_pad($hours,2,'0',0);
+			$time = $hours.':'.$minutes.' '.$period;
+			return $time;
+		}
+
+	}
+
+	function convertTimeToDefault($time = '') {
+
+		if($time) {
+			$hours = (int)substr($time,0,2);
+			$minutes = substr($time,3,2);
+			$period = substr($time,6,2);
+			if($period === 'PM' && $hours !== 12) {
+				$hours += 12;
+			}
+			if($hours < 10) {
+				$hours = '0'.$hours;
+			}
+			if($hours == '00') {
+				$hours = '12';
+			}
+			$time = $hours.':'.$minutes;
+			return $time;
 		}
 
 	}
@@ -296,6 +340,9 @@ class EmployeesController extends AppController {
 						$value = 2;
 					}
 				}
+				if($field === 'f_time_in' || $field === 'f_time_out' || $field === 'l_time_in' || $field === 'l_time_out') {
+					$value = $this->convertTimeToDefault($value);
+				}
 				if($field === 'position' || $field === 'position_level') {
 					$value = "";
 					$field = $field."_id";
@@ -312,10 +359,6 @@ class EmployeesController extends AppController {
 								$value = $searchPositionLevel['Position_level']['id'];
 							}
 						break;
-					}
-				
-					if($searchPositionLevel) {
-						$position_level = $searchPositionLevel['Position_level']['id'];
 					}
 				}
 				$data = array(

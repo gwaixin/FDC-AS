@@ -32,6 +32,7 @@
 
     this._init();
   };
+  timePicker = Timepicker;
 
   Timepicker.prototype = {
 
@@ -611,7 +612,7 @@
       if (this.isInline) {
         return;
       }
-      var widgetWidth = this.$widget.outerWidth(), widgetHeight = this.$widget.outerHeight(), visualPadding = 10, windowWidth =
+      var widgetWidth = this.this.$widget.outerWidth(), widgetHeight = this.$widget.outerHeight(), visualPadding = 10, windowWidth =
         $(window).width(), windowHeight = $(window).height(), scrollTop = $(window).scrollTop();
 
       var zIndex = parseInt(this.$element.parents().filter(function() {}).first().css('z-index'), 10) + 10;
