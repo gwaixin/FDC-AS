@@ -52,3 +52,22 @@
 }#BrowseSignature{
 	margin-right: 15px;
 }
+.list-group{
+	  max-width: 280px;
+	  border: 1px solid #333;
+	  padding: 15px;
+	  border-radius: 5px;
+}
+
+.list-group li{
+	border-bottom: 1px solid #333;
+	padding: 4px;
+	list-style-type: none;
+}
+.text-muted{
+	font-size: 16px;
+}
+.box-span{
+	margin-top:10px;
+	margin-bottom:10px;
+}

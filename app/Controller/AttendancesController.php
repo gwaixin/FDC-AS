@@ -100,13 +100,13 @@ class AttendancesController extends AppController {
 					)
 			);
 			
-			$employees_arr = [];
+			$employees_arr = array();
 			$statusArr = $this->getAttendanceStatus();
 			foreach($employees as $key => $employee) {
-				$ftimein 	= $employee['attendances']['f_time_in'] ? date('g:i A', strtotime($employee['attendances']['f_time_in'])) : '--------';
-				$ftimeout 	= $employee['attendances']['f_time_out'] ? date('g:i A', strtotime($employee['attendances']['f_time_out'])) : '--------';
-				$ltimein 	= $employee['attendances']['l_time_in'] ? date('g:i A', strtotime($employee['attendances']['l_time_in'])) : '--------';
-				$ltimeout 	= $employee['attendances']['l_time_out'] ? date('g:i A', strtotime($employee['attendances']['l_time_out'])) : '--------';
+				$ftimein 	= $employee['attendances']['f_time_in'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['f_time_in'])) : '--------';
+				$ftimeout 	= $employee['attendances']['f_time_out'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['f_time_out'])) : '--------';
+				$ltimein 	= $employee['attendances']['l_time_in'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['l_time_in'])) : '--------';
+				$ltimeout 	= $employee['attendances']['l_time_out'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['l_time_out'])) : '--------';
 			
 				$firstLog 	= $this->totalDifference($ftimein, $ftimeout);
 				$lastLog 	= $this->totalDifference($ltimein, $ltimeout);
@@ -136,7 +136,7 @@ class AttendancesController extends AppController {
 			$this->autoRender = false;
 			$data = $this->request->data;
 			
-			$val = ($data['field'] != 'status') ? date('H:i:s', strtotime($data['value'])) : $data['value'];
+			$val = ($data['field'] != 'status') ? date('Y-m-d H:i:s', strtotime($data['value'])) : $data['value'];
 			$attendanceData = array(
 					'Attendance' => array(
 						$data['field'] => $val
@@ -162,10 +162,11 @@ class AttendancesController extends AppController {
 				array_push($updateData, array('Attendance.id' => $ea['attendances']['id']));
 			}
 			$resetData = array(
-						'Attendance.l_time_in' 	=> NULL,
-						'Attendance.l_time_out'	=> NULL,
-						'Attendance.f_time_in'		=> NULL,
-						'Attendance.f_time_out'	=> NULL	
+					'Attendance.l_time_in' 	=> NULL,
+					'Attendance.l_time_out'	=> NULL,
+					'Attendance.f_time_in'	=> NULL,
+					'Attendance.f_time_out'	=> NULL,
+					'Attendance.status'		=> 0	
 			);
 			echo $this->Attendance->updateAll($resetData, array('OR'=>$updateData));
 			echo json_encode($resetData);
