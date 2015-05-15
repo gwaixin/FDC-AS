@@ -2,10 +2,12 @@
 
 <link href="<?php echo $this->webroot;?>css/hot.full.min.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<link href="<?php echo $this->webroot;?>css/bootstrap-timepicker.min.css" rel="stylesheet"/>
 <!-- <link href="<?php echo $this->webroot;?>css/twitter-bootstrap.min.css" rel="stylesheet"/>  -->
 <script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
 <script src="<?php echo $this->webroot;?>js/moment.js"></script>
 <script src="<?php echo $this->webroot;?>js/bootstrap-datetimepicker.js"></script>
+<script src="<?php echo $this->webroot;?>js/bootstrap-timepicker.js"></script>
 <script>
 var webroot = '<?php echo $this->webroot;?>';
 var selected_row = null;
@@ -13,29 +15,38 @@ var list = [];
 var hot;
 var focusElem;
 var rowIndex;
+var colClass;
 $(document).ready(function () {
 
+	var currentDate = isDateTime($('#date').val()) ? $('#date').val() : "<?php echo date('Y-m-d H:i:s');?>"; 
+	
+	
 	var htTextarea;
 	
-	var colClass;
+	
 	var currentTime;
 	$(document).on('click', '#employee-attendance td.time', function(e) {
 		colClass = $(this).attr('class').split(' ')[0];
 		htTextarea = $("#employee-attendance textarea");
 		rowIndex = $(this).closest('tr').index();
-		console.log('testing');
+		
 		var hotInputHolder = htTextarea.parent();
 		if ($(this).hasClass('time') && hotInputHolder.is(':visible')) {
 			focusElem = $(this);
-			var offset = hotInputHolder.offset();
-			$('#datetimepicker').css('left', (offset.left - 800) +'px');
+			
+			var offset = htTextarea.offset();
+			$('#datetimepicker').css('left', (offset.left) +'px');
 			$('#datetimepicker').css('top', (offset.top+ 40) +'px');
 			/*hotInputHolder.find("input").remove();
 			hotInputHolder.prepend("<input type='text' style='position: absolute; visibility:hidden;' value='"+list[rowIndex][colClass]+"'>");
 			hotInputHolder.find("input").datetimepicker('show');*/
 			//htTextarea.datetimepicker().click();
 			//htTextarea.click();
-			$('#datetimepicker').focus();
+			
+			var vDateTime = isDateTime(htTextarea.val()) ? htTextarea.val() : currentDate; 
+			
+			$('#datetimepicker').val(vDateTime);
+			$('#datetimepicker').datetimepicker('show');
 			
 			
 			
@@ -67,15 +78,14 @@ $(document).ready(function () {
 		    columns: [
 		      {data: 'employee_id', type: 'text', className:'txt-name', readOnly: true},
 			  {data: 'name', type: 'text', readOnly: true},
-		      {data: 'f_time_in', type: 'text', className:'f_time_in time hrCenter htMiddle'},
-		      {data: 'f_time_out', type: 'text', className:'f_time_out time hrCenter htMiddle'},
-		      {data: 'l_time_in', type: 'text', className:'l_time_in time hrCenter htMiddle'},
-		      {data: 'l_time_out', type: 'text', className:'l_time_out time hrCenter htMidlle'},
-		      {data: 'total_time', type: 'text', className:'hrCenter time htMidlle total_time', readOnly: true},
-		      {data: 'status', type: 'dropdown', source: statusArr, className:'status hrCenter htMidlle'}
+		      {data: 'f_time_in', type: 'text', className:'f_time_in time htCenter htMiddle'},
+		      {data: 'f_time_out', type: 'text', className:'f_time_out time htCenter htMiddle'},
+		      {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
+		      {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
+		      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
+		      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'}
 		    ], afterChange: function(change, sources) {
-			    console.log('testing2');
-			    if (sources === 'loadData' || change[0][2] == change[0][3]) {
+			    if (sources === 'loadData' || change[0][2].trim() == change[0][3].trim()) {
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		        
@@ -186,7 +196,8 @@ $(document).ready(function () {
     }).on('hide', function(ev) {
     	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
     });
-    
+
+    $('#time-in').timepicker({defaultTime : false});
 	
 });
 function getTotalTime() {
@@ -196,8 +207,8 @@ function getTotalTime() {
 	var ltimeout 	= list[rowIndex]['l_time_out'];
 	
 	if ( 
-		(ftimein != '--------' && ftimeout != '--------') ||
-		(ltimein != '--------' && ltimeout != '--------') 
+		(isDateTime(ftimein) && isDateTime(ftimeout)) ||
+		(isDateTime(ltimein) && isDateTime(ltimeout))
 	) {
 			
 		var formData = new FormData();
@@ -213,10 +224,20 @@ function getTotalTime() {
 			contentType	:	false,
 			type		: 	'POST',
 			success		:	function(data) {
+				console.log(data);
 				focusElem.siblings('.total_time').html(data);
 			}
 		});
+	} else {
+		if (!isDateTime(list[rowIndex][colClass])) {
+			focusElem.addClass('htInvalid');
+		}
 	}
+}
+
+function isDateTime(date) {
+	var isValid = !!new Date(date).getTime();
+	return isValid;
 }
 
 function formatDate(date, fmt) {
@@ -280,7 +301,7 @@ function formatDate(date, fmt) {
 			</div>
 		</form>
 		
-		<input type="text" style="margin:0 auto; position:absolute; right:0px; value="" id="datetimepicker">
+		<input type="text" style="visibility:hidden; position:absolute;" value="" id="datetimepicker">
 		<div id="employee-attendance"></div>
 	</div>
 </div>
