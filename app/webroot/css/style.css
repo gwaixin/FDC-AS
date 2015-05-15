@@ -46,3 +46,6 @@
 .disabled{
 	display:none !important;
 }
+#BrowseSignature{
+	margin-right: 15px;
+}

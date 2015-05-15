@@ -12,8 +12,8 @@ class ProfilesController extends AppController{
 	/**
 	 * list of profile
 	 */
-	public function list_profile(){
-		$this->layout = 'profile';
+	public function index(){
+		$this->layout = 'main';
 		$this->Paginator->settings = array(
 					'limit' => 8, 
 				);
@@ -44,10 +44,13 @@ class ProfilesController extends AppController{
 		);
 		
 		if($this->request->is('post')){
-			$row = $this->request->data;
 
+			$row = $this->request->data;
+			
 			$this->Profile->create();
 			$this->imgpath = '';
+	
+			$ext = $row['Profile']['picture']['type'];
 			
 			$data = array(
 					'first_name' => $row['first_name'],
@@ -56,18 +59,17 @@ class ProfilesController extends AppController{
 					'birthdate' => $row['birthdate'],
 					'contact' => $row['contact'],
 					'facebook' => $row['facebook'],
-					'picture' => $this->file($row['Profile']['picture']),
+					'picture' => $this->Profile->resize($row['Profile']['picture'], 250, 250),
 					'email' => $row['email'],
 					'gender' => $row['gender'],
 					'address' => $row['address'],
 					'contact_person' => $row['contact_person'],
 					'contact_person_no' => $row['contact_person_no'],
-					'signature' => $row['signature'],
+					'signature' => $this->Profile->resize($row['Profile']['signature'], 250, 250),
 			);
 			
 			if($this->Profile->save($data)){
-				$this->upload($row['Profile']['picture']['tmp_name']);
-				$this->Session->setFlash('Data Successfully added');
+				$this->Profile->UploadProcess($ext);
 				return $this->redirect('/');
 			}else{
 				$errors = $this->Profile->validationErrors;
@@ -114,13 +116,20 @@ class ProfilesController extends AppController{
 				
 				$row = $this->request->data;
 				
-				$this->imgpath = '';
+				$ext = $row['Profile']['picture']['type'];
 				
 				if(empty($row['Profile']['picture']['name'])){
 					$imgorig = $data['Profile']['picture'];
 				}else{
-					$imgorig = $this->file($row['Profile']['picture']);
+					$imgorig = $this->Profile->resize($row['Profile']['picture'], 250, 250);
 				}
+				
+				if(empty($row['Profile']['signature']['name'])){
+					$imgSig = $data['Profile']['signature'];
+				}else{
+					$imgSig = $this->Profile->resize($row['Profile']['signature'], 250, 250);
+				}
+				
 				
 				$data = array(					
 						'Profile' =>array(
@@ -136,14 +145,14 @@ class ProfilesController extends AppController{
 							'address' => $row['address'],
 							'contact_person' => $row['contact_person'],
 							'contact_person_no' => $row['contact_person_no'],
-							'signature' => $row['signature']
+							'signature' => $imgSig
 						)
 				);
 				
 				if($this->Profile->save($data)){
 					
 					if(!empty($row['Profile']['picture']['name'])){
-						$this->upload($row['Profile']['picture']['tmp_name']);
+						$this->Profile->UploadProcess($ext);
 					}
 					
 					return $this->redirect('/');
@@ -167,8 +176,9 @@ class ProfilesController extends AppController{
 	}
 	
 	public function delete(){
-		$this->layout = 'ajax';
 		
+		$this->autoRender = false;
+			
 		if($this->request->is('post')){
 			
 			$data = $this->request->data;
@@ -177,7 +187,6 @@ class ProfilesController extends AppController{
 				$file = new File(WWW_ROOT .'upload/'.$dataImg['Profile']['picture'], false, 0777);
 				$file->delete();
 				echo '1';
-				exit();
 			}
 		}
 
@@ -185,7 +194,7 @@ class ProfilesController extends AppController{
 	
 	public function view(){
 		
-		$this->layout = 'ajax';
+		$this->autoRender = false;		
 		
 		if($this->request->is('ajax')){
 			
@@ -193,68 +202,11 @@ class ProfilesController extends AppController{
 			
 			$result = $this->Profile->findById($data['dataId']);
 			
-			echo json_encode($result) ;
-			
-			exit();
+			echo json_encode($result);
 		
 		}
 		
 		
 	}
 	
-	/**
-	 * Initialize image path 
-	 * @param unknown $params
-	 * @return boolean|string
-	 */
-	public function file($params) {
-		$image = $params;
-
-		$imageTypes = array("image/gif", "image/jpeg", "image/png");
-		$uploadFolder = "upload";
-		
-		if(empty($image['name'])){
-			return false;
-		}
-		
-		$uploadPath = WWW_ROOT . $uploadFolder;
-		foreach ($imageTypes as $type) {
-
-			if ($type == $image['type']) {
-				 
-				if ($image['error'] == 0) {
-
-					$imageName = $image['name'];
-
-					$imageName = 'fdc'.date('His') . $imageName;
-		
-					$full_image_path = $uploadPath . '/' . $imageName;
-					
-					$this->imgpath = $full_image_path;
-					
-					return $imageName;
-
-				} else {
-					$this->Session->setFlash('Error uploading file.');
-				}
-				break;
-			} else {
-				$this->Session->setFlash('Unacceptable file type');
-			}
-		}
-	}
-	
-	/**
-	 * Upload final Image
-	 * @param unknown $params
-	 * @return boolean
-	 */
-	public function upload($params){
-		
-		if (move_uploaded_file($params, $this->imgpath)) {
-			return true;
-		} else {
-			$this->Session->setFlash('There was a problem uploading file. Please try again.');
-		}
-	}
 }
