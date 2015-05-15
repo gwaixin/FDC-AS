@@ -40,7 +40,12 @@ class AttendancesController extends AppController {
 					$currentDate = date('Y-m-d', strtotime($data['date']));
 				}
 				if (!empty($data['keyword'])) {
-					$conditions["concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name)  like"] = "%{$data['keyword']}%";
+					$conditions['OR'] = array( 
+							array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
+							array("employee.employee_id like" => "%{$data['keyword']}%")
+					);
+					
+					//$conditions["like"] = "%{$data['keyword']}%";
 				}
 				if (!empty($data['status']) && $data['status'] >= 0) {
 					$conditions['attendances.status ='] = $data['status'];
@@ -99,8 +104,8 @@ class AttendancesController extends AppController {
 				$ltimein 	= $employee['attendances']['l_time_in'] ? $employee['attendances']['l_time_in'] : '--------';
 				$ltimeout 	= $employee['attendances']['l_time_out'] ? $employee['attendances']['l_time_out'] : '--------';
 			
-				$firstLog 	= $this->getTotalTime($ftimein, $ftimeout);
-				$lastLog 	= $this->getTotalTime($ltimein, $ltimeout);
+				$firstLog 	= $this->totalDifference($ftimein, $ftimeout);
+				$lastLog 	= $this->totalDifference($ltimein, $ltimeout);
 				$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
 				$getStat 	= $employee['attendances']['status'] ? $employee['attendances']['status'] : 0;
 				$status 	= $statusArr[$getStat];
@@ -139,8 +144,115 @@ class AttendancesController extends AppController {
 		}
 	}
 	
+	public function resetAttendance() {
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$data = $this->request->data;
+			$eAttendance = $this->getEmployeeAttendance($data);
+			$updateData =array();
+			foreach($eAttendance as $ea) {
+				array_push($updateData, array('Attendance.id' => $ea['attendances']['id']));
+			}
+			$resetData = array(
+						'Attendance.l_time_in' 	=> NULL,
+						'Attendance.l_time_out'	=> NULL,
+						'Attendance.f_time_in'		=> NULL,
+						'Attendance.f_time_out'	=> NULL	
+			);
+			echo $this->Attendance->updateAll($resetData, array('OR'=>$updateData));
+			echo json_encode($resetData);
+			
+		}
+	}
+	
+	
+	public function getTotalTime() {
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$data = $this->request->data;
+			$firstLog 	= $this->totalDifference($data['ftimein'], $data['ftimeout']);
+			$lastLog 	= $this->totalDifference($data['ltimein'], $data['ltimeout']);
+			$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
+			echo $totalTime;
+		}
+	}
+	
+	
 	/* Private Functions */
-	private function getTotalTime($timeA, $timeB) {
+	
+	private function getEmployeeAttendance($data) {
+		//Check date
+		$currentDate = date("Y-m-d");
+		$conditions = array();
+		if (!empty($data)) {
+			if (!empty($data['date'])) {
+				$currentDate = date('Y-m-d', strtotime($data['date']));
+			}
+			if (!empty($data['keyword'])) {
+				$conditions['OR'] = array(
+						array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
+						array("employee.employee_id like" => "%{$data['keyword']}%")
+				);
+					
+				//$conditions["like"] = "%{$data['keyword']}%";
+			}
+			if (!empty($data['status']) && $data['status'] >= 0) {
+				$conditions['attendances.status ='] = $data['status'];
+			}
+			if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
+				$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+			}
+		}
+		if (!$this->hasAttendance($currentDate)) {
+			$this->createAttendance($currentDate);
+		
+		}
+			
+		$conditions['attendances.date ='] = $currentDate;
+			
+		$this->loadModel('Employee');
+		
+		$join = array(
+				array(
+						'table' => 'profiles',
+						'conditions' => array(
+								'employee.profile_id = profiles.id'
+						)
+				), array(
+						'table' => 'attendances',
+						'type' => 'left',
+						'conditions' => array(
+								'employee.id = attendances.employees_id'
+						)
+				)
+		);
+		
+		$selectFields = array(
+				'employee.employee_id',
+				'profiles.first_name',
+				'profiles.last_name',
+				'profiles.middle_name',
+				'attendances.f_time_in',
+				'attendances.f_time_out',
+				'attendances.l_time_in',
+				'attendances.l_time_out',
+				'attendances.status',
+				'attendances.id'
+		);
+		$employees = $this->Employee->find('all',
+				array(
+						'joins' => $join,
+						'fields' => $selectFields,
+						'conditions' => $conditions
+							
+				)
+		);
+		
+		return $employees;
+		
+	}
+	
+	private function totalDifference($timeA, $timeB) {
 		$totalTime = 0;
 		if ($timeA != '--------' && $timeB != '--------') {
 			$to_time 	= new DateTime($timeA);

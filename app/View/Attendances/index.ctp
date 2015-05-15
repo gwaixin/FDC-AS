@@ -8,12 +8,14 @@
 <script src="<?php echo $this->webroot;?>js/jquery.timepicker.min.js"></script>
 <script>
 var selected_row = null;
-
+var list = [];
+var hot;
+var focusElem;
+var rowIndex;
 $(document).ready(function () {
 
 	var htTextarea;
-	var focusElem;
-	var rowIndex;
+	
 	var colClass;
 
 	
@@ -29,16 +31,30 @@ $(document).ready(function () {
 			colClass == 'l_time_out'
 		) {
 			focusElem = $(this);
+<<<<<<< HEAD
 			htTextarea.select();
 			htTextarea.timepicker({ 'timeFormat': 'H:i:s' });
 			htTextarea.on('changeTime', function() {
 			    $('#onselectTarget').text($(this).val());
+=======
+			console.log(htTextarea.val());
+			htTextarea.timepicker({
+                minuteStep: 1,
+                disableFocus: true
+			});
+			
+			htTextarea.timepicker().on('changeTime.timepicker', function(e) {
+				currentTime = e.time.value;
+			});
+			htTextarea.timepicker().on('hide.timepicker', function(e) {
+				hot.setDataAtRowProp(rowIndex, colClass, e.time.value);
+>>>>>>> 050ff347c7aee211ef4c1520b03f11934875a191
 			});
 			
 		} else {
-			if (htTextarea.hasClass('ui-timepicker-input')) {
-				htTextarea.timepicker('remove');
-			}
+			//if (htTextarea.hasClass('ui-timepicker-input')) {
+				htTextarea.timepicker().remove();
+			//}
 		}
 		
 		
@@ -54,14 +70,14 @@ $(document).ready(function () {
 
 	//HANDSON TABLE INTIATION AND FUNCTIONS
 	
-	var hot;
+	
 	function attendanceList() {
 		$('#employee-attendance').html('');
 		var statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
 		    height: 396,
-		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TOTAL TIME", "STATUS", "hiddenID"],
+		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TOTAL TIME", "STATUS"],
 		    rowHeaders: true,
 		    stretchH: 'all',
 		    columnSorting: true,
@@ -74,9 +90,8 @@ $(document).ready(function () {
 		      {data: 'f_time_out', type: 'text', className:'f_time_out hrCenter htMiddle'},
 		      {data: 'l_time_in', type: 'text', className:'l_time_in hrCenter htMiddle'},
 		      {data: 'l_time_out', type: 'text', className:'l_time_out hrCenter htMidlle'},
-		      {data: 'total_time', type: 'text', readOnly: true},
-		      {data: 'status', type: 'dropdown', source: statusArr, className:'status hrCenter htMidlle'},
-		      {data: 'id', type: 'numeric', className:'htHidden', readOnly: true}
+		      {data: 'total_time', type: 'text', className:'hrCenter htMidlle total_time', readOnly: true},
+		      {data: 'status', type: 'dropdown', source: statusArr, className:'status hrCenter htMidlle'}
 		    ], afterChange: function(change, sources) {
 		    	if (sources === 'loadData') {
 		            return; //don't do anything as this is called when table is loaded
@@ -96,6 +111,7 @@ $(document).ready(function () {
 				    	updateValue = statIndex;
 					} else {
 						updateValue = list[rowIndex][colClass];
+						getTotalTime();
 					}
 					
 					updateEmployeeData();
@@ -104,7 +120,7 @@ $(document).ready(function () {
 	  	});
 	}
 	
-	var list = [];
+	
 	function getEmployeeData() {
 		$.post('getEmployee', {}, function(data) {
 			$('#error').html(data);
@@ -114,9 +130,6 @@ $(document).ready(function () {
 	var updateAjax;
 	var updateValue;
 	function updateEmployeeData() {
-		/*if (updateAjax && updateAjax.readystate != 4) {
-			return;
-		}*/
 		var formData = new FormData();
 		formData.append('id', list[rowIndex]['id']);
 		formData.append('value', updateValue);
@@ -143,9 +156,21 @@ $(document).ready(function () {
 		$.post('attendanceList', formAttendance, function(data) {
 			list = data;
 			attendanceList();
+			if (list.length === 0) {
+				$('#error').html('No Data found');
+			}
+			console.log(list);
 		}, 'JSON');
 	}
 
+	function resetAttendance(formAttendance) {
+		$.post(webroot + 'attendances/resetAttendance', formAttendance, function(data) {
+			//console.log(data);
+			//$('#error').html(data);
+			getAttendanceList(formAttendance);
+		});
+	}
+	
 	var formAttendance = new FormData();
 
 
@@ -156,7 +181,50 @@ $(document).ready(function () {
 	});
 	
 	$('#date').datepicker();
+<<<<<<< HEAD
+=======
+	$('#time-in').timepicker({
+		defaultTime: false
+	});
+
+	$('#btn-reset').click(function(e) {
+		e.preventDefault();
+		if(confirm('Are you sure to reset all the time in and out??')) {
+			resetAttendance($('#attendance-form').serialize());
+		}
+	});
+	
+>>>>>>> 050ff347c7aee211ef4c1520b03f11934875a191
 });
+function getTotalTime() {
+	var ftimein 	= list[rowIndex]['f_time_in'];
+	var ftimeout 	= list[rowIndex]['f_time_out'];
+	var ltimein 	= list[rowIndex]['l_time_in'];
+	var ltimeout 	= list[rowIndex]['l_time_out'];
+	
+	if ( 
+		(ftimein != '--------' && ftimeout != '--------') ||
+		(ltimein != '--------' && ltimeout != '--------') 
+	) {
+			
+		var formData = new FormData();
+		formData.append('ftimein', ftimein);
+		formData.append('ftimeout', ftimeout);
+		formData.append('ltimein', ltimein);
+		formData.append('ltimeout', ltimeout);
+		//console.log(ftimein + ":" + ftimeout + ":" + ltimein + ":" + ltimeout);
+		$.ajax({
+			url			: 	webroot + 'attendances/getTotalTime',
+			data		:	formData,
+			processData	:	false,
+			contentType	:	false,
+			type		: 	'POST',
+			success		:	function(data) {
+				focusElem.siblings('.total_time').html(data);
+			}
+		});
+	}
+}
 </script>
 <style>
 .htHidden {
@@ -167,23 +235,21 @@ $(document).ready(function () {
 	display: none;
 }
 </style>
-<div class='col-lg-12'>
-	<h3> Attendance</h3>
-	<div class='col-lg-8'>
+
+<div class="container-fluid">
+	<div class="row-fluid">
 		<form class='form-horizontal' id='attendance-form'>
-			<div class='form-group'>
-				<div class='col-lg-6'>
-					<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
-				</div>
-				<div class='col-lg-6'>
-					<select name='status'>
-						<option selected='selected' disabled>Choose Status</option>
-						<?php foreach($attendanceStat as $key => $as) { ?>
-						<option value='<?php echo $key;?>'><?php echo $as; ?></option>
-						<?php }?>
-					</select>
-				</div>
+			<h3> Attendance</h3>
+			<div class='control-group'>
+				<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
+				<select name='status'>
+					<option selected='selected' disabled>Choose Status</option>
+					<?php foreach($attendanceStat as $key => $as) { ?>
+					<option value='<?php echo $key;?>'><?php echo $as; ?></option>
+					<?php }?>
+				</select>
 			</div>
+<<<<<<< HEAD
 			<div class='form-group'>
 				<div class='col-lg-6'>
 					<input type='text' id='date' placeholder='Choose Date' name='date' />
@@ -191,15 +257,19 @@ $(document).ready(function () {
 				<div class='col-lg-6'>
 						<input type='text' placeholder='Start of Time in' />
 				</div>
+=======
+			<div class='control-group'>
+				<input type='text' id='date' placeholder='Choose Date' name='date' />
+				<input type='text' placeholder='Start of Time in' id='time-in' name='time-in'/>
+>>>>>>> 050ff347c7aee211ef4c1520b03f11934875a191
 			</div>
-			<div class='form-group'>
-				<button id='btn-search'>Search</button>
+			<div class='control-group'>
+				<button id='btn-search' class='btn btn-inverse'>Search</button>
+				<button id='btn-reset' class='btn'>Reset</button>
+				<div id="error" class="pull-right"></div>
 			</div>
 		</form>
+		<div id="employee-attendance"></div>
 	</div>
-</div>
-<div class='col-lg-12'>
-	<div id="employee-attendance"></div>
-	<div id="error"></div>
 </div>
 
