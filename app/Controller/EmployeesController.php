@@ -131,8 +131,9 @@ class EmployeesController extends AppController {
 
 		if($time) {
 			$this->autoRender = false;
-			$hours = split(':',$time)[0];
-			$minutes = split(':',$time)[1];
+			$split_time = split(':',$time);
+			$hours = $split_time[0];
+			$minutes = $split_time[1];
 			$period = 'AM';
 			if($hours >= 12) {
 				if($hours > 12) {
@@ -191,7 +192,7 @@ class EmployeesController extends AppController {
 														'conditions' => array("id not in (Select profile_id from employees)")
 													)
 												);
-		$names = [];
+		$names = array();
 		foreach($employees as $employee) {
 			$name =  $employee['Profiles']['first_name'] . " " . $employee['Profiles']['middle_name'] . " " . $employee['Profiles']['last_name'];
 			array_push($names,$name);
@@ -205,7 +206,7 @@ class EmployeesController extends AppController {
 		$this->autoRender = false;
 		$this->loadModel('Position');
 		$positions = $this->Position->find('all');
-		$position_arr = [];
+		$position_arr = array();
 		foreach($positions as $position) {
 			array_push($position_arr,$position['Position']['description']);
 		}
@@ -218,7 +219,7 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
-			$level_arr = [];
+			$level_arr = array();
 			$levels = $this->Position_level->find('all',array(
 																										'fields' => array('distinct(description)')
 																										)
@@ -255,7 +256,7 @@ class EmployeesController extends AppController {
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
 			$this->loadModel('Profile');
-			$validatedFields = [];
+			$validatedFields = array();
 			$employeeInfo = $this->Profile->find('first',array(
 															'conditions' => array("concat(first_name,' ',middle_name,' ',last_name) = '$employee[name]'")
 														)
@@ -300,7 +301,7 @@ class EmployeesController extends AppController {
 					$saveData['status'] = $status;
 				}
 				$saveData['profile_id'] = $employeeInfo['id'];
-				$this->Employee->validationErrors = [];
+				$this->Employee->validationErrors = array();
 				foreach($validatedFields as $field) {
 					$this->Employee->validator()->remove($field);	
 				}
@@ -328,7 +329,7 @@ class EmployeesController extends AppController {
 			$this->loadModel('Employee');
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
-			$error_arr = [];
+			$error_arr = array();
 			foreach($employees as $employee) {
 				$field = $employee['field'];
 				$value = $employee['value'];

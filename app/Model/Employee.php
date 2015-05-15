@@ -7,17 +7,10 @@ class Employee extends AppModel {
 
 	public $validate = array(
         'employee_id' => array(
-            'Rule-1' => array( 
-                'rule' => '/^[0-9-]{6,}+$/',
-                'message' => 'Invalid Employee ID'
-                ),
-            'Rule-2' => array( 
-                'rule' => 'isUnique'
-                )
+            '/^[0-9-]{6,}+$/','isUnique'
          ),
      	'name' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Name is required'
+            'rule' => 'notEmpty'
         ),
 	  'profile_id' => array(
             'rule' => 'notEmpty',
