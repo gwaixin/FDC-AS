@@ -1,0 +1,19 @@
+#employee-container {
+	margin: 80px auto;
+}
+#table-employees {
+	margin: 10px;
+}
+
+#search-container {
+	margin-left: 10px;
+}
+.cbo-position {
+	display: none;
+}
+#cbo-status {
+	display: none;
+}
+.invalid {
+	background: red;
+}

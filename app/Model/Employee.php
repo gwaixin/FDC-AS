@@ -7,8 +7,13 @@ class Employee extends AppModel {
 
 	public $validate = array(
         'employee_id' => array(
-            'rule' => '/^[a-zA-Z0-9-]+$/',
-            'message' => 'Tin No is required'
+            'Rule-1' => array( 
+                'rule' => '/^[0-9-]{6,}+$/',
+                'message' => 'Invalid Employee ID'
+                ),
+            'Rule-2' => array( 
+                'rule' => 'isUnique'
+                )
          ),
      	'name' => array(
             'rule' => 'notEmpty',
@@ -27,15 +32,15 @@ class Employee extends AppModel {
             'message' => 'Salary is required'
          ),
        'drug_test' => array(
-            'rule' => 'notEmpty',
+            'rule' => 'validDrugTest',
             'message' => 'Drug Test is required'
          ),
        'pagibig' => array(
-            'rule' => '/^[a-zA-Z0-9-]+$/',
+            'rule' => '/^[0-9-]+$/',
             'message' => 'Invalid Pagibig'
         ),
        'philhealth' => array(
-            'rule' => '/^[a-zA-Z0-9-]+$/',
+            'rule' => '/^[0-9-]+$/',
             'message' => 'Invalid Phil Health'
         ),
        'medical' => array(
@@ -43,11 +48,11 @@ class Employee extends AppModel {
             'message' => 'Medical is required'
         ),
        'sss' => array(
-            'rule'=> '/^[a-zA-Z0-9-]+$/',
+            'rule'=> '/^[0-9-]+$/',
             'message' => 'Invalid SSS No.'
         ),
        'insurance_id' => array(
-            'rule'=> '/^[a-zA-Z0-9-]+$/',
+            'rule'=> '/^[0-9-]+$/',
             'message' => 'Invalid Insurance ID'
         ),
 	  'position_id' => array(
@@ -75,8 +80,21 @@ class Employee extends AppModel {
             'message' => 'Invalid Time'
          ),
       'status' => array(
-            'rule' => 'notEmpty',
+            'rule' => 'numeric',
             'message' => 'Invalid Status'
         )
     );
+
+    public function validDrugTest($check) {
+
+        $value = $check['drug_test'];
+        return strtolower($value) === "passed" || strtolower($value) === "failed";
+
+    }
+    public function validStatus($check) {
+
+        $value = $check['status'];
+        return strtolower($value) === "active" || strtolower($value) === "inactive";
+
+    }
 }

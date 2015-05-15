@@ -6,6 +6,7 @@ App::uses('AppController', 'Controller');
 class EmployeesController extends AppController {
 
 	public function index() {
+		$this->layout = 'main';
 	}
 
 	public function getEmployees() {
@@ -22,12 +23,14 @@ class EmployeesController extends AppController {
 							       	 	),
 											array(
 													'table' => 'positions',
+													'type' => 'LEFT',
 													'conditions' => array(
 															'employee.position_id = positions.id'
 													)
 												),
 											array(
 													'table' => 'position_levels',
+													'type' => 'LEFT',
 													'conditions' => array(
 															'employee.position_level_id = position_levels.id'
 													)
@@ -69,8 +72,7 @@ class EmployeesController extends AppController {
 																				);
 			$employees_arr = [];
 			foreach($employees as $key => $employee) {
-				$status = "Trash";
-				$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
+			$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
 				$data = array(
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
@@ -129,7 +131,7 @@ class EmployeesController extends AppController {
 
 		if($this->request->is('ajax')) {
 			$this->autoRender = false;
-			$json['names'] = $this->suggestNameLists();
+			$json['names'] = $this->getNameLists();
 			$json['positions'] = $this->getPositionLists();
 			$json['positionLevels'] = $this->getPositionLevelLists();
 			echo json_encode($json);
@@ -137,39 +139,20 @@ class EmployeesController extends AppController {
 
 	}
 
-	public function suggestNameLists() {
+	public function getNameLists() {
 
 		$this->autoRender = false;
 		$this->loadModel('Profiles');
 		$employees = $this->Profiles->find('all',array(
-																								'conditions' => array("id not in (Select profile_id from employees)")
-																							)
-																						);
+														'conditions' => array("id not in (Select profile_id from employees)")
+													)
+												);
 		$names = [];
 		foreach($employees as $employee) {
 			$name =  $employee['Profiles']['first_name'] . " " . $employee['Profiles']['middle_name'] . " " . $employee['Profiles']['last_name'];
 			array_push($names,$name);
 		}
 		return $names;
-
-	}
-
-	public function suggestNames() {
-
-		if($this->request->is('ajax')) {
-			$this->autoRender = false;
-			$this->loadModel('Profiles');
-			$employees = $this->Profiles->find('all',array(
-																									'conditions' => array("id not in (Select profile_id from employees)")
-																								)
-																							);
-			$names = [];
-			foreach($employees as $employee) {
-				$name =  $employee['Profiles']['first_name'] . " " . $employee['Profiles']['middle_name'] . " " . $employee['Profiles']['last_name'];
-				array_push($names,$name);
-			}
-			return $names;
-		}
 
 	}
 
@@ -217,104 +200,138 @@ class EmployeesController extends AppController {
 
 	}
 
-	public function saveChanges() {
+	function addEmployee() {
 
 		if($this->request->is('ajax')) {
+
 			$this->autoRender = false;
+			$employee = $this->request->data['employee'];
 			$this->loadModel('Employee');
 			$this->loadModel('Profile');
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
-			$employee = $this->request->data['employee'];
-			$action = "edit";
-			$position = "";
-			$searchPosition = $this->Position->findByDescription($employee['position']);
-			if($searchPosition) {
-				$position = $searchPosition['Position']['id'];
-			}
-			$position_level = "";
-			$searchPositionLevel = $this->Position_level->find('first',array(
-																																	'conditions' => array("positions_id = '$position' and description = '" . $employee['position_level'] . "'")
-																																)
-																															);
-			if($searchPositionLevel) {
-				$position_level = $searchPositionLevel['Position_level']['id'];
-			}
-			$error = "";
-			$status = 0;
-			if($employee['status'] === "Inactive") {
-				$status = 1;
-			} else if($employee['status'] === "Active") {
-				$status = 2;
-			}
-			$id = (isset($employee['id'])) ? $employee['id'] : 0;
-			$exists = $this->Employee->findById($id);
-			if($exists) {
-				$this->Employee->id = $employee['id'];
-				$data = array(
-								'employee_id' => $employee['employee_id'],
-								'tin' => $employee['tin'],
-								'salary' => $employee['salary'],
-								'drug_test' => $employee['drug_test'],
-								'pagibig' => $employee['pagibig'],
-								'philhealth' => $employee['philhealth'],
-								'medical' => $employee['medical'],
-								'sss' => $employee['sss'],
-								'insurance_id' => $employee['insurance_id'],
-								'position_id' => $position,
-								'position_level_id' => $position_level,
-								'current_contract' => 'null',
-								'f_time_in' => $employee['f_time_in'],
-								'f_time_out' => $employee['f_time_out'],
-								'l_time_in' => $employee['l_time_in'],
-								'l_time_out' => $employee['l_time_out'],
-								'role' => $employee['role'],
-								'status' => $status
+			$this->loadModel('Profile');
+			$validatedFields = [];
+			$employeeInfo = $this->Profile->find('first',array(
+															'conditions' => array("concat(first_name,' ',middle_name,' ',last_name) = '$employee[name]'")
+														)
+													);
+			if($employeeInfo) {
+				$saveData = array();
+				foreach($employee as $key => $detail) {
+					$field = $key;
+					$value = $detail;
+					if($key === 'position' || $key === 'position_level') {
+						$value = "";
+						$field = $field."_id";
+						switch($key) {
+							case 'position' :
+								$searchPosition = $this->Position->findByDescription($value);
+								if($searchPosition) {
+									$value = $searchPosition['Position']['id'];
+								}
+							break;
+							case 'position_level' :
+								$searchPositionLevel = $this->Position_level->findByPositions_idAndDescription(1,$value);
+								if($searchPositionLevel) {
+									$value = $searchPositionLevel['Position_level']['id'];
+								}
+							break;
+						}
+					}
+					$data = array(
+								$key => $value
 							);
-				if(!$this->Employee->save($data)) {
-					$error = 1;
+					if($key !== 'name' && $key !== 'contract' && $key !== 'id') {
+						array_push($validatedFields,$key);
+						$this->Employee->set($data);
+						if($this->Employee->validates()) {
+							$saveData[$field] = $value;
+						}
+					}
 				}
-			} else {
-				$profile_id = "";
-				$employeeInfo = $this->Profile->find('first',array(
-																									'conditions' => array("concat(first_name,' ',middle_name,' ',last_name) LIKE '%".$employee['name']."%'")
-																								)
-																							);
+				$employeeInfo = $employeeInfo['Profile'];
+				if(!$employee['status']) {
+					$status = ($employee['status']) === 'Inactive' ? 1 : 2;
+					$saveData['status'] = $status;
+				}
+				$saveData['profile_id'] = $employeeInfo['id'];
+				$this->Employee->validationErrors = [];
+				foreach($validatedFields as $field) {
+					$this->Employee->validator()->remove($field);	
+				}
+				$success = $this->Employee->save($saveData);
+				if($success) {
+					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
+					$employeeInfo = $employeeInfo['Employee'];
+					$json['id'] = $employeeInfo['id'];
+				} else {
+					$success = false;
+				}
+				$json['success'] = $success;
+				echo json_encode($json);
+			}
+
+		}
+
+	}
+
+	public function saveAll() {
+
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$employees = $this->request->data['employees'];
+			$this->loadModel('Employee');
+			$this->loadModel('Position');
+			$this->loadModel('Position_level');
+			$error_arr = [];
+			foreach($employees as $employee) {
+				$field = $employee['field'];
+				$value = $employee['value'];
+				if($field === 'status') {
+					$value = "";
+					if(strtolower($employee['value']) === 'inactive') {
+						$value = 1;
+					} else if(strtolower($employee['value']) === 'active') {
+						$value = 2;
+					}
+				}
+				if($field === 'position' || $field === 'position_level') {
+					$value = "";
+					$field = $field."_id";
+					switch($employee['field']) {
+						case 'position' :
+							$searchPosition = $this->Position->findByDescription($employee['value']);
+							if($searchPosition) {
+								$value = $searchPosition['Position']['id'];
+							}
+						break;
+						case 'position_level' :
+							$searchPositionLevel = $this->Position_level->findByPositions_idAndDescription(1,$employee['value']);
+							if($searchPositionLevel) {
+								$value = $searchPositionLevel['Position_level']['id'];
+							}
+						break;
+					}
 				
-				if($employeeInfo) {
-					$profile_id = $employeeInfo['Profile']['id'];
+					if($searchPositionLevel) {
+						$position_level = $searchPositionLevel['Position_level']['id'];
+					}
 				}
 				$data = array(
-							'employee_id' => $employee['employee_id'],
-							'profile_id' => $profile_id,
-							'tin' => $employee['tin'],
-							'salary' => $employee['salary'],
-							'drug_test' => $employee['drug_test'],
-							'pagibig' => $employee['pagibig'],
-							'philhealth' => $employee['philhealth'],
-							'sss' => $employee['sss'],
-							'insurance_id' => $employee['insurance_id'],
-							'position_id' => $position,
-							'position_level_id' => $position_level,
-							'current_contract' => 'null',
-							'f_time_in' => $employee['f_time_in'],
-							'f_time_out' => $employee['f_time_out'],
-							'l_time_in' => $employee['l_time_in'],
-							'l_time_out' => $employee['l_time_out'],
-							'role' => $employee['role'],
-							'status' => $status
+							$field => $value
 						);
+				$this->Employee->id = $employee['id'];
 				if(!$this->Employee->save($data)) {
-					$error = 1;
-				} else {
-					$action = "add";
-					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
-					$json['id'] = $employeeInfo['Employee']['id'];
+					$data = array(
+								'index' => $employee['index'],
+								'field' => $employee['field'],
+								'error' => $this->Employee->validationErrors[$field][0]
+							);
+					array_push($error_arr,$data);
 				}
 			}
-			$json['error'] = $error;
-			$json['action'] = $action;
-			echo json_encode($json);
+			echo json_encode($error_arr);
 		}
 
 	}
