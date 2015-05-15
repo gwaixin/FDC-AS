@@ -62,7 +62,7 @@ class Profile extends AppModel{
 	public function resize($src, $width, $height){
 		
 		$file = $src;
-		$tmppath = 'upload/';
+		$tmppath = $this->webroot.'upload/';
 		
 		if(empty($file['tmp_name'])){
 			return '';
@@ -84,7 +84,7 @@ class Profile extends AppModel{
 		$extension = $this->getExtenstion($file['type']);
 		
 		/* new file name */
-		$this->imgsrc = 'upload/'.$width.'x'.$height.'_'.$w.$h.time().'.'.$extension;
+		$this->imgsrc = $tmppath.$width.'x'.$height.'_'.$w.$h.time().'.'.$extension;
 		
 		/* read binary data from image file */
 		$imgString = file_get_contents($file['tmp_name']);
@@ -95,7 +95,7 @@ class Profile extends AppModel{
 		imagecopyresampled($this->tmp, $image,0, 0,$x, 0,$width, $height, $w, $h);
 		$this->UploadProcess($ext);
 		
-		return str_replace('upload/', '', $this->imgsrc);
+		return str_replace($tmppath, '', $this->imgsrc);
 		
 	}
 	
