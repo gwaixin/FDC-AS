@@ -14487,3 +14487,269 @@ Stack Trace:
 #3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-05-18 08:27:15 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:27:52 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:30:07 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:32:25 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:32:28 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:34:51 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:34:54 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:35:20 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:36:03 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:36:41 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:29 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:29 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:32 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:49 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:48:46 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:49:28 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:49:39 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:31 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:42 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:57 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:51:37 Error: [MissingControllerException] Controller class PositionlevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionlevelsController',
+  'plugin' => NULL,
+)
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:53:46 Error: [MissingControllerException] Controller class PositionlevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionlevelsController',
+  'plugin' => NULL,
+)
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:54:11 Error: Fatal Error (64): Cannot redeclare class Position_level in [C:\wamp\www\FDC_AS\app\Model\Positionlevel.php, line 13]
+2015-05-18 09:54:11 Error: [FatalErrorException] Cannot redeclare class Position_level
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 09:54:55 Error: Fatal Error (1): Call to a member function save() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\PositionlevelsController.php, line 11]
+2015-05-18 09:54:55 Error: [FatalErrorException] Call to a member function save() on a non-object
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 09:55:26 Error: [MissingTableException] Table positionlevels for model Positionlevel was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'positionlevels',
+  'class' => 'Positionlevel',
+  'ds' => 'default',
+)
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3644): Model->setSource('positionlevels')
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1748): Model->getDataSource()
+#2 C:\wamp\www\FDC_AS\app\Controller\PositionlevelsController.php(11): Model->save(Array)
+#3 [internal function]: PositionlevelsController->create()
+#4 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(PositionlevelsController), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionlevelsController), Object(CakeRequest))
+#7 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
+2015-05-18 09:56:26 Error: Fatal Error (4): syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';' in [C:\wamp\www\FDC_AS\app\Model\Positionlevel.php, line 5]
+2015-05-18 09:56:26 Error: [FatalErrorException] syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';'
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
