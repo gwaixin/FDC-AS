@@ -90,11 +90,10 @@ $(document).ready(function () {
 		        }
 		        
 		    	setTimeout(function() {
-				   
-			    	rowIndex = change[0][0];
+				    console.log(change);
+			    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
 			    	colClass = change[0][1];
-			    	
-				  	if (colClass == 'status') {
+					if (colClass == 'status') {
 				  		var statIndex = statusArr.indexOf(change[0][3]);
 				  		if (statIndex < 0) {
 					  		$('#error').html('DELE PWEDE!! status na ing.ana');
@@ -103,6 +102,11 @@ $(document).ready(function () {
 				    	console.log(statIndex + rowIndex);
 				    	updateValue = statIndex;
 					} else {
+						if (!validateDate(colClass)) {
+							focusElem.addClass('htInvalid');
+							return;
+						}
+						
 						updateValue = list[rowIndex][colClass];
 						getTotalTime();
 					}
@@ -113,6 +117,41 @@ $(document).ready(function () {
 	  	});
 	}
 	
+
+	function validateDate(dateClass) {
+		var ok = false;
+		var err;
+		switch (dateClass) {
+			case 'f_time_in' : 
+				if (!isDateTime(list[rowIndex]['f_time_out']) || 
+					Date.parse(list[rowIndex][dateClass]) < Date.parse(list[rowIndex]['f_time_out'])
+				) {
+					ok = true;
+				}
+				break;
+			case 'l_time_in' :
+				if (!isDateTime(list[rowIndex]['l_time_out']) ||
+					(Date.parse(list[rowIndex][dateClass]) < Date.parse(list[rowIndex]['l_time_out']))
+				) {
+					ok = true;
+				} 
+				break;
+			case 'f_time_out' :
+				if (Date.parse(list[rowIndex][dateClass]) > Date.parse(list[rowIndex]['f_time_in'])
+				) {
+					ok = true;
+				}
+				break;
+			case 'l_time_out' :
+				if (!isDateTime(list[rowIndex]['l_time_in']) ||
+					Date.parse(list[rowIndex][dateClass]) > Date.parse(list[rowIndex]['l_time_in'])
+				) {
+					ok = true; 
+				}
+				break; 
+		}
+		return ok;
+	}
 	
 	function getEmployeeData() {
 		$.post(webroot+'attendances/getEmployee', {}, function(data) {
@@ -124,6 +163,7 @@ $(document).ready(function () {
 	var updateValue;
 	function updateEmployeeData() {
 		var formData = new FormData();
+		//var physicalIndex = isSorted(hot) ? hot.sortIndex[rowIndex][0] : rowIndex;
 		formData.append('id', list[rowIndex]['id']);
 		formData.append('value', updateValue);
 		formData.append('field', colClass);
@@ -141,6 +181,11 @@ $(document).ready(function () {
 		
 		//$.post('updateAttendance'
 	}
+
+	function isSorted(hotInstance) {
+	  return hotInstance.sortingEnabled && typeof hotInstance.sortColumn !== 'undefined';
+	}
+	
 	
 	//getEmployeeData();
 	//getAttendanceList('2015-05-15');
@@ -200,7 +245,9 @@ $(document).ready(function () {
     
 	
 });
+		
 function getTotalTime() {
+	
 	var ftimein 	= list[rowIndex]['f_time_in'];
 	var ftimeout 	= list[rowIndex]['f_time_out'];
 	var ltimein 	= list[rowIndex]['l_time_in'];

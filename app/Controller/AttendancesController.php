@@ -20,7 +20,7 @@ class AttendancesController extends AppController {
 		
 		$employees = $this->Employee->find('all',
 				array(
-						'conditions' => array('employee.status = 1'),
+						'conditions' => array('Employee.status = 1'),
 						'fields' => 'id'
 				)
 		);
@@ -43,7 +43,7 @@ class AttendancesController extends AppController {
 				if (!empty($data['keyword'])) {
 					$conditions['OR'] = array( 
 							array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
-							array("employee.employee_id like" => "%{$data['keyword']}%")
+							array("Employee.employee_id like" => "%{$data['keyword']}%")
 					);
 					
 					//$conditions["like"] = "%{$data['keyword']}%";
@@ -52,7 +52,7 @@ class AttendancesController extends AppController {
 					$conditions['attendances.status ='] = $data['status'];
 				}
 				if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-					$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+					$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 				}
 			}
 			if (!$this->hasAttendance($currentDate)) {
@@ -68,19 +68,19 @@ class AttendancesController extends AppController {
 					array(
 							'table' => 'profiles',
 							'conditions' => array(
-									'employee.profile_id = profiles.id'
+									'Employee.profile_id = profiles.id'
 							)
 					), array(
 							'table' => 'attendances',
 							'type' => 'left',
 							'conditions' => array(
-									'employee.id = attendances.employees_id'
+									'Employee.id = attendances.employees_id'
 							)
 					)
 			);
 				
 			$selectFields = array(
-					'employee.employee_id',
+					'Employee.employee_id',
 					'profiles.first_name',
 					'profiles.last_name',
 					'profiles.middle_name',
@@ -200,7 +200,7 @@ class AttendancesController extends AppController {
 			if (!empty($data['keyword'])) {
 				$conditions['OR'] = array(
 						array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
-						array("employee.employee_id like" => "%{$data['keyword']}%")
+						array("Employee.employee_id like" => "%{$data['keyword']}%")
 				);
 					
 				//$conditions["like"] = "%{$data['keyword']}%";
@@ -209,7 +209,7 @@ class AttendancesController extends AppController {
 				$conditions['attendances.status ='] = $data['status'];
 			}
 			if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-				$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 			}
 		}
 		if (!$this->hasAttendance($currentDate)) {
@@ -225,19 +225,19 @@ class AttendancesController extends AppController {
 				array(
 						'table' => 'profiles',
 						'conditions' => array(
-								'employee.profile_id = profiles.id'
+								'Employee.profile_id = profiles.id'
 						)
 				), array(
 						'table' => 'attendances',
 						'type' => 'left',
 						'conditions' => array(
-								'employee.id = attendances.employees_id'
+								'Employee.id = attendances.employees_id'
 						)
 				)
 		);
 		
 		$selectFields = array(
-				'employee.employee_id',
+				'Employee.employee_id',
 				'profiles.first_name',
 				'profiles.last_name',
 				'profiles.middle_name',
