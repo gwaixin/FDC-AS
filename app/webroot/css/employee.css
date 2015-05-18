@@ -3,6 +3,7 @@
 }
 #table-employees {
 	margin: 10px;
+	z-index: 0;
 }
 
 #search-container {

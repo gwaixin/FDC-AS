@@ -36,6 +36,7 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+
 	?>
 </head>
 <body>
@@ -56,10 +57,18 @@
               <li class="">
                 <a href="<?php echo $this->webroot;?>profiles">Profiles</a>
               </li>
-              <li class="">
-                <a href="<?php echo $this->webroot;?>attendances/">Attendance</a>
-              </li>
             </ul>
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
+                  <?php echo (isset($name)) ? $name : ""; ?> 
+                  <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">View Profile</a></li>
+                      <li><a href="<?php echo $this->webroot."main/logout"; ?>">Logout</a></li>
+                  </ul>
+              </li>
+          </ul>
           </div>
         </div>
       </div>

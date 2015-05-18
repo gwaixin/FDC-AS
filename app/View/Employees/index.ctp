@@ -12,12 +12,16 @@
 
 ?>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script>
 var baseUrl = "<?php echo $this->webroot; ?>";
 </script>
 
 <div id="employee-container">
 	<div id="search-container" class="form-control">
+	<h3> Employees </h3>
 		<label for="txt-search"></label>
 		<select id="cbo-category" class="form-control">
 			<option value="" disabled> Search By </option>
@@ -34,7 +38,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		<select id="cbo-position" class="cbo-position"></select>
 		<select id="cbo-position-level"  class="cbo-position"></select>
 		
-		<input type="text" id="txt-search" placeholder="Search" class="form-control">
+		<input type="text" id="txt-search" class='txt-search' placeholder="Search" class="form-control">
 	</div>
 	<div id="table-employees"></div>
 </div>
