@@ -7,7 +7,7 @@
 <script src="<?php echo $this->webroot;?>js/hot.full.min.js"></script>
 <script src="<?php echo $this->webroot;?>js/moment.js"></script>
 <script src="<?php echo $this->webroot;?>js/bootstrap-datetimepicker.js"></script>
-<script src="<?php echo $this->webroot;?>js/bootstrap-timepicker.js"></script>
+<script src="<?php echo $this->webroot;?>js/bootstrap-timepicker.min.js"></script>
 <script>
 var webroot = '<?php echo $this->webroot;?>';
 var selected_row = null;
@@ -17,7 +17,7 @@ var focusElem;
 var rowIndex;
 var colClass;
 $(document).ready(function () {
-
+	$('#time-in').timepicker({defaultTime : false});
 	var currentDate = isDateTime($('#date').val()) ? $('#date').val() : "<?php echo date('Y-m-d H:i:s');?>"; 
 	
 	
@@ -197,7 +197,7 @@ $(document).ready(function () {
     	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
     });
 
-    $('#time-in').timepicker({defaultTime : false});
+    
 	
 });
 function getTotalTime() {
