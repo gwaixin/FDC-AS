@@ -24,7 +24,7 @@ class ProfilesController extends AppController{
 	
 	public function profile_register(){
 		
-		$this->layout = 'profile';
+		$this->layout = 'main';
 		$errors = '';
 		
 		$data = array(
@@ -44,11 +44,10 @@ class ProfilesController extends AppController{
 		);
 		
 		if($this->request->is('post')){
-
-			$row = $this->request->data;
 			
 			$this->Profile->create();
-			$this->imgpath = '';
+			
+			$row = $this->request->data;
 			
 			$data = array(
 					'first_name' => $row['first_name'],
@@ -57,13 +56,13 @@ class ProfilesController extends AppController{
 					'birthdate' => $row['birthdate'],
 					'contact' => $row['contact'],
 					'facebook' => $row['facebook'],
-					'picture' => $this->Profile->resize($row['Profile']['picture'], 250, 250),
+					'picture' => $row['Profile']['picture'],
 					'email' => $row['email'],
 					'gender' => $row['gender'],
 					'address' => $row['address'],
 					'contact_person' => $row['contact_person'],
 					'contact_person_no' => $row['contact_person_no'],
-					'signature' => $this->Profile->resize($row['Profile']['signature'], 250, 250),
+					'signature' => $row['Profile']['signature']
 			);
 
 			if($this->Profile->save($data)){
@@ -81,7 +80,7 @@ class ProfilesController extends AppController{
 	}
 	
 	public function profile_update($id = null){
-		$this->layout = 'profile';
+		$this->layout = 'main';
 		$errors = '';
 		
 		if(!$id){
@@ -115,18 +114,15 @@ class ProfilesController extends AppController{
 				
 				$ext = $row['Profile']['picture']['type'];
 				
+				$this->Profile->mode = 1;
+				
 				if(empty($row['Profile']['picture']['name'])){
-					$imgorig = $data['Profile']['picture'];
-				}else{
-					$imgorig = $this->Profile->resize($row['Profile']['picture'], 250, 250);
+					$row['Profile']['picture'] = $data['Profile']['picture'];
 				}
 				
 				if(empty($row['Profile']['signature']['name'])){
-					$imgSig = $data['Profile']['signature'];
-				}else{
-					$imgSig = $this->Profile->resize($row['Profile']['signature'], 250, 250);
-				}
-				
+					$row['Profile']['signature'] = $data['Profile']['signature'];
+				}			
 				
 				$data = array(					
 						'Profile' =>array(
@@ -136,16 +132,16 @@ class ProfilesController extends AppController{
 							'birthdate' => $row['birthdate'],
 							'contact' => $row['contact'],
 							'facebook' => $row['facebook'],
-							'picture' => $imgorig,
+							'picture' => $row['Profile']['picture'],
 							'email' => $row['email'],
 							'gender' => $row['gender'],
 							'address' => $row['address'],
 							'contact_person' => $row['contact_person'],
 							'contact_person_no' => $row['contact_person_no'],
-							'signature' => $imgSig
+							'signature' => $row['Profile']['signature']
 						)
 				);
-				
+
 				if($this->Profile->save($data)){
 					return $this->redirect('/');
 				}else{
