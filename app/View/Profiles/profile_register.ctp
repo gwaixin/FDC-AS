@@ -18,162 +18,162 @@
 			}
 			echo '</div>';
 		}
-		echo $this->Form->create('Profile',array('type' => 'file'));
+		echo $this->Form->create('Profile',array('type' => 'file', 'class' => 'form-horizontal'));
 		echo $this->Form->file('picture', array('id' => 'uploadFile','required' => false,'accept' => "image/*",'style' => 'display:none;'));
 		echo $this->Form->button('Browse Photo', 
 									array(
 										'id' => 'BrowsePhoto',
-										'class' => 'btn btn-success'
+										'class' => 'btn btn-success control-group'
 									)
 				);
 		echo $this->Form->input('text',
 							array('div' => array(
-									'class' => 'form-group'
+									'class' => 'control-group'
 								),
 								 'name' => 'first_name',
 								 'id' => 'txtName',
-								 'class' => 'form-control',
+								 'class' => 'input-block-level',
 								 'size' => 16,
-								 'label' => false,
+								 'label' => 'First name',
 								 'after' => '',
 								 'value' => $data['first_name'],
-								 'placeholder' => 'First Name'
+								 'placeholder' => ''
 							)
 						);
 		echo $this->Form->input('text',
 									array('div' => array(
-											'class' => 'form-group'
+											'class' => 'control-group'
 									),
 											'name' => 'last_name',
 											'id' => 'txtLastName',
-											'class' => 'form-control',
+											'class' => 'input-block-level',
 											'size' => 16,
-											'label' => false,
+											'label' => 'Last Name',
 											'value' => $data['last_name'],
-											'placeholder' => 'Last Name'
+											'placeholder' => ''
 									)
 							);
 		echo $this->Form->input('text',
 										array('div' => array(
-												'class' => 'form-group'
+												'class' => 'control-group'
 										),
 												'name' => 'middle_name',
 												'id' => 'txtMiddleName',
-												'class' => 'form-control',
+												'class' => 'input-block-level',
 												'size' => 16,
-												'label' => false,
+												'label' => 'Middel Name',
 												'value' => $data['middle_name'],
-												'placeholder' => 'Middle Name'
+												'placeholder' => ''
 										)
 								);
 		echo $this->Form->input('date',
 								array('div' => array(
-										'class' => 'form-group input-group date',
-										'id' => 'dp3',
+										'class' => 'control-group input-group date',
+										'id' => '',
 										'data-date' =>'12-02-2012',
 										'data-date-format'=>'yyyy-mm-dd',
 									),
 										'name' => 'birthdate',
-										'id' => 'txtBirth',
-										'class' => 'form-control',
+										'id' => 'dp3',
+										'class' => 'input-block-level ',
 										'size' => 16,
-										'label' => false,
+										'label' => 'Birth date',
 										'value' => $data['birthdate'],
 										'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
-										'placeholder' => 'Birth Date'
+										'placeholder' => ''
 								)
 						);
 		echo $this->Form->input('number',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'contact',
 		    				'id' => 'txtContact',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Contact',
 		    				'value' => $data['contact'],
-		    				'placeholder' => 'Contact'
+		    				'placeholder' => ''
 		    		)
 		    );
 		echo $this->Form->input('email',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'facebook',
 		    				'id' => 'txtFacebook',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Facebook',
 		    				'value' => $data['facebook'],
-		    				'placeholder' => 'Facebook'
+		    				'placeholder' => ''
 		    		)
 		    );
 		echo $this->Form->input('email',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'email',
 		    				'id' => 'txtEmail',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Email',
 		    				'value' => $data['email'],
-		    				'placeholder' => 'Email'
+		    				'placeholder' => ''
 		    		)
 		    );
 		echo $this->Form->input('gender',
 							array(
-								'div' => 'form-group',
+								'div' => 'control-group',
 								'type'=>'select',
-								'class' => 'form-control',
-								'label' => false,
+								'class' => 'input-block-level',
+								'label' => 'Gender',
 							    'name' => 'gender',
 								'value' => $data['gender'],
 								'options' => array(
 										'M' => 'MALE',
 										'F' => 'FEMALE',
 								),
-								'empty' => __('Gender'),
+								'empty' => __('Select'),
 							)
 				);
 	    echo $this->Form->input('text',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'address',
 		    				'id' => 'txtAddress',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Address',
 		    				'value' => $data['address'],
-		    				'placeholder' => 'Address'
+		    				'placeholder' => ''
 		    		)
 		    );
 	   echo $this->Form->input('text',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'contact_person',
 		    				'id' => 'txtContact',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Contact Person',
 		    				'value' => $data['contact_person'],
-		    				'placeholder' => 'Contact Person'
+		    				'placeholder' => ''
 		    		)
 		    );
 		echo $this->Form->input('number',
 		    		array('div' => array(
-		    				'class' => 'form-group'
+		    				'class' => 'control-group'
 		    		),
 		    				'name' => 'contact_person_no',
 		    				'id' => 'txtContactNo',
-		    				'class' => 'form-control',
+		    				'class' => 'input-block-level',
 		    				'size' => 16,
-		    				'label' => false,
+		    				'label' => 'Contact Person Number',
 		    				'value' => $data['contact_person_no'],
-		    				'placeholder' => 'Contact Person Number'
+		    				'placeholder' => ''
 		    		)
 		    );
 	    echo $this->Form->file('signature', array('id' => 'uploadSignature','required' => false,'accept' => "image/*",'style' => 'display:none;'));

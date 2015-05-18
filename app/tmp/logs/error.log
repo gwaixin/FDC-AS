@@ -13769,6 +13769,7 @@ Stack Trace:
 #1 {main}
 >>>>>>> 6049ffd55221f3a326b87b26d23daf843090f2fa
 <<<<<<< HEAD
+<<<<<<< HEAD
 2015-05-15 08:05:08 Error: [MissingControllerException] Controller class UploadController could not be found.
 =======
 2015-05-15 09:43:13 Error: [MissingControllerException] Controller class CssController could not be found.
@@ -13791,10 +13792,14 @@ Stack Trace:
 #1 {main}
 2015-05-15 09:43:37 Error: [MissingControllerException] Controller class UploadController could not be found.
 >>>>>>> fdc-as-1
+=======
+2015-05-15 11:46:03 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 <<<<<<< HEAD
 Request URL: /upload/awdawd
 Stack Trace:
@@ -13807,28 +13812,52 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:43:59 Error: [MissingControllerException] Controller class UploadController could not be found.
+=======
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:03 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:45:00 Error: [MissingControllerException] Controller class UploadController could not be found.
+=======
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:06 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:45:44 Error: [MissingControllerException] Controller class UploadController could not be found.
+=======
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:08 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -13843,10 +13872,18 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:46:18 Error: [MissingControllerException] Controller class UploadController could not be found.
+=======
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:24 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -14379,10 +14416,330 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-18 01:26:50 Error: [MissingControllerException] Controller class UploadController could not be found.
+=======
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:33 Error: [MissingControllerException] Controller class UploadController could not be found.
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:36 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:46:36 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:47:12 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-15 11:47:14 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:13:27 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:18:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(69): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 03:19:43 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 138]
+2015-05-18 03:19:43 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 03:20:47 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:20:47 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:20:50 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:26:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:27:12 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:27:38 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_300300.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 03:33:40 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 04:34:46 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
+2015-05-18 04:34:47 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 04:34:55 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
+2015-05-18 04:34:55 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 04:35:00 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
+2015-05-18 04:35:00 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 04:35:48 Error: Fatal Error (4): syntax error, unexpected '=', expecting ')' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 40]
+2015-05-18 04:35:48 Error: [FatalErrorException] syntax error, unexpected '=', expecting ')'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:27:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/74
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(149): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('74')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 07:29:12 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/74
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('74')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 07:29:54 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/74
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('74')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 07:44:22 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/74
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('74')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 07:46:59 Error: [MissingControllerException] Controller class 250x250299229921431913842.jpegController could not be found.
+Exception Attributes: array (
+  'class' => '250x250299229921431913842.jpegController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/250x250_299229921431913842.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 07:47:10 Error: [MissingControllerException] Controller class Upload250x250299229921431913842.jpegController could not be found.
+Exception Attributes: array (
+  'class' => 'Upload250x250299229921431913842.jpegController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload250x250_299229921431913842.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 07:47:11 Error: [MissingControllerException] Controller class Upload250x250299229921431913842.jpegController could not be found.
+Exception Attributes: array (
+  'class' => 'Upload250x250299229921431913842.jpegController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload250x250_299229921431913842.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 07:52:29 Error: Fatal Error (1): Call to a member function data() on a non-object in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 166]
+2015-05-18 07:52:29 Error: [FatalErrorException] Call to a member function data() on a non-object
+Request URL: /FDC_AS/profiles/profile_update/61
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 08:02:03 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload//FDC_AS/upload/250x250_1871871431928915.gif
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:07:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:08:50 Error: [MissingControllerException] Controller class UploadController could not be found.
+>>>>>>> FDC-AS-2v1
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+<<<<<<< HEAD
 Request URL: /upload/awdawd
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -14396,3 +14753,583 @@ Request URL: /FDC_AS/img/emptyprofile.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+=======
+Request URL: /FDC_AS/upload/null
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:10:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:12:16 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:14:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:16:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:20:00 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:20:03 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:20:34 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:20:52 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:21:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:21:59 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/22617_947590945275299_6852297877185736961_n.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:24:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(53): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:26:43 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:28:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:30:20 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:30:52 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:31:32 Error: [NotFoundException] Not Found
+Request URL: /FDC_AS/profiles/index/home/page:2
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(20): PaginatorComponent->paginate('Profile')
+#1 [internal function]: ProfilesController->index('home')
+#2 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2015-05-18 08:31:58 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:33:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:33:22 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 08:56:27 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:01:32 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:01:39 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:01:58 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:02:51 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_register
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_register()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:11:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:12:26 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:13:11 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:14:06 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:18:11 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:18:33 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:20:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:26:11 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:26:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:29:27 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:30:10 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(146): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:31:45 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(145): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:31:58 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(145): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:32:06 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(145): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 09:32:37 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/profiles/profile_update/109
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(147): Model->save(Array)
+#6 [internal function]: ProfilesController->profile_update('109')
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+>>>>>>> FDC-AS-2v1
