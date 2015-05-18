@@ -14396,3 +14396,94 @@ Request URL: /FDC_AS/img/emptyprofile.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-18 07:18:31 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 07:18:35 Error: [MissingActionException] Action AttendancesController::<() could not be found.
+Exception Attributes: array (
+  'controller' => 'AttendancesController',
+  'action' => '<',
+)
+Request URL: /attendances/%3C?php_echo_%24this-%3Ewebroot%3B%3F%3Eattendances%2FattendanceList=
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-18 07:19:27 Error: [MissingActionException] Action AttendancesController::<() could not be found.
+Exception Attributes: array (
+  'controller' => 'AttendancesController',
+  'action' => '<',
+)
+Request URL: /attendances/%3C?php_echo_%24this-%3Ewebroot%3B%3F%3Eattendances%2FattendanceList=
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-18 07:52:58 Error: Fatal Error (4): syntax error, unexpected end of file, expecting function (T_FUNCTION) in [C:\wamp\www\FDC_AS\app\Model\Position.php, line 2]
+2015-05-18 07:52:58 Error: [FatalErrorException] syntax error, unexpected end of file, expecting function (T_FUNCTION)
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:11 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:11 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:12 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:13 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:44 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:44 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:45 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:45 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:54:22 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:54:22 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

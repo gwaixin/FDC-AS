@@ -20,7 +20,7 @@ class AttendancesController extends AppController {
 		
 		$employees = $this->Employee->find('all',
 				array(
-						'conditions' => array('Employee.status = 1'),
+						'conditions' => array('Employee.status = 2'),
 						'fields' => 'id'
 				)
 		);
