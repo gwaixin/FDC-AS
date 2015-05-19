@@ -1,13 +1,18 @@
-var selected_row = null;
-var selected_cell = null;
-var dropdownIndex = 0;
-var advancedData = [];
-var timePicker;
-var hot = null;
-var selectedTimeCell;
-var names = [];
 
+
+var timePicker;
+var selectedIndex = 0;
+var rightClicked = false;
+var timer = null;
+var hot = null;
 $(document).ready(function () {
+
+	var selected_row = null;
+	var selected_cell = null;
+	var dropdownIndex = 0;
+	var advancedData = [];
+	var selectedTimeCell;
+	var names = [];
 
 	var searchValue = "";
 	var positions = [];
@@ -16,23 +21,54 @@ $(document).ready(function () {
 	var timePicker = null;
 	var selectedTime = "";
 
+	var clicked = false;
+
 	var fields = {'name':1,'employee_id':2,'tin':3,'salary':4,'drug_test':5,'pagibig':6,'philhealth':7,
 				  'medical':8,'sss':9,'insurance_id':10,'f_time_in':14,'f_time_out':15,'l_time_in':16,
 				  'l_time_out':17
 				 };
+	$("#btn-select").click(function() {
+			selectedIndex = hot.getSelectedRange().to.row;
+			if(advancedData[selectedIndex].id !== null) {
+				$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
+				$("#username").attr('disabled','disabled');
+				$("#username").val(advancedData[selectedIndex].username);
+				$("#password").val("********");
+				$("#btn-submit").val('Edit');
+			}
+	});
 
+	$("#btn-submit").click(function() {
+		if($("#btn-submit").val() === 'Edit') {
+			$("#username").removeAttr('disabled');
+			$("#btn-submit").val('Save');
+		} else {
+			var records = [{'id':advancedData[selectedIndex].id,'field':'username','value':$("#username").val()}];
+			$.post(baseUrl+'employees/saveAll',{employees:records},
+				function(data) {
+					if(data.errors.length === 0) {
+						alert('Successully save!');
+						$("#btn-submit").val('Edit');
+						advancedData[selectedIndex].username = $("#username").val();
+					}
+				},'JSON');
+		}
+	});
+
+	$(document).dblclick(function(e) {
+		if(e.target.className === 'rowHeader' || e.target.className === 'relative') {
+			$("#btn-select").click();
+		}
+	});
 
 	$(document).click(function(e) {
-		
 		if (e.target.className.match("time") && timePicker === null) {
 			$("#table-employees textarea").after("<input type='text' id='time' readonly>");
 			timePicker = $("#time");
 			$("#table-employees input").timepicker();
 			$("#table-employees textarea").css('display','none');
 			$("#time").change(function() {
-
 				if ($("#time").val().length > 0) {
-
 					var index = selectedTimeCell.to.row;
 					var time = $("#time").val();
 					$("#table-employees textarea").focus();
@@ -47,7 +83,6 @@ $(document).ready(function () {
 					$("#table-employees textarea").val(time);
 					updateAll(data);
 				}
-
 			});
 		}
 		if (e.target.className.match('current') && timePicker !== null ) {
@@ -75,15 +110,11 @@ $(document).ready(function () {
 
 	});
 
-
-
 	$("#cbo-position").change(function() {
-
 		$("#cbo-position-level").val("");
 		getPositionLevels();
 		searchValue = $(this).val();
 		getEmployees();
-
 	});
 
 	$("#cbo-position-level").change(function() {
@@ -97,9 +128,7 @@ $(document).ready(function () {
 	});
 
 	function fillDropDown() {
-
 		$.post(baseUrl + 'employees/getDropdownValues',function(data) {
-
 			names = data.names;
 			positions = data.positions;
 			positionLevels = data.positionLevels;
@@ -108,42 +137,32 @@ $(document).ready(function () {
 			getPositionLevels();
 
 		},'JSON');
-
 	}
 
 	function getNames() {
-
 		$.post(baseUrl + 'employees/getDropdownValues',function(data) {
-
 			names = data.names;
-
 		},'JSON');
-
 	}
 
 	function getPositions() {
-
-		$("#cbo-position").append("<option value='' disabled> Position </option>");
+		$("#cbo-position option:first-child").attr('disabled','disabled');
 		for(var x in positions) {
 			$("#cbo-position").append("<option value='" + positions[x] + "'> " + positions[x] + " </option>");
 		}
-
 	}
 
 	function getPositionLevels() {
-
 		$("#cbo-position-level").html("");
 		$("#cbo-position-level").append( "<option value='' disabled> Level </option>");
 		for(var x in positions) { 
 			$("#cbo-position-level").append("<option value='" + positionLevels[x] + "'> " + positionLevels[x] + " </option>");
 		}
 		$("#cbo-position-level").val("");
-
 	}
 
 
 	$("#cbo-category").change(function() {
-
 		switch($("#cbo-category").val()) {
 			case "name" :
 				$(".cbo-position").css('display','none');
@@ -170,21 +189,17 @@ $(document).ready(function () {
 				$("#cbo-status").css('display','inline-block');
 			break;
 		}
-
 	});
 
 	$("#txt-search").keypress(function(e) {
-
 		if (e.keyCode === 13) {
 			searchValue = $(this).val();
 			getEmployees();
 		}
-
 	});
 
 
 	function getEmployees() {
-
 		$.post(baseUrl + 'employees/getEmployees',{field:$("#cbo-category").val(),value:searchValue,
 																		position_level:$("#cbo-position-level").val()},
 			function(data) {
@@ -193,26 +208,20 @@ $(document).ready(function () {
 				displayEmployees();
 
 		},'JSON')
-
 	}
 
 
 	function addEmployee(employee,index) {
-
 		$.post(baseUrl + 'employees/addEmployee',{employee:employee},
 			function(data) {
-
 				if (data.success) {
 					advancedData[index].id = data.id;
 					refresh();
 				}
-
 			},'JSON');
-
 	}
 
 	function updateAll(data) {
-
 		var data_arr = [];
 		for(var x in data) {
 			if (typeof(data[x]) === 'object' && data[x] !== null) {
@@ -241,13 +250,11 @@ $(document).ready(function () {
 		if (data_arr.length) {
 			$.post(baseUrl + 'employees/saveAll',{employees:data_arr});
 		}
-
 	}
 
 
 	
 	function validTin(value, callback) {
-		
 		setTimeout(function() {
 			if(value === null) {
 				callback(true);
@@ -263,7 +270,6 @@ $(document).ready(function () {
 	}
 
 	function validCode(value, callback) {
-
 		setTimeout(function() {
 			if(value === null) {
 				callback(true);
@@ -276,11 +282,9 @@ $(document).ready(function () {
 		    }
 	    }, 1);
 	    return false;
-
 	}
 
 	function validDrugTest(value, callback) {
-	
 		setTimeout(function() {
 			if(value === null) {
 				callback(true);
@@ -293,11 +297,9 @@ $(document).ready(function () {
 		    }
 	    }, 1);
 	    return false;
-
 	}
 
 	function validTime(value, callback) {
-		
 		setTimeout(function(){
 			if(value === null) {
 				callback(true);
@@ -310,12 +312,10 @@ $(document).ready(function () {
 	      	}
 	    }, 1);
 	    return false;
-
 	}
 
 
 	function sortData() {
-
 		if (hot.sortIndex.length > 0) {
 			var data = [];
 			for(var x = 0 ; x < hot.sortIndex.length ; x++) {
@@ -323,11 +323,9 @@ $(document).ready(function () {
 			}
 			advancedData = data;
 		}
-
 	}
 
 	function refresh() {
-
 		$.post(baseUrl + 'employees/getDropdownValues',function(data) {
 
 			names = data.names;
@@ -335,87 +333,77 @@ $(document).ready(function () {
 			sortData();
 
 		},'JSON')
-
 	}
 
 	function refreshTable() {
-	
 		timePicker = null;
 		displayEmployees();
-
 	}
 
 
 
 	function displayEmployees() {
-
 		if (hot !== null) {
 			hot.destroy();
 		}
-	  	hot = new Handsontable($("#table-employees")[0], {
-	    data: advancedData,
-	    height: 396,
-	    manualColumnResize: true,
-	    manualRowResize: true,
-	    colHeaders: ["Name","Employee ID", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "Medical", "SSS", "Insurance ID","Position","Position Level","Contract","First Time in","First Time out","Last Time in","Last Time out", "Role", "Status"],
-	    rowHeaders: true,
-	    stretchH: 'all',
-	    columnSorting: true,
-	    contextMenu: true,
-	    className: "htCenter htMiddle",
-	    columns: [
-		   		{
-		   			data: 'name', 
-		   			type: 'autocomplete',
-		   			source: names,
-		   			strict: false,
-		   			className : 'htLeft'
-		   		},
-			  {data: 'employee_id',validator: validCode, type: 'text'},
-		      {data: 'tin', type: 'text', validator: validTin},
-		      {data: 'salary', type: 'text'},
-		      {data: 'drug_test', validator: validDrugTest, type: 'text'},
-		      {data: 'pagibig', validator: validCode, type: 'text'},
-		      {data: 'philhealth', validator: validCode, type: 'text'},
-		      {data: 'medical', type: 'text'},
-		      {data: 'sss', validator: validCode, type: 'text'},
-		      {data: 'insurance_id', validator: validCode, type: 'text'},
-		      {
-		      	data: 'position', 
-		      	type: 'dropdown',
-		      	source: positions
-		      },
-		      {
-		      	data: 'position_level', 
-		      	type: 'dropdown',
-		      	source: positionLevels
-		      },
-		      {data: 'contract', type: 'text'},
-		      {data: 'f_time_in', type: 'text', validator: validTime, className: 'time f_time_in htCenter'},
-		      {data: 'f_time_out', type: 'text', validator: validTime, className: 'time f_time_out htCenter'},
-		      {data: 'l_time_in', type: 'text', validator: validTime, className: 'time l_time_in htCenter'},
-		      {data: 'l_time_out', type: 'text', validator: validTime, className: 'time l_time_out htCenter'},
-		      {data: 'role', type: 'text'},
-		      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
-		  	  ]
-	 	 });
-	
+  	hot = new Handsontable($("#table-employees")[0], {
+    data: advancedData,
+    height: 396,
+    manualColumnResize: true,
+    manualRowResize: true,
+    colHeaders: ["Name","Employee ID", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "Medical", "SSS", "Insurance ID","Position","Position Level","Contract","First Time in","First Time out","Last Time in","Last Time out", "Role", "Status"],
+    rowHeaders: true,
+    stretchH: 'all',
+    columnSorting: true,
+    contextMenu: true,
+    className: "htCenter htMiddle",
+    columns: [
+	   		{
+	   			data: 'name', 
+	   			type: 'autocomplete',
+	   			source: names,
+	   			strict: false,
+	   			className : 'htLeft'
+	   		},
+		  {data: 'employee_id',validator: validCode, type: 'text'},
+	      {data: 'tin', type: 'text', validator: validTin},
+	      {data: 'salary', type: 'text'},
+	      {data: 'drug_test', validator: validDrugTest, type: 'text'},
+	      {data: 'pagibig', validator: validCode, type: 'text'},
+	      {data: 'philhealth', validator: validCode, type: 'text'},
+	      {data: 'medical', type: 'text'},
+	      {data: 'sss', validator: validCode, type: 'text'},
+	      {data: 'insurance_id', validator: validCode, type: 'text'},
+	      {
+	      	data: 'position', 
+	      	type: 'dropdown',
+	      	source: positions
+	      },
+	      {
+	      	data: 'position_level', 
+	      	type: 'dropdown',
+	      	source: positionLevels
+	      },
+	      {data: 'contract', type: 'text'},
+	      {data: 'f_time_in', type: 'text', validator: validTime, className: 'time f_time_in htCenter'},
+	      {data: 'f_time_out', type: 'text', validator: validTime, className: 'time f_time_out htCenter'},
+	      {data: 'l_time_in', type: 'text', validator: validTime, className: 'time l_time_in htCenter'},
+	      {data: 'l_time_out', type: 'text', validator: validTime, className: 'time l_time_out htCenter'},
+	      {data: 'role', type: 'text'},
+	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
+	  	  ]
+ 	 });
 		hot.addHook('afterRender',function() {
-
 			if (advancedData[0].id !== null) {
 				hot.validateCells(finished);
 			}
-
 		})
-
 		hot.addHook('afterChange',function(data) {
 
 			updateAll(data);
 
 		});
-
 		hot.addHook('beforeRemoveRow',function(e) {
-
 			if (advancedData[e].id !== null || advancedData[e].id) {
 				if (advancedData[e].status !== "Trash") {
 					var c = confirm('Are you sure you want to remove this employee?');
@@ -431,13 +419,26 @@ $(document).ready(function () {
 				}
 			}
 		});
-
 	}
-  
 });
 
 var finished = function() {
-
 	// console.log('Finished!');
-
+}
+function SelectEmployee() {
+	$("#btn-select").click();
+}
+var appendViewEmployeeButton = function() {
+	timer = setTimeout('appendViewEmployeeButton()',100);
+	if(rightClicked) {
+	// 	try {
+	// 		$(".htContextMenu .ht_master table tbody tr:last-child").before("<tr id='tr-view-employee-info'><td><div onclick='SelectEmployee()'>View Employee</div></td></tr>");
+	// 	} catch(error) {
+	// 		console.log(error);
+	// 	}
+	// 	rightClicked = false;
+	// 	clearTimeout(timer);
+	// } else {
+	// 	rightClicked = true;
+	}
 }

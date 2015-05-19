@@ -5,31 +5,8 @@ App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
 
-	public function validUser() {
-		$user = false;
-		$this->loadModel('Profile');
-		$profile = $this->Profile->findById($this->Session->read('fdc_ID'));
-		if ($profile) {
-			$user = $profile['Profile'];
-		}
-		return $user;
-	}
-
 	public function index() {
 		$this->layout = 'main';
-		$profile = $this->validUser();
-		$name = $profile['first_name']." ".$profile['middle_name']." ".$profile['last_name'];
-		$this->Set('name',$name);
-	}
-
-	public function beforeFilter() {
-		if(!$this->validUser()) {
-			$this->redirect(array(
-													'controller' => 'Main',
-													'action' => 'login'
-												)	
-											);
-		}
 	}
 
 	public function getEmployees() {
@@ -99,6 +76,7 @@ class EmployeesController extends AppController {
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
 										'employee_id' => $employee['Employee']['employee_id'],
+										'username' => $employee['Employee']['username'],
 										'tin' => $employee['Employee']['tin'],
 										'salary' => $employee['Employee']['salary'],
 										'drug_test' => $employee['Employee']['drug_test'],
@@ -124,6 +102,7 @@ class EmployeesController extends AppController {
 										'id' => null,
 										'employee_id' => null,
 										'name' => null,
+										'username' => null,
 										'tin' => null,
 										'salary' => null,
 										'drug_test' => null,
@@ -371,8 +350,16 @@ class EmployeesController extends AppController {
 							$field => $value
 						);
 				$this->Employee->id = $employee['id'];
-				$this->Employee->save($data);
+				if(!$this->Employee->save($data)) {
+					array_push($error_arr,array(
+															'field' => $field,
+															'value' => $value
+																)
+															);
+				}
 			}
+			$json['errors'] = $error_arr;
+			echo json_encode($json);
 		}
 	}
 
