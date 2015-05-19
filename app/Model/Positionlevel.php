@@ -10,5 +10,4 @@ class Positionlevel extends AppModel {
 				'rule' => 'numeric'
 			)
 	);
-
 }

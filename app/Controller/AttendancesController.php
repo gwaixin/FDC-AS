@@ -48,7 +48,7 @@ class AttendancesController extends AppController {
 					
 					//$conditions["like"] = "%{$data['keyword']}%";
 				}
-				if (!empty($data['status']) && $data['status'] >= 0) {
+				if (isset($data['status']) && $data['status'] >= 0) {
 					$conditions['attendances.status ='] = $data['status'];
 				}
 				if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
