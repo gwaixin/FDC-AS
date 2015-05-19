@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 App::uses('AppModel', 'Model');
 class Position extends AppModel{
 	public $validate = array(
@@ -7,12 +6,4 @@ class Position extends AppModel{
 				'rule' => 'notEmpty'
 		)
 	);
-		
-=======
-
-class Position extends AppModel{
-	
-	
-	
->>>>>>> FDC-AS-2v1
 }
