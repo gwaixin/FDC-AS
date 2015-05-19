@@ -17,7 +17,7 @@ class ContractlogsController extends AppController{
 		
 		
 		$empId = $this->Employee->find('list', array(
-				'fields' => array('employee_id','employee_id')
+				'fields' => array('id','employee_id')
 		));
 		
 		$position = $this->Position->find('list', array(
@@ -31,21 +31,21 @@ class ContractlogsController extends AppController{
 			
 			$this->Contractlog->create();
 			
-			$data = $this->request->data;
+			$row = $this->request->data;
 
-		/* 	$data = array(
-					'employees_id' => $reqdata['employees_id'],
-					'description' => $reqdata['description'],
-					'date_start' => $reqdata['date_start'],
-					'date_end' => $reqdata['date_end'],
-// 					'document' => $reqdata['document'],
-					'salary' => $reqdata['salary'],
-					'deminise' => $reqdata['deminise'],
-					'term' => $reqdata['term'],
-					'position' => $reqdata['position'],
+			$data = array(
+					'employees_id' => $row['employees_id'],
+					'description' => $row['description'],
+					'date_start' => $row['date_start'],
+					'date_end' => $row['date_end'],
+					'document' => $row['Contractlog']['document'],
+					'salary' => $row['salary'],
+					'deminise' => $row['deminise'],
+					'term' => $row['term'],
+					'position' => $row['position'],
 					'status' => 1,
 			);
-			 */
+
 			if($this->Contractlog->save($data)){
 				return $this->redirect('/');
 			}

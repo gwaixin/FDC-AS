@@ -16179,3 +16179,33 @@ Stack Trace:
 #9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
 #10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+2015-05-19 11:49:56 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`contract_logs`, CONSTRAINT `fk_contract_logs_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(50): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 11:51:05 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`contract_logs`, CONSTRAINT `fk_contract_logs_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(50): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}

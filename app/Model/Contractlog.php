@@ -57,8 +57,8 @@ class Contractlog extends AppModel{
 		
 		$src = $this->data[$this->alias]['document'];
 		
-		$ext = (explode('.',$src['name']));
-		
+		$ext = explode('.',$src['name']);
+
 		$FileName = tempnam($tmppath, 'doc').'.'.$ext[1];
 		$FileName = str_replace('.tmp', '', $FileName);
 	
