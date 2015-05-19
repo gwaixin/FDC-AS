@@ -36,6 +36,7 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+
 	?>
 </head>
 <body>
@@ -57,9 +58,23 @@
                 <a href="<?php echo $this->webroot;?>profiles">Profiles</a>
               </li>
               <li class="">
-                <a href="<?php echo $this->webroot;?>attendances/">Attendance</a>
+                <a href="<?php echo $this->webroot;?>attendances">Attendance</a>
               </li>
             </ul>
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
+                	<?php echo $this->Session->read('Auth.UserProfile.first_name')." ".
+                						 $this->Session->read('Auth.UserProfile.middle_name')." ".
+                						 $this->Session->read('Auth.UserProfile.last_name'); 
+                	?>
+                  <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">View Profile</a></li>
+                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
+                  </ul>
+              </li>
+          </ul>
           </div>
         </div>
       </div>

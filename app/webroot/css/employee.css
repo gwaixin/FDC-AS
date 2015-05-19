@@ -3,6 +3,7 @@
 }
 #table-employees {
 	margin: 10px;
+	z-index: 0;
 }
 
 #search-container {
@@ -16,4 +17,7 @@
 }
 .invalid {
 	background: red;
+}
+#tr-view-employee-info:hover {
+	background: #999;
 }

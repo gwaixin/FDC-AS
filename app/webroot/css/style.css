@@ -18,12 +18,7 @@
   height: 200px;
   display: table-cell;
   position: relative;
-  width:100%;
   vertical-align: middle;
-}
-
-.img-responsive{
-	width:100%;
 }
 
 .img-cont {
@@ -54,11 +49,7 @@
 
 #container {
 	margin-top: 50px;
-}
-#BrowseSignature{
-	margin-right: 15px;
-}
-#BrowseFile{
+}#BrowseSignature{
 	margin-right: 15px;
 }
 .list-group{
@@ -83,30 +74,4 @@
 
 #container {
 	margin-top:50px;
-}
-
-.contract-container{
-	max-width:800px;
-	margin:0 auto;
-	padding: 5px 15px;
-	box-shadow: 2px 2px 5px #919191;
-}
-.control-group legend{
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 14px;
-  line-height: 40px;
-  color: #333;
-  border: 0;
-  border-bottom: 0;
-}
-.list-container label{
-	display:inline-block;
-	margin: 0 5px 0 0;
-}
-
-.list-container .list-status{
-	margin: 0 5px 2px 0;
 }

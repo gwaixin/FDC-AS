@@ -5,6 +5,8 @@
  * This file is application-wide controller file. You can put all
  * application-wide controller-related methods here.
  *
+ * PHP 5
+ *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
@@ -18,7 +20,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -31,4 +32,36 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	// added the debug toolkit
+	// sessions support
+	// authorization for login and logut redirect
+	public $components = array(
+		'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'main', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+						'authError' => 'You must be logged in to view this page.',
+						'loginError' => 'Invalid Username or Password entered, please try again.',
+						'authenticate' => array(
+				    'Form' => array(
+				     'fields' => array(
+				      'username' => 'username', //Default is 'username' in the userModel
+				      'password' => 'password'
+				     )
+				    ))
+        ));
+	
+	// only allow the login controllers only
+	public function beforeFilter() {
+		$this->Auth->allow();
+		if($this->Session->read('fdc_ID')) {
+			$this->loadModel('Profile');
+			$profile = $this->Profile->findById($this->Session->read('fdc_ID'));
+			$profile = $profile['Profile'];
+			$name = $profile['first_name']." ".$profile['middle_name']." ".$profile['last_name'];
+			$this->Auth->user('name');
+  	}
+  }
+	
 }
