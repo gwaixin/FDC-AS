@@ -13769,7 +13769,6 @@ Stack Trace:
 #1 {main}
 >>>>>>> 6049ffd55221f3a326b87b26d23daf843090f2fa
 <<<<<<< HEAD
-<<<<<<< HEAD
 2015-05-15 08:05:08 Error: [MissingControllerException] Controller class UploadController could not be found.
 =======
 2015-05-15 09:43:13 Error: [MissingControllerException] Controller class CssController could not be found.
@@ -13792,14 +13791,10 @@ Stack Trace:
 #1 {main}
 2015-05-15 09:43:37 Error: [MissingControllerException] Controller class UploadController could not be found.
 >>>>>>> fdc-as-1
-=======
-2015-05-15 11:46:03 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-<<<<<<< HEAD
 <<<<<<< HEAD
 Request URL: /upload/awdawd
 Stack Trace:
@@ -13812,52 +13807,28 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:43:59 Error: [MissingControllerException] Controller class UploadController could not be found.
-=======
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:03 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:45:00 Error: [MissingControllerException] Controller class UploadController could not be found.
-=======
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:06 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:45:44 Error: [MissingControllerException] Controller class UploadController could not be found.
-=======
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:08 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -13872,18 +13843,10 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-15 09:46:18 Error: [MissingControllerException] Controller class UploadController could not be found.
-=======
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:24 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-<<<<<<< HEAD
 Request URL: /upload/null
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -14416,330 +14379,10 @@ Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2015-05-18 01:26:50 Error: [MissingControllerException] Controller class UploadController could not be found.
-=======
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:33 Error: [MissingControllerException] Controller class UploadController could not be found.
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:34 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:36 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:46:36 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:47:12 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-15 11:47:14 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:13:27 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:18:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(69): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 03:19:43 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 138]
-2015-05-18 03:19:43 Error: [FatalErrorException] syntax error, unexpected ';'
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 138, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 03:20:47 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:20:47 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:20:50 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_3893891431679154.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:26:45 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:27:12 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:27:38 Error: [MissingControllerException] Controller class UploadController could not be found.
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload/250x250_300300.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 03:33:40 Error: [MissingControllerException] Controller class CssController could not be found.
-Exception Attributes: array (
-  'class' => 'CssController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/css/main.css
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 04:34:46 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
-2015-05-18 04:34:47 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 04:34:55 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
-2015-05-18 04:34:55 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 04:35:00 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '(' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 34]
-2015-05-18 04:35:00 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting '('
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 34, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 04:35:48 Error: Fatal Error (4): syntax error, unexpected '=', expecting ')' in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 40]
-2015-05-18 04:35:48 Error: [FatalErrorException] syntax error, unexpected '=', expecting ')'
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 40, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 07:27:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_update/74
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(149): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_update('74')
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 07:29:12 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_update/74
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_update('74')
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 07:29:54 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_update/74
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_update('74')
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 07:44:22 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_update/74
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('UPDATE `fdc_as`...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\Database\Mysql.php(415): DboSource->execute('UPDATE `fdc_as`...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1912): Mysql->update(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(134): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_update('74')
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 07:46:59 Error: [MissingControllerException] Controller class 250x250299229921431913842.jpegController could not be found.
-Exception Attributes: array (
-  'class' => '250x250299229921431913842.jpegController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/250x250_299229921431913842.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 07:47:10 Error: [MissingControllerException] Controller class Upload250x250299229921431913842.jpegController could not be found.
-Exception Attributes: array (
-  'class' => 'Upload250x250299229921431913842.jpegController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload250x250_299229921431913842.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 07:47:11 Error: [MissingControllerException] Controller class Upload250x250299229921431913842.jpegController could not be found.
-Exception Attributes: array (
-  'class' => 'Upload250x250299229921431913842.jpegController',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload250x250_299229921431913842.jpeg
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 07:52:29 Error: Fatal Error (1): Call to a member function data() on a non-object in [C:\wamp\www\FDC_AS\app\Model\Profile.php, line 166]
-2015-05-18 07:52:29 Error: [FatalErrorException] Call to a member function data() on a non-object
-Request URL: /FDC_AS/profiles/profile_update/61
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166)
-#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166, Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 166, Array)
-#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
-#5 {main}
-2015-05-18 08:02:03 Error: [MissingControllerException] Controller class Controller could not be found.
-Exception Attributes: array (
-  'class' => 'Controller',
-  'plugin' => NULL,
-)
-Request URL: /FDC_AS/upload//FDC_AS/upload/250x250_1871871431928915.gif
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-05-18 08:07:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
-Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:08:50 Error: [MissingControllerException] Controller class UploadController could not be found.
->>>>>>> FDC-AS-2v1
-Exception Attributes: array (
-  'class' => 'UploadController',
-  'plugin' => NULL,
-)
-<<<<<<< HEAD
 Request URL: /upload/awdawd
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -14753,151 +14396,343 @@ Request URL: /FDC_AS/img/emptyprofile.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-=======
-Request URL: /FDC_AS/upload/null
+2015-05-18 07:18:31 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-05-18 08:10:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+2015-05-18 07:18:35 Error: [MissingActionException] Action AttendancesController::<() could not be found.
+Exception Attributes: array (
+  'controller' => 'AttendancesController',
+  'action' => '<',
+)
+Request URL: /attendances/%3C?php_echo_%24this-%3Ewebroot%3B%3F%3Eattendances%2FattendanceList=
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:12:16 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-18 07:19:27 Error: [MissingActionException] Action AttendancesController::<() could not be found.
+Exception Attributes: array (
+  'controller' => 'AttendancesController',
+  'action' => '<',
+)
+Request URL: /attendances/%3C?php_echo_%24this-%3Ewebroot%3B%3F%3Eattendances%2FattendanceList=
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:14:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-18 07:52:58 Error: Fatal Error (4): syntax error, unexpected end of file, expecting function (T_FUNCTION) in [C:\wamp\www\FDC_AS\app\Model\Position.php, line 2]
+2015-05-18 07:52:58 Error: [FatalErrorException] syntax error, unexpected end of file, expecting function (T_FUNCTION)
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:16:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 2, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:11 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:11 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:20:00 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:12 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:13 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:20:03 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:44 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:44 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:20:34 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:53:45 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:53:45 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:20:52 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 07:54:22 Error: Fatal Error (4): syntax error, unexpected ')' in [C:\wamp\www\FDC_AS\app\View\Admin\index.ctp, line 15]
+2015-05-18 07:54:22 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /admin/
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:21:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
-Request URL: /FDC_AS/profiles/profile_register
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 15, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 08:27:15 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
 Stack Trace:
-#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
-#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
-#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
-#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Profile), Array, Array)
-#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
-#5 C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php(68): Model->save(Array)
-#6 [internal function]: ProfilesController->profile_register()
-#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProfilesController), Array)
-#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
-#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProfilesController), Object(CakeRequest))
-#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#11 {main}
-2015-05-18 08:21:59 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:27:52 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:30:07 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:32:25 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:32:28 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:34:51 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:34:54 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:35:20 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:36:03 Error: [MissingViewException] View file "Positions\create.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\create.ctp',
+)
+Request URL: /positions/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 08:36:41 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:29 Error: [MissingControllerException] Controller class UploadController could not be found.
 Exception Attributes: array (
   'class' => 'UploadController',
   'plugin' => NULL,
 )
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:29 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:32 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 08:57:49 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/awdawd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:48:46 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:49:28 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:49:39 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:31 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:42 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:50:57 Error: [MissingControllerException] Controller class PositionLevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionLevelsController',
+  'plugin' => NULL,
+)
+Request URL: /position_levels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:51:37 Error: [MissingControllerException] Controller class PositionlevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionlevelsController',
+  'plugin' => NULL,
+)
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:53:46 Error: [MissingControllerException] Controller class PositionlevelsController could not be found.
+Exception Attributes: array (
+  'class' => 'PositionlevelsController',
+  'plugin' => NULL,
+)
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 09:54:11 Error: Fatal Error (64): Cannot redeclare class Position_level in [C:\wamp\www\FDC_AS\app\Model\Positionlevel.php, line 13]
+2015-05-18 09:54:11 Error: [FatalErrorException] Cannot redeclare class Position_level
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'C:\wamp\www\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 09:54:55 Error: Fatal Error (1): Call to a member function save() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\PositionlevelsController.php, line 11]
+2015-05-18 09:54:55 Error: [FatalErrorException] Call to a member function save() on a non-object
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\wamp\www\FDC...', 11, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 09:55:26 Error: [MissingTableException] Table positionlevels for model Positionlevel was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'positionlevels',
+  'class' => 'Positionlevel',
+  'ds' => 'default',
+)
+<<<<<<< HEAD
 Request URL: /FDC_AS/upload/22617_947590945275299_6852297877185736961_n.jpg
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -16131,3 +15966,26 @@ Stack Trace:
 #9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
 #10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+=======
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3644): Model->setSource('positionlevels')
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1748): Model->getDataSource()
+#2 C:\wamp\www\FDC_AS\app\Controller\PositionlevelsController.php(11): Model->save(Array)
+#3 [internal function]: PositionlevelsController->create()
+#4 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(PositionlevelsController), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionlevelsController), Object(CakeRequest))
+#7 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
+2015-05-18 09:56:26 Error: Fatal Error (4): syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';' in [C:\wamp\www\FDC_AS\app\Model\Positionlevel.php, line 5]
+2015-05-18 09:56:26 Error: [FatalErrorException] syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';'
+Request URL: /positionlevels/create
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 5, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+>>>>>>> 82e3beefe634738e465592890c7c6e0a6d6d3107
