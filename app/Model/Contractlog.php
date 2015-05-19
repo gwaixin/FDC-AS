@@ -50,4 +50,26 @@ class Contractlog extends AppModel{
 			),
 
 	);
+	
+	public function beforesave($options = array()){
+		
+		$tmppath = $this->webroot.'document/';
+		
+		$src = $this->data[$this->alias]['document'];
+		
+		$ext = (explode('.',$src['name']));
+		
+		$FileName = tempnam($tmppath, 'doc').'.'.$ext[1];
+		$FileName = str_replace('.tmp', '', $FileName);
+	
+		if(move_uploaded_file($src['tmp_name'], $FileName)){
+			$this->data[$this->alias]['document'] = basename($FileName);
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	
 }
