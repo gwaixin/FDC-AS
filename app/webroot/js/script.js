@@ -2,7 +2,16 @@ $(function(){
 	
 	var weburl = $('#url').val();
 	
-	$('#dp3').datepicker();
+	$('#dp3').datepicker({
+		 format: 'yyyy-mm-dd',
+	});
+	
+	$('#dpStart').datepicker({
+		 format: 'yyyy-mm-dd',
+	});
+	$('#dpEnd').datepicker({
+		 format: 'yyyy-mm-dd',
+	});
 
 	
 	$("#uploadFile").on("change", function(){
@@ -67,6 +76,11 @@ $(function(){
 			$('#sig .sig-prev').attr('src',weburl+'upload/'+result.Profile.signature);
 		});
 		
+	});
+	
+	$('#BrowseFile').on('click',function(e){
+		e.preventDefault();
+		$("#uploadDocument").click();
 	});
 	
 });

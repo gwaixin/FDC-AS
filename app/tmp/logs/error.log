@@ -15333,3 +15333,801 @@ Stack Trace:
 #10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
 >>>>>>> FDC-AS-2v1
+2015-05-18 10:03:37 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:03:41 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:03:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:04:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:04:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:04:57 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:05:11 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/updateAttendance
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(147): Model->save(Array)
+#6 [internal function]: AttendancesController->updateAttendance()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-18 10:05:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:13:46 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:26:14 Error: [MissingControllerException] Controller class ContractLogsControllerController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractLogsControllerController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/Contract_logsController/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:26:42 Error: [MissingControllerException] Controller class ContractLogsControllerController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractLogsControllerController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/Contract_logsController/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:26:50 Error: [MissingControllerException] Controller class ContractlogsControllerController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractlogsControllerController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/ContractlogsController/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:28:05 Error: [MissingControllerException] Controller class ContractlogsControllerController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractlogsControllerController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/ContractlogsController/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:28:26 Error: [MissingViewException] View file "Contractlogs\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Contractlogs\\index.ctp',
+)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 10:28:55 Error: [MissingControllerException] Controller class ContractlogsController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractlogsController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:29:01 Error: [MissingControllerException] Controller class ContractLogsController could not be found.
+Exception Attributes: array (
+  'class' => 'ContractLogsController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/contract_logs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-18 10:29:27 Error: [MissingViewException] View file "Contractlogs\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Contractlogs\\index.ctp',
+)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-18 10:54:11 Error: Fatal Error (4): syntax error, unexpected ''escape'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in [C:\wamp\www\FDC_AS\app\View\Contractlogs\index.ctp, line 30]
+2015-05-18 10:54:11 Error: [FatalErrorException] syntax error, unexpected ''escape'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 30)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 30, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 30, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:06:07 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\wamp\www\FDC_AS\app\View\Contractlogs\index.ctp, line 131]
+2015-05-18 11:06:08 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:07:14 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\wamp\www\FDC_AS\app\View\Contractlogs\index.ctp, line 131]
+2015-05-18 11:07:14 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 131, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:53:35 Error: Fatal Error (1): Call to a member function all() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 13]
+2015-05-18 11:53:35 Error: [FatalErrorException] Call to a member function all() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:55:51 Error: Fatal Error (1): Call to a member function find() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 13]
+2015-05-18 11:55:51 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:57:29 Error: Fatal Error (1): Call to a member function find() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 13]
+2015-05-18 11:57:29 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 11:58:35 Error: Fatal Error (1): Call to a member function find() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 13]
+2015-05-18 11:58:35 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 13, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:16 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:16 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:27 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:27 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:27 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:27 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:30 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:30 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:31 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:31 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:33 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:33 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:33 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:33 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:39 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:39 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:45 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:46 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-18 12:04:46 Error: Fatal Error (64): Only variables can be passed by reference in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 18]
+2015-05-18 12:04:46 Error: [FatalErrorException] Only variables can be passed by reference
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18)
+#1 [internal function]: ErrorHandler::handleError(64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 64, 'Only variables ...', 'C:\\wamp\\www\\FDC...', 18, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 03:35:44 Error: Fatal Error (1): Call to a member function find() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 14]
+2015-05-19 03:35:45 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 14)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 14, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 14, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 03:48:23 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 03:50:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 04:21:29 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(318): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(59): AttendancesController->createAttendance('2015-05-19')
+#9 [internal function]: AttendancesController->attendanceList()
+#10 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2015-05-19 07:32:52 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:32:57 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:32:57 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:34:32 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:34:33 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:34:51 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:41:30 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Image%2010_958642.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:41:30 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Image%2010_958642.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:42:03 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Image%2010_958642.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 07:42:18 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/11266696_982000728491159_9218651468169879309_n.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:07:24 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\wamp\www\FDC_AS\app\Controller\ProfilesController.php, line 154]
+2015-05-19 08:07:25 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /FDC_AS/profiles/profile_update/55
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 154)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 154, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\\wamp\\www\\FDC...', 154, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 08:08:15 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:09:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:10:18 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:10:18 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:10:42 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:10:42 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:11:12 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:14:13 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 08:14:14 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/Array
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-19 09:02:35 Error: Fatal Error (1): Call to a member function create() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 32]
+2015-05-19 09:02:35 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 09:04:12 Error: Fatal Error (1): Call to a member function create() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 32]
+2015-05-19 09:04:12 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 09:04:50 Error: Fatal Error (1): Call to a member function create() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 32]
+2015-05-19 09:04:50 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 09:05:10 Error: Fatal Error (1): Call to a member function create() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 32]
+2015-05-19 09:05:10 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 09:05:32 Error: Fatal Error (1): Call to a member function create() on a non-object in [C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php, line 32]
+2015-05-19 09:05:32 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\\wamp\\www\\FDC...', 32, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-19 09:06:44 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:07:24 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:08:10 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:08:26 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:12:37 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:14:29 Error: [InvalidArgumentException] Invalid Parameter %s, should be dot separated path or array.
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Network\CakeRequest.php(864): Hash::get(Array, NULL)
+#1 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(34): CakeRequest->data()
+#2 [internal function]: ContractlogsController->index()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#6 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-05-19 09:43:30 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'employees_id' cannot be null
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:44:35 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'employees_id' cannot be null
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:48:15 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`contract_logs`, CONSTRAINT `fk_contract_logs_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:48:42 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`fdc_as`.`contract_logs`, CONSTRAINT `fk_contract_logs_employees1` FOREIGN KEY (`employees_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:50:39 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:50:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:52:23 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-05-19 09:53:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /FDC_AS/contractlogs/
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Contractlog), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\app\Controller\ContractlogsController.php(49): Model->save(Array)
+#6 [internal function]: ContractlogsController->index()
+#7 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContractlogsController), Array)
+#8 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ContractlogsController), Object(CakeRequest))
+#10 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}

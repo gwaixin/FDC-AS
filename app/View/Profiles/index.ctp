@@ -22,7 +22,7 @@
 					<div class="prof-img-cont">
 						<?php 
 							
-							$img = ($row['Profile']['picture'])? $this->webroot.'upload/'.$row['Profile']['picture'] :  $this->webroot.'/img/emptyprofile.jpg' ;
+							$img = ($row['Profile']['picture'])? $this->webroot.'upload/'.$row['Profile']['picture'] :  $this->webroot.'img/emptyprofile.jpg' ;
 							
 							
 						?>					

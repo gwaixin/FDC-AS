@@ -137,7 +137,7 @@
 								'empty' => __('Select'),
 							)
 				);
-	    echo $this->Form->input('text',
+	    echo $this->Form->input('Address',
 		    		array('div' => array(
 		    				'class' => 'control-group'
 		    		),
@@ -145,6 +145,7 @@
 		    				'id' => 'txtAddress',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'type' => 'textarea',
 		    				'label' => 'Address',
 		    				'value' => $data['address'],
 		    				'placeholder' => ''
@@ -165,7 +166,7 @@
 		    );
 		echo $this->Form->input('number',
 		    		array('div' => array(
-		    				'class' => 'control-group'
+		    				'class' => 'control-group list-container'
 		    		),
 		    				'name' => 'contact_person_no',
 		    				'id' => 'txtContactNo',
