@@ -137,7 +137,7 @@
 								'empty' => __('Select'),
 							)
 				);
-	    echo $this->Form->input('text',
+	    echo $this->Form->input('Address',
 		    		array('div' => array(
 		    				'class' => 'control-group'
 		    		),
@@ -145,6 +145,7 @@
 		    				'id' => 'txtAddress',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'type' => 'textarea',
 		    				'label' => 'Address',
 		    				'value' => $data['Profile']['address'],
 		    				'placeholder' => ''
@@ -176,7 +177,7 @@
 		    				'placeholder' => ''
 		    		)
 		    );
-	    echo $this->Form->file('signature', array('id' => 'uploadSignature','required' => false,'accept' => "image/*",'style' => 'display:none;','value'=>$data['Profile']['signature']));
+	    echo $this->Form->file('signature', array('id' => 'uploadSignature','required' => false,'accept' => "image/*",'style' => 'display:none;'));
 	    echo $this->Form->button('Browse Signature',
 	    		array(
 	    				'id' => 'BrowseSignature',

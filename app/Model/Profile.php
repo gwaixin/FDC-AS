@@ -22,8 +22,8 @@ class Profile extends AppModel{
 					'rule' => array('email', true),
 					'message' => 'Please provide a valid email address.'
 			),
-			'birthday' => array(
-					'rule' => array('datetime', 'y-m-d'),
+			'birthdate' => array(
+					'rule' => 'date',
 					'message' => 'Please enter a valid date and time.'
 			),
 			'facebook' => array(
@@ -187,7 +187,6 @@ class Profile extends AppModel{
 			}
 			
 			if(!empty($this->data[$this->alias]['signature']['name'])){
-				pr('s');
 				$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 250);
 			}
 			

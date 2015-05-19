@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 App::uses('AppModel', 'Model');
 class Position extends AppModel{
 	public $validate = array(
@@ -7,4 +8,11 @@ class Position extends AppModel{
 		)
 	);
 		
+=======
+
+class Position extends AppModel{
+	
+	
+	
+>>>>>>> FDC-AS-2v1
 }

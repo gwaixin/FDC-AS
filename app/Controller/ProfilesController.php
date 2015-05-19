@@ -114,15 +114,7 @@ class ProfilesController extends AppController{
 				
 				$ext = $row['Profile']['picture']['type'];
 				
-				$this->Profile->mode = 1;
-				
-				if(empty($row['Profile']['picture']['name'])){
-					$row['Profile']['picture'] = $data['Profile']['picture'];
-				}
-				
-				if(empty($row['Profile']['signature']['name'])){
-					$row['Profile']['signature'] = $data['Profile']['signature'];
-				}			
+				$this->Profile->mode = 1;	
 				
 				$data = array(					
 						'Profile' =>array(
@@ -132,16 +124,23 @@ class ProfilesController extends AppController{
 							'birthdate' => $row['birthdate'],
 							'contact' => $row['contact'],
 							'facebook' => $row['facebook'],
-							'picture' => $row['Profile']['picture'],
 							'email' => $row['email'],
 							'gender' => $row['gender'],
 							'address' => $row['address'],
 							'contact_person' => $row['contact_person'],
 							'contact_person_no' => $row['contact_person_no'],
-							'signature' => $row['Profile']['signature']
 						)
 				);
 
+				
+				if ($row['Profile']['picture']['error'] != 4) {
+					$data['Profile']['picture'] = $row['Profile']['picture'];
+				}
+				
+				if($row['Profile']['signature']['error'] != 4){
+					$data['Profile']['signature'] = $row['Profile']['signature'];
+				}
+				
 				if($this->Profile->save($data)){
 					return $this->redirect('/');
 				}else{
@@ -151,6 +150,7 @@ class ProfilesController extends AppController{
 			}
 			
 			$imgPic = $data['Profile']['picture'];
+			$imgPic = (is_array($imgPic))? array_shift($array) : $imgPic;
 			$data['Profile']['picture'] = ($imgPic)? $this->webroot.'upload/'.$imgPic : $this->webroot.'img/emptyprofile.jpg' ;
 
 			$this->set('errors', $errors);
