@@ -1,6 +1,7 @@
+var weburl = $('#url').val();
+var positionmode = 0; //position select box
+		
 $(function(){
-	
-	var weburl = $('#url').val();
 	
 	$('#dp3').datepicker({
 		 format: 'yyyy-mm-dd',
@@ -62,10 +63,10 @@ $(function(){
 		var dataID = $(this).data('view-id');
 		$.post(posturl,{dataId:dataID},function(data){
 			var result = JSON.parse(data);
-			console.log(result);
+			var birthDate = new Date(result.Profile.birthdate);
 			$('#img_preview').attr('src',weburl+'upload/'+result.Profile.picture);
 			$('#f_name').html(result.Profile.last_name+', '+result.Profile.first_name+' '+result.Profile.middle_name);
-			$('#birth').html(result.Profile.birthdate);
+			$('#birth').html(birthDate.getFullYear() + "-" + (birthDate.getMonth() + 1) + "-" + birthDate.getDate());
 			$('#c_no').html(result.Profile.contact);
 			$('#fb').html(result.Profile.facebook);
 			$('#email').html(result.Profile.email);
@@ -83,4 +84,33 @@ $(function(){
 		$("#uploadDocument").click();
 	});
 	
+	$('#contract-position').change(function(){
+		positionmode = 0;
+		GetPostion($(this).val(),$('#contract-position-level'));
+	});
+	
+	$('#contract-position-level').change(function(){
+		positionmode = 1;
+		GetPostion($(this).val(),$('#contract-position'));
+	});
+	
+	
 });
+
+function GetPostion(id,elem){
+
+	var url = weburl+'contractlogs/GetPosition';
+	$.post(url,{mode:positionmode,id:id},function(data){
+		var res = JSON.parse(data);
+		if(res !== 0){
+			for(var row in res){
+				elem.val(res[row].id);
+			}
+			
+		}else{
+			elem.val('');
+		}
+		
+	});
+	
+}
