@@ -367,7 +367,7 @@ $(document).ready(function () {
 	   		},
 		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
 		  	{
-	      	data: 'company_system', 
+	      	data: 'company_systems', 
 	      	type: 'dropdown',
 	      	source: companies
 	      },

@@ -24,7 +24,7 @@ class EmployeesController extends AppController {
 													'table' => 'company_systems',
 													'type' => 'LEFT',
 													'conditions' => array(
-															'Employee.company_system_id = company_systems.id'
+															'Employee.company_systems_id = company_systems.id'
 													)
 												),
 											array(
@@ -83,7 +83,7 @@ class EmployeesController extends AppController {
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
 										'employee_id' => $employee['Employee']['employee_id'],
-										'company_system' => $employee['company_systems']['name'],
+										'company_systems' => $employee['company_systems']['name'],
 										'username' => $employee['Employee']['username'],
 										'password' => $employee['Employee']['password'],
 										'tin' => $employee['Employee']['tin'],
@@ -110,7 +110,7 @@ class EmployeesController extends AppController {
 				$data = array(
 										'id' => null,
 										'employee_id' => null,
-										'company_system' => null,
+										'company_systems' => null,
 										'name' => null,
 										'username' => null,
 										'password' => null,
@@ -283,7 +283,7 @@ class EmployeesController extends AppController {
 						$value = "";
 						$field = $field."_id";
 						switch($key) {
-							case 'company_system' :
+							case 'company_systems' :
 								$company = $this->Company_system->findByName($employee['value']);
 								if ($company) {
 									$value = $company['Company_system']['id'];
@@ -364,11 +364,11 @@ class EmployeesController extends AppController {
 				if ($field === 'f_time_in' || $field === 'f_time_out' || $field === 'l_time_in' || $field === 'l_time_out') {
 					$value = $this->convertTimeToDefault($value);
 				}
-				if ($field === 'company_system' || $field === 'position' || $field === 'position_level') {
+				if ($field === 'company_systems' || $field === 'position' || $field === 'position_level') {
 					$value = "";
 					$field = $field."_id";
 					switch($employee['field']) {
-						case 'company_system' :
+						case 'company_systems' :
 							$company = $this->Company_system->findByName($employee['value']);
 							if ($company) {
 								$value = $company['Company_system']['id'];
