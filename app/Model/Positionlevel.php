@@ -10,4 +10,20 @@ class Positionlevel extends AppModel {
 				'rule' => 'numeric'
 			)
 	);
+	
+	public function updateLevelStat($id, $stat) { //Updating Position specific level
+		$this->read(null, $id);
+		$this->set('status', $stat);
+		if ($this->save()) {
+			return true;
+		}
+	}
+	
+	public function updateLevelStatBy($posId, $stat) {
+		//$this->positions_id = $posId;
+		$data = array('Positionlevel.status' => $stat);
+		if ($this->updateAll($data, array('Positionlevel.positions_id' => $posId))) {
+			return true;
+		}
+	} 
 }

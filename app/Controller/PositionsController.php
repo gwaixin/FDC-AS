@@ -36,19 +36,21 @@ class PositionsController extends AppController {
 		}
 	}
 	
-	public function delete() {
+	public function Delete() {
 		if ($this->request->is('Ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$this->Position->id = $data['Position']['id'];
+			//$this->Position->id = $data['Position']['id'];
 			
 			$this->loadModel('Positionlevel');
-			$this->Positionlevel->deleteAll(array(
+			/*$this->Positionlevel->deleteAll(array(
 					'Positionlevel.positions_id =' => $data['Position']['id']
-			));
+			));*/
+			$this->Positionlevel->updateLevelStatBy($data['Position']['id'], 0);
+			//$this->PositionLevel->deleteLevelByPosition($data['Position']['id']);
 			
 			$result = array();
-			if ($this->Position->delete()) {
+			if ($this->Position->updatePos($data['Position']['id'], 0)) {
 				$result['result'] = 'success';
 				$result['message'] = 'Position has been removed.';
 				
@@ -67,7 +69,10 @@ class PositionsController extends AppController {
 			$data = $this->request->data;
 			$position = $this->Position->find('all',
 					array(
-							'conditions' => array('Position.description like' => "%{$data['position']}%"),
+							'conditions' => array(
+									'Position.description like' => "%{$data['position']}%",
+									'Position.status' => '2'
+							),
 							'fields' => array('id', 'description')
 					)
 			);
