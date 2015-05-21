@@ -1,4 +1,4 @@
-var weburl = $('#url').val();
+var weburl = $('#url').val(); //base url
 var positionmode = 0; //position select box
 		
 $(function(){
@@ -14,7 +14,9 @@ $(function(){
 		 format: 'yyyy-mm-dd',
 	});
 
-	
+	/*
+	 * upload file
+	 */
 	$("#uploadFile").on("change", function(){
         var files = !!this.files ? this.files : [];
 		
@@ -31,23 +33,31 @@ $(function(){
         }
     });
 	
+	/*
+	 * trigger browse photo
+	 */
 	$('#BrowsePhoto').on('click',function(e){
 		e.preventDefault();
 		$("#uploadFile").click();
 	});
 	
+	/*
+	 * trigger browse photo
+	 */
 	$('#BrowseSignature').on('click',function(e){
 		e.preventDefault();
 		$("#uploadSignature").click();
 	});
 	
+	/*
+	 * delete profile
+	 */
 	$('.delete-list').on('click',function(e){
 		var dataID = $(this).data('profid');
 		var posturl = weburl+'profiles/delete';
 		if(confirm('Are you sure you want to delete this profile?')){
 		
 			$.post(posturl,{dataID:dataID},function(data){
-
 				if(data == 1){
 					$('.pro-id-'+dataID).remove();
 				}
@@ -57,6 +67,9 @@ $(function(){
 		
 	});
 	
+	/*
+	 * view detail profile
+	 */
 	$('.view-detail').on('click', function(e){
 		e.preventDefault();
 		var posturl = weburl+'profiles/view';
@@ -79,34 +92,93 @@ $(function(){
 		
 	});
 	
+	/*
+	 * Browse file such as PDF , Docu and etc
+	 */
 	$('#BrowseFile').on('click',function(e){
 		e.preventDefault();
 		$("#uploadDocument").click();
 	});
 	
+	/*
+	 * trigger contract position
+	 * call funtion GetPostion
+	 */
 	$('#contract-position').change(function(){
 		positionmode = 0;
 		GetPostion($(this).val(),$('#contract-position-level'));
 	});
-	
+	/*
+	 * trigger contract position level
+	 * call funtion GetPostion
+	 */
 	$('#contract-position-level').change(function(){
 		positionmode = 1;
 		GetPostion($(this).val(),$('#contract-position'));
 	});
 	
+	/*
+	 * View Contract Profile
+	 */
+	$('.View-Contract').on('click', function(e){
+		
+		var url = weburl+'contractlogs/view';
+		var dataid = $(this).data('id-contract');
+		$.post(url,{dataid:dataid},function(data){
+			var res = JSON.parse(data);
+			if(res !== 0){
+				for(var row in res){
+					console.log(res);
+					var dateStart = new Date(res[row].Contractlog.date_start);
+					var dateEnd = new Date(res[row].Contractlog.date_end);
+					$('#employee-id').html(res[row].emp.employee_id);
+					$('#description').html(res[row].Contractlog.description);
+					$('#date-start').html(dateStart.getFullYear() + "-" + (dateStart.getMonth() + 1) + "-" + dateStart.getDate());
+					$('#date-end').html(dateEnd.getFullYear() + "-" + (dateEnd.getMonth() + 1) + "-" + dateEnd.getDate());
+					$('#document').html(res[row].Contractlog.document);
+					$('#salary').html(res[row].Contractlog.salary);
+					$('#deminise').html(res[row].Contractlog.deminise);
+					$('#term').html(res[row].Contractlog.term);
+					$('#position').html(res[row].post.description);
+					$('#position-level').html(res[row].postlevel.description);
+				}
+			}
+		});
+		
+	});
+	
 	
 });
 
+/**
+ * Get Position / Position level value of select box
+ * @param id = id description of current select position
+ * @param elem = parent element id of html
+ */
 function GetPostion(id,elem){
 
 	var url = weburl+'contractlogs/GetPosition';
+	var len = 0;
 	$.post(url,{mode:positionmode,id:id},function(data){
 		var res = JSON.parse(data);
+
 		if(res !== 0){
-			for(var row in res){
-				elem.val(res[row].id);
+			len = Object.keys(res).length;
+			if (len  > 1){
+				for(var row in res){
+					elem.empty();
+					elem.prepend("<option value=''>Select</option>").val('');
+					$.each(res, function(value,key) {
+						elem.append($("<option></option>")
+					     .attr("value", value).text(key));
+					});
+				}	
+			}else{
+				for(var row in res){
+					elem.val(row);
+				}
 			}
-			
+
 		}else{
 			elem.val('');
 		}

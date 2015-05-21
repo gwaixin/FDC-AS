@@ -20,12 +20,20 @@
   position: relative;
   vertical-align: middle;
 }
-
+.contract-container{
+	padding: 0 10px;
+}
 .img-cont {
 	max-width: 150px;
 	margin-bottom:15px;
 }
+.table-list-contracttbody tr:nth-child(even){
+	background: #B2DFEA;
+}
 
+.table-list-contract tbody tr:nth-child(odd) {
+	background: #FCFDCC;
+}
 .bg-padd{
 	padding: 10px;
 	margin:10px 0;
