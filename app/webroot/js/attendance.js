@@ -54,12 +54,12 @@ $(document).ready(function () {
 	
 	
 	function attendanceList() {
-		$('#employee-attendance').html('');
+		//$('#employee-attendance').html('');
 		statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
 		    height: 396,
-		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TIME RENDER", "STATUS"],
+		    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEIN <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS"],
 		    rowHeaders: true,
 		    stretchH: 'all',
 		    columnSorting: true,
@@ -73,6 +73,7 @@ $(document).ready(function () {
 		      {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
 		      {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
 		      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
+		      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
 		      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'}
 		    ], afterChange: function(change, sources) {
 			    if (sources === 'loadData' || change[0][2].trim() == change[0][3].trim()) {
@@ -103,6 +104,37 @@ $(document).ready(function () {
 					
 					updateEmployeeData();
 		    	 }, 300);
+			}, cells: function (row, col, prop) {
+				var cellProperties = {};
+				if (row >= 1){
+					var insData = this.instance.getData()[row][col];
+				
+					switch (col) {
+						case 2:
+							if (!list[row]['ef_time_in']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 3: 
+							if (!list[row]['ef_time_out']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 4: 
+							if (!list[row]['el_time_in']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 5: 
+							if (!list[row]['el_time_out']) {
+								cellProperties.readOnly = true;
+							}
+							break; 
+							
+					}
+				}
+				
+				return cellProperties;
 			}
 	  	});
 	}
@@ -183,11 +215,12 @@ $(document).ready(function () {
 	function getAttendanceList(formAttendance) {
 		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
 			list = data;
-			attendanceList();
 			if (list.length === 0) {
 				$('#error').html('No Data found');
-			}
-			console.log(list);
+				$('.htCore tbody').html('');
+			} 
+			attendanceList();
+			//}
 		}, 'JSON');
 	}
 
@@ -255,10 +288,10 @@ function getTotalTime() {
 	) {
 			
 		var formData = new FormData();
-		formData.append('ftimein', ftimein);
-		formData.append('ftimeout', ftimeout);
-		formData.append('ltimein', ltimein);
-		formData.append('ltimeout', ltimeout);
+		formData.append('f_time_in', ftimein);
+		formData.append('f_time_out', ftimeout);
+		formData.append('l_time_in', ltimein);
+		formData.append('l_time_out', ltimeout);
 		formData.append('id', id);
 		//console.log(ftimein + ":" + ftimeout + ":" + ltimein + ":" + ltimeout);
 		$.ajax({
@@ -272,7 +305,7 @@ function getTotalTime() {
 				console.log(data);
 				focusElem.siblings('.status').html(statusArr[data['stat']]);
 				focusElem.siblings('.total_time').html(data['total']);
-				
+				focusElem.siblings('.otime').html(data['ot']);
 			}
 		});
 	} else {

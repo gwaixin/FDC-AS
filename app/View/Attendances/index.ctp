@@ -42,4 +42,11 @@
 	</div>
 </div>
 
+<style>
+.htCore thead tr th b{
+	font-size: 10px;
+	position:absolute;
+	top: -3px;
+}
+</style>
 

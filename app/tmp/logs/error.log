@@ -20483,3 +20483,386 @@ Request URL: /css/main.css
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-21 02:03:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 02:14:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 02:22:13 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 133]
+2015-05-21 02:22:13 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';'
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 133)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\wamp\www\FDC...', 133, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\wamp\www\FDC...', 133, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-21 02:22:48 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 02:24:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 02:24:55 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 02:33:41 Error: Fatal Error (1): Call to undefined function timePadding() in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 147]
+2015-05-21 02:33:41 Error: [FatalErrorException] Call to undefined function timePadding()
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-21 02:33:53 Error: [MissingViewException] View file "Attendances\attendance_list.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Attendances\\attendance_list.ctp',
+)
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-21 02:33:58 Error: Fatal Error (1): Call to undefined function timePadding() in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 147]
+2015-05-21 02:33:59 Error: [FatalErrorException] Call to undefined function timePadding()
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\wamp\www\FDC...', 147, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-21 03:28:17 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Attendance.' in 'field list'
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT DISTINCT...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Attendance), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('first', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(599): Model->find('first', Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): DboSource->query('findById', Array, Object(Attendance))
+#8 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Model->__call('findById', Array)
+#9 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Attendance->findById('13', Array)
+#10 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(133): Attendance->getOT('13')
+#11 [internal function]: AttendancesController->getTotalTime()
+#12 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#15 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2015-05-21 03:31:00 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Attendance), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('first', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(599): Model->find('first', Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): DboSource->query('findById', Array, Object(Attendance))
+#8 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Model->__call('findById', Array)
+#9 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Attendance->findById(Array)
+#10 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(133): Attendance->getOT('13')
+#11 [internal function]: AttendancesController->getTotalTime()
+#12 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#15 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2015-05-21 03:31:45 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Attendance), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('first', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(599): Model->find('first', Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): DboSource->query('findById', Array, Object(Attendance))
+#8 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Model->__call('findById', Array)
+#9 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Attendance->findById(Array)
+#10 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(133): Attendance->getOT('13')
+#11 [internal function]: AttendancesController->getTotalTime()
+#12 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#15 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2015-05-21 03:36:28 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Attendance.Atteawdljhwakdlhawdawdtotal_time' in 'field list'
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Attenda...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Attenda...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Attenda...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Attendance), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('first', Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(599): Model->find('first', Array)
+#7 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(827): DboSource->query('findById', Array, Object(Attendance))
+#8 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Model->__call('findById', Array)
+#9 C:\wamp\www\FDC_AS\app\Model\Attendance.php(122): Attendance->findById('13', Array)
+#10 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(133): Attendance->getOT('13')
+#11 [internal function]: AttendancesController->getTotalTime()
+#12 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#15 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2015-05-21 03:49:59 Error: Fatal Error (1): Call to undefined function totalDifference() in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 144]
+2015-05-21 03:50:00 Error: [FatalErrorException] Call to undefined function totalDifference()
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 144)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 144, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\wamp\www\FDC...', 144, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-21 06:01:07 Error: Fatal Error (1): Call to undefined function valDateTimeFormat() in [C:\wamp\www\FDC_AS\app\Model\Attendance.php, line 217]
+2015-05-21 06:01:07 Error: [FatalErrorException] Call to undefined function valDateTimeFormat()
+Request URL: /attendances/getTotalTime
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 217)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'C:\wamp\www\FDC...', 217, Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'C:\wamp\www\FDC...', 217, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-05-21 06:20:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:20:09 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:21:17 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:21:19 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:21:35 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:22:37 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:22:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:23:00 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 06:24:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 07:25:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 07:25:08 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 07:30:04 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 07:30:05 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 07:49:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'attendance.over_time' in 'field list'
+Request URL: /attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Employe...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Employe...', Array, Array)
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Employe...', false)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Employee), Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(214): Model->find('all', Array)
+#7 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(43): AttendancesController->getEmployeeAttendance(Array)
+#8 [internal function]: AttendancesController->attendanceList()
+#9 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#10 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#12 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-05-21 08:29:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 08:29:54 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 08:32:35 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-21 08:41:39 Error: [MissingActionException] Action AdminController::undefined() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'undefined',
+)
+Request URL: /admin/undefined/viewPositionList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-21 08:44:01 Error: [MissingViewException] View file "Positions\view_position_list.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\view_position_list.ctp',
+)
+Request URL: /Positions/viewPositionList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-05-21 08:44:12 Error: [MissingViewException] View file "Positions\view_position_list.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Positions\\view_position_list.ctp',
+)
+Request URL: /Positions/viewPositionList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PositionsController), Object(CakeRequest))
+#4 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
