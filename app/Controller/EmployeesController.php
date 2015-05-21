@@ -20,6 +20,13 @@ class EmployeesController extends AppController {
 							                'Employee.profile_id = profiles.id'
 							            )
 							       	 	),
+							        array(
+													'table' => 'company_systems',
+													'type' => 'LEFT',
+													'conditions' => array(
+															'Employee.company_systems_id = company_systems.id'
+													)
+												),
 											array(
 													'table' => 'positions',
 													'type' => 'LEFT',
@@ -76,7 +83,9 @@ class EmployeesController extends AppController {
 										'id' => $employee['Employee']['id'],
 										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
 										'employee_id' => $employee['Employee']['employee_id'],
+										'company_systems' => $employee['company_systems']['name'],
 										'username' => $employee['Employee']['username'],
+										'password' => $employee['Employee']['password'],
 										'tin' => $employee['Employee']['tin'],
 										'salary' => $employee['Employee']['salary'],
 										'drug_test' => $employee['Employee']['drug_test'],
@@ -101,8 +110,10 @@ class EmployeesController extends AppController {
 				$data = array(
 										'id' => null,
 										'employee_id' => null,
+										'company_systems' => null,
 										'name' => null,
 										'username' => null,
+										'password' => null,
 										'tin' => null,
 										'salary' => null,
 										'drug_test' => null,
@@ -173,6 +184,7 @@ class EmployeesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$json['names'] = $this->getNameLists();
+			$json['companies'] = $this->getCompanyLists();
 			$json['positions'] = $this->getPositionLists();
 			$json['positionLevels'] = $this->getPositionLevelLists();
 			echo json_encode($json);
@@ -183,7 +195,8 @@ class EmployeesController extends AppController {
 		$this->autoRender = false;
 		$this->loadModel('Profiles');
 		$employees = $this->Profiles->find('all',array(
-														'conditions' => array("id not in (Select profile_id from employees)")
+														'conditions' => array("id not in (Select profile_id from employees)"),
+														'fields' => array("first_name","middle_name","last_name")
 													)
 												);
 		$names = array();
@@ -192,6 +205,21 @@ class EmployeesController extends AppController {
 			array_push($names,$name);
 		}
 		return $names;
+	}
+
+	public function getCompanyLists() {
+		$this->autoRender = false;
+		$this->loadModel('Company_system');
+		$companies = $this->Company_system->find('list',array(
+																										'conditions' => array("status = '1'"),
+																										'fields' => array('name')
+																										)
+																									);
+		$company_lists = array();
+		foreach($companies as $company) {
+			array_push($company_lists,$company);
+		}
+		return $company_lists;
 	}
 
 	public function getPositionLists() {
@@ -255,6 +283,12 @@ class EmployeesController extends AppController {
 						$value = "";
 						$field = $field."_id";
 						switch($key) {
+							case 'company_systems' :
+								$company = $this->Company_system->findByName($employee['value']);
+								if ($company) {
+									$value = $company['Company_system']['id'];
+								}
+							break;
 							case 'position' :
 								$searchPosition = $this->Position->findByDescription($value);
 								if ($searchPosition) {
@@ -281,10 +315,11 @@ class EmployeesController extends AppController {
 					}
 				}
 				$employeeInfo = $employeeInfo['Profile'];
-				if (!$employee['status']) {
-					$status = ($employee['status']) === 'Inactive' ? 1 : 2;
-					$saveData['status'] = $status;
+				$status = 1;
+				if($employee['status'] === 'Active') {
+					$status = 2;
 				}
+				$saveData['status'] = $status;
 				$saveData['profile_id'] = $employeeInfo['id'];
 				$this->Employee->validationErrors = array();
 				foreach($validatedFields as $field) {
@@ -311,6 +346,7 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$employees = $this->request->data['employees'];
 			$this->loadModel('Employee');
+			$this->loadModel('Company_system');
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
 			$error_arr = array();
@@ -328,10 +364,16 @@ class EmployeesController extends AppController {
 				if ($field === 'f_time_in' || $field === 'f_time_out' || $field === 'l_time_in' || $field === 'l_time_out') {
 					$value = $this->convertTimeToDefault($value);
 				}
-				if ($field === 'position' || $field === 'position_level') {
+				if ($field === 'company_systems' || $field === 'position' || $field === 'position_level') {
 					$value = "";
 					$field = $field."_id";
 					switch($employee['field']) {
+						case 'company_systems' :
+							$company = $this->Company_system->findByName($employee['value']);
+							if ($company) {
+								$value = $company['Company_system']['id'];
+							}
+						break;
 						case 'position' :
 							$searchPosition = $this->Position->findByDescription($employee['value']);
 							if ($searchPosition) {
@@ -345,6 +387,9 @@ class EmployeesController extends AppController {
 							}
 						break;
 					}
+				}
+				if($field === 'password') {
+					$value = Security::hash($value,'sha1',true);
 				}
 				$data = array(
 							$field => $value
@@ -360,6 +405,44 @@ class EmployeesController extends AppController {
 			}
 			$json['errors'] = $error_arr;
 			echo json_encode($json);
+		}
+	}
+
+	public function updateAdditionInfo() {
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$employee = $this->request->data['employee'];
+			$data = array(
+									'tin' => $employee['tin'],
+									'drug_test' => $employee['drug_test'],
+									'medical' => $employee['medical'],
+									'pagibig' => $employee['pagibig'],
+									'sss' => $employee['sss'],
+									'philhealth' => $employee['philhealth'],
+									'insurance_id' => $employee['insurance_id'],
+									'f_time_in' => $employee['f_time_in'],
+									'f_time_out' => $employee['f_time_out'],
+									'l_time_in' => $employee['l_time_in'],
+									'l_time_out' => $employee['l_time_out'],
+									'username' => $employee['username']
+								);
+			if(isset($employee['salary'])) {
+				$data['salary'] = $employee['salary'];
+			}
+			if($employee['password'] !== 'company_default_password') {
+				$data['password'] = Security::hash($employee['password'],'sha1',true);
+			}
+			$this->Employee->id = $employee['id'];
+			$txtErrors = "";
+			if(!$this->Employee->save($data)) {
+				$errors = $this->Employee->validationErrors;
+				$x = 0 ;
+				foreach ($errors as $key => $error) {
+					$txtErrors .= ($x === 0) ? $errors[$key][0] : ",<br>".$errors[$key][0];
+					$x++;
+				}
+			}
+			echo json_encode($txtErrors);
 		}
 	}
 

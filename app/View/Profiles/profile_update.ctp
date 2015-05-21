@@ -77,7 +77,7 @@
 										'id' => 'dp3',
 										'class' => 'input-block-level',
 										'size' => 16,
-										'value' => $data['Profile']['birthdate'],
+										'value' => date("Y-m-d", strtotime($data['Profile']['birthdate'])),
 										'label' => 'Birth Date',
 										'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
 										'placeholder' => ''

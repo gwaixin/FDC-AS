@@ -50,18 +50,5 @@ class AppController extends Controller {
 				      'password' => 'password'
 				     )
 				    ))
-        ));
-	
-	// only allow the login controllers only
-	public function beforeFilter() {
-		$this->Auth->allow();
-		if($this->Session->read('fdc_ID')) {
-			$this->loadModel('Profile');
-			$profile = $this->Profile->findById($this->Session->read('fdc_ID'));
-			$profile = $profile['Profile'];
-			$name = $profile['first_name']." ".$profile['middle_name']." ".$profile['last_name'];
-			$this->Auth->user('name');
-  	}
-  }
-	
+        ));	
 }

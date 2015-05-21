@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="contract-container">
 		<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
-		<h1>Contract</h1>
+		<h1>Update Contract</h1>
 		
 <?php 
 		if(!empty($errors)){
@@ -13,8 +13,8 @@
 			}
 			echo '</div>';
 		}
-		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
 
+		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
 	 	echo $this->Form->input('position',
 						array(
 							'div' => 'control-group',
@@ -22,7 +22,7 @@
 							'class' => 'input-block-level',
 							'label' => 'Employee ID',
 						    'name' => 'employees_id',
-							'value' => '',
+							'value' => $data['employees_id'],
 							'options' => $empId,
 							'empty' => __('Select'),
 						)
@@ -38,7 +38,7 @@
 											'class' => 'input-block-level',
 											'size' => 16,
 											'label' => 'Description',
-											'value' => '',
+											'value' => $data['description'],
 											'escape' => false,
 											'placeholder' => ''
 									)
@@ -52,7 +52,7 @@
 							'class' => 'input-block-level',
 							'size' => 16,
 							'label' => 'Date Start',
-							'value' => '',
+							'value' => date('Y-m-d',strtotime($data['date_start'])),
 							'placeholder' => ''
 					)
 			);
@@ -66,7 +66,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Date End',
-		    				'value' => '',
+		    				'value' => date('Y-m-d',strtotime($data['date_end'])),
 		    				'placeholder' => ''
 		    		)
 		    );
@@ -79,7 +79,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Salary',
-		    				'value' => '',
+		    				'value' => $data['salary'],
 		    				'placeholder' => ''
 		    		)
 		    );
@@ -92,7 +92,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Deminise',
-		    				'value' => '',
+		    				'value' => $data['deminise'],
 		    				'placeholder' => ''
 		    		)
 		    );
@@ -106,7 +106,7 @@
 	   				'class' => 'input-block-level',
 	   				'size' => 16,
 	   				'label' => 'Term',
-	   				'value' => '',
+	   				'value' => $data['term'],
 	   				'placeholder' => ''
 	   		)
 	   );
@@ -119,7 +119,7 @@
 							'label' => 'Position',
 						    'name' => 'positions_id',
 							'id' => 'contract-position',
-							'value' => '',
+							'value' => $data['positions_id'],
 							'options' => $position,
 							'empty' => __('Select'),
 						)
@@ -134,22 +134,12 @@
 	   				'label' => 'Position level',
 	   				'name' => 'position_levels_id',
 	   				'id' => 'contract-position-level',
-	   				'value' => '',
+	   				'value' => $data['position_levels_id'],
 	   				'options' => $positionlevel,
 	   				'empty' => __('Select'),
 	   		)
 	   );
-	   
-	/* 	$options = array('0'=>'Active','1'=>'Inactive');
-		$attributes = array(
-				'div' => 'control-group list-container',
-				'type' => 'radio',
-				'value' => 0,
-				'class' => 'list-status', 
-				'options' => $options, 
-				'default' => 'Y'
-		);
-		echo $this->Form->input('Status',$attributes); */
+
 	    echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "/*",'style' => 'display:none;'));
 	    echo $this->Form->button('Browse File',
 	    		array(
