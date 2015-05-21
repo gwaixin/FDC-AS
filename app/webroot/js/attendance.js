@@ -62,7 +62,7 @@ $(document).ready(function () {
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
 		    height: 396,
-		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TOTAL TIME", "STATUS"],
+		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TIME RENDER", "STATUS"],
 		    rowHeaders: true,
 		    stretchH: 'all',
 		    columnSorting: true,

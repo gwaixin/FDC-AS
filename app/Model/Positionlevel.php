@@ -4,8 +4,14 @@ class Positionlevel extends AppModel {
 	public $useTable = 'position_levels';
 	public $validate = array(
 			'description' => array(
-				'rule' => 'notEmpty'
-			),
+ 				'Rule-1' => array(
+					'rule' => 'notEmpty',
+ 					'message' => 'Position level description must not be empty.'
+				), 'Rule-2' => array(
+					'rule'	=> 'alphaNumeric',
+					'message' => 'Position level cannot contain special characters.'
+ 				)
+ 			),
 			'positions_id' => array(
 				'rule' => 'numeric'
 			)
