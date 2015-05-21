@@ -26,7 +26,6 @@
 	</title>
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<?php
-
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('twitter-bootstrap.min');
 		echo $this->Html->css('datepicker');

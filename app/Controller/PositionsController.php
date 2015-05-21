@@ -92,4 +92,27 @@ class PositionsController extends AppController {
 			echo json_encode($result);
 		}
 	}
+	
+	public function viewPositionList() {
+		if ($this->request->is('Ajax')) {
+			$this->autoRender = false;
+			$position = $this->Position->find('all', array(
+					'conditions' => array(
+						'Position.status' => '2'
+					),
+					'fields' => array('id', 'description')
+				)
+			);
+			$option = '';
+			if ($position) {
+				foreach($position as $p) {
+					$option .= "<option value='".$p['Position']['id']."'> {$p['Position']['description']} </option>";
+				}
+				$result = array('success', $option);
+			} else {
+				$result = array('fail', 'No Position Found');
+			}
+			echo json_encode($result);
+		}
+	}
 }

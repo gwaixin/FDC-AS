@@ -102,6 +102,11 @@
 						$('.'+ name +'-notice').html(data['message']);
 						$('.'+ name +'-notice').fadeIn(500);
 						if (name == 'position') {
+							$.post(webroot+'Positions/viewPositionList', {}, function(data) {
+								if (data[0] == 'success') {
+									$('#PositionlevelPositionsId').html(data[1]);
+								}
+							}, 'JSON');
 							reset();
 						} else {
 							resetPLevel();

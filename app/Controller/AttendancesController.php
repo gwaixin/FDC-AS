@@ -52,7 +52,9 @@ class AttendancesController extends AppController {
 			
 				$firstLog 	= $this->totalDifference($ftimein, $ftimeout);
 				$lastLog 	= $this->totalDifference($ltimein, $ltimeout);
-				$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
+				//$totalTime 	= $this->Attendance->sumTime($firstLog['time'], $lastLog['time']);
+				
+				
 				$getStat 	= $employee['attendances']['status'] ? $employee['attendances']['status'] : 0;
 				$status 	= $statusArr[$getStat];
 				
@@ -63,9 +65,14 @@ class AttendancesController extends AppController {
 						'f_time_out' 	=>	$ftimeout,
 						'l_time_in' 	=>	$ltimein,
 						'l_time_out' 	=>	$ltimeout,
-						'total_time'	=>  $totalTime,
+						'total_time'	=>  $employee['attendances']['render_time'],
+						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
-						'id'			=>	$employee['attendances']['id']
+						'id'			=>	$employee['attendances']['id'],
+						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
+						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
+						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
+						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
 				);
 				array_push($employees_arr, $data);
 			}
@@ -121,17 +128,13 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$firstLog 	= $this->totalDifference($data['ftimein'], $data['ftimeout']);
-			$lastLog 	= $this->totalDifference($data['ltimein'], $data['ltimeout']);
-			$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
-			$hr 	= str_pad(($firstLog['h']+$lastLog['h']), 2, "0", STR_PAD_LEFT);
-			$min 	= str_pad(($firstLog['m']+$lastLog['m']), 2, "0", STR_PAD_LEFT);
-			$sec 	= str_pad(($firstLog['s']+$lastLog['s']), 2, "0", STR_PAD_LEFT);
-			
-			$this->Attendance->updatePresentTime($data['id'], "$hr:$min:$sec");
+			$totalTime = $this->Attendance->updateTime($data);
 			$stat = $this->Attendance->checkStat($data);
+			$overtime = $this->Attendance->getOT($data['id']);
+			$this->Attendance->saveTime($data['id'], array('over_time', $overtime));
+			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
 			//echo $totalTime;
-			echo json_encode(array('total' => $totalTime, 'stat' => $stat));
+			echo json_encode(array('total' => $totalTime, 'stat' => $stat, 'ot' => $overtime));
 		}
 	}
 	
@@ -188,6 +191,10 @@ class AttendancesController extends AppController {
 		
 		$selectFields = array(
 				'Employee.employee_id',
+				'Employee.f_time_in',
+				'Employee.f_time_out',
+				'Employee.l_time_in',
+				'Employee.l_time_out',
 				'profiles.first_name',
 				'profiles.last_name',
 				'profiles.middle_name',
@@ -196,7 +203,9 @@ class AttendancesController extends AppController {
 				'attendances.l_time_in',
 				'attendances.l_time_out',
 				'attendances.status',
-				'attendances.id'
+				'attendances.id',
+				'attendances.over_time',
+				'attendances.render_time'
 		);
 		$employees = $this->Employee->find('all',
 				array(
@@ -230,13 +239,16 @@ class AttendancesController extends AppController {
 		return $totalTime;
 	}
 	
+	/*
 	private function computeTotalTime($first, $last) {
 		$totalH = ($first['h'] + $last['h']) ? ($first['h'] + $last['h']) . ' hrs': '';
 		$totalM = ($first['m'] + $last['m']) ? ($first['m'] + $last['m']) . ' min': '';
 		$totalS = ($first['s'] + $last['s']) ? ($first['s'] + $last['s']) . ' sec': '';
 		$totalTime = $totalH . ' ' . $totalM . ' ' . $totalS;
 		return $totalTime;
-	}
+	}*/
+	
+	
 	
 	/*private function hasAttendance($date) {
 		$attendance = $this->Attendance->find('first', array(

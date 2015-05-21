@@ -59,7 +59,6 @@ class Attendance extends AppModel {
 			);
 			array_push($attendance, $data);
 		}
-	
 		if ($this->saveAll($attendance)) {
 			return 'SUCCESS';
 		} else {
@@ -67,12 +66,44 @@ class Attendance extends AppModel {
 		}
 	}
 	
-	public function updatePresentTime($id, $time) {
+	public function saveTime($id, $fieldData) {
 		$this->read(null, $id);
-		$this->set('present_time', $time);
+		$this->set($fieldData[0], $fieldData[1]);
 		if ($this->save()) {
  			return true;
  		}
+	}
+	public function updateTime($data) {
+		$eData = $this->getEmployeeDetail($data['id']);
+		
+		$col = array('f_time_in', 'f_time_out', 'l_time_in', 'l_time_out');
+		$attendance = array();
+		foreach($col as $c) {
+			$eEmp = $eData['Attendance']['date'] . ' ' . $eData['e'][$c];
+			if ($c == 'f_time_out' || $c == 'l_time_out') {
+				$con = strtotime($data[$c]) > strtotime($eEmp);
+			} else {
+				$con = strtotime($data[$c]) < strtotime($eEmp);
+			}
+			if ($this->valDateTimeFormat($data[$c])) {
+				$attendance[] = ($con) ? $eEmp : $data[$c];
+			} else {
+				$attendance[] = 0;
+			}
+		}
+		
+		$firstLog 	= $this->totalDifference($attendance[0], $attendance[1]);
+		$lastLog 	= $this->totalDifference($attendance[2], $attendance[3]);
+		
+		
+		
+		$totalTime 	= $this->sumTime($firstLog['time'], $lastLog['time']);
+		
+		/*$hr 	= timePadding(($firstLog['h']+$lastLog['h']));
+		$min 	= timePadding(($firstLog['m']+$lastLog['m']));
+		$sec 	= timePadding(($firstLog['s']+$lastLog['s']));*/
+		
+		return $totalTime;
 	}
 	
 	public function checkStat($d) {
@@ -89,22 +120,29 @@ class Attendance extends AppModel {
 						'e.f_time_out',
 						'e.l_time_in',
 						'e.l_time_out',
-						'Attendance.status'
+						'Attendance.status',
+						'Attendance.total_time',
+						'Attendance.render_time'
 				),
 				'joins' => $join
 		));
 		$stat = $data['Attendance']['status'];
 		$eTimeIn = strtotime($data['e']['f_time_in']);
-		$cTimeIn = strtotime($d['ftimein']);
+		$cTimeIn = strtotime($d['f_time_in']);
 		$eTimeOut = strtotime($data['e']['f_time_out']);
-		$cTimeOut = strtotime($d['ftimeout']);
+		$cTimeOut = strtotime($d['f_time_out']);
 		
 		$eLTimeIn = strtotime($data['e']['l_time_in']);
-		$cLTimeIn = strtotime($d['ltimein']);
+		$cLTimeIn = strtotime($d['l_time_in']);
 		$eLTimeOut = strtotime($data['e']['l_time_out']);
-		$cLTimeOut = strtotime($d['ltimeout']);
+		$cLTimeOut = strtotime($d['l_time_out']);
 		
-		if ($cTimeIn > $eTimeIn) {
+		$cTotalTime = strtotime($data['Attendance']['total_time']);
+		$cRenderTime = strtotime($data['Attendance']['render_time']);
+		
+		if ($cRenderTime < $cTotalTime) {
+			$stat = 4;
+		} else if ($cTimeIn > $eTimeIn) {
 			$stat = 3;
 		} else if ($cTimeIn <= $eTimeIn) {
 			$stat = 1;
@@ -118,42 +156,136 @@ class Attendance extends AppModel {
 		return $stat;
 	}
 	
+	public function getOT($id) {
+		$join = array(
+				array(
+						'table' => 'employees as e',
+						'conditions' => array('e.id = Attendance.employees_id')
+				)
+		);
+		
+		$data = $this->find('first', array(
+				'fields' => array(
+						'e.f_time_out',
+						'e.l_time_out',
+						'Attendance.f_time_out',
+						'Attendance.date'
+				),
+				'joins' => $join,
+				'conditions' => array('Attendance.id' => $id)
+		));
+		
+		
+		$ot = '00:00:00';
+		$lastOut = $data['Attendance']['date'] . ' ' . $data['e']['f_time_out'];
+		$present = $data['Attendance']['f_time_out'];
+		if (strtotime($lastOut) < strtotime($present)) {
+			$diff = $this->totalDifference($lastOut, $present);
+			$ot = $diff['time'];
+		}
+		//$ot = "$lastOut - $present";
+		return $ot;
+	}
+	
+	public function sumTime($time1, $time2) {
+		if (!empty($time1) || !empty($time2)) {
+			$times = array($time1, $time2);
+			$seconds = 0;
+			foreach ($times as $time)
+			{
+				if (!empty($time)) {
+					$timeArr = explode(':', $time);
+					$seconds += $timeArr[0]*3600;
+					$seconds += $timeArr[1]*60;
+					$seconds += $timeArr[2];
+				}
+			}
+			$hours = floor($seconds/3600);
+			$seconds -= $hours*3600;
+			$minutes  = floor($seconds/60);
+			$seconds -= $minutes*60;
+			// return "{$hours}:{$minutes}:{$seconds}";
+			return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds); // Thanks to Patrick
+		}
+	}
+	
 	//private
 	private function getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout) {
 		$first 	= $this->totalDifference($fTimein, $fTimeout);
 		$last 	= $this->totalDifference($lTimein, $lTimeout);
 		if ($this->verifyTimeFormat($last['time'])) {
-			$total = $this->totalDifference($first["time"], $last["time"]);
+			$total = $this->sumTime($last['time'], $first['time']); //$this->totalDifference($first["time"], $last["time"]);
 		} else if($this->verifyTimeFormat($first['time'])) {
 			$total = $first["time"];
 		} else {
-			$total = "00:00:00";
+			$total = $fTimein . '@' . $fTimeout;
 		}
+		/*echo "$fTimein - $fTimeout -  $lTimein - $lTimeout @ ";
+		echo "{$first['time']} - {$last['time']} @ ";
+		echo "$total";
+		exit();*/
 		return $total;
 	}
 	
 	private function totalDifference($timeA, $timeB) {
 		$totalTime = 0;
-		if ($this->verifyTimeFormat($timeA) && $this->verifyTimeFormat($timeB)) {
+		if (
+			($this->valDateTimeFormat($timeA) && $this->valDateTimeFormat($timeB)) ||
+			($this->verifyTimeFormat($timeA) && $this->verifyTimeFormat($timeB))
+		) {
 			$to_time 	= new DateTime($timeA);
 			$from_time 	= new DateTime($timeB);
 			$diff 		= $from_time->diff($to_time);
-			$hours 		= str_pad($diff->format('%h'), 2, "0", STR_PAD_LEFT);
-			$mins 		= str_pad($diff->format('%i'), 2, "0", STR_PAD_LEFT);
-			$sec 		= str_pad($diff->format('%s'), 2, "0", STR_PAD_LEFT);
+			$hours 		= $this->timePadding($diff->format('%h'));
+			$mins 		= $this->timePadding($diff->format('%i'));
+			$sec 		= $this->timePadding($diff->format('%s'));
 			$totalTime 	= array(
 					"time" 	=> "$hours:$mins:$sec",
 					"h" 	=> $hours,
 					"m" 	=> $mins,
-					"s" => $sec
+					"s" 	=> $sec
 			);
 		}
 		return $totalTime;
 	}
-	private function verifyTimeFormat($value) {
-		$pattern1 = '/^(0?\d|1\d|2[0-3]):[0-5]\d:[0-5]\d$/';
-		$pattern2 = '/^(0?\d|1[0-2]):[0-5]\d\s(am|pm)$/i';
-		return preg_match($pattern1, $value) || preg_match($pattern2, $value);
+	public function verifyTimeFormat($value) {
+		if (!empty($value)) {
+			$pattern1 = '/^(0?\d|1\d|2[0-3]):[0-5]\d:[0-5]\d$/';
+			$pattern2 = '/^(0?\d|1[0-2]):[0-5]\d\s(am|pm)$/i';
+			return preg_match($pattern1, $value) || preg_match($pattern2, $value);
+		} else {
+			return false;
+		}
+	}
+	private function valDateTimeFormat($value) {
+		$pattern = '(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})';
+		return preg_match($pattern, $value);
+	}
+	
+	private function timePadding($val) {
+		return str_pad($val, 2, "0", STR_PAD_LEFT);
+	}
+	
+	private function getEmployeeDetail($id, $condtion = "") {
+		$join = array(
+				array(
+						'table' => 'employees as e',
+						'conditions' => array('e.id = Attendance.employees_id')
+				)
+		);
+		$data = $this->find('first', array(
+				'fields' => array(
+						'e.f_time_in',
+						'e.f_time_out',
+						'e.l_time_in',
+						'e.l_time_out',
+						'Attendance.status',
+						'Attendance.date'
+				),
+				'joins' => $join,
+				'conditions' => array('Attendance.id' => $id)
+		));
+		return $data;
 	}
 }
 ?>

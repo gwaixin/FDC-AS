@@ -79,32 +79,55 @@ class EmployeesController extends AppController {
 			$employees_arr = array();
 			foreach($employees as $key => $employee) {
 			$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
-				$data = array(
-										'id' => $employee['Employee']['id'],
-										'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
-										'employee_id' => $employee['Employee']['employee_id'],
-										'company_systems' => $employee['company_systems']['name'],
-										'username' => $employee['Employee']['username'],
-										'password' => $employee['Employee']['password'],
-										'tin' => $employee['Employee']['tin'],
-										'salary' => $employee['Employee']['salary'],
-										'drug_test' => $employee['Employee']['drug_test'],
-										'pagibig' => $employee['Employee']['pagibig'],
-										'philhealth' => $employee['Employee']['philhealth'],
-										'medical' => $employee['Employee']['medical'],
-										'sss' => $employee['Employee']['sss'],
-										'insurance_id' => $employee['Employee']['insurance_id'],
-										'position' => $employee['positions']['description'],
-										'position_level' => $employee['position_levels']['description'],
-										'contract' => $employee['contract_logs']['description'],
-										'f_time_in' => $this->convertTimeToMilitary($employee['Employee']['f_time_in']),
-										'f_time_out' => $this->convertTimeToMilitary($employee['Employee']['f_time_out']),
-										'l_time_in' => $this->convertTimeToMilitary($employee['Employee']['l_time_in']),
-										'l_time_out' => $this->convertTimeToMilitary($employee['Employee']['l_time_out']),
-										'role' => $employee['Employee']['role'],
-										'status' => $status
-									);
-				array_push($employees_arr,$data);
+			$schedule = "00:00 - 00:00";
+			if(($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) && ($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_out']))) {
+				$schedule = $this->convertTimeToMilitary($employee['Employee']['f_time_in'])." - ".$this->convertTimeToMilitary($employee['Employee']['l_time_out']);
+			} else if(($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) && ($employee['Employee']['f_time_out'] !== '00:00:00' && $employee['Employee']['f_time_out'])) {
+				$schedule = $this->convertTimeToMilitary($employee['Employee']['f_time_in'])." - ".$this->convertTimeToMilitary($employee['Employee']['f_time_out']);
+			}
+			$f_time_in = "";
+			if($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) {
+				$f_time_in = $employee['Employee']['f_time_in'];
+			}
+			$f_time_out = "";
+			if($employee['Employee']['f_time_out'] !== '00:00:00' && !empty($employee['Employee']['f_time_out'])) {
+				$f_time_out = $employee['Employee']['f_time_out'];
+			}
+			$l_time_in = "";
+			if($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_in'])) {
+				$l_time_in = $employee['Employee']['l_time_in'];
+			}
+			$l_time_out = "";
+			if($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_out'])) {
+				$f_time_in = $employee['Employee']['l_time_out'];
+			}
+			$data = array(
+									'id' => $employee['Employee']['id'],
+									'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
+									'employee_id' => $employee['Employee']['employee_id'],
+									'company_systems' => $employee['company_systems']['name'],
+									'username' => $employee['Employee']['username'],
+									'password' => $employee['Employee']['password'],
+									'tin' => $employee['Employee']['tin'],
+									'salary' => $employee['Employee']['salary'],
+									'drug_test' => $employee['Employee']['drug_test'],
+									'pagibig' => $employee['Employee']['pagibig'],
+									'philhealth' => $employee['Employee']['philhealth'],
+									'medical' => $employee['Employee']['medical'],
+									'sss' => $employee['Employee']['sss'],
+									'insurance_id' => $employee['Employee']['insurance_id'],
+									'position' => $employee['positions']['description'],
+									'position_level' => $employee['position_levels']['description'],
+									'contract' => $employee['contract_logs']['description'],
+									'schedule' => $schedule,
+									'f_time_in' => $this->convertTimeToMilitary($f_time_in),
+									'f_time_out' => $this->convertTimeToMilitary($f_time_out),
+									'l_time_in' => $this->convertTimeToMilitary($l_time_in),
+									'l_time_out' => $this->convertTimeToMilitary($l_time_out),
+									'role' => $employee['Employee']['role'],
+									'status' => $status
+								);
+			array_push($employees_arr,$data);	
 			}
 			if (!$employees_arr) {
 				$data = array(
@@ -125,6 +148,7 @@ class EmployeesController extends AppController {
 										'position' => null,
 										'position_level' => null,
 										'contract' => null,
+										'schedule' => null,
 										'f_time_in' => null,
 										'f_time_out' => null,
 										'l_time_in' => null,
@@ -139,7 +163,7 @@ class EmployeesController extends AppController {
 	}
 
 	public function convertTimeToMilitary($time = '') {
-		if ($time) {
+		if (!empty($time) && $time !== '00:00:00') {
 			$this->autoRender = false;
 			$split_time = split(':',$time);
 			$hours = (int)$split_time[0];
@@ -156,6 +180,8 @@ class EmployeesController extends AppController {
 			}
 			$time = $hours.':'.$minutes.' '.$period;
 			return $time;
+		} else {
+			return '';
 		}
 	}
 
@@ -246,6 +272,29 @@ class EmployeesController extends AppController {
 				array_push($level_arr,$level['Position_level']['description']);
 			}
 			return $level_arr;
+	}
+
+	public function getPositionLevels() {
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->loadModel('Position');
+			$this->loadModel('Position_level');
+			$position = 0;
+			$searchPosition = $this->Position->findByDescription($this->request->data['position']);
+			if($searchPosition) {
+				$position = $searchPosition['Position']['id'];
+			}
+			$level_arr = array();
+			$levels = $this->Position_level->find('all',array(
+																										'conditions' => "positions_id = '$position'",
+																										'fields' => array('distinct(description)')
+																										)
+																									);
+			foreach($levels as $level) {
+				array_push($level_arr,$level['Position_level']['description']);
+			}
+			echo json_encode($level_arr);
+		}
 	}
 
 	public function validateFields() {
@@ -381,9 +430,15 @@ class EmployeesController extends AppController {
 							}
 						break;
 						case 'position_level' :
-							$searchPositionLevel = $this->Position_level->findByPositions_idAndDescription(1,$employee['value']);
-							if ($searchPositionLevel) {
-								$value = $searchPositionLevel['Position_level']['id'];
+							$position = 0;
+							$value = 'NULL';
+							$searchPosition = $this->Position->findByDescription($employee['position']);
+							if ($searchPosition) {
+								$position = $searchPosition['Position']['id'];
+								$searchPositionLevel = $this->Position_level->findByPositions_idAndDescription($position,$employee['value']);
+								if ($searchPositionLevel) {
+									$value = $searchPositionLevel['Position_level']['id'];
+								}
 							}
 						break;
 					}
@@ -394,8 +449,11 @@ class EmployeesController extends AppController {
 				$data = array(
 							$field => $value
 						);
+				
 				$this->Employee->id = $employee['id'];
-				if(!$this->Employee->save($data)) {
+				if($field === 'position_level_id' && $value === 'NULL') {
+					$this->Employee->saveField('position_level_id', null);
+				} else if(!$this->Employee->save($data)) {
 					array_push($error_arr,array(
 															'field' => $field,
 															'value' => $value
@@ -420,10 +478,10 @@ class EmployeesController extends AppController {
 									'sss' => $employee['sss'],
 									'philhealth' => $employee['philhealth'],
 									'insurance_id' => $employee['insurance_id'],
-									'f_time_in' => $employee['f_time_in'],
-									'f_time_out' => $employee['f_time_out'],
-									'l_time_in' => $employee['l_time_in'],
-									'l_time_out' => $employee['l_time_out'],
+									'f_time_in' => $this->convertTimeToDefault($employee['f_time_in']),
+									'f_time_out' => $this->convertTimeToDefault($employee['f_time_out']),
+									'l_time_in' => $this->convertTimeToDefault($employee['l_time_in']),
+									'l_time_out' => $this->convertTimeToDefault($employee['l_time_out']),
 									'username' => $employee['username']
 								);
 			if(isset($employee['salary'])) {

@@ -8,7 +8,7 @@ class Position extends AppModel{
 					'rule' => 'notEmpty',
  					'message' => 'Position description must not be empty.'
 				), 'Rule-2' => array(
-					'rule'	=> 'alphaNumeric',
+					'rule'	=> '/^[a-z\d\-_\s]+$/i',
 					'message' => 'Position cannot contain special characters.'
  				)
  			)
