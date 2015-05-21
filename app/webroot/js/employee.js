@@ -5,14 +5,15 @@ var selectedIndex = 0;
 var rightClicked = false;
 var timer = null;
 var hot = null;
+var advancedData = [];
 $(document).ready(function () {
 
 	var selected_row = null;
 	var selected_cell = null;
 	var dropdownIndex = 0;
-	var advancedData = [];
 	var selectedTimeCell;
 	var names = [];
+	var positionLevelDropdown = null;
 
 	var searchValue = "";
 	var companies = [];
@@ -34,8 +35,10 @@ $(document).ready(function () {
 				$("#btn-submit").val('Edit');
 				$("#additional-info-container #txt-errors").html("");
 				$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
-				$("#additional-info-container input:not(#salary)").attr('disabled','disabled');
+				$("#additional-info-container input:not(#salary):not(#l_time_in):not(#l_time_out)").attr('disabled','disabled');
 				$("#additional-info-container select").attr('disabled','disabled');
+				$("#edit-last-timein").attr('disabled','disabled');
+				$("#edit-last-timeout").attr('disabled','disabled');
 				for(var x in $("#additional-info-container input")) {
 					if(!isNaN(parseFloat(x)) && isFinite(x)) {
 						var input = $("#additional-info-container input")[x];
@@ -49,13 +52,37 @@ $(document).ready(function () {
 
 	$("#btn-submit").click(function() {
 		if($("#btn-submit").val() === 'Edit') {
-			$("#additional-info-container input:not(#salary)").removeAttr('disabled');
+			$("#additional-info-container input:not(#salary):not(#l_time_in):not(#l_time_out)").removeAttr('disabled');
 			$("#additional-info-container select").removeAttr('disabled');
+			$("#edit-last-timein").removeAttr('disabled');
+				$("#edit-last-timeout").removeAttr('disabled');
 			$("#btn-submit").val('Save');
 		} else {
 			var default_password = "company_default_password";
 			var records = [];
 			updateAdditionalInfo(selectedIndex);
+		}
+	});
+
+	$("#edit-last-timein").click(function(){
+		if($("#edit-last-timein").html().trim() === 'Edit') {
+			$("#l_time_in").removeAttr('disabled');
+			$("#edit-last-timein").html('Cancel');
+		} else {
+			$("#l_time_in").val("");
+			$("#l_time_in").attr('disabled','disabled');
+			$("#edit-last-timein").html('Edit');
+		}
+	});
+
+	$("#edit-last-timeout").click(function(){
+		if($("#edit-last-timeout").html().trim() === 'Edit') {
+			$("#l_time_out").removeAttr('disabled');
+			$("#edit-last-timeout").html('Cancel');
+		} else {
+			$("#l_time_out").val("");
+			$("#l_time_out").attr('disabled','disabled');
+			$("#edit-last-timeout").html('Edit');
 		}
 	});
 
@@ -153,6 +180,48 @@ $(document).ready(function () {
 		}
 	});
 
+	$(document).click(function(e) {
+		var target = e.target;
+		//console.log(positionLevelDropdown + ' === null && ' + target.className.match('current') + ' && ' + $("#table-employees textarea").length + ' > 1');
+		var textareaExists = false;
+		if(positionLevelDropdown === null && target.className.match('current') && $("#table-employees textarea").length > 1) {
+			appendPositionLevelDropdown();
+		}
+		if(positionLevelDropdown !== null && target.className.match('current')) {
+			if(e.target.className.match('position-level')) {
+				$("#table-employees textarea").css('display','none');
+				$("#table-employees select").css({'display':'block',
+																					 'height':$("#table-employees .position-level").height(),
+																					 'width':$("#table-employees .position-level").width()+10
+																					});
+				$("#table-employees textarea").blur();
+			} else {
+				$("#table-employees textarea").css('display','block');
+				$("#table-employees select").css('display','none');
+			}
+			if(hot.getSelectedRange().to.col === 4) {
+				refreshPositionLevel(advancedData[hot.getSelectedRange().to.row].position);
+			}
+		}
+	});
+
+	function appendPositionLevelDropdown() {
+		var options = '<option value="">Positon Level</option>';
+			$("#table-employees textarea").after("<select id='position-level'>"+options+"</select>");
+			$("#table-employees select").css('display','none');
+			positionLevelDropdown = "";
+			$("#table-employees select").change(function(){
+				advancedData[hot.getSelectedRange().to.row].position_level = $("#table-employees select").val();
+				$("#table-employees textarea").val($("#table-employees select").val());
+				var index = hot.getSelectedRange().to.row;
+				hot.getCell(index,5).innerHTML = $("#table-employees select").val();
+				hot.selectCell(index,4);
+				var data = [];
+				data[0] = {'id':advancedData[index],'field':'position_level','position':advancedData[index],'value':$("#table-employees select").val()};
+				$.post(baseUrl+"employees/saveAll",{'employees':data});
+			});
+	}
+
 	$("#txt-search").keypress(function(e) {
 		if (e.keyCode === 13) {
 			searchValue = $(this).val();
@@ -169,7 +238,7 @@ $(document).ready(function () {
 				advancedData = data;
 				displayEmployees();
 
-		},'JSON')
+		},'JSON');
 	}
 
 
@@ -233,11 +302,34 @@ $(document).ready(function () {
 					for(var x = 0 ; x < inputs.length ; x++) {
 						advancedData[selectedIndex][inputs[x].name] = inputs[x].value;
 					}
+					if($("#f_time_in").val().length > 0 && $("#l_time_out").val().length > 0) {
+						advancedData[selectedIndex].schedule = $("#f_time_in").val()+" - "+$("#l_time_out").val();
+					} else if($("#f_time_in").val().length > 0 && $("#f_time_out").val().length > 0) {
+						advancedData[selectedIndex].schedule = $("#f_time_in").val()+" - "+$("#f_time_out").val();
+					} else {
+						advancedData[selectedIndex].schedule = "";
+					}
+					hot.getCell(0,6).innerHTML = advancedData[selectedIndex].schedule;
 					advancedData['drug_test'] = $("#drug_test").val();
 					$("#drug_test").val("company_default_password");
 					alert("Successfully updated employee info");
 				}
 			},'JSON');
+	}
+
+	function refreshPositionLevel(position) {
+		$.post(baseUrl+"employees/getPositionLevels",{position:position},
+					function(data){
+						$("#table-employees select").html("");
+						var options = '<option value="">Position Level</option>';
+						if(data.length !== 'undefined') {
+							for(var x in data) {
+								options += '<option value="'+data[x]+'">'+data[x]+'</option>';
+							}
+						}
+						$("#table-employees select").html(options);
+						$("#table-employees select").val(advancedData[hot.getSelectedRange().to.row].position_level);
+					},'JSON');
 	}
 
 
@@ -247,7 +339,7 @@ $(document).ready(function () {
 				callback(true);
 			} else if (value.length === 0) {
 				callback(true);
-			} else if (value.match(/([a-zA-z]{2,})-([0-9]{5,})/)) {
+			} else if (value.match(/[0-9a-zA-Z-]{5,}/)) {
 		        callback(true);
 		    } else {
 		    	callback(false);
@@ -276,7 +368,7 @@ $(document).ready(function () {
 				callback(true);
 			} else if (value.length === 0) {
 				callback(true);
-			} else if (value.match(/([0-9]{2,})-([0-9]{2,})/)) {
+			} else if (value.match(/[0-9]{6,}/)) {
 		        callback(true);
 		    } else {
 		    	callback(false);
@@ -351,7 +443,7 @@ $(document).ready(function () {
     height: 396,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Name","Employee ID", "Company","Position","Position Level","Contract", "Role", "Status"],
+    colHeaders: ["Name","Employee ID", "Company","Position","Position Level","Contract", "Schedule", "Role", "Status"],
     rowHeaders: true,
     stretchH: 'all',
     columnSorting: true,
@@ -378,10 +470,11 @@ $(document).ready(function () {
 	      },
 	      {
 	      	data: 'position_level', 
-	      	type: 'dropdown',
-	      	source: positionLevels
+	      	type: 'text',
+	      	className: 'position-level current htCenter htMiddle'
 	      },
 	      {data: 'contract', type: 'text'},
+	      {data: 'schedule', type: 'text', readOnly: true},
 	      {data: 'role', type: 'text'},
 	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
 	  	  ]
@@ -394,6 +487,14 @@ $(document).ready(function () {
 		hot.addHook('afterChange',function(data) {
 
 			updateAll(data);
+			if(data[0][1] === 'position' && data[0][2] !== data[0][3]) {
+				var index = data[0][0];
+				refreshPositionLevel(advancedData[index].position);
+				advancedData[index].position_level = "";
+				hot.getCell(index,4).innerHTML = "";
+				data[0] = {'id':advancedData[index].id,'field':'position_level','position':advancedData[index].position,'value':''};
+				$.post(baseUrl+"employees/saveAll",{'employees':data});
+			}
 
 		});
 		hot.addHook('beforeRemoveRow',function(e) {

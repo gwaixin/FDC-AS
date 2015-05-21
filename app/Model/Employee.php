@@ -8,7 +8,7 @@ class Employee extends AppModel {
 	public $validate = array(
         'employee_id' => array(
             'Rule-1' => array(
-                'rule' => '/([a-zA-z]{2,})-([0-9]{5,})/'
+                'rule' => '/[0-9a-zA-Z-]{5,}/'
             ),
             'Rule-2' => array(
                 'rule' => 'isUnique'
@@ -38,7 +38,7 @@ class Employee extends AppModel {
             'rule' => 'notEmpty'
          ),
         'tin' => array(
-            'rule' => '/([0-9]{4,})/',
+            'rule' => '/[0-9]{4,}/',
             'message' => 'Invalid Tin No'
          ),
         'salary' => array(
@@ -49,11 +49,11 @@ class Employee extends AppModel {
             'message' => 'Invalid Drug Test'
          ),
         'pagibig' => array(
-            'rule' => '/([0-9]{2,})-([0-9]{2,})/',
+            'rule' => 'ValidCode',
             'message' => 'Invalid Pagibig No'
         ),
         'philhealth' => array(
-            'rule' => '/([0-9]{2,})-([0-9]{2,})/',
+            'rule' => 'ValidCode',
             'message' => 'Invalid Philhealth No'
         ),
         'medical' => array(
@@ -61,11 +61,11 @@ class Employee extends AppModel {
             'message' => 'Medical result is required'
         ),
         'sss' => array(
-            'rule'=> '/([0-9]{2,})-([0-9]{2,})/',
+            'rule'=> 'ValidCode',
             'message' => 'Invalid SSS No'
         ),
         'insurance_id' => array(
-            'rule'=> '/([0-9]{2,})-([0-9]{2,})/',
+            'rule'=> 'ValidCode',
             'message' => 'Invalid Insurance ID'
         ),
         'position_id' => array(
@@ -82,19 +82,17 @@ class Employee extends AppModel {
             'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
             'message' => 'Invalid Time Format'
          ),
-        'l_time_in' => array(
-            'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time Format'
-         ),
-        'l_time_out' => array(
-            'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time Format'
-         ),
         'status' => array(
             'rule' => 'numeric'
         )
     );
-
+    
+    public function ValidCode($check) {
+       foreach($check as $key => $value) {
+        $value = $check[$key];       
+       }
+        return preg_match('/[0-9]{5,}/', $value) || preg_match('/[0-9-]{6,}/', $value);
+    }
     public function validDrugTest($check) {
         $value = $check['drug_test'];
         return strtolower($value) === "passed" || strtolower($value) === "failed";
