@@ -1,17 +1,14 @@
-
-
-
 var selected_row = null;
 var list = [];
 var hot;
 var focusElem;
 var rowIndex;
 var colClass;
-
+var statusArr;
 
 $(document).ready(function () {
 	$('#time-in').timepicker({defaultTime : false});
-	var currentDate = isDateTime($('#date').val()) ? $('#date').val() : "<?php echo date('Y-m-d H:i:s');?>"; 
+	var currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
 	
 	
 	var htTextarea;
@@ -58,11 +55,11 @@ $(document).ready(function () {
 	
 	function attendanceList() {
 		$('#employee-attendance').html('');
-		var statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
+		statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
 		    height: 396,
-		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TOTAL TIME", "STATUS"],
+		    colHeaders: ["ID", "NAME", "First Timein", "First Timeout", "Last Timein", "Last timeout", "TIME RENDER", "STATUS"],
 		    rowHeaders: true,
 		    stretchH: 'all',
 		    columnSorting: true,
@@ -227,7 +224,7 @@ $(document).ready(function () {
 		todayHighlight: 1,
 		startView: 1,
 		minView: 0,
-		maxView: 1,
+		maxView: 1
 	}).on('changeDate', function(ev){
     	$('#datetimepicker').blur();
     	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
@@ -237,15 +234,21 @@ $(document).ready(function () {
 
     
 	
+	
 });
 		
+
+function changeStat(stat) {
+	hot.setDataAtRowProp(0, 'status', statusArr[stat]);
+}
+
 function getTotalTime() {
 	
 	var ftimein 	= list[rowIndex]['f_time_in'];
 	var ftimeout 	= list[rowIndex]['f_time_out'];
 	var ltimein 	= list[rowIndex]['l_time_in'];
 	var ltimeout 	= list[rowIndex]['l_time_out'];
-	
+	var id 			= list[rowIndex]['id'];
 	if ( 
 		(isDateTime(ftimein) && isDateTime(ftimeout)) ||
 		(isDateTime(ltimein) && isDateTime(ltimeout))
@@ -256,6 +259,7 @@ function getTotalTime() {
 		formData.append('ftimeout', ftimeout);
 		formData.append('ltimein', ltimein);
 		formData.append('ltimeout', ltimeout);
+		formData.append('id', id);
 		//console.log(ftimein + ":" + ftimeout + ":" + ltimein + ":" + ltimeout);
 		$.ajax({
 			url			: 	webroot + 'attendances/getTotalTime',
@@ -263,9 +267,12 @@ function getTotalTime() {
 			processData	:	false,
 			contentType	:	false,
 			type		: 	'POST',
+			dataType	:	'JSON',
 			success		:	function(data) {
 				console.log(data);
-				focusElem.siblings('.total_time').html(data);
+				focusElem.siblings('.status').html(statusArr[data['stat']]);
+				focusElem.siblings('.total_time').html(data['total']);
+				
 			}
 		});
 	} else {

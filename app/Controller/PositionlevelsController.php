@@ -38,7 +38,8 @@ class PositionlevelsController extends AppController {
 							'joins'			=> $join,
 							'conditions' 	=> array(
 									//'Positionlevel.positions_id =' => $data['positions_id'],
-									'Positionlevel.description like' => "%{$data['description']}%"
+									'Positionlevel.description like' => "%{$data['description']}%",
+									'Positionlevel.status = 2'
 							)
 					)
 			);
@@ -83,29 +84,15 @@ class PositionlevelsController extends AppController {
 		if ($this->request->is('Ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$this->Positionlevel->id = $data['Positionlevel']['id'];
+			
+			$posLvlId = $data['Positionlevel']['id'];
 			
 			$this->loadModel('Employee');
 			
-			//pr($employee);
-			//exit();
-			
-			$data['Employee'] = array('position_level_id' => 0);
-			$this->Employee->position_level_id = $this->Positionlevel->id;
-			if ($this->Employee->save($data)) {
-				//echo 'success';
-			} else {
-				//echo 'faile';
-			}
-			
-			
-			
 			$result = array();
-			if ($this->Positionlevel->delete()) {
+			if ($this->Positionlevel->updateLevelStat($posLvlId, 0)) {
 				$result['result'] = 'success';
 				$result['message'] = 'Position has been removed.';
-	
-	
 			} else {
 				$result['result'] = 'fail';
 				$result['message'] = 'Position has fail to remove.';

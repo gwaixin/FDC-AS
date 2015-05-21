@@ -8,86 +8,90 @@ class Employee extends AppModel {
 	public $validate = array(
         'employee_id' => array(
             'Rule-1' => array(
-                 'rule' => '/([0-9]{2,})-([0-9]{2,})/'
+                'rule' => '/([a-zA-z]{2,})-([0-9]{5,})/'
             ),
             'Rule-2' => array(
                 'rule' => 'isUnique'
             )
         ),
+        'company_system_id' => array(
+            'rule' => 'notEmpty'
+         ),
         'username' => array(
-                'rule' => 'notEmpty',
-                'message' => 'Username must not empty'
-            ),
+                'Rule-1' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Username must not empty'
+                ),
+                'Rule-2' => array(
+                    'rule' => 'isUnique',
+                    'message' => 'Username is already taken',
+                )
+        ),
         'password' => array(
                 'rule' => 'notEmpty',
-                'message' => 'Password must not empty'
+                'message' => 'Password must empty'
             ),
      	'name' => array(
             'rule' => 'notEmpty'
         ),
         'profile_id' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Employee not found'
+            'rule' => 'notEmpty'
          ),
         'tin' => array(
             'rule' => '/([0-9]{4,})/',
             'message' => 'Invalid Tin No'
          ),
         'salary' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Salary is required'
+            'rule' => 'notEmpty'
          ),
         'drug_test' => array(
             'rule' => 'validDrugTest',
-            'message' => 'Drug Test is required'
+            'message' => 'Invalid Drug Test'
          ),
         'pagibig' => array(
             'rule' => '/([0-9]{2,})-([0-9]{2,})/',
-            'message' => 'Invalid Pagibig'
+            'message' => 'Invalid Pagibig No'
         ),
         'philhealth' => array(
             'rule' => '/([0-9]{2,})-([0-9]{2,})/',
-            'message' => 'Invalid Phil Health'
+            'message' => 'Invalid Philhealth No'
         ),
         'medical' => array(
             'rule' => 'notEmpty',
-            'message' => 'Medical is required'
+            'message' => 'Medical result is required'
         ),
         'sss' => array(
             'rule'=> '/([0-9]{2,})-([0-9]{2,})/',
-            'message' => 'Invalid SSS No.'
+            'message' => 'Invalid SSS No'
         ),
         'insurance_id' => array(
             'rule'=> '/([0-9]{2,})-([0-9]{2,})/',
             'message' => 'Invalid Insurance ID'
         ),
         'position_id' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Invalid position'
+            'rule' => 'notEmpty'
          ),
         'position_level_id' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Invalid position level'
+            'rule' => 'notEmpty'
          ),
         'f_time_in' => array(
             'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time'
+            'message' => 'Invalid Time Format'
          ),
         'f_time_out' => array(
             'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time'
+            'message' => 'Invalid Time Format'
          ),
         'l_time_in' => array(
             'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time'
+            'message' => 'Invalid Time Format'
          ),
         'l_time_out' => array(
             'rule' => '/([0-9]{1}):([0-9]{2}) AM|PM/',
-            'message' => 'Invalid Time'
+            'message' => 'Invalid Time Format'
          ),
         'status' => array(
-            'rule' => 'numeric',
-            'message' => 'Invalid Status'
+            'rule' => 'numeric'
         )
     );
 

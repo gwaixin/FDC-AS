@@ -15,6 +15,7 @@ $(document).ready(function () {
 	var names = [];
 
 	var searchValue = "";
+	var companies = [];
 	var positions = [];
 	var positionLevels = [];
 	fillDropDown();
@@ -30,28 +31,31 @@ $(document).ready(function () {
 	$("#btn-select").click(function() {
 			selectedIndex = hot.getSelectedRange().to.row;
 			if(advancedData[selectedIndex].id !== null) {
-				$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
-				$("#username").attr('disabled','disabled');
-				$("#username").val(advancedData[selectedIndex].username);
-				$("#password").val("********");
 				$("#btn-submit").val('Edit');
+				$("#additional-info-container #txt-errors").html("");
+				$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
+				$("#additional-info-container input:not(#salary)").attr('disabled','disabled');
+				$("#additional-info-container select").attr('disabled','disabled');
+				for(var x in $("#additional-info-container input")) {
+					if(!isNaN(parseFloat(x)) && isFinite(x)) {
+						var input = $("#additional-info-container input")[x];
+						input.value = advancedData[selectedIndex][input.name];
+					}
+				}
+				$("#password").val("company_default_password");
+				$("#drug_test").val(advancedData[selectedIndex].drug_test);
 			}
 	});
 
 	$("#btn-submit").click(function() {
 		if($("#btn-submit").val() === 'Edit') {
-			$("#username").removeAttr('disabled');
+			$("#additional-info-container input:not(#salary)").removeAttr('disabled');
+			$("#additional-info-container select").removeAttr('disabled');
 			$("#btn-submit").val('Save');
 		} else {
-			var records = [{'id':advancedData[selectedIndex].id,'field':'username','value':$("#username").val()}];
-			$.post(baseUrl+'employees/saveAll',{employees:records},
-				function(data) {
-					if(data.errors.length === 0) {
-						alert('Successully save!');
-						$("#btn-submit").val('Edit');
-						advancedData[selectedIndex].username = $("#username").val();
-					}
-				},'JSON');
+			var default_password = "company_default_password";
+			var records = [];
+			updateAdditionalInfo(selectedIndex);
 		}
 	});
 
@@ -61,54 +65,11 @@ $(document).ready(function () {
 		}
 	});
 
-	$(document).click(function(e) {
-		if (e.target.className.match("time") && timePicker === null) {
-			$("#table-employees textarea").after("<input type='text' id='time' readonly>");
-			timePicker = $("#time");
-			$("#table-employees input").timepicker();
-			$("#table-employees textarea").css('display','none');
-			$("#time").change(function() {
-				if ($("#time").val().length > 0) {
-					var index = selectedTimeCell.to.row;
-					var time = $("#time").val();
-					$("#table-employees textarea").focus();
-					// $("#table-employees tr:nth-child("+(parseInt(index)+1)+") .f_time_in").html(time);
-					var data = [[index,selectedTime,time,time]];
-					if(hot.sortIndex.length > 0) {
-						advancedData[hot.sortIndex[index][0]][selectedTime] = time;
-						data = [[hot.sortIndex[index][0],selectedTime,time,time]];
-					} else {
-						advancedData[index][selectedTime] = time;
-					}
-					$("#table-employees textarea").val(time);
-					updateAll(data);
-				}
-			});
-		}
-		if (e.target.className.match('current') && timePicker !== null ) {
-			if (e.target.className.match('time')) {
-				var className = e.target.className;
-				$("#table-employees textarea").css('display','none');
-				$("#time").css('display','inline-block');
-				selectedTime = className.split(' ')[1];
-				selectedTimeCell = hot.getSelectedRange();
-				var index = selectedTimeCell.to.row;
-				var time = advancedData[index][selectedTime];
-				if(hot.sortIndex.length > 0) {
-					time = advancedData[hot.sortIndex[index][0]][selectedTime];
-				}
-				$("#time").focus();
-				$("#time").val(time);
-				$("#table-employees textarea").val(time);
-				$("#time").blur();
-				$("#time").css({'height':$("."+selectedTime).height()-10,'width':$("."+selectedTime).width()-5});
-			} else {
-				$("#table-employees textarea").css('display','inline-block');
-				$("#time").css('display','none');
-			}
-		}
+	$("#f_time_in").timepicker();
+	$("#f_time_out").timepicker();
+	$("#l_time_in").timepicker();
+	$("#l_time_out").timepicker();
 
-	});
 
 	$("#cbo-position").change(function() {
 		$("#cbo-position-level").val("");
@@ -130,6 +91,7 @@ $(document).ready(function () {
 	function fillDropDown() {
 		$.post(baseUrl + 'employees/getDropdownValues',function(data) {
 			names = data.names;
+			companies = data.companies;
 			positions = data.positions;
 			positionLevels = data.positionLevels;
 			getEmployees();
@@ -252,8 +214,47 @@ $(document).ready(function () {
 		}
 	}
 
+	function updateAdditionalInfo(index) {
+		$("#loading-BG").css('display','block');
+		var data = {};
+		var inputs = $("#additional-info-container input:not(#salary)");
+		for(var x = 0 ; x < inputs.length ; x++) {
+			data[inputs[x].name] = inputs[x].value;
+		}
+		data['id'] = advancedData[index].id;
+		data['drug_test'] = $("#drug_test").val();
+		$.post(baseUrl+'employees/updateAdditionInfo',{employee:data},
+			function(errors) {
+				$("#loading-BG").css('display','none');
+				if(errors) {
+					$("#additional-info-container #txt-errors").html(errors+"<br>");
+				} else {
+					$(".close").click();
+					for(var x = 0 ; x < inputs.length ; x++) {
+						advancedData[selectedIndex][inputs[x].name] = inputs[x].value;
+					}
+					advancedData['drug_test'] = $("#drug_test").val();
+					$("#drug_test").val("company_default_password");
+					alert("Successfully updated employee info");
+				}
+			},'JSON');
+	}
 
-	
+
+	function validEmployeeID(value, callback) {
+		setTimeout(function() {
+			if(value === null) {
+				callback(true);
+			} else if (value.length === 0) {
+				callback(true);
+			} else if (value.match(/([a-zA-z]{2,})-([0-9]{5,})/)) {
+		        callback(true);
+		    } else {
+		    	callback(false);
+		    }
+	    }, 1);
+	    return false;		
+	}
 	function validTin(value, callback) {
 		setTimeout(function() {
 			if(value === null) {
@@ -341,7 +342,6 @@ $(document).ready(function () {
 	}
 
 
-
 	function displayEmployees() {
 		if (hot !== null) {
 			hot.destroy();
@@ -351,7 +351,7 @@ $(document).ready(function () {
     height: 396,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Name","Employee ID", "Tin", "Salary", "Drug Test", "Pagibig", "Philhealth", "Medical", "SSS", "Insurance ID","Position","Position Level","Contract","First Time in","First Time out","Last Time in","Last Time out", "Role", "Status"],
+    colHeaders: ["Name","Employee ID", "Company","Position","Position Level","Contract", "Role", "Status"],
     rowHeaders: true,
     stretchH: 'all',
     columnSorting: true,
@@ -365,15 +365,12 @@ $(document).ready(function () {
 	   			strict: false,
 	   			className : 'htLeft'
 	   		},
-		  {data: 'employee_id',validator: validCode, type: 'text'},
-	      {data: 'tin', type: 'text', validator: validTin},
-	      {data: 'salary', type: 'text'},
-	      {data: 'drug_test', validator: validDrugTest, type: 'text'},
-	      {data: 'pagibig', validator: validCode, type: 'text'},
-	      {data: 'philhealth', validator: validCode, type: 'text'},
-	      {data: 'medical', type: 'text'},
-	      {data: 'sss', validator: validCode, type: 'text'},
-	      {data: 'insurance_id', validator: validCode, type: 'text'},
+		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
+		  	{
+	      	data: 'company_systems', 
+	      	type: 'dropdown',
+	      	source: companies
+	      },
 	      {
 	      	data: 'position', 
 	      	type: 'dropdown',
@@ -385,10 +382,6 @@ $(document).ready(function () {
 	      	source: positionLevels
 	      },
 	      {data: 'contract', type: 'text'},
-	      {data: 'f_time_in', type: 'text', validator: validTime, className: 'time f_time_in htCenter'},
-	      {data: 'f_time_out', type: 'text', validator: validTime, className: 'time f_time_out htCenter'},
-	      {data: 'l_time_in', type: 'text', validator: validTime, className: 'time l_time_in htCenter'},
-	      {data: 'l_time_out', type: 'text', validator: validTime, className: 'time l_time_out htCenter'},
 	      {data: 'role', type: 'text'},
 	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
 	  	  ]

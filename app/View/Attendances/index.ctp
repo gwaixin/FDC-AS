@@ -8,7 +8,10 @@
 <?php echo $this->Html->script('bootstrap-timepicker.min'); ?>
 <?php echo $this->Html->script('attendance'); ?>
 
-<script>var webroot = '<?php echo $this->webroot;?>';</script>
+<script>
+	var webroot = '<?php echo $this->webroot;?>';
+	var phpDate = '<?php echo date("Y-m-d");?>';
+</script>
 
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -34,7 +37,7 @@
 			</div>
 		</form>
 		
-		<input type="text" style="visibility:hidden; position:absolute;" value="" id="datetimepicker">
+		<input type="text" style="visibility:hidden; position:absolute;" id="datetimepicker">
 		<div id="employee-attendance"></div>
 	</div>
 </div>
