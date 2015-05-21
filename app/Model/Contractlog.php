@@ -70,7 +70,11 @@ class Contractlog extends AppModel{
 		}else{
 			if($this->data[$this->alias]['document']['error'] == 4){
 				$dateId = $this->getDetail($this->id);
-				$this->data[$this->alias]['document'] = $dateId['Contractlog']['document'];
+				if($dateId){
+					$this->data[$this->alias]['document'] = $dateId['Contractlog']['document'];
+				}else{
+					$this->data[$this->alias]['document'] = '';
+				}
 			}else{
 				$this->uploadPdf();
 			}
