@@ -106,33 +106,32 @@ $(document).ready(function () {
 		    	 }, 300);
 			}, cells: function (row, col, prop) {
 				var cellProperties = {};
-				if (row >= 1){
-					var insData = this.instance.getData()[row][col];
-				
-					switch (col) {
-						case 2:
-							if (!list[row]['ef_time_in']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 3: 
-							if (!list[row]['ef_time_out']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 4: 
-							if (!list[row]['el_time_in']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 5: 
-							if (!list[row]['el_time_out']) {
-								cellProperties.readOnly = true;
-							}
-							break; 
-							
-					}
+				var insData = this.instance.getData()[row][col];
+			
+				switch (col) {
+					case 2:
+						if (list[row]['ef_time_in']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 3: 
+						if (list[row]['ef_time_out']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 4: 
+						if (list[row]['el_time_in']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 5: 
+						if (list[row]['el_time_out']) {
+							cellProperties.readOnly = true;
+						}
+						break; 
+						
 				}
+				
 				
 				return cellProperties;
 			}

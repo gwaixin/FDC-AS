@@ -69,10 +69,10 @@ class AttendancesController extends AppController {
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
 						'id'			=>	$employee['attendances']['id'],
-						'ef_time_in'	=>	$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
-						'ef_time_out'	=>	$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
-						'el_time_in'	=>	$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
-						'el_time_out'	=>	$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
+						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
+						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
+						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
+						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
 				);
 				array_push($employees_arr, $data);
 			}
