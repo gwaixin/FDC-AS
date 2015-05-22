@@ -123,7 +123,13 @@ $(function(){
 	$('.View-Contract').on('click', function(e){
 		
 		var url = weburl+'contractlogs/view';
-		var dataid = advancedData[currentSelectedRow].id + ':' +advancedData[currentSelectedRow].contract_id;
+		var dataid;
+		if(typeof advancedData !== 'undefined'){
+			dataid = advancedData[currentSelectedRow].id + ':' +advancedData[currentSelectedRow].contract_id;
+		}else{
+			dataid = $(this).data('id-contract');
+		}
+		
 		$.post(url,{dataid:dataid},function(data){
 			var res = JSON.parse(data);
 			$('.form-horizontal').show();
