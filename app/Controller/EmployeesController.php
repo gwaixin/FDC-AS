@@ -45,7 +45,7 @@ class EmployeesController extends AppController {
 													'table' => 'contract_logs',
 													'type' => 'LEFT',
 													'conditions' => array(
-															'Employee.id = contract_logs.employees_id'
+															'Employee.current_contract_id = contract_logs.id'
 													)
 												)
 											);

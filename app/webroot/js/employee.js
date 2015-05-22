@@ -32,6 +32,8 @@ $(document).ready(function () {
 	$("#btn-select").click(function() {
 			selectedIndex = hot.getSelectedRange().to.row;
 			if(advancedData[selectedIndex].id !== null) {
+				$("#edit-last-timein").html('Edit');
+				$("#edit-last-timeout").html('Edit');
 				$("#btn-submit").val('Edit');
 				$("#additional-info-container #txt-errors").html("");
 				$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
@@ -65,24 +67,28 @@ $(document).ready(function () {
 	});
 
 	$("#edit-last-timein").click(function(){
-		if($("#edit-last-timein").html().trim() === 'Edit') {
-			$("#l_time_in").removeAttr('disabled');
-			$("#edit-last-timein").html('Cancel');
-		} else {
-			$("#l_time_in").val("");
-			$("#l_time_in").attr('disabled','disabled');
-			$("#edit-last-timein").html('Edit');
+		if($("#btn-submit").val() === 'Save') {
+			if($("#edit-last-timein").html().trim() === 'Edit') {
+				$("#l_time_in").removeAttr('disabled');
+				$("#edit-last-timein").html('Cancel');
+			} else {
+				$("#l_time_in").val("");
+				$("#l_time_in").attr('disabled','disabled');
+				$("#edit-last-timein").html('Edit');
+			}
 		}
 	});
 
 	$("#edit-last-timeout").click(function(){
-		if($("#edit-last-timeout").html().trim() === 'Edit') {
-			$("#l_time_out").removeAttr('disabled');
-			$("#edit-last-timeout").html('Cancel');
-		} else {
-			$("#l_time_out").val("");
-			$("#l_time_out").attr('disabled','disabled');
-			$("#edit-last-timeout").html('Edit');
+		if($("#btn-submit").val() === 'Save') {
+			if($("#edit-last-timeout").html().trim() === 'Edit') {
+				$("#l_time_out").removeAttr('disabled');
+				$("#edit-last-timeout").html('Cancel');
+			} else {
+				$("#l_time_out").val("");
+				$("#l_time_out").attr('disabled','disabled');
+				$("#edit-last-timeout").html('Edit');
+			}
 		}
 	});
 
@@ -184,14 +190,19 @@ $(document).ready(function () {
 		var target = e.target;
 		//console.log(positionLevelDropdown + ' === null && ' + target.className.match('current') + ' && ' + $("#table-employees textarea").length + ' > 1');
 		var textareaExists = false;
-		if(positionLevelDropdown === null && target.className.match('current') && $("#table-employees textarea").length > 1) {
+		if(typeof hot.getSelectedRange() !== 'undefined' && positionLevelDropdown === null) {
+			var col = hot.getSelectedRange().to.col;
+			if(col === 4 && $("#table-employees textarea").length > 0) {
+				textareaExists = true;
+			}
+		}
+		if(positionLevelDropdown === null && target.className.match('current') && textareaExists) {
 			appendPositionLevelDropdown();
 		}
 		if(positionLevelDropdown !== null && target.className.match('current')) {
 			if(e.target.className.match('position-level')) {
 				$("#table-employees textarea").css('display','none');
 				$("#table-employees select").css({'display':'block',
-																					 'height':$("#table-employees .position-level").height(),
 																					 'width':$("#table-employees .position-level").width()+10
 																					});
 				$("#table-employees textarea").blur();
@@ -211,10 +222,11 @@ $(document).ready(function () {
 			$("#table-employees select").css('display','none');
 			positionLevelDropdown = "";
 			$("#table-employees select").change(function(){
-				advancedData[hot.getSelectedRange().to.row].position_level = $("#table-employees select").val();
-				$("#table-employees textarea").val($("#table-employees select").val());
+				var value = $("#table-employees select")[$("#table-employees select").length-1].value;
+				advancedData[hot.getSelectedRange().to.row].position_level = value;
+				$("#table-employees textarea").val(value);
 				var index = hot.getSelectedRange().to.row;
-				hot.getCell(index,5).innerHTML = $("#table-employees select").val();
+				hot.getCell(index,5).innerHTML = value;
 				hot.selectCell(index,4);
 				var data = [];
 				data[0] = {'id':advancedData[index],'field':'position_level','position':advancedData[index],'value':$("#table-employees select").val()};
