@@ -4,6 +4,6 @@ App::uses('AppModel', 'Model');
 
 class User extends AppModel {
 	
-	public $useTable = 'Employees';
+	public $useTable = 'employees';
 
 }
