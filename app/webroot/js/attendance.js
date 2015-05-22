@@ -48,10 +48,35 @@ $(document).ready(function () {
 		
 		
 	});
+	
+	$(document).on('click', '.otime', function() {
+		rowIndex = $(this).closest('tr').index();
+		if (list[rowIndex]['estatus'] == 1) {
+			return;
+		}
+		focusElem = $(this);
+		if (confirm("Update overtime? click cancel to reset overtime")) {
+			checkOvertime(true);
+		} else {
+			checkOvertime(false);
+		}
+	});
 
+	
 
 	//HANDSON TABLE INTIATION AND FUNCTIONS
-	
+	function checkOvertime(set) {
+		if (set) {
+  			$.post(webroot+'Attendances/getOverTime', {id:list[rowIndex]['id']}, function(data) {
+  				focusElem.html(data);
+  			});
+  		} else {
+  			$.post(webroot+'Attendances/resetOvertime', {id:list[rowIndex]['id']}, function(data) {
+  				focusElem.html('00:00:00');
+  				console.log('reset ot: ' + data);
+  			});
+  		}
+	}
 	
 	function attendanceList() {
 		//$('#employee-attendance').html('');
@@ -77,6 +102,7 @@ $(document).ready(function () {
 		      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'}
 		    ], afterChange: function(change, sources) {
 			    if (sources === 'loadData' || change[0][2].trim() == change[0][3].trim()) {
+			    	console.log(list);
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		        
@@ -90,7 +116,8 @@ $(document).ready(function () {
 					  		$('#error').html('DELE PWEDE!! status na ing.ana');
 					  		return;
 					  	}
-				    	console.log(statIndex + rowIndex);
+				    	//console.log(statIndex + rowIndex);
+				  		//checkOvertime();
 				    	updateValue = statIndex;
 					} else {
 						if (!validateDate(colClass)) {
@@ -107,31 +134,33 @@ $(document).ready(function () {
 			}, cells: function (row, col, prop) {
 				var cellProperties = {};
 				var insData = this.instance.getData()[row][col];
-			
-				switch (col) {
-					case 2:
-						if (list[row]['ef_time_in']) {
-							cellProperties.readOnly = true;
-						}
-						break;
-					case 3: 
-						if (list[row]['ef_time_out']) {
-							cellProperties.readOnly = true;
-						}
-						break;
-					case 4: 
-						if (list[row]['el_time_in']) {
-							cellProperties.readOnly = true;
-						}
-						break;
-					case 5: 
-						if (list[row]['el_time_out']) {
-							cellProperties.readOnly = true;
-						}
-						break; 
-						
+				if (list[row]['estatus'] == 1) {
+					cellProperties.readOnly = true;
+				} else {
+					switch (col) {
+						case 2:
+							if (list[row]['ef_time_in']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 3: 
+							if (list[row]['ef_time_out']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 4: 
+							if (list[row]['el_time_in']) {
+								cellProperties.readOnly = true;
+							}
+							break;
+						case 5: 
+							if (list[row]['el_time_out']) {
+								cellProperties.readOnly = true;
+							}
+							break; 
+							
+					}
 				}
-				
 				
 				return cellProperties;
 			}
@@ -304,7 +333,7 @@ function getTotalTime() {
 				console.log(data);
 				focusElem.siblings('.status').html(statusArr[data['stat']]);
 				focusElem.siblings('.total_time').html(data['total']);
-				focusElem.siblings('.otime').html(data['ot']);
+				//focusElem.siblings('.otime').html(data['ot']);
 			}
 		});
 	} else {
