@@ -53,11 +53,7 @@ class Contractlog extends AppModel{
 			'positions_id' => array(
 					'rule' => 'notEmpty',
 					'message' => 'Please select position'
-			),
-			'position_levels_id' => array(
-					'rule' => 'notEmpty',
-					'message' => 'Please select position level'
-			),
+			)
 
 	);
 	
@@ -84,6 +80,10 @@ class Contractlog extends AppModel{
 		
 	}
 	
+	/**
+	 * upload file process
+	 * @return boolean
+	 */
 	public function uploadPdf(){
 		
 		$tmppath = $this->webroot.'document/';
@@ -109,12 +109,17 @@ class Contractlog extends AppModel{
 		return true;
 	}
 	
+	/*
+	 * Date validation
+	 */
 	public function dateValidation(){
 				
 		return date('Y-m-d',strtotime($this->data[$this->alias]['date_start'])) <= date('Y-m-d',strtotime($this->data[$this->alias]['date_end']));
 	
 	}
-	
+	/*
+	 * get contract log detail
+	 */
 	public function getDetail($id = null){
 		
 		return $this->findById($id);
