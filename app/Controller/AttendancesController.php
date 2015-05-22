@@ -20,8 +20,14 @@ class AttendancesController extends AppController {
 		
 		$employees = $this->Employee->find('all',
 				array(
-						'conditions' => array('employee.status = 1'),
-						'fields' => 'id'
+						'conditions' => array('Employee.status = 2'),
+						'fields' => array(
+							'id',
+							'f_time_in',
+							'f_time_out',
+							'l_time_in',
+							'l_time_out'
+						)
 				)
 		);
 			
@@ -32,73 +38,9 @@ class AttendancesController extends AppController {
 		if($this->request->is('ajax')) {
 			$this->autoRender = false;
 			
-			//Check date
-			$currentDate = date("Y-m-d");
-			$conditions = array();
 			$data = $this->request->data;
-			if (!empty($data)) {
-				if (!empty($data['date'])) {
-					$currentDate = date('Y-m-d', strtotime($data['date']));
-				}
-				if (!empty($data['keyword'])) {
-					$conditions['OR'] = array( 
-							array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
-							array("employee.employee_id like" => "%{$data['keyword']}%")
-					);
-					
-					//$conditions["like"] = "%{$data['keyword']}%";
-				}
-				if (!empty($data['status']) && $data['status'] >= 0) {
-					$conditions['attendances.status ='] = $data['status'];
-				}
-				if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-					$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
-				}
-			}
-			if (!$this->hasAttendance($currentDate)) {
-				$this->createAttendance($currentDate);
-				
-			}
 			
-			$conditions['attendances.date ='] = $currentDate;
-			
-			$this->loadModel('Employee');
-				
-			$join = array(
-					array(
-							'table' => 'profiles',
-							'conditions' => array(
-									'employee.profile_id = profiles.id'
-							)
-					), array(
-							'table' => 'attendances',
-							'type' => 'left',
-							'conditions' => array(
-									'employee.id = attendances.employees_id'
-							)
-					)
-			);
-				
-			$selectFields = array(
-					'employee.employee_id',
-					'profiles.first_name',
-					'profiles.last_name',
-					'profiles.middle_name',
-					'attendances.f_time_in',
-					'attendances.f_time_out',
-					'attendances.l_time_in',
-					'attendances.l_time_out',
-					'attendances.status',
-					'attendances.id'
-			);
-			$employees = $this->Employee->find('all',
-					array(
-							'joins' => $join,
-							'fields' => $selectFields,
-							'conditions' => $conditions
-							
-					)
-			);
+			$employees = $this->getEmployeeAttendance($data);
 			
 			$employees_arr = array();
 			$statusArr = $this->getAttendanceStatus();
@@ -110,7 +52,9 @@ class AttendancesController extends AppController {
 			
 				$firstLog 	= $this->totalDifference($ftimein, $ftimeout);
 				$lastLog 	= $this->totalDifference($ltimein, $ltimeout);
-				$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
+				//$totalTime 	= $this->Attendance->sumTime($firstLog['time'], $lastLog['time']);
+				
+				
 				$getStat 	= $employee['attendances']['status'] ? $employee['attendances']['status'] : 0;
 				$status 	= $statusArr[$getStat];
 				
@@ -121,9 +65,14 @@ class AttendancesController extends AppController {
 						'f_time_out' 	=>	$ftimeout,
 						'l_time_in' 	=>	$ltimein,
 						'l_time_out' 	=>	$ltimeout,
-						'total_time'	=>  $totalTime,
+						'total_time'	=>  $employee['attendances']['render_time'],
+						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
-						'id'			=>	$employee['attendances']['id']
+						'id'			=>	$employee['attendances']['id'],
+						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
+						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
+						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
+						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
 				);
 				array_push($employees_arr, $data);
 			}
@@ -179,10 +128,13 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$firstLog 	= $this->totalDifference($data['ftimein'], $data['ftimeout']);
-			$lastLog 	= $this->totalDifference($data['ltimein'], $data['ltimeout']);
-			$totalTime 	= $this->computeTotalTime($firstLog, $lastLog);
-			echo $totalTime;
+			$totalTime = $this->Attendance->updateTime($data);
+			$stat = $this->Attendance->checkStat($data);
+			$overtime = $this->Attendance->getOT($data['id']);
+			$this->Attendance->saveTime($data['id'], array('over_time', $overtime));
+			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
+			//echo $totalTime;
+			echo json_encode(array('total' => $totalTime, 'stat' => $stat, 'ot' => $overtime));
 		}
 	}
 	
@@ -200,7 +152,7 @@ class AttendancesController extends AppController {
 			if (!empty($data['keyword'])) {
 				$conditions['OR'] = array(
 						array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
-						array("employee.employee_id like" => "%{$data['keyword']}%")
+						array("Employee.employee_id like" => "%{$data['keyword']}%")
 				);
 					
 				//$conditions["like"] = "%{$data['keyword']}%";
@@ -209,11 +161,12 @@ class AttendancesController extends AppController {
 				$conditions['attendances.status ='] = $data['status'];
 			}
 			if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-				$conditions['employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 			}
 		}
-		if (!$this->hasAttendance($currentDate)) {
-			$this->createAttendance($currentDate);
+		if (!$this->Attendance->hasAttendance($currentDate)) {
+			$employee = $this->getEmployee();
+			$this->Attendance->createAttendance($currentDate, $employee);
 		
 		}
 			
@@ -225,19 +178,23 @@ class AttendancesController extends AppController {
 				array(
 						'table' => 'profiles',
 						'conditions' => array(
-								'employee.profile_id = profiles.id'
+								'Employee.profile_id = profiles.id'
 						)
 				), array(
 						'table' => 'attendances',
 						'type' => 'left',
 						'conditions' => array(
-								'employee.id = attendances.employees_id'
+								'Employee.id = attendances.employees_id'
 						)
 				)
 		);
 		
 		$selectFields = array(
-				'employee.employee_id',
+				'Employee.employee_id',
+				'Employee.f_time_in',
+				'Employee.f_time_out',
+				'Employee.l_time_in',
+				'Employee.l_time_out',
 				'profiles.first_name',
 				'profiles.last_name',
 				'profiles.middle_name',
@@ -246,7 +203,9 @@ class AttendancesController extends AppController {
 				'attendances.l_time_in',
 				'attendances.l_time_out',
 				'attendances.status',
-				'attendances.id'
+				'attendances.id',
+				'attendances.over_time',
+				'attendances.render_time'
 		);
 		$employees = $this->Employee->find('all',
 				array(
@@ -280,24 +239,27 @@ class AttendancesController extends AppController {
 		return $totalTime;
 	}
 	
+	/*
 	private function computeTotalTime($first, $last) {
 		$totalH = ($first['h'] + $last['h']) ? ($first['h'] + $last['h']) . ' hrs': '';
 		$totalM = ($first['m'] + $last['m']) ? ($first['m'] + $last['m']) . ' min': '';
 		$totalS = ($first['s'] + $last['s']) ? ($first['s'] + $last['s']) . ' sec': '';
 		$totalTime = $totalH . ' ' . $totalM . ' ' . $totalS;
 		return $totalTime;
-	}
+	}*/
 	
-	private function hasAttendance($date) {
+	
+	
+	/*private function hasAttendance($date) {
 		$attendance = $this->Attendance->find('first', array(
 			'conditions' => array(
 				'Attendance.date =' => $date
 			)	
 		));
 		return $attendance ? true : false;
-	}
+	}*/
 	
-	private function createAttendance($date) {
+	/*private function createAttendance($date) {
 		$presentDate = date('Y-m-d');
 		if (strtotime($presentDate) < strtotime($date)) {
 			$this->Session->setFlash(__('No attendance for this date'));
@@ -320,7 +282,7 @@ class AttendancesController extends AppController {
 		} else {
 			return 'FAIL';
 		}
-	}
+	}*/
 	
 	private function getAttendanceStatus() {
 		return $statusArr = array('pending', 'present', 'absent', 'late', 'undertime');
