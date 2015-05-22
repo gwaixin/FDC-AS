@@ -23284,3 +23284,48 @@ Request URL: /FDC_AS/css/main.css
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-22 09:45:01 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/250x250_7367361432189275.png
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-22 09:45:01 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-22 09:45:10 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /upload/250x250_7367361432189275.png
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-22 09:45:10 Error: [MissingControllerException] Controller class FDCASController could not be found.
+Exception Attributes: array (
+  'class' => 'FDCASController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/img/emptyprofile.jpg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-22 09:45:10 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

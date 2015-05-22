@@ -80,6 +80,7 @@
       </div>
     </div>
 	<div id="container">
+		<!-- 
 		<div class="sidebar-nav">
 		    <div class="well" style="width:300px; padding: 8px 0;">
 				<ul class="nav nav-list"> 
@@ -94,6 +95,7 @@
 				</ul>
 			</div>
 		</div>
+		 -->
 		<div id="content">
 			<?php echo $this->fetch('content'); ?>
 		</div>
