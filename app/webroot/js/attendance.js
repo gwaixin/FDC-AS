@@ -51,7 +51,10 @@ $(document).ready(function () {
 	
 	$(document).on('click', '.otime', function() {
 		rowIndex = $(this).closest('tr').index();
-		if (list[rowIndex]['estatus'] == 1) {
+		if (
+			list[rowIndex]['estatus'] == 1 ||
+			isDateTime(list[rowIndex]['ef_time_out'])
+		) {
 			return;
 		}
 		focusElem = $(this);
@@ -113,7 +116,7 @@ $(document).ready(function () {
 					if (colClass == 'status') {
 				  		var statIndex = statusArr.indexOf(change[0][3]);
 				  		if (statIndex < 0) {
-					  		$('#error').html('DELE PWEDE!! status na ing.ana');
+					  		$('#error').html('Invalid status');
 					  		return;
 					  	}
 				    	//console.log(statIndex + rowIndex);

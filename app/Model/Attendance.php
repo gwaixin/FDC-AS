@@ -46,18 +46,26 @@ class Attendance extends AppModel {
 		$attendance = array();
 		
 		foreach($employee as $e) {
-			$fTimein = $e['Employee']['f_time_in'];
-			$fTimeout = $e['Employee']['f_time_out'];
-			$lTimein = $e['Employee']['l_time_in'];
-			$lTimeout = $e['Employee']['l_time_out'];
-			$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
-			$data = array(
-					'employees_id' 	=> $e['Employee']['id'],
-					'satus'			=> 0,
-					'date'			=> $date,
-					'total_time'	=> $totalTime
-			);
-			array_push($attendance, $data);
+			$hasAttendance = $this->find('first', array(
+					'conditions' => array(
+						'employees_id' => $e['Employee']['id'],
+						'date'	=> $date
+					)
+			)); 
+			if (!$hasAttendance) {
+				$fTimein = $e['Employee']['f_time_in'];
+				$fTimeout = $e['Employee']['f_time_out'];
+				$lTimein = $e['Employee']['l_time_in'];
+				$lTimeout = $e['Employee']['l_time_out'];
+				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
+				$data = array(
+						'employees_id' 	=> $e['Employee']['id'],
+						'satus'			=> 0,
+						'date'			=> $date,
+						'total_time'	=> $totalTime
+				);
+				array_push($attendance, $data);
+			}
 		}
 		if ($this->saveAll($attendance)) {
 			return 'SUCCESS';

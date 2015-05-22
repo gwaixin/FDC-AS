@@ -10,6 +10,7 @@ class AttendancesController extends AppController {
 		
 		$this->set('title', 'FDC : ATTENDANCE');
 		$this->set('attendanceStat', $this->getAttendanceStatus());
+		
 	}
 	
 	
@@ -185,28 +186,28 @@ class AttendancesController extends AppController {
 				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 			}
 		}
-		if (!$this->Attendance->hasAttendance($currentDate)) {
-			$employee = $this->getEmployee();
-			$this->Attendance->createAttendance($currentDate, $employee);
+		//if (!$this->Attendance->hasAttendance($currentDate)) {
+			$emp = $this->getEmployee();
+			$this->Attendance->createAttendance($currentDate, $emp);
 		
-		}
+		//}
 			
 		$conditions['attendances.date ='] = $currentDate;
-		//$conditions['Employee.status ='] = 2;
+		$conditions['Employee.status <>'] = 0;
 			
 		$this->loadModel('Employee');
 		
 		$join = array(
 				array(
-						'table' => 'profiles',
-						'conditions' => array(
-								'Employee.profile_id = profiles.id'
-						)
-				), array(
 						'table' => 'attendances',
 						'type' => 'left',
 						'conditions' => array(
 								'Employee.id = attendances.employees_id'
+						)
+				), array(
+						'table' => 'profiles',
+						'conditions' => array(
+								'Employee.profile_id = profiles.id'
 						)
 				)
 		);
