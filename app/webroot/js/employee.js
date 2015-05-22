@@ -6,6 +6,7 @@ var rightClicked = false;
 var timer = null;
 var hot = null;
 var advancedData = [];
+var currentSelectedRow = null;
 $(document).ready(function () {
 
 	var selected_row = null;
@@ -102,6 +103,10 @@ $(document).ready(function () {
 			if(hot.getSelectedRange().to.col === 5) {
 				var top = $("#table-employees").offset().top + e.target.offsetTop;
 				var left = ($("#table-employees").offset().left + e.target.offsetLeft) + $(".contract").width() -$("#contract-selections").width();
+				var row = hot.getSelectedRange().to.row;
+				$('#empID').val(advancedData[row].id);
+				$('.empID').val(advancedData[row].id);
+				$('.View-Contract').attr('data-id-contract',advancedData[row].id+':'+advancedData[row].contract_id);
 				$("#contract-selections").css({'top':top,'left':left,'display':'block'});
 			}
 		}
@@ -225,6 +230,9 @@ $(document).ready(function () {
 		}
 		if(!e.target.className.match('contract')) {
 			$("#contract-selections").css({'display':'none'});
+		}
+		if(typeof hot.getSelectedRange() !== 'undefined') {
+			currentSelectedRow = hot.getSelectedRange().to.row;
 		}
 	});
 

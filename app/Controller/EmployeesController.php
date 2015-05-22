@@ -7,6 +7,20 @@ class EmployeesController extends AppController {
 
 	public function index() {
 		$this->layout = 'main';
+		$this->loadModel('Position');
+		$this->loadModel('Positionlevel');
+
+		$position = $this->Position->find('list', array(
+				'fields' => array('id', 'description')
+		));
+
+		
+		$positionlevel = $this->Positionlevel->find('list', array(
+				'fields' => array('id', 'description')
+		));
+
+		$this->set('position', $position);
+		$this->set('positionlevel', $positionlevel);
 	}
 
 	public function getEmployees() {
@@ -125,6 +139,7 @@ class EmployeesController extends AppController {
 									'l_time_in' => $this->convertTimeToMilitary($l_time_in),
 									'l_time_out' => $this->convertTimeToMilitary($l_time_out),
 									'role' => $employee['Employee']['role'],
+									'contract_id' => $employee['Employee']['current_contract_id'],
 									'status' => $status
 								);
 			array_push($employees_arr,$data);	
@@ -154,6 +169,7 @@ class EmployeesController extends AppController {
 										'l_time_in' => null,
 										'l_time_out' => null,
 										'role' => null,
+										'contract_id' => null,
 										'status' => null
 									);
 				array_push($employees_arr,$data);

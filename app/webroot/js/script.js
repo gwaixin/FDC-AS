@@ -123,14 +123,18 @@ $(function(){
 	$('.View-Contract').on('click', function(e){
 		
 		var url = weburl+'contractlogs/view';
-		var dataid = $(this).data('id-contract');
+		var dataid = advancedData[currentSelectedRow].id + ':' +advancedData[currentSelectedRow].contract_id;
 		$.post(url,{dataid:dataid},function(data){
 			var res = JSON.parse(data);
-			if(res !== 0){
+			$('.form-horizontal').show();
+			if(res.length == 0){
+				$('.modal-body').append('<h1 class="notice"> No contract available </h1>');
+				$('.form-horizontal').hide();
+			}else{
 				for(var row in res){
-					console.log(res);
 					var dateStart = new Date(res[row].Contractlog.date_start);
 					var dateEnd = new Date(res[row].Contractlog.date_end);
+					$('.notice').remove();
 					$('#employee-id').html(res[row].emp.employee_id);
 					$('#description').html(res[row].Contractlog.description);
 					$('#date-start').html(dateStart.getFullYear() + "-" + (dateStart.getMonth() + 1) + "-" + dateStart.getDate());
@@ -147,7 +151,37 @@ $(function(){
 		
 	});
 	
-	
+	$('#ContractlogIndexForm').submit( function(e) {
+		var url = weburl+'contractlogs/index';
+	    $.ajax( {
+	      url: url,
+	      type: 'POST',
+	      data: new FormData( this ),
+	      processData: false,
+	      contentType: false,
+	      success:function(data){
+				var res = JSON.parse(data);
+				$('.bg-padd').html("");
+				if(res.errors.success == 1){
+					for(var err in res.errors.ErrMessage){
+						$('.bg-padd').show();
+						$('.bg-padd').append('<p>'+res.errors.ErrMessage[err][0]+'</p>');
+					}
+				}else{
+					for(var row in res){
+						console.log(res.data);
+						$('.View-Contract').attr('data-id-contract',res.data[0].emp.id+':'+res.data[0].Contractlog.id);
+						hot.getCell(currentSelectedRow,3).innerHTML = res.data[0].post.description;
+						hot.getCell(currentSelectedRow,4).innerHTML = res.data[0].postlevel.description;
+						hot.getCell(currentSelectedRow,5).innerHTML = res.data[0].Contractlog.description;
+						advancedData[currentSelectedRow].contract_id = res.data[0].Contractlog.id;
+					}
+						$('.close').click();
+				}
+			}
+	    } );
+		    e.preventDefault();
+	  } );
 });
 
 /**
@@ -185,4 +219,8 @@ function GetPostion(id,elem){
 		
 	});
 	
+}
+
+function SelectHistory() {
+	location.href = baseUrl+'contractlogs/employee/' + $('#empID').val();
 }

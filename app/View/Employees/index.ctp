@@ -14,6 +14,10 @@
 
 
 <style>
+.datepicker{
+	z-index: 1060 !important;
+}
+
 #additional-info-container {
 	margin: 10px 10px;
 }
@@ -84,52 +88,274 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 <div id="contract-selections">
 	<ul>
 	<?php 
+		echo $this->Form->input('id', array('type'=>'hidden','id'=>'empID','value' => ''));
 		echo "<li>";
 		echo $this->Form->button('Add Contract',array(
 																			'class' => 'btn btn-primary',
 																			'data-toggle' => 'modal',
 																			'data-target' => '#modalContract',
-																			'onclick' => 'SelectContract(\'url\')'
+																			'onclick' => ''
 																		)
 																	);
 		echo "</li>";
 		echo "<li>";
 		echo $this->Form->button('View Contract',array(
-																			'class' => 'btn btn-primary',
+																			'class' => 'btn btn-primary View-Contract',
 																			'data-toggle' => 'modal',
-																			'data-target' => '#modalContract',
-																			'onclick' => 'SelectContract(\'url\')'
+																			'data-id-contract' => '',
+																			'data-target' => '#View-Contract'
 																		)
 																	);
 		echo "</li>";
 		echo "<li>";
 		echo $this->Form->button('View History',array(
-																			'class' => 'btn btn-primary',
-																			'data-toggle' => 'modal',
-																			'data-target' => '#modalContract',
-																			'onclick' => 'SelectContract(\'url\')'
-																		)
-																	);
+												'class' => 'btn btn-primary',
+												'data-toggle' => '',
+												'data-target' => '',
+												'onclick' => 'SelectHistory()'
+												)
+											);
 		echo "</li>";
 	?>
 	</ul>
 </div>
 
-
-
-<div class="modal fade" id="modalContract" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog modal-lg">
+<!-- Modal -->
+<div class="modal hide fade" id="modalContract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-       </div>
-      <div class="modal-body" id="contract-container">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Contract</h4>
+        <input type="hidden" id="url" value="<?php echo $this->webroot;?>">
+        <div class="bg-padd bg-danger" style="display:none;">
+      	</div>
+      </div>
+      <div class="modal-body">
+      <?php
+		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
+		echo $this->Form->input('id', array('type'=>'hidden','class'=>'empID','value' => ''));
+		echo $this->Form->input('Description',
+									array('div' => array(
+											'class' => 'control-group'
+									),
+											'name' => 'description',
+											'id' => 'txtDescription',
+											'type' => 'textarea',
+											'class' => 'input-block-level',
+											'size' => 16,
+											'label' => 'Description',
+											'value' => '',
+											'escape' => false,
+											'placeholder' => ''
+									)
+							);
+		echo $this->Form->input('text',
+					array('div' => array(
+							'class' => 'control-group'
+					),
+							'name' => 'date_start',
+							'id' => 'dpStart',
+							'class' => 'input-block-level',
+							'size' => 16,
+							'label' => 'Date Start',
+							'value' => '',
+							'placeholder' => ''
+					)
+			);
+	
+		echo $this->Form->input('number',
+		    		array('div' => array(
+		    				'class' => 'control-group'
+		    		),
+		    				'name' => 'date_end',
+		    				'id' => 'dpEnd',
+		    				'class' => 'input-block-level',
+		    				'size' => 16,
+		    				'label' => 'Date End',
+		    				'value' => '',
+		    				'placeholder' => ''
+		    		)
+		    );
+	    echo $this->Form->input('numeric',
+		    		array('div' => array(
+		    				'class' => 'control-group'
+		    		),
+		    				'name' => 'salary',
+		    				'id' => 'txtSalary',
+		    				'class' => 'input-block-level',
+		    				'size' => 16,
+		    				'label' => 'Salary',
+		    				'value' => '',
+		    				'placeholder' => ''
+		    		)
+		    );
+	   echo $this->Form->input('text',
+		    		array('div' => array(
+		    				'class' => 'control-group'
+		    		),
+		    				'name' => 'deminise',
+		    				'id' => 'txtDeminise',
+		    				'class' => 'input-block-level',
+		    				'size' => 16,
+		    				'label' => 'Deminise',
+		    				'value' => '',
+		    				'placeholder' => ''
+		    		)
+		    );
+	   
+	   echo $this->Form->input('text',
+	   		array('div' => array(
+	   				'class' => 'control-group'
+	   		),
+	   				'name' => 'term',
+	   				'id' => 'txtTerm',
+	   				'class' => 'input-block-level',
+	   				'size' => 16,
+	   				'label' => 'Term',
+	   				'value' => '',
+	   				'placeholder' => ''
+	   		)
+	   );
+
+	   echo $this->Form->input('positions_id',
+						array(
+							'div' => 'control-group',
+							'type'=>'select',
+							'class' => 'input-block-level',
+							'label' => 'Position',
+						    'name' => 'positions_id',
+							'id' => 'contract-position',
+							'value' => '',
+							'options' => $position,
+							'empty' => __('Select'),
+						)
+			);
+	   
+	   
+	   echo $this->Form->input('position_levels_id',
+	   		array(
+	   				'div' => 'control-group',
+	   				'type'=>'select',
+	   				'required' => false,
+	   				'class' => 'input-block-level',
+	   				'label' => 'Position level',
+	   				'name' => 'position_levels_id',
+	   				'id' => 'contract-position-level',
+	   				'value' => '',
+	   				'options' => $positionlevel,
+	   				'empty' => __('Select'),
+	   		)
+	   );
+	   
+	/* 	$options = array('0'=>'Active','1'=>'Inactive');
+		$attributes = array(
+				'div' => 'control-group list-container',
+				'type' => 'radio',
+				'value' => 0,
+				'class' => 'list-status', 
+				'options' => $options, 
+				'default' => 'Y'
+		);
+		echo $this->Form->input('Status',$attributes); */
+	    echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "/*",'style' => 'display:none;'));
+	    echo $this->Form->button('Browse File',
+	    		array(
+	    				'id' => 'BrowseFile',
+	    				'class' => 'btn btn-default'
+	    		)
+	    );
+	    echo $this->Form->button('Submit', array('type' => 'submit','class' => 'btn btn-primary btnContract'));
+	    echo $this->Form->end();
+		?>
+		</div>    		 	
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal hide fade" id="View-Contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detail</h4>
+      </div>
+      <div class="modal-body">
+			<div class="form-horizontal">
+			  <div class="control-group">
+			    <label for="inputEmail3" class="col-sm-2 control-label">Employees ID:</label>
+			    <div class="controls">
+			      	<span id="employee-id"></span>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
+			    <div class="controls">
+			      <span id="description"></span>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Date Start</label>
+			    <div class="controls">
+			      <span id="date-start"></span>
+			    </div>
+			 </div>
+			 <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Date End</label>
+			    <div class="controls">
+			      <span id="date-end"></span>
+			    </div>
+			 </div>
+			 <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Document</label>
+			    <div class="controls">
+			      <span id="document"></span>
+			    </div>
+			 </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Salary</label>
+			    <div class="controls">
+			      <span id="salary"></span>
+			    </div>
+			 </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Deminise</label>
+			    <div class="controls">
+			      <span id="deminise"></span>
+			    </div>
+			 </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Term</label>
+			    <div class="controls">
+			      <span id="term"></span>
+			    </div>
+			 </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Position</label>
+			    <div class="controls">
+			      <span id="position"></span>
+			    </div>
+			 </div>
+			  <div class="control-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Position level</label>
+			    <div class="controls">
+			      <span id="position-level"></span>
+			    </div>
+			 </div>
+		</div>    		 	
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
