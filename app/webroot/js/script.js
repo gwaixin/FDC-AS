@@ -175,7 +175,6 @@ $(function(){
 					}
 				}else{
 					for(var row in res){
-						console.log(res.data);
 						$('.View-Contract').attr('data-id-contract',res.data[0].emp.id+':'+res.data[0].Contractlog.id);
 						hot.getCell(currentSelectedRow,3).innerHTML = res.data[0].post.description;
 						hot.getCell(currentSelectedRow,4).innerHTML = res.data[0].postlevel.description;
