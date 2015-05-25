@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('AttendancesController', 'Controller');
 class AdminController extends AppController {
 	
 	public function beforeRender() {
@@ -15,5 +16,12 @@ class AdminController extends AppController {
 			)
 		);
 		$this->set('positions', $positions);
+	}
+	
+	public function viewAttendance() {
+		//$this->set('title', 'FDC : ATTENDANCE');
+		$clientdata = $this->requestAction('/Attendances/index');
+		echo $clientdata;
+		exit();
 	}
 }

@@ -28,13 +28,13 @@ class PositionlevelsController extends AppController {
 			$data = $this->request->data['Positionlevel'];
 					$join = array( 
 				array(
-				'table' => 'Positions',
-						'conditions' => array('Positions.id = Positionlevel.positions_id')
+				'table' => 'positions',
+						'conditions' => array('positions.id = Positionlevel.positions_id')
 				)
 			);
 			$positionLvl = $this->Positionlevel->find('all',
 					array(
-							'fields' 		=> array('Positionlevel.id', 'Positionlevel.description', 'Positionlevel.positions_id', 'Positions.description'),
+							'fields' 		=> array('Positionlevel.id', 'Positionlevel.description', 'Positionlevel.positions_id', 'positions.description'),
 							'joins'			=> $join,
 							'conditions' 	=> array(
 									//'Positionlevel.positions_id =' => $data['positions_id'],
@@ -50,7 +50,7 @@ class PositionlevelsController extends AppController {
 				$count = 0;
 				$pLevel = array();
 				foreach($positionLvl as $p) {
-					$option .= "<option value='".$p['Positionlevel']['id']."'>{$p['Positionlevel']['description']} : {$p['Positions']['description']}</option>";
+					$option .= "<option value='".$p['Positionlevel']['id']."'>{$p['Positionlevel']['description']} : {$p['positions']['description']}</option>";
 					$count++;
 					$pLevel[$p['Positionlevel']['id']] = array($p['Positionlevel']['description'], $p['Positionlevel']['positions_id']);
 				} 

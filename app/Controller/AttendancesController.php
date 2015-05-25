@@ -10,6 +10,7 @@ class AttendancesController extends AppController {
 		
 		$this->set('title', 'FDC : ATTENDANCE');
 		$this->set('attendanceStat', $this->getAttendanceStatus());
+		
 	}
 	
 	
@@ -73,6 +74,7 @@ class AttendancesController extends AppController {
 						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
 						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
 						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
+						'estatus'		=> $employee['Employee']['status']
 				);
 				array_push($employees_arr, $data);
 			}
@@ -130,11 +132,31 @@ class AttendancesController extends AppController {
 			$data = $this->request->data;
 			$totalTime = $this->Attendance->updateTime($data);
 			$stat = $this->Attendance->checkStat($data);
+			//$overtime = $this->Attendance->getOT($data['id']);
+			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
+			$this->Attendance->saveTime($data['id'], array('status', $stat));
+			
+			//echo $totalTime;
+			echo json_encode(array('total' => $totalTime, 'stat' => $stat));
+		}
+	}
+	
+	public function getOverTime() {
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$data = $this->request->data;
 			$overtime = $this->Attendance->getOT($data['id']);
 			$this->Attendance->saveTime($data['id'], array('over_time', $overtime));
-			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
-			//echo $totalTime;
-			echo json_encode(array('total' => $totalTime, 'stat' => $stat, 'ot' => $overtime));
+			echo $overtime;
+		}
+	}
+	
+	public function resetOvertime() {
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$data = $this->request->data;
+			$this->Attendance->saveTime($data['id'], array('over_time', '00:00:00'));
+			echo 'success';
 		}
 	}
 	
@@ -164,27 +186,28 @@ class AttendancesController extends AppController {
 				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 			}
 		}
-		if (!$this->Attendance->hasAttendance($currentDate)) {
-			$employee = $this->getEmployee();
-			$this->Attendance->createAttendance($currentDate, $employee);
+		//if (!$this->Attendance->hasAttendance($currentDate)) {
+			$emp = $this->getEmployee();
+			$this->Attendance->createAttendance($currentDate, $emp);
 		
-		}
+		//}
 			
 		$conditions['attendances.date ='] = $currentDate;
+		$conditions['Employee.status <>'] = 0;
 			
 		$this->loadModel('Employee');
 		
 		$join = array(
 				array(
-						'table' => 'profiles',
-						'conditions' => array(
-								'Employee.profile_id = profiles.id'
-						)
-				), array(
 						'table' => 'attendances',
 						'type' => 'left',
 						'conditions' => array(
 								'Employee.id = attendances.employees_id'
+						)
+				), array(
+						'table' => 'profiles',
+						'conditions' => array(
+								'Employee.profile_id = profiles.id'
 						)
 				)
 		);
@@ -195,6 +218,7 @@ class AttendancesController extends AppController {
 				'Employee.f_time_out',
 				'Employee.l_time_in',
 				'Employee.l_time_out',
+				'Employee.status',
 				'profiles.first_name',
 				'profiles.last_name',
 				'profiles.middle_name',

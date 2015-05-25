@@ -46,18 +46,26 @@ class Attendance extends AppModel {
 		$attendance = array();
 		
 		foreach($employee as $e) {
-			$fTimein = $e['Employee']['f_time_in'];
-			$fTimeout = $e['Employee']['f_time_out'];
-			$lTimein = $e['Employee']['l_time_in'];
-			$lTimeout = $e['Employee']['l_time_out'];
-			$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
-			$data = array(
-					'employees_id' 	=> $e['Employee']['id'],
-					'satus'			=> 0,
-					'date'			=> $date,
-					'total_time'	=> $totalTime
-			);
-			array_push($attendance, $data);
+			$hasAttendance = $this->find('first', array(
+					'conditions' => array(
+						'employees_id' => $e['Employee']['id'],
+						'date'	=> $date
+					)
+			)); 
+			if (!$hasAttendance) {
+				$fTimein = $e['Employee']['f_time_in'];
+				$fTimeout = $e['Employee']['f_time_out'];
+				$lTimein = $e['Employee']['l_time_in'];
+				$lTimeout = $e['Employee']['l_time_out'];
+				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
+				$data = array(
+						'employees_id' 	=> $e['Employee']['id'],
+						'satus'			=> 0,
+						'date'			=> $date,
+						'total_time'	=> $totalTime
+				);
+				array_push($attendance, $data);
+			}
 		}
 		if ($this->saveAll($attendance)) {
 			return 'SUCCESS';
@@ -83,7 +91,7 @@ class Attendance extends AppModel {
 			if ($c == 'f_time_out' || $c == 'l_time_out') {
 				$con = strtotime($data[$c]) > strtotime($eEmp);
 			} else {
-				$con = strtotime($data[$c]) < strtotime($eEmp);
+				$con = ($c == 'f_time_in' && strtotime($data[$c]) < strtotime($eEmp));
 			}
 			if ($this->valDateTimeFormat($data[$c])) {
 				$attendance[] = ($con) ? $eEmp : $data[$c];
@@ -137,23 +145,31 @@ class Attendance extends AppModel {
 		$eLTimeOut = strtotime($data['e']['l_time_out']);
 		$cLTimeOut = strtotime($d['l_time_out']);
 		
-		$cTotalTime = strtotime($data['Attendance']['total_time']);
+		/*$cTotalTime = strtotime($data['Attendance']['total_time']);
 		$cRenderTime = strtotime($data['Attendance']['render_time']);
+		*/
+		$elastOut = $this->verifyTimeFormat($eLTimeOut) ? $eLTimeOut : $eTimeOut;
+		$cLastOut = $this->verifyTimeFormat($cLTimeOut) ? $cLTimeOut : $cTimeOut;
 		
-		if ($cRenderTime < $cTotalTime) {
+		if ($cLastOut < $elastOut) {
 			$stat = 4;
-		} else if ($cTimeIn > $eTimeIn) {
+		} else  if ($cTimeIn > $eTimeIn) {
 			$stat = 3;
 		} else if ($cTimeIn <= $eTimeIn) {
 			$stat = 1;
 		}
 		
-		if ($stat != $data['Attendance']['status']) {
+		/*if ($stat != $data['Attendance']['status']) {
 			$this->read(null, $d['id']);
-			$this->set('status', $stat);
-			$this->save();
-		}
+			$this->set('Attendances.status', $stat);
+			if ($this->save()) {
+				return $stat;
+			}
+		} else {
+			return $d['id'];
+		}*/
 		return $stat;
+		
 	}
 	
 	public function getOT($id) {
@@ -169,6 +185,7 @@ class Attendance extends AppModel {
 						'e.f_time_out',
 						'e.l_time_out',
 						'Attendance.f_time_out',
+						'Attendance.l_time_out',
 						'Attendance.date'
 				),
 				'joins' => $join,
@@ -177,8 +194,9 @@ class Attendance extends AppModel {
 		
 		
 		$ot = '00:00:00';
-		$lastOut = $data['Attendance']['date'] . ' ' . $data['e']['f_time_out'];
-		$present = $data['Attendance']['f_time_out'];
+		$lastOutTime = $this->verifyTimeFormat($data['e']['l_time_out']) ? 'l_time_out': 'f_time_out';
+		$lastOut = $data['Attendance']['date'] . ' ' . $data['e'][$lastOutTime];
+		$present = $data['Attendance'][$lastOutTime];
 		if (strtotime($lastOut) < strtotime($present)) {
 			$diff = $this->totalDifference($lastOut, $present);
 			$ot = $diff['time'];
