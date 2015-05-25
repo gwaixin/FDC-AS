@@ -15,7 +15,7 @@
 		}
 
 		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
-	 	echo $this->Form->input('position',
+	 	/* echo $this->Form->input('position',
 						array(
 							'div' => 'control-group',
 							'type'=>'select',
@@ -26,7 +26,7 @@
 							'options' => $empId,
 							'empty' => __('Select'),
 						)
-			);
+			); */
 	
 		echo $this->Form->input('Description',
 									array('div' => array(

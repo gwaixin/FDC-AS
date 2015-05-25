@@ -10,6 +10,7 @@ class Contractlog extends AppModel{
 	public $validate = array(
 			'employees_id' => array(
 					'rule' => 'notEmpty',
+					'on' => 'create',
 					'message' => 'Please select employee id'
 			),
 			'date_start' => array(
