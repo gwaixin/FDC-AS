@@ -100,5 +100,16 @@ class PositionlevelsController extends AppController {
 			echo json_encode($result);
 		}
 	}
+	
+	public function getPositionLevel() {
+		if ($this->request->is('Ajax')) {
+			$this->layout = 'ajax';
+			$id = $this->request->data['id'];
+			$data = $this->Positionlevel->find("all", array("conditions" => array("positions_id" => $id)));
+			$this->set('positionlevels', $data);
+			$this->render('position_level');
+			return;
+		}
+	}
 }
 ?>

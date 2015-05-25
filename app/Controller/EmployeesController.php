@@ -14,7 +14,6 @@ class EmployeesController extends AppController {
 				'fields' => array('id', 'description')
 		));
 
-		
 		$positionlevel = $this->Positionlevel->find('list', array(
 				'fields' => array('id', 'description')
 		));
