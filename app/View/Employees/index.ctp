@@ -350,6 +350,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		</div>    		 	
       </div>
       <div class="modal-footer">
+      	<a href="#" class="btn btn-primary btn-contact-edit">Edit</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

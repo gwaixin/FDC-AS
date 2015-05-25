@@ -152,7 +152,7 @@ class ContractlogsController extends AppController{
 			$row = $this->request->data;
 		
 			$data = array(
-					'employees_id' => $row['employees_id'],
+					'employees_id' =>  $detail['Contractlog']['employees_id'],
 					'description' => $row['description'],
 					'date_start' => $row['date_start'],
 					'date_end' => $row['date_end'],
@@ -167,12 +167,12 @@ class ContractlogsController extends AppController{
 		
 			$this->Contractlog->id = $id;
 			
-			$this->__checkEmployeeStatus($row['employees_id']);
+			$this->__checkEmployeeStatus($detail['Contractlog']['employees_id']);
 			
 			if($this->Contractlog->save($data)){
 				
 				$row['contract_id'] = $id;
-				$this->__updateEmpContract($row['employees_id'], $row);
+				$this->__updateEmpContract($detail['Contractlog']['employees_id'], $row);
 				$this->redirect('/');
 			}else{
 				$errors = $this->Contractlog->validationErrors;

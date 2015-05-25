@@ -126,10 +126,11 @@ $(function(){
 		var dataid;
 		if(typeof advancedData !== 'undefined'){
 			dataid = advancedData[currentSelectedRow].id + ':' +advancedData[currentSelectedRow].contract_id;
+			$('.btn-contact-edit').attr('href',weburl+'contractlogs/update/'+advancedData[currentSelectedRow].contract_id);
 		}else{
 			dataid = $(this).data('id-contract');
 		}
-		
+
 		$.post(url,{dataid:dataid},function(data){
 			var res = JSON.parse(data);
 			$('.form-horizontal').show();
@@ -175,14 +176,18 @@ $(function(){
 					}
 				}else{
 					for(var row in res){
-						console.log(res.data);
+						advancedData[currentSelectedRow].contract_id = res.data[0].Contractlog.id;
+						advancedData[currentSelectedRow].position = res.data[0].post.description;
+						advancedData[currentSelectedRow].position_level = res.data[0].postlevel.description;
+						advancedData[currentSelectedRow].contract = res.data[0].Contractlog.description;
 						$('.View-Contract').attr('data-id-contract',res.data[0].emp.id+':'+res.data[0].Contractlog.id);
 						hot.getCell(currentSelectedRow,3).innerHTML = res.data[0].post.description;
 						hot.getCell(currentSelectedRow,4).innerHTML = res.data[0].postlevel.description;
 						hot.getCell(currentSelectedRow,5).innerHTML = res.data[0].Contractlog.description;
-						advancedData[currentSelectedRow].contract_id = res.data[0].Contractlog.id;
+					
 					}
-						$('.close').click();
+					$('#ContractlogIndexForm').trigger("reset");
+					$('.close').click();
 				}
 			}
 	    } );
@@ -226,7 +231,6 @@ function GetPostion(id,elem){
 	});
 	
 }
-
 function SelectHistory() {
 	location.href = baseUrl+'contractlogs/employee/' + $('#empID').val();
 }
