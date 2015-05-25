@@ -9,16 +9,20 @@ class AdminController extends AppController {
 	}*/
 	
 	public function index() {
-		$this->layout = 'main';
-		$this->loadModel('Position');
-		$positions = $this->Position->find('list', array( 
-				'fields' 		=> array('id', 'description'),
-				'conditions' 	=> array('status = 2')
-			)
-		);
-		$this->set('positions', $positions);
+		$this->layout = 'admin';
 	}
 	
+	public function positionAndLevel() {
+		$this->layout = 'admin';
+		$this->loadModel('Position');
+		$positions = $this->Position->find('list', array(
+				'fields' 		=> array('id', 'description'),
+				'conditions' 	=> array('status = 2')
+		)
+		);
+		$this->set('positions', $positions);
+		$this->render('Positions/position_and_level');
+	}
 	public function getAllPosition() {
 		if ($this->request->is('Ajax')) {
 			//$this->autoRender = false;
