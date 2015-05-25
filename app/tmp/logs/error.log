@@ -23329,3 +23329,223 @@ Request URL: /css/main.css
 Stack Trace:
 #0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-05-25 08:48:21 Error: [MissingActionException] Action StaffsController::attebd() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'attebd',
+)
+Request URL: /FDC_AS/staffs/attebd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-25 08:49:47 Error: [MissingActionException] Action StaffsController::attebd() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'attebd',
+)
+Request URL: /FDC_AS/staffs/attebd
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-05-25 08:55:23 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:55:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/css/main.css
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-25 08:55:28 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:55:30 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:55:51 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:56:56 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:57:35 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 08:57:44 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 09:24:24 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 09:24:27 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /FDC_AS/attendances/attendanceList
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `fd...', Array)
+#2 C:\wamp\www\FDC_AS\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `fd...')
+#3 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1928): DboSource->create(Object(Attendance), Array, Array)
+#4 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(1745): Model->_doSave(Array, Array)
+#5 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2338): Model->save(Array, Array)
+#6 C:\wamp\www\FDC_AS\lib\Cake\Model\Model.php(2266): Model->saveMany(Array, Array)
+#7 C:\wamp\www\FDC_AS\app\Model\Attendance.php(70): Model->saveAll(Array)
+#8 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(191): Attendance->createAttendance('2015-05-25', Array)
+#9 C:\wamp\www\FDC_AS\app\Controller\AttendancesController.php(44): AttendancesController->getEmployeeAttendance(Array)
+#10 [internal function]: AttendancesController->attendanceList()
+#11 C:\wamp\www\FDC_AS\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AttendancesController), Array)
+#12 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 C:\wamp\www\FDC_AS\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(AttendancesController), Object(CakeRequest))
+#14 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-05-25 09:24:28 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_7207201432519732.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-05-25 09:24:28 Error: [MissingControllerException] Controller class UploadController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadController',
+  'plugin' => NULL,
+)
+Request URL: /FDC_AS/upload/250x250_3003001432521578.jpeg
+Stack Trace:
+#0 C:\wamp\www\FDC_AS\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
