@@ -127,7 +127,7 @@ $(document).ready(function() {
 	getAllPosition();
 	getAllPositionLevel();
 	function getAllPosition() {
-		$.post(webroot+'admin/getAllPosition', {}, function(data) {
+		$.post(webroot+'positions/getAllPosition', {}, function(data) {
 			$('.list-of-positions').html(data);
 		});
 	}

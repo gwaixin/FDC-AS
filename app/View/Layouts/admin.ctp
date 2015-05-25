@@ -81,8 +81,8 @@
 						<ul class="nav nav-list"> 
 						  <li class="nav-header">Admin Menu</li>        
 						  <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
-						  <li><a href="/admin/positionAndLevel"><i class="icon-info-sign"></i> Position and level</a></li>
-						   <li><a href="/admin/positionAndLevel"><i class="icon-time"></i> Shift schedule</a></li>
+						  <li><a href="/admin/positionandlevel"><i class="icon-info-sign"></i> Position and level</a></li>
+						   <li><a href="/admin/createshift"><i class="icon-time"></i> Shift schedule</a></li>
 						  <!-- 
 					          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
 					          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>

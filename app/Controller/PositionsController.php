@@ -115,4 +115,20 @@ class PositionsController extends AppController {
 			echo json_encode($result);
 		}
 	}
+	
+	public function getAllPosition() {
+		if ($this->request->is('Ajax')) {
+			$this->layout = 'ajax';
+			$positions = $this->Position->find('list', array(
+					'fields' 		=> array('id', 'description'),
+					'conditions' 	=> array('status = 2')
+			)
+			);
+			$this->set('positions', $positions);
+			$this->render('all_positions');
+			return;
+			//exit();
+		}
+	
+	}
 }

@@ -12,7 +12,7 @@ class AdminController extends AppController {
 		$this->layout = 'admin';
 	}
 	
-	public function positionAndLevel() {
+	public function positionandlevel() {
 		$this->layout = 'admin';
 		$this->loadModel('Position');
 		$positions = $this->Position->find('list', array(
@@ -23,22 +23,9 @@ class AdminController extends AppController {
 		$this->set('positions', $positions);
 		$this->render('Positions/position_and_level');
 	}
-	public function getAllPosition() {
-		if ($this->request->is('Ajax')) {
-			//$this->autoRender = false;
-			$this->layout = 'ajax';
-			
-			$this->loadModel('Position');
-			$positions = $this->Position->find('list', array( 
-					'fields' 		=> array('id', 'description'),
-					'conditions' 	=> array('status = 2')
-				)
-			);
-			$this->set('positions', $positions);
-			$this->render('Positions/all_positions');
-			return;
-			//exit();
-		}
+	
+	
+	public function createshift() {
 		
 	}
 	

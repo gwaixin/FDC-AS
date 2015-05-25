@@ -25,7 +25,11 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'Main', 'action' => 'index', 'home'));
+	
+	
+	//ADMIN
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
+	Router::connect('/admin/createshift', array('controller' => 'Employeeshifts', 'action' => 'create'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

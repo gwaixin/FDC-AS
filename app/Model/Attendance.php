@@ -23,10 +23,6 @@ class Attendance extends AppModel {
 		)
 	);
 	
-	private function validateTime() {
-		return ;
-	}
-	
 	public function hasAttendance($date) {
 		$attendance = $this->find('first', array(
 				'conditions' => array(
