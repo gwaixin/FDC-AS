@@ -36,10 +36,11 @@ class AppController extends Controller {
 	// added the debug toolkit
 	// sessions support
 	// authorization for login and logut redirect
+	
 	public $components = array(
 		'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'main', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'main12321312', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
 						'authError' => 'You must be logged in to view this page.',
 						'loginError' => 'Invalid Username or Password entered, please try again.',
@@ -49,6 +50,11 @@ class AppController extends Controller {
 				      'username' => 'username', //Default is 'username' in the userModel
 				      'password' => 'password'
 				     )
-				    ))
-        ));	
+				    )
+			)
+        ),
+		
+	);
+
+	
 }
