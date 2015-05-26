@@ -12,7 +12,7 @@ class AdminController extends AppController {
 		$this->layout = 'admin';
 	}
 	
-	public function positionandlevel() {
+	public function position_and_level() {
 		$this->layout = 'admin';
 		$this->loadModel('Position');
 		$positions = $this->Position->find('list', array(
@@ -25,7 +25,7 @@ class AdminController extends AppController {
 	}
 	
 	
-	public function createshift() {
+	public function create_shift() {
 		
 	}
 	
