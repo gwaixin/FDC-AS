@@ -24,11 +24,6 @@ class AdminController extends AppController {
 		$this->render('Positions/position_and_level');
 	}
 	
-	
-	public function create_shift() {
-		
-	}
-	
 	public function testing() {
 		$this->autoRender = false;
 		$auth = $this->Session->read('Auth');

@@ -79,18 +79,24 @@
 				<div class="sidebar-nav">
 				    <div class="well" style="width:300px; padding: 8px 0;">
 						<ul class="nav nav-list"> 
-						  <li class="nav-header">Admin Menu</li>        
-						  <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
-						  <li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
-						   <li><a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-time"></i> Shift schedule</a></li>
+							<li class="nav-header">Admin Menu</li>        
+							<li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
+						   	<li>
+						   		<a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-time"></i> Shift schedule</a>
+					   		 	<ul class="nav nav-list tree">
+                                    <li><a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-plus"></i> Create</a></li>
+                                    <li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-list"></i> List</a></li>
+                                </ul>
+					  		</li>
 						  <!-- 
 					          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
 					          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>
 							  <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
 						   -->
-				          <li class="divider"></li>
-						  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
-						  <li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+							<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
 					</div>
 				</div>
@@ -113,4 +119,5 @@
 	echo $this->Html->script('bootstrap.min');
 	echo $this->Html->script('script');
 ?>
+<script> var webroot = "<?php echo $this->webroot; ?>";</script>
 </html>
