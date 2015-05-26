@@ -5,7 +5,75 @@ App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
 
+	public function beforeFilter() {
+		$this->layout = 'employee';
+	}
+
+	public function dashboard() {
+
+	}
+
 	public function index() {
+
+	}
+
+	public function attendances() {
+
+	}
+
+	public function profile($action = 'view') {
+		$this->loadModel('Profile');
+		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
+		$this->Set('action',$action);
+		$file = "profile";
+		$errors = array();
+		$success = false;
+		if($action === 'edit') {
+			if($this->request->is('post')) {
+				$this->mode = 1;
+				$this->Profile->id = $Profile['Profile']['id'];
+
+				$img = $Profile['Profile']['picture'];
+				if($_FILES['file-profile-picture']['name']) {
+					$pictureExt = explode('.',$_FILES['file-profile-picture']['name']);
+					$pictureExt = $pictureExt[count($pictureExt)-1];
+					$picture = uniqid(time());
+					$img = $picture.".".$pictureExt;
+				}
+				$signature = $Profile['Profile']['signature'];
+				if($_FILES['file-signature-picture']['name']) {
+					$pictureExt = explode('.',$_FILES['file-signature-picture']['name']);
+					$pictureExt = $pictureExt[count($pictureExt)-1];
+					$picture = uniqid(time());
+					$signature = $picture.".".$pictureExt;
+				}
+
+				$this->request->data['Profile']['picture'] = $img;
+				$this->request->data['Profile']['signature'] = $signature;
+				$birthdate = explode('/',$this->request->data['Profile']['birthdate']);
+				$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
+				if(!$this->Profile->save($this->request->data)) {
+					$errors = $this->Profile->validationErrors;
+				} else {
+					if($_FILES['file-profile-picture']['name']) {
+						move_uploaded_file($_FILES['file-profile-picture']['tmp_name'],"upload/$img");
+					}
+					if($_FILES['file-signature-picture']['name']) {
+						move_uploaded_file($_FILES['file-profile-picture']['tmp_name'],"upload/$signature");
+					}
+					$success = true;
+				}
+				$Profile = $this->request->data;
+			}
+			$file = "edit_profile";
+		}
+		$this->Set('errors',$errors);
+		$this->Set('success',$success);
+		$this->Set($Profile);
+		$this->render($file);
+	}
+
+	public function employee_lists() {
 		$this->layout = 'main';
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');

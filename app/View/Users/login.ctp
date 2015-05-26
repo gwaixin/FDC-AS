@@ -13,12 +13,14 @@
     		echo $this->Form->input('username',array(
     																					'name' => 'username',
     																					'placeholder' => 'Enter Username',
+                                              'value' => (isset($User)) ? $User['username'] : "",
     																					'required'
     																					)
     																				);
    		  echo $this->Form->input('password',array(
    		  																			'name' => 'password',
    		  																			'placeholder' => 'Enter Password',
+                                              'value' => (isset($User)) ? $User['password'] : "",
    		  																			'required'
    		  																			)
    		  																		);
