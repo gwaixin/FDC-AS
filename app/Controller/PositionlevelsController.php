@@ -92,7 +92,7 @@ class PositionlevelsController extends AppController {
 			$result = array();
 			if ($this->Positionlevel->updateLevelStat($posLvlId, 0)) {
 				$result['result'] = 'success';
-				$result['message'] = 'Position has been removed.';
+				$result['message'] = 'Position has been removed.' . $posLvlId;
 			} else {
 				$result['result'] = 'fail';
 				$result['message'] = 'Position has fail to remove.';
@@ -105,7 +105,13 @@ class PositionlevelsController extends AppController {
 		if ($this->request->is('Ajax')) {
 			$this->layout = 'ajax';
 			$id = $this->request->data['id'];
-			$data = $this->Positionlevel->find("all", array("conditions" => array("positions_id" => $id)));
+			$data = $this->Positionlevel->find("all", 
+				array("conditions" => array(
+						"positions_id" => $id,
+						'status'	=> 2
+					)
+				)
+			);
 			$this->set('positionlevels', $data);
 			$this->render('position_level');
 			return;

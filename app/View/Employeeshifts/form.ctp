@@ -1,6 +1,12 @@
-<?php echo $this->Form->create('Employee_shift', array('class' => 'form-horizontal', 'action' => '/create')); ?>
+<?php 
+	echo $this->Form->create('Employee_shift', array(
+			'class' 	=> 'form-horizontal',
+			'action' 	=> '/create',
+			'id'		=>	'eshift-form-update'
+		)
+	);
+?>
 	<fieldset>
-		<legend>Create Employee's Shifts</legend>
 		<div class="bg-padd bg-danger notice" style='display:none;'><?php echo $this->Session->flash();?></div>
 		<div class='control-group'>
 			<?php 
@@ -11,16 +17,18 @@
 						'placeholder' 	=> 	'Description', 
 						'label' 		=> 	'Shift description',
 						'between' 		=> 	'<div class="control-group">',
-						'after'			=>	'</div>'
+						'after'			=>	'</div>',
+						'value'			=>  $shift['Employeeshift']['description']
 					) 
 				);
 				echo $this->Form->input('ftime_in', 
 					array(
 						'id'			=> 	'ftime_in',
 						'type' 			=> 	'time',
-						'selected' 		=> 	'00:00:00',
+						'selected' 		=> 	$shift['Employeeshift']['ftime_in'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'First Time-In',
+						'class'			=>	'span2',
 						'between' 		=> 	'<div class="control-group">',
 						'after'			=>	'</div>',
 						'required'		=> true
@@ -30,11 +38,12 @@
 					array(
 						'id'			=> 	'ftime_out',
 						'type' 			=> 	'time',
-						'selected' 		=> 	'00:00:00',
+						'selected' 		=> 	$shift['Employeeshift']['ftime_out'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'First Time-Out',
 						'between' 		=> 	'<div class="control-group">',
-						'after'			=>	'</div>'
+						'after'			=>	'</div>',
+						'class'			=>	'span2'
 					) 
 				);
 				
@@ -43,44 +52,43 @@
 					array(
 						'id'			=> 	'ltime_in',
 						'type' 			=> 	'time', 
-						'selected' 		=> 	'00:00:00',
+						'selected' 		=> 	$shift['Employeeshift']['ltime_in'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-In',
 						'between' 		=> 	'<div class="control-group">',
 						'disabled'		=> 	true,
 						'after'			=>	" $timeOptional </div>",
-						'value'			=>	''
+						'value'			=>	'',
+						'class'			=>	'span2'
 					) 
 				);
 				echo $this->Form->input('ltime_out', 
 					array(
 						'id'			=> 	'ltime_out',
 						'type' 			=> 	'time',
-						'selected' 		=> 	'00:00:00',
+						'selected' 		=> 	$shift['Employeeshift']['ltime_out'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-Out',
 						'between' 		=> 	'<div class="control-group">',
 						'disabled'		=> 	true,
-						'after'			=>	" $timeOptional </div>"
+						'after'			=>	" $timeOptional </div>",
+						'class'			=>	'span2'
 					) 
 				);
 				echo $this->Form->input('overtime_start', 
 					array(
 						'id'			=> 	'ltime_out',
 						'type' 			=> 	'time', 
-						'selected' 		=> 	'00:00:00',
+						'selected' 		=> 	$shift['Employeeshift']['ltime_in'],
 						'placeholder' 	=> 	'OVERTIME', 
 						'label' 		=> 	'OVERTIME STARTS',
 						'between' 		=> 	'<div class="control-group">',
 						'disabled'		=> 	true,
-						'after'			=>	" $timeOptional </div>"
+						'after'			=>	" $timeOptional </div>",
+						'class'			=>	'span2'
 					) 
 			);
 			?>
-		</div>
-		<div class='control-group'>
-			<input type='submit' name='shift' class='btn btn-primary submits' id='btn-shifts-submit' value='Create'/>
-			<input type='reset' name='shift' class='btn reset' id='btn-position-reset'/>	
 		</div>
 	</fieldset>
 <?php echo $this->Form->end();?>
@@ -104,13 +112,10 @@ $(document).ready(function(){
 			$(this).parent('span').siblings('select').attr('disabled', 'true');
 			$(this).attr('timeSet', 'deactivated');
 		} 
-		
 	});
-	
-	/*$('.submits').click(function(e) {
+
+	$('#eshift-form-update').on('submit', function(e) {
 		e.preventDefault();
-		var url = $(this).parents('form').attr('action');
-		alert(url);
-	});*/
+	});
 });
 </script>
