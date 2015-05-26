@@ -20,11 +20,6 @@ class ContractlogsController extends AppController{
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
 		
-		
-		$position = $this->Position->find('list', array(
-				'fields' => array('id', 'description')
-		));
-		
 		$position = $this->Position->find('list', array(
 				'fields' => array('id', 'description')
 		));

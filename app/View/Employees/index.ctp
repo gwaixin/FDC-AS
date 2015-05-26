@@ -85,6 +85,66 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	</div>
 	</center>
 </div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div id="employee-container">
+			<div id="search-container" class="form-control">
+			<h3> Employees </h3>
+				<?php 
+				echo $this->Form->select('field',
+																		    array(
+																		    	'employee_id' => 'Employee ID',
+																		    	'name' => 'Name',
+																		    	'position' => 'Position',
+																		    	'status' => 'Status'
+																		    ),
+																		    array(
+																		    	'empty' => 'Search By',
+																		    	'id' => 'cbo-category',
+																		    	'class' => 'form-control'
+																		    	)
+																		    );
+				echo $this->Form->select('field',
+																		    array(
+																		    		2 => 'Inactive',
+																		    		1 => 'Active'
+																		    ),
+																		    array(
+																		    	'empty' => 'Status',
+																		    	'id' => 'cbo-status',
+																		    	'class' => 'form-control'
+																		    	)
+																		    );
+				echo $this->Form->select('',null,array(
+																			'empty' => 'Position',
+																			'id' => 'cbo-position',
+																		  'class' => 'cbo-position'
+																		)
+																	);
+				echo " ";
+				echo $this->Form->select('',null,array(
+																			'id' => 'cbo-position-level',
+																		  'class' => 'cbo-position'
+																		)
+																	);
+				echo $this->Form->input('',array(
+																			'id' => "txt-search",
+																			'class' => 'txt-search',
+																			'placeholder' => 'Search',
+																			'class' => 'form-control',
+																			'div' => false,
+																			'label' => false
+																		)
+																	);
+				?>		
+			</div>
+			<div class="add-cont">
+				<a href="<?php echo $this->webroot.'profiles/profile_register'; ?>" ><i class="fa fa-plus-square"></i> ADD NEW PROFILE</a>
+			</div>	
+			<div id="table-employees"></div>
+		</div>
+	</div>
+</div>
 <div id="contract-selections">
 	<ul>
 	<?php 
@@ -133,7 +193,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       </div>
       <div class="modal-body">
       <?php
-		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
+		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal', 'id' => 'ContractlogIndexForm'));
 		echo $this->Form->input('id', array('type'=>'hidden','class'=>'empID','value' => ''));
 		echo $this->Form->input('Description',
 									array('div' => array(
@@ -495,61 +555,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
     </div>
   </div>
 </div>
-
-<div id="employee-container">
-	<div id="search-container" class="form-control">
-	<h3> Employees </h3>
-		<?php 
-		echo $this->Form->select('field',
-																    array(
-																    	'employee_id' => 'Employee ID',
-																    	'name' => 'Name',
-																    	'position' => 'Position',
-																    	'status' => 'Status'
-																    ),
-																    array(
-																    	'empty' => 'Search By',
-																    	'id' => 'cbo-category',
-																    	'class' => 'form-control'
-																    	)
-																    );
-		echo $this->Form->select('field',
-																    array(
-																    		2 => 'Inactive',
-																    		1 => 'Active'
-																    ),
-																    array(
-																    	'empty' => 'Status',
-																    	'id' => 'cbo-status',
-																    	'class' => 'form-control'
-																    	)
-																    );
-		echo $this->Form->select('',null,array(
-																	'empty' => 'Position',
-																	'id' => 'cbo-position',
-																  'class' => 'cbo-position'
-																)
-															);
-		echo " ";
-		echo $this->Form->select('',null,array(
-																	'id' => 'cbo-position-level',
-																  'class' => 'cbo-position'
-																)
-															);
-		echo $this->Form->input('',array(
-																	'id' => "txt-search",
-																	'class' => 'txt-search',
-																	'placeholder' => 'Search',
-																	'class' => 'form-control',
-																	'div' => false,
-																	'label' => false
-																)
-															);
-		?>		
-	</div>
-	<div id="table-employees"></div>
-</div>
-
 
   <div class="row text-center" style="display:none;">
     <a href="#" class="btn btn-lg btn-primary" id="btn-select" data-toggle="modal" data-target="#largeModal">Click to open Modal</a>
