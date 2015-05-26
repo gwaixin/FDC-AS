@@ -24,12 +24,14 @@ class UsersController extends AppController {
 		// if we get the post information, try to authenticate
 		if ($this->request->is('post')) {
 			$username = $this->request->data['username'];
-			$password = Security::hash($this->request->data['password'],'sha1',true);
+			$password = $this->request->data['password'];
 			$data = array('User' => array(
 																	'username' => $username,
 																	'password' => $password
 																)
 															);
+			$this->Set($data);
+			$password = Security::hash($this->request->data['password'],'sha1',true);
 			$user = $this->User->find('first',array(
 																	'conditions' => "`username` = '$username' and
 																	 				 				 `password` = '$password'"
