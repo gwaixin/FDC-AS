@@ -83,3 +83,14 @@
 #container {
 	margin-top:50px;
 }
+
+
+.privilege-container{
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px 15px;
+  box-shadow: 2px 2px 5px #919191;
+}
+.add-input{
+	float: right;
+}
