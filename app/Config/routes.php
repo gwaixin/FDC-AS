@@ -30,7 +30,8 @@
 	//ADMIN
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/createshift', array('controller' => 'Employeeshifts', 'action' => 'create'));
-/**
+	Router::connect('/admin1/employee/employee_lists', array('controller' => 'Employee', 'action' => 'index'));
+	/**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

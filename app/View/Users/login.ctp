@@ -7,11 +7,21 @@
 </style>
 <div id="login-container">
 <big style="color:red;"> <?php echo $this->Session->flash(); ?> </big>
-<?php echo $this->Form->create('User'); ?>
+<?php echo $this->Form->create('post'); ?>
     <fieldset>
         <?php 
-    		echo $this->Form->input('username');
-   		  echo $this->Form->input('password');
+    		echo $this->Form->input('username',array(
+    																					'name' => 'username',
+    																					'placeholder' => 'Enter Username',
+    																					'required'
+    																					)
+    																				);
+   		  echo $this->Form->input('password',array(
+   		  																			'name' => 'password',
+   		  																			'placeholder' => 'Enter Password',
+   		  																			'required'
+   		  																			)
+   		  																		);
     		?>
     </fieldset>
 <?php 

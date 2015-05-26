@@ -23,8 +23,8 @@ class UsersController extends AppController {
 		
 		// if we get the post information, try to authenticate
 		if ($this->request->is('post')) {
-			$username = $this->request->data['User']['username'];
-			$password = Security::hash($this->request->data['User']['password'],'sha1',true);
+			$username = $this->request->data['username'];
+			$password = Security::hash($this->request->data['password'],'sha1',true);
 			$data = array('User' => array(
 																	'username' => $username,
 																	'password' => $password
@@ -40,9 +40,6 @@ class UsersController extends AppController {
 				$this->loadModel('Profile');
 				$profile = $this->Profile->findById($user['profile_id']);
 				$profile = $profile['Profile'];
-				$profile['role'] = $user['role'];
-				
-				$this->checkRole($user['role']);
 				$this->Session->write('Auth.UserProfile', $profile);
 				$this->Auth->login($this->Auth->login($data));
 				$this->redirect($this->Auth->redirectUrl());
@@ -50,9 +47,6 @@ class UsersController extends AppController {
 				$profile['first_name'] = 'Firstname';
 				$profile['middle_name'] = 'Middlename';
 				$profile['last_name'] = 'Lastname';
-				$profile['role'] = 1;
-				
-				$this->checkRole(1);
 				$this->Session->write('Auth.UserProfile', $profile);
 				$this->Auth->login($this->Auth->login($data));
 				$this->redirect($this->Auth->redirectUrl());
@@ -60,18 +54,6 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('Invalid username or password'));
 			}
 		} 
-	}
-	
-	private function checkRole($role) {
-		$redir = "/";
-		switch($role) {
-			case 1: $redir = "/admin"; break;//return //$this->redirect('/admin'); break;
-			case 2: $redir = "/staffs";break;
-			case 3: $redir = "/employees";break;
-			case 4: break;
-			default: $redir = "/main"; break;
-		}
-		$this->Session->write('Auth.redirect', $redir);
 	}
 
 	public function logout() {

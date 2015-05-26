@@ -9,7 +9,6 @@ class EmployeesController extends AppController {
 		$this->layout = 'main';
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
-
 		$position = $this->Position->find('list', array(
 				'fields' => array('id', 'description')
 		));
@@ -92,28 +91,7 @@ class EmployeesController extends AppController {
 			$employees_arr = array();
 			foreach($employees as $key => $employee) {
 			$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
-			$schedule = "00:00 - 00:00";
-			if(($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) && ($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_out']))) {
-				$schedule = $this->convertTimeToMilitary($employee['Employee']['f_time_in'])." - ".$this->convertTimeToMilitary($employee['Employee']['l_time_out']);
-			} else if(($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) && ($employee['Employee']['f_time_out'] !== '00:00:00' && $employee['Employee']['f_time_out'])) {
-				$schedule = $this->convertTimeToMilitary($employee['Employee']['f_time_in'])." - ".$this->convertTimeToMilitary($employee['Employee']['f_time_out']);
-			}
-			$f_time_in = "";
-			if($employee['Employee']['f_time_in'] !== '00:00:00' && !empty($employee['Employee']['f_time_in'])) {
-				$f_time_in = $employee['Employee']['f_time_in'];
-			}
-			$f_time_out = "";
-			if($employee['Employee']['f_time_out'] !== '00:00:00' && !empty($employee['Employee']['f_time_out'])) {
-				$f_time_out = $employee['Employee']['f_time_out'];
-			}
-			$l_time_in = "";
-			if($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_in'])) {
-				$l_time_in = $employee['Employee']['l_time_in'];
-			}
-			$l_time_out = "";
-			if($employee['Employee']['l_time_out'] !== '00:00:00' && !empty($employee['Employee']['l_time_out'])) {
-				$f_time_in = $employee['Employee']['l_time_out'];
-			}
+			
 			$data = array(
 									'id' => $employee['Employee']['id'],
 									'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
@@ -131,14 +109,9 @@ class EmployeesController extends AppController {
 									'insurance_id' => $employee['Employee']['insurance_id'],
 									'position' => $employee['positions']['description'],
 									'position_level' => $employee['position_levels']['description'],
+									'shift' => '',
 									'contract' => $employee['contract_logs']['description'],
-									'schedule' => $schedule,
-									'f_time_in' => $this->convertTimeToMilitary($f_time_in),
-									'f_time_out' => $this->convertTimeToMilitary($f_time_out),
-									'l_time_in' => $this->convertTimeToMilitary($l_time_in),
-									'l_time_out' => $this->convertTimeToMilitary($l_time_out),
 									'role' => $employee['Employee']['role'],
-									'contract_id' => $employee['Employee']['current_contract_id'],
 									'status' => $status
 								);
 			array_push($employees_arr,$data);	
@@ -161,14 +134,9 @@ class EmployeesController extends AppController {
 										'insurance_id' => null,
 										'position' => null,
 										'position_level' => null,
+										'shift' => null,
 										'contract' => null,
-										'schedule' => null,
-										'f_time_in' => null,
-										'f_time_out' => null,
-										'l_time_in' => null,
-										'l_time_out' => null,
 										'role' => null,
-										'contract_id' => null,
 										'status' => null
 									);
 				array_push($employees_arr,$data);
@@ -222,6 +190,8 @@ class EmployeesController extends AppController {
 	}
 
 	public function getDropdownValues() {
+		//awdkjhawjkdhawdaw
+		//dawjkdhawjkdhawdw/
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$json['names'] = $this->getNameLists();
@@ -275,42 +245,33 @@ class EmployeesController extends AppController {
 	}
 
 	public function getPositionLevelLists() {
-			$this->autoRender = false;
-			$this->loadModel('Position');
-			$this->loadModel('Position_level');
-			$level_arr = array();
-			$levels = $this->Position_level->find('all',array(
-																										'fields' => array('distinct(description)')
-																										)
-																									);
-			foreach($levels as $level) {
-				array_push($level_arr,$level['Position_level']['description']);
-			}
-			return $level_arr;
+		$this->autoRender = false;
+		$this->loadModel('Position');
+		$this->loadModel('Position_level');
+		$joins = array(
+							 array(
+			            'table' => 'position_levels',
+			            'conditions' => array(
+			                'Position.id = position_levels.positions_id'
+			            )
+			           )
+							);
+		$positions = $this->Position->find('all',array(
+																								'joins' => $joins,
+																								'fields' => array('*')
+																							)
+																						);
+		$positionLevels = array();
+		foreach($positions as $position) {
+			$data = array(
+								'position' => $position['Position']['description'],
+								'positionLevel' => $position['position_levels']['description']
+							);
+			array_push($positionLevels,$data);
+		}
+		return $positionLevels;
 	}
 
-	public function getPositionLevels() {
-		if($this->request->is('ajax')) {
-			$this->autoRender = false;
-			$this->loadModel('Position');
-			$this->loadModel('Position_level');
-			$position = 0;
-			$searchPosition = $this->Position->findByDescription($this->request->data['position']);
-			if($searchPosition) {
-				$position = $searchPosition['Position']['id'];
-			}
-			$level_arr = array();
-			$levels = $this->Position_level->find('all',array(
-																										'conditions' => "positions_id = '$position'",
-																										'fields' => array('distinct(description)')
-																										)
-																									);
-			foreach($levels as $level) {
-				array_push($level_arr,$level['Position_level']['description']);
-			}
-			echo json_encode($level_arr);
-		}
-	}
 
 	public function validateFields() {
 		if ($this->request->is('ajax')) {
@@ -493,10 +454,6 @@ class EmployeesController extends AppController {
 									'sss' => $employee['sss'],
 									'philhealth' => $employee['philhealth'],
 									'insurance_id' => $employee['insurance_id'],
-									'f_time_in' => $this->convertTimeToDefault($employee['f_time_in']),
-									'f_time_out' => $this->convertTimeToDefault($employee['f_time_out']),
-									'l_time_in' => $this->convertTimeToDefault($employee['l_time_in']),
-									'l_time_out' => $this->convertTimeToDefault($employee['l_time_out']),
 									'username' => $employee['username']
 								);
 			if(isset($employee['salary'])) {

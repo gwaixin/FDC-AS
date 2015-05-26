@@ -9,6 +9,7 @@
 	echo $this->Html->script('employee');
 	echo $this->Html->script('bootstrap-timepicker');
 	echo $this->Html->script('bootstrap-timepicker.min');
+	echo $this->Html->script('bootbox');
 
 ?>
 
@@ -93,8 +94,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		echo $this->Form->button('Add Contract',array(
 																			'class' => 'btn btn-primary',
 																			'data-toggle' => 'modal',
-																			'data-target' => '#modalContract',
-																			'onclick' => ''
+																			'data-target' => '#modalContract'
 																		)
 																	);
 		echo "</li>";
@@ -364,12 +364,12 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h2 class="modal-title" id="myModalLabel"> More Information </h2>
-       </div>
+        	<big style="color:red;" id="txt-errors"></big>
+        </div>
       <div class="modal-body">
       	<form>
 			    <div class="form-group" id="additional-info-container">
 						<h4 id="lbl-employee"> </h4>
-						<big style="color:red;" id="txt-errors"></big>
 		        <?php
 		        		echo $this->Form->Select('Drug Test',array(
 		        																	'Passed' => 'Passed',
@@ -435,36 +435,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	        																	'id' => 'insurance_id',
 	        																	'disabled' => 'disabled',
 	        																	'placeholder' => 'Enter Insurance ID',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('First Timein',array(
-	        																	'name' => 'f_time_in',
-	        																	'id' => 'f_time_in',
-	        																	'disabled' => 'disabled',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('First Timeout',array(
-	        																	'name' => 'f_time_out',
-	        																	'id' => 'f_time_out',
-	        																	'disabled' => 'disabled',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('Second Timeout',array(
-	        																	'name' => 'l_time_in',
-	        																	'id' => 'l_time_in',
-	        																	'disabled' => 'disabled',
-	        																	'after' => ' <span class="btn btn-primary" id="edit-last-timein"> Edit </span>',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('Second Timeout',array(
-	        																	'name' => 'l_time_out',
-	        																	'id' => 'l_time_out',
-	        																	'disabled' => 'disabled',
-	        																	'after' => ' <span class="btn btn-primary" id="edit-last-timeout"> Edit </span>',
 	        																	'div' => false
 	        																	)
 	        																);
