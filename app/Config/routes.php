@@ -37,8 +37,8 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
-	Router::connect('/staffs/attendances', array('controller' => 'Attendances', 'action' => 'index'));
-	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index'));
+	Router::connect('/staffs/attendances', array('controller' => 'staffs', 'action' => 'attendances'));
+	Router::connect('/staffs/profiles', array('controller' => 'staffs', 'action' => 'profile_register'));
 	Router::connect('/staffs/employees', array('controller' => 'staffs', 'action' => 'employees'));
 
 /**

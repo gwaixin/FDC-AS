@@ -30,8 +30,18 @@
 		echo $this->Html->css('twitter-bootstrap.min');
 		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
+		echo $this->Html->css('main');
+		echo $this->Html->css('employee');
+		echo $this->Html->css('hot.full.min');
+		echo $this->Html->css('bootstrap-timepicker.min');
 		
 		echo $this->Html->script('jquery-1.11.2.min');
+		
+		echo $this->Html->script('hot.full.min');
+		echo $this->Html->script('employee');
+		echo $this->Html->script('bootstrap-timepicker');
+		echo $this->Html->script('bootstrap-timepicker.min');
+
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,10 +49,14 @@
 
 	?>
 </head>
+
+<script>
+var baseUrl = "<?php echo $this->webroot; ?>";
+</script>
+
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top nav-bar-mod">
       <div class="navbar-inner">
-        <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -65,7 +79,6 @@
               </li>
           </ul>
           </div>
-        </div>
       </div>
     </div>
 	<div id="container" class="container-fluid">
@@ -74,13 +87,12 @@
 			    <div class="well" style="width:300px; padding: 8px 0;">
 					<ul class="nav nav-list"> 
 					  <li class="nav-header">Staff Menu</li>        
-					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-home"></i> DashBoard</a></li>
-					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-home"></i> Employee</a></li>
-			          <li><a href="<?php echo $this->webroot;?>staffs/profiles/"><i class="icon-envelope"></i> Profile </a></li>
-			          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-comment"></i> Attendance </a></li>
+					  <li><a href="<?php echo $this->webroot;?>staffs"><i class="icon-home"></i> DashBoard</a></li>
+					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-book"></i> Employee</a></li>
+			          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-list"></i> Attendance </a></li>
 			          <li class="divider"></li>
 					  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
-					  <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+					  <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i> Logout</a></li>
 					</ul>
 				</div>
 			</div>		
