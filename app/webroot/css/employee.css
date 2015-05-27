@@ -24,3 +24,15 @@
 .add-cont{
 	padding: 0 10px;
 }
+.shift {
+	cursor: pointer;
+}
+#modalShift {
+	width: 800px;
+}
+#table-shift-detail {
+	font: 18px Tahoma;
+}
+#table-shift-detail tr td {
+	padding: 5px 10px;
+}

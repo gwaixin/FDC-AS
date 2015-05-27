@@ -120,6 +120,13 @@ class EmployeesController extends AppController {
 													'conditions' => array(
 															'Employee.current_contract_id = contract_logs.id'
 													)
+												),
+											array(
+													'table' => 'employee_shifts',
+													'type' => 'LEFT',
+													'conditions' => array(
+															'Employee.employee_shifts_id = employee_shifts.id'
+													)
 												)
 											);
 			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and Employee.status != 0");
@@ -170,7 +177,8 @@ class EmployeesController extends AppController {
 									'insurance_id' => $employee['Employee']['insurance_id'],
 									'position' => $employee['positions']['description'],
 									'position_level' => $employee['position_levels']['description'],
-									'shift' => '',
+									'shift' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['description'] : 'Select Shift',
+									'shift_id' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['id'] : '',
 									'contract' => $employee['contract_logs']['description'],
 									'contract_id' => $employee['contract_logs']['id'],
 									'role' => $employee['Employee']['role'],
@@ -197,6 +205,7 @@ class EmployeesController extends AppController {
 										'position' => null,
 										'position_level' => null,
 										'shift' => null,
+										'shift_id' => null,
 										'contract' => null,
 										'contract_id' => null,
 										'role' => null,
@@ -252,15 +261,86 @@ class EmployeesController extends AppController {
 		}
 	}
 
+	public function getEmployeeShift() {
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->loadModel('Employeeshift');
+			$info = $this->Employeeshift->findById($this->request->data['id']);
+			$f_time_in = $this->convertTimeToMilitary($info['Employeeshift']['f_time_in']);
+			$f_time_out = $this->convertTimeToMilitary($info['Employeeshift']['f_time_out']);
+			$l_time_in = ($info['Employeeshift']['l_time_in']) ? $info['Employeeshift']['l_time_out'] : 'None';
+			$l_time_out = ($info['Employeeshift']['l_time_out']) ? $info['Employeeshift']['l_time_out'] : 'None';
+			$overtime_start = ($info['Employeeshift']['overtime_start']) ? $info['Employeeshift']['overtime_start'] : 'None';
+			echo "<h2> Employee Shift Detail </h2>
+						<table id='table-shift-detail'>
+							<tr>
+								<td> Description </td>
+								<td> : </td>
+								<td>".$info['Employeeshift']['description']."</td>
+							</tr>
+							<tr>
+								<td> First Timein </td>
+								<td> : </td>
+								<td>".$f_time_in."</td>
+							</tr>
+							<tr>
+								<td> First Timeout </td>
+								<td> : </td>
+								<td>".$f_time_out."</td>
+							</tr>
+							<tr>
+								<td> Last Timein </td>
+								<td> : </td>
+								<td>".$l_time_in."</td>
+							</tr>
+							<tr>
+								<td> Last Timeout </td>
+								<td> : </td>
+								<td>".$l_time_out."</td>
+							</tr>
+							<tr>
+								<td> Overtime Start </td>
+								<td> : </td>
+								<td>".$overtime_start."</td>
+							</tr>
+							<tr>
+								<td><span class='btn btn-primary' id='btn-change-shift'>Change Shift</span></td>
+							</tr>
+						</table>";
+		}
+	}
+
+	public function updateEmployeeShift() {
+		if($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->Employee->id = $this->request->data['id'];
+			$data = array(
+									'employee_shifts_id' => $this->request->data['shift_id']
+								);
+			$success = 0;
+			if($this->Employee->save($data)) {
+				$success = 1;
+			}
+			echo json_encode($success);
+		}
+	}
+
+	public function getShiftMasterLists() {
+		$this->layout = false;
+		$this->loadModel('Employeeshift');
+		$lists = $this->Employeeshift->find('all');
+		$this->Set('lists',$lists);
+		$this->render('employee_shift_lists');
+	}
+
 	public function getDropdownValues() {
-		//awdkjhawjkdhawdaw
-		//dawjkdhawjkdhawdw/
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$json['names'] = $this->getNameLists();
 			$json['companies'] = $this->getCompanyLists();
 			$json['positions'] = $this->getPositionLists();
 			$json['positionLevels'] = $this->getPositionLevelLists();
+			$json['shiftMaster'] = $this->getShiftLists();
 			echo json_encode($json);
 		}
 	}
@@ -299,12 +379,8 @@ class EmployeesController extends AppController {
 	public function getPositionLists() {
 		$this->autoRender = false;
 		$this->loadModel('Position');
-		$positions = $this->Position->find('all');
-		$position_arr = array();
-		foreach($positions as $position) {
-			array_push($position_arr,$position['Position']['description']);
-		}
-		return $position_arr;
+		$positions = $this->Position->find('list',array('fields' => array('description')));
+		return $positions;
 	}
 
 	public function getPositionLevelLists() {
@@ -326,13 +402,20 @@ class EmployeesController extends AppController {
 																						);
 		$positionLevels = array();
 		foreach($positions as $position) {
-			$data = array(
-								'position' => $position['Position']['description'],
-								'positionLevel' => $position['position_levels']['description']
-							);
+		$data = array(
+					'position' => $position['Position']['description'],
+					'positionLevel' => $position['position_levels']['description']
+				);
 			array_push($positionLevels,$data);
 		}
 		return $positionLevels;
+	}
+
+	public function getShiftLists() {
+		$this->autoRender = false;
+		$this->loadModel('Employeeshift');
+		$lists = $this->Employeeshift->find('list',array('fields' => array('description')));
+		return $lists;
 	}
 
 
