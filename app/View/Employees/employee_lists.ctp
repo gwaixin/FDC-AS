@@ -8,6 +8,7 @@
 	echo $this->Html->script('employee');
 	echo $this->Html->script('bootstrap-timepicker');
 	echo $this->Html->script('bootstrap-timepicker.min');
+	echo $this->Html->script('bootbox');
 ?>
 
 
@@ -746,6 +747,24 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       <?php 
      	 echo $this->Form->end();
       ?>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal hide fade" id="modalShift" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	    <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <legend class="modal-title" id="myModalLabel"> Employee Shift Master </legend>
+	       </div>
+			</div> 		 	
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
