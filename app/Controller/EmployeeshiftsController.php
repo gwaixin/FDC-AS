@@ -95,24 +95,24 @@ class EmployeeshiftsController extends AppController {
 
 	//Convert data to db expected result
 	private function convertData($data, $id = "") {
-		$ftimeinData = $data['Employee_shift']['ftime_in'];
-		$ftimeoutData = $data['Employee_shift']['ftime_out'];
+		$ftimeinData = $data['Employee_shift']['f_time_in'];
+		$ftimeoutData = $data['Employee_shift']['f_time_out'];
 
 		$ftimein 	= $ftimeinData['hour'] 	. ':' . $ftimeinData['min'] 	. ' ' . $ftimeinData['meridian']; //implode(':', $ftimeinData);
-		$ftimeout 	= $ftimeoutData['hour'] . ':' . $ftimeoutData['min']  	. ' ' . $ftimeoutData['meridian']; //implode(':', $data['Employee_shift']['ftime_out']);
+		$ftimeout 	= $ftimeoutData['hour'] . ':' . $ftimeoutData['min']  	. ' ' . $ftimeoutData['meridian']; //implode(':', $data['Employee_shift']['f_time_out']);
 		
 		$eshift = array(
 				'description' => $data['Employee_shift']['description'],
-				'ftime_in'	=> date('H:i:s', strtotime($ftimein)),
-				'ftime_out'	=> date('H:i:s', strtotime($ftimeout)),
+				'f_time_in'	=> date('H:i:s', strtotime($ftimein)),
+				'f_time_out'	=> date('H:i:s', strtotime($ftimeout)),
 		);
-		if (!empty($data['Employee_shift']['ltime_in']) && !empty($data['Employee_shift']['ltime_out'])) {
-			$ltimeinData = $data['Employee_shift']['ltime_in'];
-			$ltimeOutData = $data['Employee_shift']['ltime_out'];
-			$ltimein 	= $ltimeinData['hour'] 	. ':' . $ltimeinData['min'] 	. ' ' . $ltimeinData['meridian']; //implode(':', $data['Employee_shift']['ltime_in']);
-			$ltimeout 	= $ltimeOutData['hour'] . ':' . $ltimeOutData['min'] 	. ' ' . $ltimeOutData['meridian']; //implode(':', $data['Employee_shift']['ltime_out']);
-			$eshift['ltime_in'] = date('H:i:s', strtotime($ltimein));
-			$eshift['ltime_out'] = date('H:i:s', strtotime($ltimeout));
+		if (!empty($data['Employee_shift']['l_time_in']) && !empty($data['Employee_shift']['l_time_out'])) {
+			$ltimeinData 	= $data['Employee_shift']['l_time_in'];
+			$ltimeOutData 	= $data['Employee_shift']['l_time_out'];
+			$ltimein 		= $ltimeinData['hour'] 	. ':' . $ltimeinData['min'] 	. ' ' . $ltimeinData['meridian']; //implode(':', $data['Employee_shift']['l_time_in']);
+			$ltimeout 		= $ltimeOutData['hour'] . ':' . $ltimeOutData['min'] 	. ' ' . $ltimeOutData['meridian']; //implode(':', $data['Employee_shift']['l_time_out']);
+			$eshift['l_time_in'] 	= date('H:i:s', strtotime($ltimein));
+			$eshift['l_time_out'] 	= date('H:i:s', strtotime($ltimeout));
 		}
 		if ($id) {
 			$eshift['id'] = $id;

@@ -19,9 +19,9 @@
 						'after'			=>	'</div>'
 					) 
 				);
-				echo $this->Form->input('ftime_in', 
+				echo $this->Form->input('f_time_in', 
 					array(
-						'id'			=> 	'ftime_in',
+						'id'			=> 	'f_time_in',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -31,9 +31,9 @@
 						'required'		=> true
 					) 
 				);
-				echo $this->Form->input('ftime_out', 
+				echo $this->Form->input('f_time_out', 
 					array(
-						'id'			=> 	'ftime_out',
+						'id'			=> 	'f_time_out',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -44,9 +44,9 @@
 				);
 				
 				$timeOptional = '<span> <a href="javascript:;" class="settime" timeSet="deactivated"><i class="icon-edit"></i></span></a>';
-				echo $this->Form->input('ltime_in', 
+				echo $this->Form->input('l_time_in', 
 					array(
-						'id'			=> 	'ltime_in',
+						'id'			=> 	'l_time_in',
 						'type' 			=> 	'time', 
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -57,9 +57,9 @@
 						'value'			=>	''
 					) 
 				);
-				echo $this->Form->input('ltime_out', 
+				echo $this->Form->input('l_time_out', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'l_time_out',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -71,7 +71,7 @@
 				);
 				echo $this->Form->input('overtime_start', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'overtime_start',
 						'type' 			=> 	'time', 
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'OVERTIME', 

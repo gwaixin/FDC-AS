@@ -5,27 +5,27 @@ class Employeeshift extends AppModel {
 	public $useTable = 'employee_shifts';
 	
 	public $validate = array(
-			'ftime_in' => array(
+			'f_time_in' => array(
 				'rule' => 'time',//array('validateTime'),
 				'message' => '<b>First Time in</b> has<b>First Time out</b> has  Invalid Time format'
-			), 'ftime_out' => array(
+			), 'f_time_out' => array(
 				'Rule-1' => array(
 					'rule' => 'time',//array('validateTime'),
 					'message' => '<b>First Time out</b> has Invalid Time format'
 				), 'Rule-2' => array(
-					'rule' => array('checkTimeIn', 'ftime'),
+					'rule' => array('checkTimeIn', 'f_time'),
 					'message' => '<b>First Time out</b> must not be the same with First Time in.'
 				)
 				
-			), 'ltime_in' => array(
+			), 'l_time_in' => array(
 				'rule' => 'time',//array('validateTime'),
 				'message' => '<b>Last Time in</b> has Invalid Time format'
-			), 'ltime_out' => array(
+			), 'l_time_out' => array(
 				'Rule-1' => array(
 					'rule' => 'time',//array('validateTime'),
 					'message' => '<b>Last Time out</b> has Invalid Time format'
 				), 'Rule-2' => array(
-					'rule' => array('checkTimeIn', 'ltime'),
+					'rule' => array('checkTimeIn', 'l_time'),
 					'message' => '<b>Last Time out</b> must not be the same with Last Time in.'
 				)
 				

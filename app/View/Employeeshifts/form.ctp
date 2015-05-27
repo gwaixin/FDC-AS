@@ -21,11 +21,11 @@
 						'value'			=>  $shift['Employeeshift']['description']
 					) 
 				);
-				echo $this->Form->input('ftime_in', 
+				echo $this->Form->input('f_time_in', 
 					array(
-						'id'			=> 	'ftime_in',
+						'id'			=> 	'f_time_in',
 						'type' 			=> 	'time',
-						'selected' 		=> 	$shift['Employeeshift']['ftime_in'],
+						'selected' 		=> 	$shift['Employeeshift']['f_time_in'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'First Time-In',
 						'class'			=>	'span2',
@@ -34,11 +34,11 @@
 						'required'		=> true
 					) 
 				);
-				echo $this->Form->input('ftime_out', 
+				echo $this->Form->input('f_time_out', 
 					array(
-						'id'			=> 	'ftime_out',
+						'id'			=> 	'f_time_out',
 						'type' 			=> 	'time',
-						'selected' 		=> 	$shift['Employeeshift']['ftime_out'],
+						'selected' 		=> 	$shift['Employeeshift']['f_time_out'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'First Time-Out',
 						'between' 		=> 	'<div class="control-group">',
@@ -48,11 +48,11 @@
 				);
 				
 				$timeOptional = '<span> <a href="javascript:;" class="settime" timeSet="deactivated"><i class="icon-edit"></i></span></a>';
-				echo $this->Form->input('ltime_in', 
+				echo $this->Form->input('l_time_in', 
 					array(
-						'id'			=> 	'ltime_in',
+						'id'			=> 	'l_time_in',
 						'type' 			=> 	'time', 
-						'selected' 		=> 	$shift['Employeeshift']['ltime_in'],
+						'selected' 		=> 	$shift['Employeeshift']['l_time_in'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-In',
 						'between' 		=> 	'<div class="control-group">',
@@ -62,11 +62,11 @@
 						'class'			=>	'span2'
 					) 
 				);
-				echo $this->Form->input('ltime_out', 
+				echo $this->Form->input('l_time_out', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'l_time_out',
 						'type' 			=> 	'time',
-						'selected' 		=> 	$shift['Employeeshift']['ltime_out'],
+						'selected' 		=> 	$shift['Employeeshift']['l_time_out'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-Out',
 						'between' 		=> 	'<div class="control-group">',
@@ -77,9 +77,9 @@
 				);
 				echo $this->Form->input('overtime_start', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'overtime_start',
 						'type' 			=> 	'time', 
-						'selected' 		=> 	$shift['Employeeshift']['ltime_in'],
+						'selected' 		=> 	$shift['Employeeshift']['overtime_start'],
 						'placeholder' 	=> 	'OVERTIME', 
 						'label' 		=> 	'OVERTIME STARTS',
 						'between' 		=> 	'<div class="control-group">',

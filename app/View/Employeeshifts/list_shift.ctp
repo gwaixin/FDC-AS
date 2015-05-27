@@ -2,24 +2,24 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>id</th>
-			<th>description</th>
-			<th>ftime_in</th>
-			<th>ftime_out</th>
-			<th>ltime_in</th>
-			<th>ltime_out</th>
-			<th>overtime_start</th>
-			<th>status</th>
+			<th>ID</th>
+			<th>Description</th>
+			<th>TIMEIN</th>
+			<th>TIMEOUT</th>
+			<th>TIMEIN</th>
+			<th>TIMEOUT</th>
+			<th>OVERTIME</th>
+			<th>Status</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 			foreach($data as $key => $val) {
-			$ftimeIn  = empty($val['Employeeshift']['ftime_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ftime_in']));
-			$ftimeOut = empty($val['Employeeshift']['ftime_out']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ftime_out']));
-			$ltimeIn  =	empty($val['Employeeshift']['ltime_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ltime_in']));
-			$ltimeOut =	empty($val['Employeeshift']['ltime_out']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ltime_out']));
+			$ftimeIn  = empty($val['Employeeshift']['f_time_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['f_time_in']));
+			$ftimeOut = empty($val['Employeeshift']['f_time_out']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['f_time_out']));
+			$ltimeIn  =	empty($val['Employeeshift']['l_time_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['l_time_in']));
+			$ltimeOut =	empty($val['Employeeshift']['l_time_out']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['l_time_out']));
 			$overtime =	empty($val['Employeeshift']['overtime_start']) ? '' : date('g:i A', strtotime($val['Employeeshift']['overtime_start']));
 		?>
 		<tr class="shift-row" sid="<?php echo $val['Employeeshift']['id']; ?>">
