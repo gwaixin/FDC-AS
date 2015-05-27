@@ -224,6 +224,32 @@ $(function(){
 	});
 	
 	
+	$('#ProfileRegister').submit(function(e){
+		$('.bg-padd').html("");
+		var url = weburl+'profiles/register';
+		$.ajax( {
+	      url: url,
+	      type: 'POST',
+	      data: new FormData( this ),
+	      processData: false,
+	      contentType: false,
+	      success:function(data){
+				var res = JSON.parse(data);
+
+				if(res.success == 0){
+					for(var err in res.data){
+						$('.bg-padd').show();
+						$('.bg-padd').append('<p>'+res.data[err]+'</p>');
+					}
+				}else{
+					$('#ProfileRegister').trigger("reset");
+					$('.close').click();
+				}
+			}
+	    });
+		e.preventDefault();
+	});
+	
 });
 
 /**

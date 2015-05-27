@@ -65,10 +65,13 @@ class ProfilesController extends AppController{
 					'signature' => $row['Profile']['signature']
 			);
 
-			if($this->Profile->save($data)){
+			$result = $this->register(false, $data);
+			$result = json_decode($result);
+			
+			if($result->success == 1){
 				return $this->redirect('/');
 			}else{
-				$errors = $this->Profile->validationErrors;
+				$errors = $result->data;
 			}
 			
 			
@@ -162,6 +165,62 @@ class ProfilesController extends AppController{
 		$this->set('data',$data);
 		
 	}
+	
+	/**
+	 * Ajax / Form add 
+	 * @param string $mode = set mode false if prevent autorender
+	 * @param unknown $data = array of data return
+	 * @return string return json
+	 */
+	public function register($mode = true,	$data = array()){
+		
+
+		
+		if($mode){
+			$this->autoRender = false;
+			if($this->request->is('ajax')){
+				
+				$this->Profile->create();
+				
+				$row = $this->request->data;
+				
+				
+				$data = array(
+						'first_name' => $row['first_name'],
+						'last_name' => $row['last_name'],
+						'middle_name' => $row['middle_name'],
+						'birthdate' => $row['birthdate'],
+						'contact' => $row['contact'],
+						'facebook' => $row['facebook'],
+						'picture' => $row['Profile']['picture'],
+						'email' => $row['email'],
+						'gender' => $row['gender'],
+						'address' => $row['address'],
+						'contact_person' => $row['contact_person'],
+						'contact_person_no' => $row['contact_person_no'],
+						'signature' => $row['Profile']['signature']
+				);
+			}
+		}
+		
+		if($this->Profile->save($data)){
+			
+			$result = array(
+					'success' => 1,
+					'data' => $data
+			);
+			
+			return json_encode($result);
+		}else{
+			$result = array(
+					'success' => 0,
+					'data' => $this->Profile->validationErrors
+			);
+				
+			return json_encode($result);
+		}
+	}
+	
 	
 	public function delete(){
 		
