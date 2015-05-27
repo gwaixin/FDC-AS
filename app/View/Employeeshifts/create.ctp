@@ -1,4 +1,9 @@
-<?php echo $this->Form->create('Employee_shift', array('class' => 'form-horizontal', 'action' => '/create')); ?>
+<?php 
+	echo $this->Form->create('Employee_shift', array(
+		'class' => 'form-horizontal', 
+		'url' => '/admin/create_shift')
+	); 
+?>
 	<fieldset>
 		<legend>Create Employee's Shifts</legend>
 		<div class="bg-padd bg-danger notice" style='display:none;'><?php echo $this->Session->flash();?></div>
@@ -84,33 +89,4 @@
 		</div>
 	</fieldset>
 <?php echo $this->Form->end();?>
-<script>
-$(document).ready(function(){
-	function checkNotice() {
-		if ($('.notice').html().length > 0) {
-			$('.notice').fadeIn(1000);
-		}
-	}
-	
-	checkNotice();
-
-	$('.settime').click(function() {
-		var type = $(this).attr('timeType');
-		var setting = $(this).attr('timeSet');
-		if (setting === 'deactivated') {
-			$(this).parent('span').siblings('select').removeAttr('disabled');
-			$(this).attr('timeSet', 'activated');
-		} else {
-			$(this).parent('span').siblings('select').attr('disabled', 'true');
-			$(this).attr('timeSet', 'deactivated');
-		} 
-		
-	});
-	
-	/*$('.submits').click(function(e) {
-		e.preventDefault();
-		var url = $(this).parents('form').attr('action');
-		alert(url);
-	});*/
-});
-</script>
+<?php echo $this->Html->script('admin/shift'); ?>

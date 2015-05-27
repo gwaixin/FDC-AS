@@ -1,3 +1,4 @@
+<h4>List of Shifts</h4>
 <table class="table">
 	<thead>
 		<tr>
@@ -14,7 +15,7 @@
 	</thead>
 	<tbody>
 		<?php
-			foreach($shifts as $key => $val) {
+			foreach($data as $key => $val) {
 			$ftimeIn  = empty($val['Employeeshift']['ftime_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ftime_in']));
 			$ftimeOut = empty($val['Employeeshift']['ftime_out']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ftime_out']));
 			$ltimeIn  =	empty($val['Employeeshift']['ltime_in']) ? '' 	: date('g:i A', strtotime($val['Employeeshift']['ltime_in']));
@@ -40,66 +41,20 @@
 		?>
 	</tbody>
 </table>
-<script>
-	$(document).ready(function() {
-		var row;
-		var sid;
-		$('.shift-btn-delete').click(function() {
-			if (confirm("Are you sure you want to Delete this shift???")) {
-				row = $(this).parent().parent();
-				sid = row.attr('sid');
-				$.post(webroot+'Employeeshifts/delete', {id:sid}, function(data) {
-					if (data == 'success') {
-						row.fadeOut(300);
-					}
-				});
-			} 
-		});
-
-		$('.shift-btn-edit').click(function() {
-			row = $(this).parent().parent();
-			sid = row.attr('sid');
-			$.post(webroot+'Employeeshifts/edit', {id:sid}, function(data) {
-				$('#employee-shift-modal .modal-body').html(data);
-				$('#employee-shift-modal').modal('show');
-			});
-		});
-
-		$('.shift-btn-update').click(function() {
-			$.post(webroot+'Employeeshifts/update/'+sid, $('#eshift-form-update').serialize(), function(data) {
-				if(data['result'] == 'success') {
-					$('#employee-shift-modal').modal('hide');
-					console.log(data);
-					//data['changes'].forEach(updatingList);
-					for(var item in data['changes']) {
-						row.find('.' + item).html(data['changes'][item]);
-						console.log(data['changes'][item]);
-					}
-					/*row.find('.shift-id').html();
-					row.find('.shift-desc').html();
-					row.find('.shift-ftimein').html();
-					row.find('.shift-ftimeout').html();
-					row.find('.shift-ltimein').html();
-					row.find('.shift-ltimeout').html();
-					row.find('.shift-overtime').html();
-					row.find('.shift-status').html();*/
-				} else if (data['result'] == 'fail') {
-					$('#modal-error p').html(data['error']);
-					$('#modal-error').fadeIn(300, function() {
-						setTimeout(function() {
-							$('#modal-error').fadeOut(300);
-						}, 1000);
-					});
-				}
-			}, 'JSON');
-		});
-
-		function updatingList(element, index, array) {
-			//console.log('a[' + index + '] = ' + element);
-			row.find('.' + index).html(element);
-		}
-	});
-</script>
+<div class='row'>
+<?php
+	echo $this->Paginator->numbers(array(
+		'modulus' 	=> 2,   /* Controls the number of page links to display */
+		'first' 	=> '<<',
+		'separator' => '',
+		'last' 		=> '>>',
+		'tag'		=> 'li',
+		'currentClass' 	=> 'active',
+		'currentTag' 	=> 'span',
+		'before' 		=> "<div class='pagination'><ul>", 'after' => '</ul></div>')
+	);
+?>
+</div>
 
 <div id="employee-shift-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -119,3 +74,4 @@
   </div>
 </div>
 
+<?php echo $this->Html->script('admin/shift'); ?>

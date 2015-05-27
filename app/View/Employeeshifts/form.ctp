@@ -93,29 +93,7 @@
 	</fieldset>
 <?php echo $this->Form->end();?>
 <script>
-$(document).ready(function(){
-	function checkNotice() {
-		if ($('.notice').html().length > 0) {
-			$('.notice').fadeIn(1000);
-		}
-	}
-	
-	checkNotice();
-
-	$('.settime').click(function() {
-		var type = $(this).attr('timeType');
-		var setting = $(this).attr('timeSet');
-		if (setting === 'deactivated') {
-			$(this).parent('span').siblings('select').removeAttr('disabled');
-			$(this).attr('timeSet', 'activated');
-		} else {
-			$(this).parent('span').siblings('select').attr('disabled', 'true');
-			$(this).attr('timeSet', 'deactivated');
-		} 
-	});
-
-	$('#eshift-form-update').on('submit', function(e) {
-		e.preventDefault();
-	});
+$(document).on('submit', '#eshift-form-update', function(e) {
+	e.preventDefault();
 });
 </script>
