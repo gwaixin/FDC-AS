@@ -36,7 +36,7 @@ class StaffsController extends AppController {
 		$this->set('position', $position);
 		$this->set('positionlevel', $positionlevel);
 		
-		$this->render('/employees/index');
+		$this->render('/employees/employee_lists');
 		
 	}
 	

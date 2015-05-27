@@ -179,6 +179,7 @@ class EmployeesController extends AppController {
 									'position_level' => $employee['position_levels']['description'],
 									'shift' => '',
 									'contract' => $employee['contract_logs']['description'],
+									'contract_id' => $employee['contract_logs']['id'],
 									'role' => $employee['Employee']['role'],
 									'status' => $status
 								);
@@ -204,6 +205,7 @@ class EmployeesController extends AppController {
 										'position_level' => null,
 										'shift' => null,
 										'contract' => null,
+										'contract_id' => null,
 										'role' => null,
 										'status' => null
 									);
