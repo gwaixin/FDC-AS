@@ -24,46 +24,39 @@ class EmployeesController extends AppController {
 	public function profile($action = 'view') {
 		$this->loadModel('Profile');
 		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
+		$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
+		$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
 		$this->Set('action',$action);
 		$file = "profile";
 		$errors = array();
 		$success = false;
 		if($action === 'edit') {
 			if($this->request->is('post')) {
-				$this->mode = 1;
+				$this->Profile->mode = 1;
 				$this->Profile->id = $Profile['Profile']['id'];
-
-				$img = $Profile['Profile']['picture'];
-				if($_FILES['file-profile-picture']['name']) {
-					$pictureExt = explode('.',$_FILES['file-profile-picture']['name']);
-					$pictureExt = $pictureExt[count($pictureExt)-1];
-					$picture = uniqid(time());
-					$img = $picture.".".$pictureExt;
-				}
-				$signature = $Profile['Profile']['signature'];
-				if($_FILES['file-signature-picture']['name']) {
-					$pictureExt = explode('.',$_FILES['file-signature-picture']['name']);
-					$pictureExt = $pictureExt[count($pictureExt)-1];
-					$picture = uniqid(time());
-					$signature = $picture.".".$pictureExt;
-				}
-
-				$this->request->data['Profile']['picture'] = $img;
-				$this->request->data['Profile']['signature'] = $signature;
 				$birthdate = explode('/',$this->request->data['Profile']['birthdate']);
 				$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
+				if (!empty($_FILES['file-profile-picture']['name'])) {
+					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
+				}
+
+				if (!empty($_FILES['file-signature-picture']['error'])) {
+					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture']['name'];
+				}
+
+				$Profile = $this->Profile->findById($Profile['Profile']['id']);
 				if(!$this->Profile->save($this->request->data)) {
+					$this->request->data['picture'] = $Profile['Profile']['picture'];
+					$this->request->data['picture'] = $Profile['Profile']['signature'];
+					$Profile = $this->request->data;
+					$Profile['Profile']['picture'] = 'img/emptyprofile.jpg' ;
 					$errors = $this->Profile->validationErrors;
 				} else {
-					if($_FILES['file-profile-picture']['name']) {
-						move_uploaded_file($_FILES['file-profile-picture']['tmp_name'],"upload/$img");
-					}
-					if($_FILES['file-signature-picture']['name']) {
-						move_uploaded_file($_FILES['file-profile-picture']['tmp_name'],"upload/$signature");
-					}
+					$Profile = $this->Profile->findById($Profile['Profile']['id']);
+					$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
+					$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
 					$success = true;
 				}
-				$Profile = $this->request->data;
 			}
 			$file = "edit_profile";
 		}
@@ -127,6 +120,13 @@ class EmployeesController extends AppController {
 													'conditions' => array(
 															'Employee.current_contract_id = contract_logs.id'
 													)
+												),
+											array(
+													'table' => 'employee_shifts',
+													'type' => 'LEFT',
+													'conditions' => array(
+															'Employee.employee_shifts_id = employee_shifts.id'
+													)
 												)
 											);
 			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and Employee.status != 0");
@@ -177,7 +177,7 @@ class EmployeesController extends AppController {
 									'insurance_id' => $employee['Employee']['insurance_id'],
 									'position' => $employee['positions']['description'],
 									'position_level' => $employee['position_levels']['description'],
-									'shift' => '',
+									'shift' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['description'] . ' - View' : 'Select Shift',
 									'contract' => $employee['contract_logs']['description'],
 									'role' => $employee['Employee']['role'],
 									'status' => $status
