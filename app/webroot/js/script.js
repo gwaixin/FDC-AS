@@ -223,6 +223,28 @@ $(function(){
 		$(div).append($('.input-group-data span4').html());*/
 	});
 	
+	/*
+	 *Delete privilege 
+	 */
+	$('.btnDeleteRole').on('click',function(e){
+		
+		var dataID = $(this).data('role-id');
+		var posturl = weburl+'privileges/delete';
+		if(confirm('Are you sure you want to delete this privilege?')){
+		
+			$.post(posturl,{dataID:dataID},function(data){
+				var res = JSON.parse(data);
+				if(res.success == 1){
+					$('.role-id-'+dataID).remove();
+				}else{
+					alert('Failed to delete');
+				}
+			});
+			
+		}
+		
+	});
+	
 	
 });
 

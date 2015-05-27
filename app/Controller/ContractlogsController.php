@@ -238,7 +238,7 @@ class ContractlogsController extends AppController{
 	 * @param string $emp = Contract Id 
 	 * @return unknown
 	 */
-	public function ContractDetail($id = null, $contID = null){
+	public function ContractDetail($id = null, $contID = null, $limit = ''){
 		
 		if(!$contID){
 			$condition = array('Contractlog.employees_id' => $id);
