@@ -66,8 +66,8 @@ class EmployeesController extends AppController {
 		$this->render($file);
 	}
 
-	public function employee_lists() {
-		$this->layout = 'main';
+	public function employee_lists($layout) {
+		$this->layout = $layout;
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
 		$position = $this->Position->find('list', array(

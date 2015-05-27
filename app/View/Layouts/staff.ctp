@@ -34,6 +34,7 @@
 		echo $this->Html->css('employee');
 		echo $this->Html->css('hot.full.min');
 		echo $this->Html->css('bootstrap-timepicker.min');
+		echo $this->Html->css('font-awesome.min.css');
 		
 		echo $this->Html->script('jquery-1.11.2.min');
 		

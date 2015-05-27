@@ -4,11 +4,11 @@ class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
 
 
-	public function index($date = 0) {
-		$this->layout = 'main';
-		if ($date == 0) {
-			$date = date('Y-m-d');	
-		}
+	public function index($layout) {
+		$this->layout = $layout;
+		//if ($date == 0) {
+		$date = date('Y-m-d');	
+		//}
 		$autoOvertime = $this->getAutoOvertime() ? 'fa-toggle-on' : 'fa-toggle-off';
 
 		$this->set('title', 'FDC : ATTENDANCE');
