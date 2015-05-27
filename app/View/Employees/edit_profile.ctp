@@ -109,16 +109,18 @@ $(document).ready(function() {
 	}
 ?>
 <div id="profile-container">
-<form method="post" enctype="multipart/form-data">
+<?php echo $this->Form->create('Profile',array('type' => 'file', 'class' => 'form-horizontal')); ?>
 	<div id="profile-picture-container">
 		<div id="profile-picture">
-			<img src="<?php echo $this->webroot; ?>upload/250x250_4054051431929527.jpeg" id="img-profile">
+			<img src="<?php echo $this->webroot."$Profile[picture]"; ?>" id="img-profile">
 		</div>
-		<?php 
+		<?php 			
 			echo $this->Form->file(' ',array(
 																			'name' => 'file-profile-picture',
 																			'class' => 'file',
 																			'id' => 'file-profile',
+																			'required' => false,
+																			'accept' => "image/*",'style' => 'display:none;'
 																		)
 																	);
 			echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
@@ -333,7 +335,9 @@ $(document).ready(function() {
 						echo $this->Form->file(' ',array(
 																						'name' => 'file-signature-picture',
 																						'id' => 'file-signature',
-																						'class' => 'file'
+																						'class' => 'file',
+																						'required' => false,
+																						'accept' => "image/*",'style' => 'display:none;'
 																					)
 																				);
 					?>
@@ -354,5 +358,5 @@ $(document).ready(function() {
 			</td>
 		</tr>
 	</table>
-	</form>
+	<?php echo $this->Form->end(); ?>
 </div>
