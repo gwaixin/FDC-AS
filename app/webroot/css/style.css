@@ -93,6 +93,17 @@
   padding: 5px 15px;
   box-shadow: 2px 2px 5px #919191;
 }
+.role-paginates{
+	text-align:center;
+}
 .add-input{
 	float: right;
+}
+
+.history-page{
+	text-align:center;
+}	
+#Privlegelist{
+	margin: 20px 0 0 0;
+
 }

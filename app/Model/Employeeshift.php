@@ -5,35 +5,42 @@ class Employeeshift extends AppModel {
 	public $useTable = 'employee_shifts';
 	
 	public $validate = array(
-			'ftime_in' => array(
+			'f_time_in' => array(
 				'rule' => 'time',//array('validateTime'),
-				'message' => 'Invalid Time format'
-			), 'ftime_out' => array(
+				'message' => '<b>First Time in</b> has<b>First Time out</b> has  Invalid Time format'
+			), 'f_time_out' => array(
+				'Rule-1' => array(
+					'rule' => 'time',//array('validateTime'),
+					'message' => '<b>First Time out</b> has Invalid Time format'
+				), 'Rule-2' => array(
+					'rule' => array('checkTimeIn', 'f_time'),
+					'message' => '<b>First Time out</b> must not be the same with First Time in.'
+				)
+				
+			), 'l_time_in' => array(
 				'rule' => 'time',//array('validateTime'),
-				'message' => 'Invalid Time format'
-			), 'ltime_in' => array(
-				'rule' => 'time',//array('validateTime'),
-				'message' => 'Invalid Time format'
-			), 'ltime_out' => array(
-				'rule' => 'time',//array('validateTime'),
-				'message' => 'Invalid Time format'
+				'message' => '<b>Last Time in</b> has Invalid Time format'
+			), 'l_time_out' => array(
+				'Rule-1' => array(
+					'rule' => 'time',//array('validateTime'),
+					'message' => '<b>Last Time out</b> has Invalid Time format'
+				), 'Rule-2' => array(
+					'rule' => array('checkTimeIn', 'l_time'),
+					'message' => '<b>Last Time out</b> must not be the same with Last Time in.'
+				)
+				
 			), 'description' => array(
-				'rule' => 'notEmpty',
-				'message'	=> 'Description must not be empty.'
+				'Rule-1' => array(
+					'rule' => 'notEmpty',
+					'message'	=> '<b>Description</b> must not be empty.'
+				), 'Rule-2'	=> array(
+					'rule'	=> array('isDescriptionExist'),
+					'message'	=> '<b>description</b> is already exist.'
+				)
 			)
 			
 	);
 	
-	/*private function verifyTimeFormat($value) {
-		if (!empty($value)) {
-			$pattern1 = '/^(0?\d|1\d|2[0-3]):[0-5]\d:[0-5]\d$/';
-			$pattern2 = '/^(0?\d|1[0-2]):[0-5]\d\s(am|pm)$/i';
-			return preg_match($pattern1, $value) || preg_match($pattern2, $value);
-		} else {
-			return false;
-		}
-	}*/
-
 	public function updateStat($id, $stat) { //Updating Specific Shift
 		$this->read(null, $id);
 		$this->set('status', $stat);
@@ -44,6 +51,29 @@ class Employeeshift extends AppModel {
 		}
 	}
 
+	public function isDescriptionExist() {
+		$condition = array(
+			'description' => $this->data[$this->alias]['description'],
+			'status' => 1
+		);
+		if (!empty($this->data[$this->alias]['id'])) {
+			$condition['id <>'] = $this->data[$this->alias]['id'];
+		}
 
+ 		$data = $this->find('first', array(
+				'conditions' => $condition
+			)
+		);
+
+		return empty($data) ? true : false;
+	}
+
+	public function checkTimeIn($check, $type) {
+		if ($this->data[$this->alias][$type.'_in']) {
+			$in = strtotime($this->data[$this->alias][$type.'_in']);
+			$out = strtotime($this->data[$this->alias][$type.'_out']);
+			return $in != $out;
+		}
+	}
 }
 ?>

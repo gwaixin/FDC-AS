@@ -1,6 +1,36 @@
 <div class="contract-container">
 	<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
 	<h1>Contract History</h1>
+		<div id="search-container" class="form-control">
+				<?php 
+					echo $this->Form->create('Contractlog',array('type' => 'get','action' => 'employee/'.$id));
+					echo $this->Form->select('action',
+							    array(
+							    	'position' => 'Position',
+							    	'description' => 'Description',
+							    	'term' => 'Term'
+							    ),
+							    array(
+							    	'empty' => 'Search By',
+							    	'id' => 'cbo-category',
+							    	'class' => 'form-control',
+							    	'name' => 'action',
+							    	'value' => $action 		
+							    	)
+							    );
+					echo $this->Form->input('search',
+								array(
+									'div' => false,
+									'id' => 'txtsearch',
+									'label' => false,
+									'name' => 'search',
+									'value' => $search			
+								)
+						);
+					echo $this->Form->end();
+				?>		
+
+		</div>
 		<table class="table table-list-contract table-bordered">
               <thead>
                 <tr>
@@ -52,6 +82,23 @@
             ?>    
               </tbody>
        </table>
+       <div class="pagination history-page">
+			<ul>
+				<?php echo $this->Paginator->prev('« ', array('tag'=>'li'), null, array('class'=>'disabled'));?>
+					
+				<?php echo $this->Paginator->numbers(
+						array(
+								'modulus' => 4,
+								'tag' => 'li',
+								'separator' => '', 
+								'currentClass' => 'active',
+								'currentTag' => 'span'
+							)
+						);
+				?>
+				<?php echo $this->Paginator->next('»', array('tag'=>'li',), null, array('class'=>'disabled'));?>
+			</ul>		
+	 </div>
 </div>	
 <!-- Modal -->
 <div class="modal hide fade" id="View-Contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

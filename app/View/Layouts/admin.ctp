@@ -30,7 +30,7 @@
 		echo $this->Html->css('bootstrap-2.3');
 		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
-		
+		echo $this->Html->css('font-awesome.min.css');
 		echo $this->Html->script('jquery-1.11.2.min');
 		
 		echo $this->fetch('meta');

@@ -2,14 +2,18 @@
 App::uses('AppController', 'Controller');
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
+
+
 	public function index($date = 0) {
 		$this->layout = 'main';
 		if ($date == 0) {
 			$date = date('Y-m-d');	
 		}
-		
+		$autoOvertime = $this->getAutoOvertime() ? 'fa-toggle-on' : 'fa-toggle-off';
+
 		$this->set('title', 'FDC : ATTENDANCE');
 		$this->set('attendanceStat', $this->getAttendanceStatus());
+		$this->set('autoOvertime', $autoOvertime);
 		
 	}
 	
@@ -23,11 +27,11 @@ class AttendancesController extends AppController {
 				array(
 						'conditions' => array('Employee.status = 2'),
 						'fields' => array(
-							'id',
+							'id'/*,
 							'f_time_in',
 							'f_time_out',
 							'l_time_in',
-							'l_time_out'
+							'l_time_out'*/
 						)
 				)
 		);
@@ -42,7 +46,10 @@ class AttendancesController extends AppController {
 			$data = $this->request->data;
 			
 			$employees = $this->getEmployeeAttendance($data);
-			
+			if (!is_array($employees)) {
+				echo json_encode(array('error' => "Attendance is not available for this day"));
+				return;
+			}
 			$employees_arr = array();
 			$statusArr = $this->getAttendanceStatus();
 			foreach($employees as $key => $employee) {
@@ -70,11 +77,12 @@ class AttendancesController extends AppController {
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
 						'id'			=>	$employee['attendances']['id'],
-						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
-						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
-						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
-						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
-						'estatus'		=> $employee['Employee']['status']
+						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
+						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_out']),
+						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
+						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
+						'e_ot_start'	=> 	$employee['employee_shifts']['overtime_start'],
+						'estatus'		=> 	$employee['Employee']['status']
 				);
 				array_push($employees_arr, $data);
 			}
@@ -135,9 +143,14 @@ class AttendancesController extends AppController {
 			//$overtime = $this->Attendance->getOT($data['id']);
 			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
 			$this->Attendance->saveTime($data['id'], array('status', $stat));
-			
+
+			$result = array('total' => $totalTime, 'stat' => $stat);
+
+			if ($this->getAutoOvertime()) {
+				$result['overtime'] = $this->calcOvertime($data['id']);
+			}
 			//echo $totalTime;
-			echo json_encode(array('total' => $totalTime, 'stat' => $stat));
+			echo json_encode($result);
 		}
 	}
 	
@@ -145,10 +158,14 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$overtime = $this->Attendance->getOT($data['id']);
-			$this->Attendance->saveTime($data['id'], array('over_time', $overtime));
-			echo $overtime;
+			echo $this->calcOvertime($data['id']);
 		}
+	}
+
+	private function calcOvertime($id) {
+		$overtime = $this->Attendance->getOT($id);
+		$this->Attendance->saveTime($id, array('over_time', $overtime));
+		return $overtime;
 	}
 	
 	public function resetOvertime() {
@@ -160,6 +177,27 @@ class AttendancesController extends AppController {
 		}
 	}
 	
+
+	public function setAutoOvertime() {
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$data = $this->request->data;
+			if ($data['auto'] == 1) {
+				$this->Cookie->write('autoOvertime', '1', false, '1 hour');
+				echo 'fa-toggle-on';
+			} else {
+				$this->Cookie->delete('autoOvertime');
+				echo 'fa-toggle-off';
+			}
+			
+		} 
+	}
+
+	private function getAutoOvertime() {
+		$autoOvertime = $this->Cookie->read('autoOvertime');
+		return empty($autoOvertime) ? false : true;// 'fa-toggle-off' : 'fa-toggle-on';
+	}
+
 	
 	/* Private Functions */
 	
@@ -182,15 +220,15 @@ class AttendancesController extends AppController {
 			if (!empty($data['status']) && $data['status'] >= 0) {
 				$conditions['attendances.status ='] = $data['status'];
 			}
-			if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
-			}
+	
 		}
-		//if (!$this->Attendance->hasAttendance($currentDate)) {
-			$emp = $this->getEmployee();
-			$this->Attendance->createAttendance($currentDate, $emp);
+		$emp = $this->getEmployee();
+		$create = $this->Attendance->createAttendance($currentDate, $emp);
+		if ($create == 'FAIL') {
+			//$this->Session->setFlash(__('No attendance for this date'));
+			return 1;
+		}
 		
-		//}
 			
 		$conditions['attendances.date ='] = $currentDate;
 		$conditions['Employee.status <>'] = 0;
@@ -209,15 +247,17 @@ class AttendancesController extends AppController {
 						'conditions' => array(
 								'Employee.profile_id = profiles.id'
 						)
+				), array(
+						'table' => 'employee_shifts',
+						'conditions' => array(
+								'Employee.employee_shifts_id = employee_shifts.id'
+						)
 				)
+
 		);
 		
 		$selectFields = array(
 				'Employee.employee_id',
-				'Employee.f_time_in',
-				'Employee.f_time_out',
-				'Employee.l_time_in',
-				'Employee.l_time_out',
 				'Employee.status',
 				'profiles.first_name',
 				'profiles.last_name',
@@ -229,7 +269,12 @@ class AttendancesController extends AppController {
 				'attendances.status',
 				'attendances.id',
 				'attendances.over_time',
-				'attendances.render_time'
+				'attendances.render_time',
+				'employee_shifts.f_time_in',
+				'employee_shifts.f_time_out',
+				'employee_shifts.l_time_in',
+				'employee_shifts.l_time_out',
+				'employee_shifts.overtime_start',
 		);
 		$employees = $this->Employee->find('all',
 				array(
@@ -263,50 +308,7 @@ class AttendancesController extends AppController {
 		return $totalTime;
 	}
 	
-	/*
-	private function computeTotalTime($first, $last) {
-		$totalH = ($first['h'] + $last['h']) ? ($first['h'] + $last['h']) . ' hrs': '';
-		$totalM = ($first['m'] + $last['m']) ? ($first['m'] + $last['m']) . ' min': '';
-		$totalS = ($first['s'] + $last['s']) ? ($first['s'] + $last['s']) . ' sec': '';
-		$totalTime = $totalH . ' ' . $totalM . ' ' . $totalS;
-		return $totalTime;
-	}*/
 	
-	
-	
-	/*private function hasAttendance($date) {
-		$attendance = $this->Attendance->find('first', array(
-			'conditions' => array(
-				'Attendance.date =' => $date
-			)	
-		));
-		return $attendance ? true : false;
-	}*/
-	
-	/*private function createAttendance($date) {
-		$presentDate = date('Y-m-d');
-		if (strtotime($presentDate) < strtotime($date)) {
-			$this->Session->setFlash(__('No attendance for this date'));
-			return 'FAIL';
-		}
-		
-		$attendance = array();
-		$employee = $this->getEmployee();
-		foreach($employee as $e) {
-			$data = array(
-					'employees_id' 	=> $e['Employee']['id'],
-					'satus'			=> 0,
-					'date'			=> $date
-			);
-			array_push($attendance, $data);
-		}
-		
-		if ($this->Attendance->saveAll($attendance)) {
-			return 'SUCCESS';
-		} else {
-			return 'FAIL';
-		}
-	}*/
 	
 	private function getAttendanceStatus() {
 		return $statusArr = array('pending', 'present', 'absent', 'late', 'undertime');

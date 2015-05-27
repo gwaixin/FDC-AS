@@ -1,4 +1,9 @@
-<?php echo $this->Form->create('Employee_shift', array('class' => 'form-horizontal', 'action' => '/create')); ?>
+<?php 
+	echo $this->Form->create('Employee_shift', array(
+		'class' => 'form-horizontal', 
+		'url' => '/admin/create_shift')
+	); 
+?>
 	<fieldset>
 		<legend>Create Employee's Shifts</legend>
 		<div class="bg-padd bg-danger notice" style='display:none;'><?php echo $this->Session->flash();?></div>
@@ -14,9 +19,9 @@
 						'after'			=>	'</div>'
 					) 
 				);
-				echo $this->Form->input('ftime_in', 
+				echo $this->Form->input('f_time_in', 
 					array(
-						'id'			=> 	'ftime_in',
+						'id'			=> 	'f_time_in',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -26,9 +31,9 @@
 						'required'		=> true
 					) 
 				);
-				echo $this->Form->input('ftime_out', 
+				echo $this->Form->input('f_time_out', 
 					array(
-						'id'			=> 	'ftime_out',
+						'id'			=> 	'f_time_out',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -39,9 +44,9 @@
 				);
 				
 				$timeOptional = '<span> <a href="javascript:;" class="settime" timeSet="deactivated"><i class="icon-edit"></i></span></a>';
-				echo $this->Form->input('ltime_in', 
+				echo $this->Form->input('l_time_in', 
 					array(
-						'id'			=> 	'ltime_in',
+						'id'			=> 	'l_time_in',
 						'type' 			=> 	'time', 
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -52,9 +57,9 @@
 						'value'			=>	''
 					) 
 				);
-				echo $this->Form->input('ltime_out', 
+				echo $this->Form->input('l_time_out', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'l_time_out',
 						'type' 			=> 	'time',
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'TIME', 
@@ -66,7 +71,7 @@
 				);
 				echo $this->Form->input('overtime_start', 
 					array(
-						'id'			=> 	'ltime_out',
+						'id'			=> 	'overtime_start',
 						'type' 			=> 	'time', 
 						'selected' 		=> 	'00:00:00',
 						'placeholder' 	=> 	'OVERTIME', 
@@ -84,33 +89,4 @@
 		</div>
 	</fieldset>
 <?php echo $this->Form->end();?>
-<script>
-$(document).ready(function(){
-	function checkNotice() {
-		if ($('.notice').html().length > 0) {
-			$('.notice').fadeIn(1000);
-		}
-	}
-	
-	checkNotice();
-
-	$('.settime').click(function() {
-		var type = $(this).attr('timeType');
-		var setting = $(this).attr('timeSet');
-		if (setting === 'deactivated') {
-			$(this).parent('span').siblings('select').removeAttr('disabled');
-			$(this).attr('timeSet', 'activated');
-		} else {
-			$(this).parent('span').siblings('select').attr('disabled', 'true');
-			$(this).attr('timeSet', 'deactivated');
-		} 
-		
-	});
-	
-	/*$('.submits').click(function(e) {
-		e.preventDefault();
-		var url = $(this).parents('form').attr('action');
-		alert(url);
-	});*/
-});
-</script>
+<?php echo $this->Html->script('admin/shift'); ?>
