@@ -421,11 +421,11 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h2 class="modal-title" id="myModalLabel"> More Information </h2>
+				<big style="color:red;" id="txt-errors"></big>
        </div>
       <div class="modal-body">
 			    <div class="form-group" id="additional-info-container">
 						<h4 id="lbl-employee"> </h4>
-						<big style="color:red;" id="txt-errors"></big>
 		        <?php
 		        		echo $this->Form->Select('Drug Test',array(
 		        																	'Passed' => 'Passed',
