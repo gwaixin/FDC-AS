@@ -494,36 +494,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	        																	'div' => false
 	        																	)
 	        																);
-		        		echo $this->Form->input('First Timein',array(
-	        																	'name' => 'f_time_in',
-	        																	'id' => 'f_time_in',
-	        																	'disabled' => 'disabled',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('First Timeout',array(
-	        																	'name' => 'f_time_out',
-	        																	'id' => 'f_time_out',
-	        																	'disabled' => 'disabled',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('Second Timeout',array(
-	        																	'name' => 'l_time_in',
-	        																	'id' => 'l_time_in',
-	        																	'disabled' => 'disabled',
-	        																	'after' => ' <span class="btn btn-primary" id="edit-last-timein"> Edit </span>',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('Second Timeout',array(
-	        																	'name' => 'l_time_out',
-	        																	'id' => 'l_time_out',
-	        																	'disabled' => 'disabled',
-	        																	'after' => ' <span class="btn btn-primary" id="edit-last-timeout"> Edit </span>',
-	        																	'div' => false
-	        																	)
-	        																);
 		        		echo $this->Form->input('Username',array(
 	        																	'name' => 'username',
 	        																	'id' => 'username',
