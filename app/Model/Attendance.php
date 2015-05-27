@@ -49,10 +49,11 @@ class Attendance extends AppModel {
 					)
 			)); 
 			if (!$hasAttendance) {
-				$fTimein = $e['Employee']['f_time_in'];
-				$fTimeout = $e['Employee']['f_time_out'];
-				$lTimein = $e['Employee']['l_time_in'];
-				$lTimeout = $e['Employee']['l_time_out'];
+				$fTimein = $e['employee_shifts']['ftime_in'];
+				$fTimeout = $e['employee_shifts']['ftime_out'];
+				$lTimein = $e['employee_shifts']['ltime_in'];
+				$lTimeout = $e['employee_shifts']['ltime_out'];
+
 				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
 				$data = array(
 						'employees_id' 	=> $e['Employee']['id'],
@@ -83,7 +84,7 @@ class Attendance extends AppModel {
 		$col = array('f_time_in', 'f_time_out', 'l_time_in', 'l_time_out');
 		$attendance = array();
 		foreach($col as $c) {
-			$eEmp = $eData['Attendance']['date'] . ' ' . $eData['e'][$c];
+			$eEmp = $eData['Attendance']['date'] . ' ' . $eData['es'][$c];
 			if ($c == 'f_time_out' || $c == 'l_time_out') {
 				$con = strtotime($data[$c]) > strtotime($eEmp);
 			} else {
@@ -113,17 +114,21 @@ class Attendance extends AppModel {
 	public function checkStat($d) {
 		$this->id = $d['id'];
 		$join = array(
-				array(
-					'table' => 'employees as e', 
-					'conditions' => array('e.id = Attendance.employees_id')
+			array(
+				'table' => 'employees as e', 
+				'conditions' => array('e.id = Attendance.employees_id')
+			),
+			array(
+				'table'	=> 'employee_shifts as es',
+				'conditions' => array('es.id = e.employee_shifts_id')
 			)
 		);
 		$data = $this->find('first', array(
 				'fields' => array(
-						'e.f_time_in',
-						'e.f_time_out',
-						'e.l_time_in',
-						'e.l_time_out',
+						'es.f_time_in',
+						'es.f_time_out',
+						'es.l_time_in',
+						'es.l_time_out',
 						'Attendance.status',
 						'Attendance.total_time',
 						'Attendance.render_time'
@@ -131,14 +136,14 @@ class Attendance extends AppModel {
 				'joins' => $join
 		));
 		$stat = $data['Attendance']['status'];
-		$eTimeIn = strtotime($data['e']['f_time_in']);
+		$eTimeIn = strtotime($data['es']['f_time_in']);
 		$cTimeIn = strtotime($d['f_time_in']);
-		$eTimeOut = strtotime($data['e']['f_time_out']);
+		$eTimeOut = strtotime($data['es']['f_time_out']);
 		$cTimeOut = strtotime($d['f_time_out']);
 		
-		$eLTimeIn = strtotime($data['e']['l_time_in']);
+		$eLTimeIn = strtotime($data['es']['l_time_in']);
 		$cLTimeIn = strtotime($d['l_time_in']);
-		$eLTimeOut = strtotime($data['e']['l_time_out']);
+		$eLTimeOut = strtotime($data['es']['l_time_out']);
 		$cLTimeOut = strtotime($d['l_time_out']);
 		
 		/*$cTotalTime = strtotime($data['Attendance']['total_time']);
@@ -171,15 +176,19 @@ class Attendance extends AppModel {
 	public function getOT($id) {
 		$join = array(
 				array(
-						'table' => 'employees as e',
-						'conditions' => array('e.id = Attendance.employees_id')
+					'table' => 'employees as e',
+					'conditions' => array('e.id = Attendance.employees_id')
+				), 
+				array(
+					'table'	=> 'employee_shifts as es',
+					'conditions' => array('e.employee_shifts_id = .es.id')
 				)
 		);
 		
 		$data = $this->find('first', array(
 				'fields' => array(
-						'e.f_time_out',
-						'e.l_time_out',
+						'es.ftime_out',
+						'es.ltime_out',
 						'Attendance.f_time_out',
 						'Attendance.l_time_out',
 						'Attendance.date'
@@ -190,8 +199,8 @@ class Attendance extends AppModel {
 		
 		
 		$ot = '00:00:00';
-		$lastOutTime = $this->verifyTimeFormat($data['e']['l_time_out']) ? 'l_time_out': 'f_time_out';
-		$lastOut = $data['Attendance']['date'] . ' ' . $data['e'][$lastOutTime];
+		$lastOutTime = $this->verifyTimeFormat($data['es']['l_time_out']) ? 'l_time_out': 'f_time_out';
+		$lastOut = $data['Attendance']['date'] . ' ' . $data['es'][$lastOutTime];
 		$present = $data['Attendance'][$lastOutTime];
 		if (strtotime($lastOut) < strtotime($present)) {
 			$diff = $this->totalDifference($lastOut, $present);
@@ -283,16 +292,20 @@ class Attendance extends AppModel {
 	private function getEmployeeDetail($id, $condtion = "") {
 		$join = array(
 				array(
-						'table' => 'employees as e',
-						'conditions' => array('e.id = Attendance.employees_id')
+					'table' => 'employees as e',
+					'conditions' => array('e.id = Attendance.employees_id')
+				),
+				array(
+					'table' => 'employee_shifts as es',
+					'conditions' => array('es.id = e.employee_shifts_id')
 				)
 		);
 		$data = $this->find('first', array(
 				'fields' => array(
-						'e.f_time_in',
-						'e.f_time_out',
-						'e.l_time_in',
-						'e.l_time_out',
+						'es.f_time_in',
+						'es.f_time_out',
+						'es.l_time_in',
+						'es.l_time_out',
 						'Attendance.status',
 						'Attendance.date'
 				),

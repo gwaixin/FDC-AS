@@ -2,6 +2,8 @@
 App::uses('AppController', 'Controller');
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
+
+
 	public function index($date = 0) {
 		$this->layout = 'main';
 		if ($date == 0) {
@@ -23,11 +25,11 @@ class AttendancesController extends AppController {
 				array(
 						'conditions' => array('Employee.status = 2'),
 						'fields' => array(
-							'id',
+							'id'/*,
 							'f_time_in',
 							'f_time_out',
 							'l_time_in',
-							'l_time_out'
+							'l_time_out'*/
 						)
 				)
 		);
@@ -70,11 +72,12 @@ class AttendancesController extends AppController {
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
 						'id'			=>	$employee['attendances']['id'],
-						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_in']),
-						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['f_time_out']),
-						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_in']),
-						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['Employee']['l_time_out']),
-						'estatus'		=> $employee['Employee']['status']
+						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
+						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_out']),
+						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
+						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
+						'e_ot_start'	=> 	$employee['employee_shifts']['overtime_start'],
+						'estatus'		=> 	$employee['Employee']['status']
 				);
 				array_push($employees_arr, $data);
 			}
@@ -183,13 +186,12 @@ class AttendancesController extends AppController {
 				$conditions['attendances.status ='] = $data['status'];
 			}
 			if (!empty($data['time-in']) && strtotime($data['time-in']) > 0) {
-				$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
+			//	$conditions['Employee.f_time_in >='] = date('H:i:s', strtotime($data['time-in']));
 			}
 		}
 		//if (!$this->Attendance->hasAttendance($currentDate)) {
-			$emp = $this->getEmployee();
-			$this->Attendance->createAttendance($currentDate, $emp);
-		
+		$emp = $this->getEmployee();
+		$this->Attendance->createAttendance($currentDate, $emp);
 		//}
 			
 		$conditions['attendances.date ='] = $currentDate;
@@ -209,15 +211,17 @@ class AttendancesController extends AppController {
 						'conditions' => array(
 								'Employee.profile_id = profiles.id'
 						)
+				), array(
+						'table' => 'employee_shifts',
+						'conditions' => array(
+								'Employee.employee_shifts_id = employee_shifts.id'
+						)
 				)
+
 		);
 		
 		$selectFields = array(
 				'Employee.employee_id',
-				'Employee.f_time_in',
-				'Employee.f_time_out',
-				'Employee.l_time_in',
-				'Employee.l_time_out',
 				'Employee.status',
 				'profiles.first_name',
 				'profiles.last_name',
@@ -229,7 +233,12 @@ class AttendancesController extends AppController {
 				'attendances.status',
 				'attendances.id',
 				'attendances.over_time',
-				'attendances.render_time'
+				'attendances.render_time',
+				'employee_shifts.f_time_in',
+				'employee_shifts.f_time_out',
+				'employee_shifts.l_time_in',
+				'employee_shifts.l_time_out',
+				'employee_shifts.overtime_start',
 		);
 		$employees = $this->Employee->find('all',
 				array(
