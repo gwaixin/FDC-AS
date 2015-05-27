@@ -23,21 +23,31 @@ $(document).ready(function () {
 		var hotInputHolder = htTextarea.parent();
 		if ($(this).hasClass('time') && hotInputHolder.is(':visible')) {
 			focusElem = $(this);
-			
+			/*
 			var offset = htTextarea.offset();
-			$('#datetimepicker').css('left', (offset.left) +'px');
-			$('#datetimepicker').css('top', (offset.top+ 40) +'px');
-			/*hotInputHolder.find("input").remove();
+			$('#datepicker').css('left', (offset.left) +'px');
+			$('#datepicker').css('top', (offset.top+ 10) +'px');
+			
+			
+			
 			hotInputHolder.prepend("<input type='text' style='position: absolute; visibility:hidden;' value='"+list[rowIndex][colClass]+"'>");
-			hotInputHolder.find("input").datetimepicker('show');*/
+			hotInputHolder.find("input").datetimepicker('show');
 			//htTextarea.datetimepicker().click();
 			//htTextarea.click();
+			*/
+			/*hotInputHolder.find("input").remove();
+			var input = "<input type='datetime-local' class='input-datepicker' value=''>";
+			hotInputHolder.prepend(input);
+			hotInputHolder.find("input").focus().click();*/
+			//$('.handsontableInput').css('display', 'none');
+			/*var vDateTime = isDateTime(htTextarea.val()) ? htTextarea.val() : currentDate; 
 			
-			var vDateTime = isDateTime(htTextarea.val()) ? htTextarea.val() : currentDate; 
-			
-			$('#datetimepicker').val(vDateTime);
-			$('#datetimepicker').datetimepicker('show');
-			
+			//$('#datetimepicker').val(vDateTime);
+
+			//$('#datetimepicker').datetimepicker('show');
+			$('.btn-icon-date').click(function(data) {
+				$('#datepicker').datepicker('show');
+			});*/
 			
 			
 		} else {
@@ -87,7 +97,7 @@ $(document).ready(function () {
 		hot = new Handsontable($("#employee-attendance")[0], {
 		    data: list,
 		    height: 396,
-		    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEIN <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS"],
+		    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEOUT <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS"],
 		    rowHeaders: true,
 		    stretchH: 'all',
 		    columnSorting: true,
@@ -122,6 +132,7 @@ $(document).ready(function () {
 				    	//console.log(statIndex + rowIndex);
 				  		//checkOvertime();
 				    	updateValue = statIndex;
+				    	updateEmployeeData();
 					} else {
 						if (!validateDate(colClass)) {
 							focusElem.addClass('htInvalid');
@@ -129,14 +140,20 @@ $(document).ready(function () {
 						}
 						
 						updateValue = list[rowIndex][colClass];
+						updateEmployeeData();
 						getTotalTime();
 					}
 					
-					updateEmployeeData();
+
 		    	 }, 300);
 			}, cells: function (row, col, prop) {
+				var tmpData = this.instance.getData();
+				
+				if (list.length <= 0) {
+					return;
+				}
 				var cellProperties = {};
-				var insData = this.instance.getData()[row][col];
+				var insData = tmpData[row][col];
 				if (list[row]['estatus'] == 1) {
 					cellProperties.readOnly = true;
 				} else {
@@ -245,12 +262,14 @@ $(document).ready(function () {
 	getAttendanceList(formAttendance);
 	function getAttendanceList(formAttendance) {
 		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
-			list = data;
-			if (list.length === 0) {
-				$('#error').html('No Data found');
+			if (typeof data['error'] !== 'undefined') {
+				$('#error').html(data['error']);
 				$('.htCore tbody').html('');
-			} 
-			attendanceList();
+			} else {
+				$('#error').html('');
+				list = data;
+				attendanceList();
+			}
 			//}
 		}, 'JSON');
 	}
@@ -297,6 +316,16 @@ $(document).ready(function () {
     });
 
     
+    $('#auto-overtime').click(function() {
+    	var elem = $(this).find('i.fa');
+    	var setting = elem.hasClass('fa-toggle-off') ? 1 : 0;
+    	elem.removeClass('fa-toggle-on');
+    	elem.removeClass('fa-toggle-off');
+    	$.post(webroot+'Attendances/setAutoOvertime', {auto:setting}, function(data) {
+    		elem.addClass(data);
+    	});
+    	
+    });
 	
 	
 });
@@ -336,6 +365,9 @@ function getTotalTime() {
 				console.log(data);
 				focusElem.siblings('.status').html(statusArr[data['stat']]);
 				focusElem.siblings('.total_time').html(data['total']);
+				if (typeof data['overtime'] !== 'undefined') {
+					focusElem.siblings('.otime').html(data['overtime']);
+				}
 				//focusElem.siblings('.otime').html(data['ot']);
 			}
 		});

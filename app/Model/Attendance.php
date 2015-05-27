@@ -35,7 +35,6 @@ class Attendance extends AppModel {
 	public function createAttendance($date, $employee) {
 		$presentDate = date('Y-m-d');
 		if (strtotime($presentDate) < strtotime($date)) {
-			$this->Session->setFlash(__('No attendance for this date'));
 			return 'FAIL';
 		}
 	
@@ -67,7 +66,7 @@ class Attendance extends AppModel {
 		if ($this->saveAll($attendance)) {
 			return 'SUCCESS';
 		} else {
-			return 'FAIL';
+			return 'FAIL-NO-SAVE';
 		}
 	}
 	
@@ -187,8 +186,8 @@ class Attendance extends AppModel {
 		
 		$data = $this->find('first', array(
 				'fields' => array(
-						'es.ftime_out',
-						'es.ltime_out',
+						'es.f_time_out',
+						'es.l_time_out',
 						'Attendance.f_time_out',
 						'Attendance.l_time_out',
 						'Attendance.date'

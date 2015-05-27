@@ -15,6 +15,11 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
+		<span class='pull-right' style='text-align:center;'>
+			<small>Auto Overtime</small> <br/>
+			<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
+			
+		</span>
 		<form class='form-horizontal' id='attendance-form'>
 			<h3> Attendance</h3>
 			<div class='control-group'>
@@ -28,16 +33,15 @@
 			</div>
 			<div class='control-group'>
 				<input type='text' id='date' placeholder='Choose Date' name='date' />
-				<input type='text' placeholder='Start of Time in' id='time-in' name='time-in'/>
 			</div>
 			<div class='control-group'>
 				<button id='btn-search' class='btn btn-inverse'>Search</button>
 				<button id='btn-reset' class='btn'>Reset</button>
-				<div id="error" class="pull-right"></div>
+				<div id="error" class="pull-right"><?php echo $this->Session->flash();?></div>
 			</div>
 		</form>
 		
-		<input type="text" style="visibility:hidden; position:absolute;" id="datetimepicker">
+		<input type="text" style="position:absolute; visibility:hidden" id="datepicker">
 		<div id="employee-attendance"></div>
 	</div>
 </div>
