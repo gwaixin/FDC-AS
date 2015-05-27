@@ -95,5 +95,11 @@ class PrivilegesController extends AppController {
 		
 	}
 	
+	public function privlegeList(){
+		
+		
+		
+	}
+	
 	
 }

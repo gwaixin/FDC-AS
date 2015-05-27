@@ -185,14 +185,46 @@ class ContractlogsController extends AppController{
 	 */
 	public function employee($id = null){
 		
+		if(!$id){
+			$this->redirect('/');
+		}
+		
 		$this->loadModel('Employee');
 		$this->loadModel('position');
 		$this->loadModel('Positionlevel');
 		$this->layout = 'main';
 		
-		$res = $this->ContractDetail($id);
+		$keyword = '';
+		$action = '';
+		$condition = '';
+		
+		
+		if(isset($this->params['url']['action'])){
+			$action = $this->params['url']['action'];
+		}
+		
+		if(isset($this->params['url']['search'])){
+			$keyword = $this->params['url']['search'];
+		}
+		
+		if(!empty($action) && !empty($keyword)){
+			
+			if($action == 'position'){
+				$condition = ' AND post.description LIKE '.'"%'.$keyword.'%"';
+			}else{
+				$condition = ' AND Contractlog.'.$action.' LIKE '.'"%'.$keyword.'%"';
+			}		
+			
+		}
+		
+		$res = $this->ContractDetail($id,'','limit',10 , $condition);
+		
+		
+		$this->set('action', $action);
+		$this->set('search', $keyword);
 		
 		$this->set('data', $res);
+		$this->set('id', $id);
 		
 		
 	}
@@ -238,10 +270,10 @@ class ContractlogsController extends AppController{
 	 * @param string $emp = Contract Id 
 	 * @return unknown
 	 */
-	public function ContractDetail($id = null, $contID = null){
+	public function ContractDetail($id = null, $contID = null, $index = '' ,$limit = '',$options = null){
 		
 		if(!$contID){
-			$condition = array('Contractlog.employees_id' => $id);
+			$condition = array('Contractlog.employees_id = '.$id.$options);
 		}else{
 			$condition = array("Contractlog.employees_id = '{$id}' AND Contractlog.id = '{$contID}'");
 		}
@@ -267,7 +299,8 @@ class ContractlogsController extends AppController{
 					)
 		);
 			
-		$res = $this->Contractlog->find('all',array(
+		$this->paginate = array(
+				$index => $limit,
 				'joins' => $options,
 				'conditions' => $condition,
 				'order' => 'Contractlog.id ASC',
@@ -287,9 +320,9 @@ class ContractlogsController extends AppController{
 						'post.description',
 						'postlevel.description',
 				)
-		));
+		);
 		
-		return $res;
+		return $this->paginate();
 		
 	}
 	
