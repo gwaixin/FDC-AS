@@ -16,7 +16,7 @@
 	     	 			echo '</div>';
 	     	 		}
 	     	 		
-	     	 		echo $this->Form->create('Privilege',array('class' => 'form-horizontal'));
+	     	 		echo $this->Form->create('Privilege', array('class' => 'form-horizontal', 'url' => '/admin/privileges/add'));
 	     	 		
 	     	 		echo $this->Form->input('roles_id',array(
 									'div' => 'control-group',

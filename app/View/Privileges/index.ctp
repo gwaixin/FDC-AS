@@ -40,7 +40,7 @@
                   <th>Description</th>
                   <th>Status</th>
                   <th>
-                 	 <a href="<?php echo $this->webroot; ?>privileges/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
+                 	 <a href="<?php echo $this->webroot; ?>admin/privileges/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
                   </th>
                 </tr>
               </thead>
@@ -56,7 +56,7 @@
                   <td><?php echo $row['Privilege']['status'];?></td>
                   <td>
                   	<a href="#" class="btn btn-danger btnDeleteRole" type="button" data-role-id="<?php echo $row['Privilege']['id'];?>">Delete</a>
-                  	<a href="<?php echo $this->webroot; ?>privileges/edit/<?php echo $row['Privilege']['id']; ?>" class="btn btn-primary" data-role-id="<?php echo $row['Privilege']['id'];?>">Edit</a>
+                  	<a href="<?php echo $this->webroot; ?>admin/privileges/edit/<?php echo $row['Privilege']['id']; ?>" class="btn btn-primary" data-role-id="<?php echo $row['Privilege']['id'];?>">Edit</a>
                   </td>
                 </tr>
             <?php

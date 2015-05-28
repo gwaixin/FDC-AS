@@ -34,7 +34,9 @@
 	//Router::connect('/admin1/employee/employee_lists', array('controller' => 'Employee', 'action' => 'index'));
 	Router::connect('/admin/attendances', array('controller' => 'Attendances', 'action' => 'index', 'admin'));
 	Router::connect('/admin/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'admin'));
-	Router::connect('/admin/privilege', array('controller' => 'privileges', 'action' => 'index', 'admin'));
+	Router::connect('/admin/privileges', array('controller' => 'privileges', 'action' => 'index', 'admin'));
+	Router::connect('/admin/privileges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
+	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	/**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

@@ -4,9 +4,9 @@
 class PrivilegesController extends AppController {
 	
 	
-	public function index($page = null){
+	public function index($layout){
 	
-		$this->layout = 'main';
+		$this->layout = $layout;
 	
 		$keyword = '';
 		$action = '';
@@ -16,7 +16,7 @@ class PrivilegesController extends AppController {
 		try {
 			$this->paginate();
 		} catch (NotFoundException $e) {
-			$this->redirect('/privileges/privilege_list');
+			$this->redirect('/admin/privileges/');
 		}
 	
 		$this->Privilege->recursive = 0;
@@ -86,11 +86,11 @@ class PrivilegesController extends AppController {
 	
 	}
 	
-	public function add(){
+	public function add($layout){
 		
 		$errors = '';
 		
-		$this->layout = 'main';
+		$this->layout = $layout;
 		
 		$this->loadModel('Role');
 		
@@ -116,7 +116,7 @@ class PrivilegesController extends AppController {
 			$temp = $row;
 			
 			if($this->Privilege->save($row)){
-				$this->redirect('/privileges/');
+				$this->redirect('/admin/privileges/');
 			}else{
 				$errors = $this->Privilege->validationErrors;
 			}	
@@ -128,18 +128,17 @@ class PrivilegesController extends AppController {
 		
 	}
 	
-	public function edit($id = null){
-		
+	public function edit($layout){
 		
 		$errors = '';
 		
-		$this->layout = 'main';
+		$this->layout = $layout;
 	
 		$this->loadModel('Role');
 		
-		
+		$id = $this->request->params['id'];
 		if(!$id){
-			$this->redirect('/ privileges/');
+			$this->redirect('/admin/privileges/');
 		}
 		
 		$roles = $this->Role->find('list',array(
@@ -165,7 +164,7 @@ class PrivilegesController extends AppController {
 			$temp = $row;
 				
 			if($this->Privilege->save($row)){
-				$this->redirect('/privileges/');
+				$this->redirect('/admin/privileges/');
 			}else{
 				$errors = $this->Privilege->validationErrors;
 			}
