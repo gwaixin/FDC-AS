@@ -84,6 +84,7 @@
 							<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-list"></i> Attendance </a></li>
+			          		<li><a href="<?php echo $this->webroot;?>admin/privilege/"><i class="fa fa-key" style='color:black;'></i> Privilege </a></li>
 						   	<li>
 						   		<a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-time"></i> Shift schedule</a>
 					   		 	<ul class="nav nav-list tree">
