@@ -25,9 +25,9 @@ class AttendancesController extends AppController {
 		
 		$join =  array(
 			array(
-				'table' => 'Employee_shifts',
+				'table' => 'employee_shifts',
 				'conditions' => array(
-						'Employee.employee_shifts_id = Employee_shifts.id'
+						'Employee.employee_shifts_id = employee_shifts.id'
 				)
 			)
 
@@ -39,10 +39,10 @@ class AttendancesController extends AppController {
 						'joins'	=> $join,
 						'fields' => array(
 							'id',
-							'Employee_shifts.f_time_in',
-							'Employee_shifts.f_time_out',
-							'Employee_shifts.l_time_in',
-							'Employee_shifts.l_time_out'
+							'employee_shifts.f_time_in',
+							'employee_shifts.f_time_out',
+							'employee_shifts.l_time_in',
+							'employee_shifts.l_time_out'
 						)
 				)
 		);

@@ -48,10 +48,10 @@ class Attendance extends AppModel {
 					)
 			)); 
 			if (!$hasAttendance) {
-				$fTimein = $e['Employee_shifts']['f_time_in'];
-				$fTimeout = $e['Employee_shifts']['f_time_out'];
-				$lTimein = $e['Employee_shifts']['l_time_in'];
-				$lTimeout = $e['Employee_shifts']['l_time_out'];
+				$fTimein = $e['employee_shifts']['f_time_in'];
+				$fTimeout = $e['employee_shifts']['f_time_out'];
+				$lTimein = $e['employee_shifts']['l_time_in'];
+				$lTimeout = $e['employee_shifts']['l_time_out'];
 
 				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
 				$data = array(
@@ -291,11 +291,11 @@ class Attendance extends AppModel {
 	private function getEmployeeDetail($id, $condtion = "") {
 		$join = array(
 				array(
-					'table' => 'Employees as e',
+					'table' => 'employees as e',
 					'conditions' => array('e.id = Attendance.employees_id')
 				),
 				array(
-					'table' => 'Employee_shifts as es',
+					'table' => 'employee_shifts as es',
 					'conditions' => array('es.id = e.employee_shifts_id')
 				)
 		);
