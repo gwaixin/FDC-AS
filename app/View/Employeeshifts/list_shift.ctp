@@ -29,7 +29,7 @@
 			<td class="ftime_out"><?php echo $ftimeOut;?></td>
 			<td class="ltime_in"><?php echo $ltimeIn;?></td>
 			<td class="ltime_out"><?php echo $ltimeOut;?></td>
-			<td class="overtime"><?php echo $overtime;?></td>
+			<td class="overtime_start"><?php echo $overtime;?></td>
 			<td class="status"><?php echo $val['Employeeshift']['status'];?></td>
 			<td>
 				<button class="btn btn-danger shift-btn-delete">Delete</button>

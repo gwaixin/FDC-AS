@@ -75,13 +75,15 @@
     </div>
 	<div id="container" class="container-fluid">
 		<div class="row-fluid">
-			<div class="span3">
+			<div class="span2">
 				<div class="sidebar-nav">
-				    <div class="well" style="width:300px; padding: 8px 0;">
+				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
 							<li class="nav-header">Admin Menu</li>        
 							<li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
+			          		<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-list"></i> Attendance </a></li>
 						   	<li>
 						   		<a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-time"></i> Shift schedule</a>
 					   		 	<ul class="nav nav-list tree">
@@ -101,7 +103,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="span9">
+			<div class="span10">
 				<div id="content">
 					<?php echo $this->fetch('content'); ?>
 				</div>

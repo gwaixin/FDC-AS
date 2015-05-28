@@ -5,16 +5,30 @@ var focusElem;
 var rowIndex;
 var colClass;
 var statusArr;
-
+var dateObj;
+var cMonthDay;
+var cYear;
+var currentDate;
 $(document).ready(function () {
-	$('#time-in').timepicker({defaultTime : false});
-	var currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
-	
-	
-	var htTextarea;
-	
+	//$('#time-in').timepicker({defaultTime : false});
+	//For dates
+	//console.log($('#date').val());
+	changeDate();
 	
 	var currentTime;
+
+	function changeDate() {
+		currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
+		dateObj 	= new Date(currentDate);
+		cMonthDay 	= pad((dateObj.getUTCMonth()+1)) + '-' +pad(dateObj.getDate());
+		cYear 		= dateObj.getUTCFullYear();
+	}
+	//hot table textarea popup
+	var htTextarea;
+	
+	//checker if time has been converted
+	var hasConvert;
+	
 	$(document).on('click', '#employee-attendance td.time', function(e) {
 		colClass = $(this).attr('class').split(' ')[0];
 		htTextarea = $("#employee-attendance textarea");
@@ -23,40 +37,8 @@ $(document).ready(function () {
 		var hotInputHolder = htTextarea.parent();
 		if ($(this).hasClass('time') && hotInputHolder.is(':visible')) {
 			focusElem = $(this);
-			/*
-			var offset = htTextarea.offset();
-			$('#datepicker').css('left', (offset.left) +'px');
-			$('#datepicker').css('top', (offset.top+ 10) +'px');
-			
-			
-			
-			hotInputHolder.prepend("<input type='text' style='position: absolute; visibility:hidden;' value='"+list[rowIndex][colClass]+"'>");
-			hotInputHolder.find("input").datetimepicker('show');
-			//htTextarea.datetimepicker().click();
-			//htTextarea.click();
-			*/
-			/*hotInputHolder.find("input").remove();
-			var input = "<input type='datetime-local' class='input-datepicker' value=''>";
-			hotInputHolder.prepend(input);
-			hotInputHolder.find("input").focus().click();*/
-			//$('.handsontableInput').css('display', 'none');
-			/*var vDateTime = isDateTime(htTextarea.val()) ? htTextarea.val() : currentDate; 
-			
-			//$('#datetimepicker').val(vDateTime);
-
-			//$('#datetimepicker').datetimepicker('show');
-			$('.btn-icon-date').click(function(data) {
-				$('#datepicker').datepicker('show');
-			});*/
-			
-			
-		} else {
-			//if (htTextarea.hasClass('ui-timepicker-input')) {
-				//htTextarea.timepicker().remove();
-			//}
-		}
-		
-		
+			htTextarea.select();
+		} 
 	});
 	
 	$(document).on('click', '.otime', function() {
@@ -113,16 +95,31 @@ $(document).ready(function () {
 		      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
 		      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
 		      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'}
-		    ], afterChange: function(change, sources) {
-			    if (sources === 'loadData' || change[0][2].trim() == change[0][3].trim()) {
-			    	console.log(list);
+		    ], beforeChange: function(change, sources) {
+		    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
+		    	colClass = change[0][1];
+		    	if (colClass != 'status') {
+		    		var time = convertToDatetime(change[0][3]) + ':00';
+		    		if (time === 0) {
+		    			change[0][3] = change[0][2];
+		    			return;
+		    		}
+		    		list[rowIndex][colClass] = time;
+		    		change[0][3] = time;
+		    	}
+		    }, afterChange: function(change, sources) {
+			    if (
+			    	sources === 'loadData' || 
+			    	change[0][3] == '' ||
+			    	change[0][2] == change[0][3]
+			    	
+			    ) {
+			    	//console.log(list);
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		        
 		    	setTimeout(function() {
-				    console.log(change);
-			    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
-			    	colClass = change[0][1];
+			    	
 					if (colClass == 'status') {
 				  		var statIndex = statusArr.indexOf(change[0][3]);
 				  		if (statIndex < 0) {
@@ -134,10 +131,11 @@ $(document).ready(function () {
 				    	updateValue = statIndex;
 				    	updateEmployeeData();
 					} else {
-						if (!validateDate(colClass)) {
+						/*if (!validateDate(colClass)) {
 							focusElem.addClass('htInvalid');
 							return;
 						}
+						*/
 						
 						updateValue = list[rowIndex][colClass];
 						updateEmployeeData();
@@ -187,9 +185,48 @@ $(document).ready(function () {
 	  	});
 	}
 	
+	function convertToDatetime(val) {
+		var fDate = 0;
+		switch (val.length) {
+			case 4: 
+				var time = pad(toTime(val));
+				fDate = cYear+'-'+cMonthDay+' '+time;
+				break;
+			case 8:
+				var month = pad(toMonth(val.substr(0, 4)));
+				var time = pad(toTime(val.substr(4, 8)));
+				fDate = cYear+'-'+month+' '+time;
+				break;
+			case 12: 
+				var year = pad(toYear(val.substr(0, 4)));
+				var month = pad(toMonth(val.substr(4, 8)));
+				var time = pad(toTime(val.substr(8, 12)));
+				fDate = year+'-'+month+' '+time;
+				break;
+			default: alert('Not valid time'); 
+		}
+
+		return fDate;
+	}
+
+	function toTime(val) {
+		var time = val.split('');
+		return time[0] + time[1] +':'+ time[2] + time[3];
+	}
+
+	function toMonth(val) {
+		var date = val.split('');
+		return date[0] + date[1] +'-'+ date[2] + date[3];
+	}
+
+	function toYear(val) {
+		var year = val.split('');
+		return year[0] + year[1] + year[2] + year[3];
+	}
+
 
 	function validateDate(dateClass) {
-		var ok = false;
+		/*var ok = false;
 		var err;
 		switch (dateClass) {
 			case 'f_time_in' : 
@@ -219,8 +256,8 @@ $(document).ready(function () {
 					ok = true; 
 				}
 				break; 
-		}
-		return ok;
+		}*/
+		return true;
 	}
 	
 	function getEmployeeData() {
@@ -288,6 +325,7 @@ $(document).ready(function () {
 	$('#btn-search').click(function(e) {
 		e.preventDefault();
 		getAttendanceList($('#attendance-form').serialize());
+		changeDate();
 		
 	});
 	
@@ -299,23 +337,7 @@ $(document).ready(function () {
 			resetAttendance($('#attendance-form').serialize());
 		}
 	});
-
-	$('#datetimepicker').datetimepicker({
-		weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 1,
-		minView: 0,
-		maxView: 1
-	}).on('changeDate', function(ev){
-    	$('#datetimepicker').blur();
-    	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
-    }).on('hide', function(ev) {
-    	hot.setDataAtRowProp(rowIndex, colClass, formatDate(new Date(ev.date.valueOf()), '%Y-%M-%d %H:%m:%s '));
-    });
-
-    
+  
     $('#auto-overtime').click(function() {
     	var elem = $(this).find('i.fa');
     	var setting = elem.hasClass('fa-toggle-off') ? 1 : 0;
@@ -362,13 +384,15 @@ function getTotalTime() {
 			type		: 	'POST',
 			dataType	:	'JSON',
 			success		:	function(data) {
-				console.log(data);
-				focusElem.siblings('.status').html(statusArr[data['stat']]);
+				//console.log(data);
 				focusElem.siblings('.total_time').html(data['total']);
+				if (list[rowIndex]['status'] != statusArr[data['stat']]) {
+					console.log(list[rowIndex]['status'] + ' -- ' + data['stat']);
+					focusElem.siblings('.status').html(statusArr[data['stat']]);
+				}
 				if (typeof data['overtime'] !== 'undefined') {
 					focusElem.siblings('.otime').html(data['overtime']);
 				}
-				//focusElem.siblings('.otime').html(data['ot']);
 			}
 		});
 	} else {
@@ -383,10 +407,11 @@ function isDateTime(date) {
 	return isValid;
 }
 
+function pad(value) {
+    return (value.toString().length < 2) ? '0' + value : value;
+}
 function formatDate(date, fmt) {
-    function pad(value) {
-        return (value.toString().length < 2) ? '0' + value : value;
-    }
+    
     return fmt.replace(/%([a-zA-Z])/g, function (_, fmtCode) {
         switch (fmtCode) {
         case 'Y':

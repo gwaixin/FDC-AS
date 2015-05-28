@@ -18,8 +18,8 @@
 		<span class='pull-right' style='text-align:center;'>
 			<small>Auto Overtime</small> <br/>
 			<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
-			
 		</span>
+
 		<form class='form-horizontal' id='attendance-form'>
 			<h3> Attendance</h3>
 			<div class='control-group'>
@@ -38,6 +38,9 @@
 				<button id='btn-search' class='btn btn-inverse'>Search</button>
 				<button id='btn-reset' class='btn'>Reset</button>
 				<div id="error" class="pull-right"><?php echo $this->Session->flash();?></div>
+				<span class='alert alert-success'>
+					<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
+				</span>
 			</div>
 		</form>
 		
