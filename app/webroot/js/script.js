@@ -245,6 +245,25 @@ $(function(){
 		
 	});
 	
+	$('.btnRole').on('click',function(e){
+		
+		var dataID = $(this).data('role-id');
+		var posturl = weburl+'roles/delete';
+		if(confirm('Are you sure you want to delete this privilege?')){
+		
+			$.post(posturl,{dataID:dataID},function(data){
+				var res = JSON.parse(data);
+				if(res.success == 1){
+					$('.role-id-'+dataID).remove();
+				}else{
+					alert('Failed to delete');
+				}
+			});
+			
+		}
+		
+	});
+	
 	
 	$('#ProfileRegister').submit(function(e){
 		$('.bg-padd').html("");
