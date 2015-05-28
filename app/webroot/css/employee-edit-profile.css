@@ -1,0 +1,53 @@
+#profile-container {
+	font: 17px "Tahoma";
+}
+#profile-container table {
+	margin-top: 40px;
+}
+#profile-container table tr td {
+	padding: 5px;
+	vertical-align: top;
+}
+#profile-picture-container {
+	background: #fff;
+	border-radius: 5px;
+}
+#profile-picture {
+	width: 230px;
+	height: 230px;
+	border: 1px solid #999;
+	overflow: hidden;
+}
+#profile-picture-container button {
+	margin: 2px;
+}
+textarea#address {
+	resize: none;
+	width: 250px;
+	height: 80px;
+}
+.file {
+	display: none;
+}
+
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 5px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 10px;
+    height: 20px;
+    margin-top: 5px;
+    pointer-events: none;
+}
+.hide-input {
+	display: none;
+}
+#img-signature {
+	width: 250px;
+	height: 250px;
+}

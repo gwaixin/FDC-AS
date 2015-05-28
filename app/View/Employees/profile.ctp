@@ -1,32 +1,4 @@
-
-<style>
-#profile-container {
-	font: 17px "Tahoma";
-}
-#profile-container table {
-	margin-top: 20px;
-}
-#profile-container table tr td {
-	padding: 10px 5px;
-}
-#profile-picture-container {
-	border: 1px solid #999;
-	width: 230px;
-	height: 230px;
-	background: #fff;
-	border-radius: 5px;
-	overflow: none;
-}
-#profile-picture-container button {
-	margin: 2px;
-}
-#img-signature {
-	width: 250px;
-	height: 250px;
-}
-</style>
-
-
+<?php echo $this->Html->css('employee-profile'); ?>
 <div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

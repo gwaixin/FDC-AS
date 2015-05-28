@@ -73,21 +73,28 @@ class EmployeesController extends AppController {
 		$this->Set('Accounts', $accounts['Employee']);
 	}
 
-	public function employee_lists($layout) {
-		$this->layout = $layout;
+	public function employee_lists($layout = '') {
+		if(!empty($layout)) {
+			$this->layout = $layout;
 
-		$this->loadModel('Position');
-		$this->loadModel('Positionlevel');
-		$position = $this->Position->find('list', array(
-				'fields' => array('id', 'description')
-		));
+			$this->loadModel('Position');
+			$this->loadModel('Positionlevel');
+			$position = $this->Position->find('list', array(
+					'fields' => array('id', 'description')
+			));
 
-		$positionlevel = $this->Positionlevel->find('list', array(
-				'fields' => array('id', 'description')
-		));
+			$positionlevel = $this->Positionlevel->find('list', array(
+					'fields' => array('id', 'description')
+			));
 
-		$this->set('position', $position);
-		$this->set('positionlevel', $positionlevel);
+			$this->set('position', $position);
+			$this->set('positionlevel', $positionlevel);
+		} else {
+			$this->redirect(array(
+													'controller' => 'main'
+												)
+											);
+		}
 	}
 
 	public function getEmployees() {
