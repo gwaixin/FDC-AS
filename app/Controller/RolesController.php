@@ -2,9 +2,9 @@
 
 class RolesController extends AppController{
 	
-	public function index(){
+	public function index($layout) {
 		
-		$this->layout = 'main';
+		$this->layout = $layout;
 
 		$data = $this->Role->find('all',array(
 				'conditions' => array('status' => 1)
@@ -13,9 +13,9 @@ class RolesController extends AppController{
 		$this->set('data',$data);
 	}
 	
-	public function add(){
+	public function add($layout) {
 		
-		$this->layout = 'main';
+		$this->layout = $layout;
 		
 		$temp = array(
 				'id' => '',
@@ -23,15 +23,15 @@ class RolesController extends AppController{
 				'status' => ''
 		);
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$data = $this->request->data;
 			$data['status'] = 1;
 			$temp = $data;
 			
-			if($this->Role->save($data)){
-				$this->redirect('/roles');
-			}else{
+			if ($this->Role->save($data)) {
+				$this->redirect('/admin/roles/');
+			} else {
 				$errors = $this->Role->validationErrors;
 			}
 			
@@ -42,15 +42,17 @@ class RolesController extends AppController{
 		
 	}
 	
-	public function edit($id = null){
+	public function edit($layout) {
 		
 		$errors = '';
 		
+		$id = $this->request->param('id');
+
 		if(!$id){
-			$this->redirect('/roles');
+			$this->redirect('/admin/roles');
 		}
 		
-		$this->layout = 'main';
+		$this->layout = $layout;
 
 		$data = $this->Role->findById($id);
 		
@@ -69,7 +71,7 @@ class RolesController extends AppController{
 			$temp = $data;
 			
 			if($this->Role->save($data)){
-				$this->redirect('/roles');
+				$this->redirect('/admin/roles');
 			}else{
 				$errors = $this->Role->validationErrors;
 			}

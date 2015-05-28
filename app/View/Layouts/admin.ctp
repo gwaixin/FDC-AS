@@ -92,6 +92,7 @@
                                     <li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-list"></i> List</a></li>
                                 </ul>
 					  		</li>
+					  		<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
 						  <!-- 
 					          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
 					          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>

@@ -5,7 +5,7 @@
 		<h1>Privilege List</h1>
 			<div id="search-role-container" class="form-control">
 			<?php 
-				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get','action' => 'index'));
+				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/privileges'));
 				echo $this->Form->select('field',
 						array(
 								'roles' => 'Roles',

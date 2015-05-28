@@ -5,7 +5,7 @@
 		<h1>Role list:</h1>
 			<div id="search-Role-container" class="form-control">
 			<?php 
-				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get','action' => 'index'));
+				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/roles/search'));
 				echo $this->Form->input('text',array(
 								'div' => false,
 								'name' => 'search',
@@ -24,7 +24,7 @@
                   <th>description</th>
                   <th>Status</th>
                   <th>
-                 	 <a href="<?php echo $this->webroot; ?>Roles/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
+                 	 <a href="<?php echo $this->webroot; ?>admin/roles/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
                   </th>
                 </tr>
               </thead>
@@ -39,7 +39,7 @@
                   <td><?php echo $row['Role']['status'];?></td>
                   <td>
                   	<a href="#" class="btn btn-danger btnRole" type="button" data-Role-id="<?php echo $row['Role']['id'];?>">Delete</a>
-                  	<a href="<?php echo $this->webroot; ?>roles/edit/<?php echo $row['Role']['id']; ?>" class="btn btn-primary" data-Role-id="<?php echo $row['Role']['id'];?>">Edit</a>
+                  	<a href="<?php echo $this->webroot; ?>admin/roles/edit/<?php echo $row['Role']['id']; ?>" class="btn btn-primary" data-Role-id="<?php echo $row['Role']['id'];?>">Edit</a>
                   </td>
                 </tr>
             <?php
