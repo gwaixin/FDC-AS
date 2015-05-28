@@ -28,22 +28,11 @@
 
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('twitter-bootstrap.min');
-		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
-		echo $this->Html->css('main');
-		echo $this->Html->css('employee');
-		echo $this->Html->css('hot.full.min');
-		echo $this->Html->css('bootstrap-timepicker.min');
 		echo $this->Html->css('font-awesome.min.css');
 		
 		echo $this->Html->script('jquery-1.11.2.min');
-		
-		echo $this->Html->script('hot.full.min');
-		echo $this->Html->script('employee');
-		echo $this->Html->script('bootstrap-timepicker');
-		echo $this->Html->script('bootstrap-timepicker.min');
 
-		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
