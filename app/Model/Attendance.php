@@ -48,10 +48,10 @@ class Attendance extends AppModel {
 					)
 			)); 
 			if (!$hasAttendance) {
-				$fTimein = $e['employee_shifts']['ftime_in'];
-				$fTimeout = $e['employee_shifts']['ftime_out'];
-				$lTimein = $e['employee_shifts']['ltime_in'];
-				$lTimeout = $e['employee_shifts']['ltime_out'];
+				$fTimein = $e['Employee_shifts']['ftime_in'];
+				$fTimeout = $e['Employee_shifts']['ftime_out'];
+				$lTimein = $e['Employee_shifts']['ltime_in'];
+				$lTimeout = $e['Employee_shifts']['ltime_out'];
 
 				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
 				$data = array(
