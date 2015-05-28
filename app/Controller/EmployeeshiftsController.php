@@ -117,6 +117,14 @@ class EmployeeshiftsController extends AppController {
 		if ($id) {
 			$eshift['id'] = $id;
 		}
+
+		if (!empty($data['Employee_shift']['overtime_start'])) {
+			$hr = $data['Employee_shift']['overtime_start']['hour'];
+			$min = $data['Employee_shift']['overtime_start']['min'];
+			$mer = $data['Employee_shift']['overtime_start']['meridian'];
+			$eshift['overtime_start'] = date('H:i:s', strtotime($hr . ':' . $min . ' ' . $mer));
+		}
+
 		return $eshift;
 	}
 
