@@ -52,7 +52,7 @@ class UsersController extends AppController {
 				$profile['first_name'] = 'Firstname';
 				$profile['middle_name'] = 'Middlename';
 				$profile['last_name'] = 'Lastname';
-				$profile['role'] = 1;
+				$this->Session->write('Auth.UserProfile.role',1);
 				$this->checkRole(1);
 				$this->Session->write('Auth.UserProfile', $profile);
 				$this->Auth->login($this->Auth->login($data));
