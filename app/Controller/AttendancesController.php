@@ -23,15 +23,26 @@ class AttendancesController extends AppController {
 		$this->loadModel('Employee');
 		$this->autoRender = false;
 		
+		$join =  array(
+			array(
+				'table' => 'Employee_shifts',
+				'conditions' => array(
+						'Employee.employee_shifts_id = Employee_shifts.id'
+				)
+			)
+
+		);
+
 		$employees = $this->Employee->find('all',
 				array(
 						'conditions' => array('Employee.status = 2'),
+						'joins'	=> $join,
 						'fields' => array(
-							'id'/*,
-							'f_time_in',
-							'f_time_out',
-							'l_time_in',
-							'l_time_out'*/
+							'id',
+							'Employee_shifts.f_time_in',
+							'Employee_shifts.f_time_out',
+							'Employee_shifts.l_time_in',
+							'Employee_shifts.l_time_out'
 						)
 				)
 		);
@@ -53,13 +64,13 @@ class AttendancesController extends AppController {
 			$employees_arr = array();
 			$statusArr = $this->getAttendanceStatus();
 			foreach($employees as $key => $employee) {
-				$ftimein 	= $employee['attendances']['f_time_in'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['f_time_in'])) : '--------';
-				$ftimeout 	= $employee['attendances']['f_time_out'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['f_time_out'])) : '--------';
-				$ltimein 	= $employee['attendances']['l_time_in'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['l_time_in'])) : '--------';
-				$ltimeout 	= $employee['attendances']['l_time_out'] ? date('Y-m-d H:i:s', strtotime($employee['attendances']['l_time_out'])) : '--------';
+				$ftimein 	= $employee['attendances']['f_time_in'];
+				$ftimeout 	= $employee['attendances']['f_time_out'];
+				$ltimein 	= $employee['attendances']['l_time_in'];
+				$ltimeout 	= $employee['attendances']['l_time_out'];
 			
-				$firstLog 	= $this->totalDifference($ftimein, $ftimeout);
-				$lastLog 	= $this->totalDifference($ltimein, $ltimeout);
+				$firstLog 	= $this->Attendance->totalDifference($ftimein, $ftimeout);
+				$lastLog 	= $this->Attendance->totalDifference($ltimein, $ltimeout);
 				//$totalTime 	= $this->Attendance->sumTime($firstLog['time'], $lastLog['time']);
 				
 				
@@ -125,6 +136,8 @@ class AttendancesController extends AppController {
 					'Attendance.l_time_out'	=> NULL,
 					'Attendance.f_time_in'	=> NULL,
 					'Attendance.f_time_out'	=> NULL,
+					'Attendance.over_time'	=> NULL,
+					'Attendance.render_time' => NULL,
 					'Attendance.status'		=> 0	
 			);
 			echo $this->Attendance->updateAll($resetData, array('OR'=>$updateData));
@@ -291,7 +304,7 @@ class AttendancesController extends AppController {
 	
 	private function totalDifference($timeA, $timeB) {
 		$totalTime = 0;
-		if ($timeA != '--------' && $timeB != '--------') {
+		if (!empty($timeA) && !empty($timeB)) {
 			$to_time 	= new DateTime($timeA);
 			$from_time 	= new DateTime($timeB);
 			$diff 		= $from_time->diff($to_time);

@@ -48,10 +48,10 @@ class Attendance extends AppModel {
 					)
 			)); 
 			if (!$hasAttendance) {
-				$fTimein = $e['Employee_shifts']['ftime_in'];
-				$fTimeout = $e['Employee_shifts']['ftime_out'];
-				$lTimein = $e['Employee_shifts']['ltime_in'];
-				$lTimeout = $e['Employee_shifts']['ltime_out'];
+				$fTimein = $e['Employee_shifts']['f_time_in'];
+				$fTimeout = $e['Employee_shifts']['f_time_out'];
+				$lTimein = $e['Employee_shifts']['l_time_in'];
+				$lTimeout = $e['Employee_shifts']['l_time_out'];
 
 				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
 				$data = array(
@@ -95,7 +95,7 @@ class Attendance extends AppModel {
 				$attendance[] = 0;
 			}
 		}
-		
+		//return $attendance[0] . $attendance[1] . $attendance[2] . $attendance[3];
 		$firstLog 	= $this->totalDifference($attendance[0], $attendance[1]);
 		$lastLog 	= $this->totalDifference($attendance[2], $attendance[3]);
 		
@@ -249,7 +249,7 @@ class Attendance extends AppModel {
 		return $total;
 	}
 	
-	private function totalDifference($timeA, $timeB) {
+	public function totalDifference($timeA, $timeB) {
 		$totalTime = 0;
 		if (
 			($this->valDateTimeFormat($timeA) && $this->valDateTimeFormat($timeB)) ||
@@ -279,7 +279,7 @@ class Attendance extends AppModel {
 			return false;
 		}
 	}
-	private function valDateTimeFormat($value) {
+	public function valDateTimeFormat($value) {
 		$pattern = '(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})';
 		return preg_match($pattern, $value);
 	}
@@ -291,11 +291,11 @@ class Attendance extends AppModel {
 	private function getEmployeeDetail($id, $condtion = "") {
 		$join = array(
 				array(
-					'table' => 'employees as e',
+					'table' => 'Employees as e',
 					'conditions' => array('e.id = Attendance.employees_id')
 				),
 				array(
-					'table' => 'employee_shifts as es',
+					'table' => 'Employee_shifts as es',
 					'conditions' => array('es.id = e.employee_shifts_id')
 				)
 		);
