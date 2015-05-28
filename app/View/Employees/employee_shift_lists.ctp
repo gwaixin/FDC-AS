@@ -15,7 +15,7 @@
 			$row = $list['Employeeshift'];
 			echo "<tr>
 							<td>".
-										$this->Form->button('Select <i class="icon-hand-up"></i>',array(
+										$this->Form->button('Select',array(
 																					'class' => 'btn btn-default btn-select-shift',
 																					'id' => $row['id'],
 																					'value' => $row['description']

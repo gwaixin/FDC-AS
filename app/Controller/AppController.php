@@ -51,21 +51,52 @@ class AppController extends Controller {
 				      'password' => 'password'
 				     )
 				    )
-			)
+					)
         ), 'Cookie'
-		
 	);
 
-	/*public function beforeFilter() {
-	    parent::beforeFilter();
-	    $this->Cookie->time = '2 Days';  // or '1 hour'
-	    $this->Cookie->path = '/';
-	   // $this->Cookie->domain = 'example.com';
-	    $this->Cookie->secure = true;  // i.e. only sent if using secure HTTPS
-	    $this->Cookie->key = 'qSI232qs*&sXOw!adre@34SAv!@*(XSL#$%)asGb$@11~_+!@#HKis~#^';
-	    //$this->Cookie->httpOnly = true;
-	    $this->Cookie->type('aes');
-	}*/
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->loadModel('Role');
+		$this->loadModel('Privilege');
+		if(!$this->request->is('ajax') && $this->Session->read('Auth.Rights.Privileges')) {
+			$this->RestrictPage();
+		}
+	}
+
+	public function RestrictPage() {
+		if (strtolower($this->params['controller']) !== 'users' && 
+				!(strtolower($this->Session->read('Auth.Rights.role')) === strtolower($this->params['controller']) &&
+				strtolower($this->params['action']) === 'index')) {
+			if (!$this->isAccessible() && $this->Session->read('Auth.Rights.role') !== 'admin') {
+				$mainPage = $this->webroot.$this->Session->read('Auth.Rights.role');
+				$this->redirect(array('controller' => $mainPage));
+			}
+		}
+	}
+
+	public function isAccessible() {
+		$flag = false;
+		foreach($this->Session->read('Auth.Rights.Privileges') as $right) {
+			if (strtolower($right['Privilege']['controller']) === strtolower($this->params['controller']) &&
+				strtolower($right['Privilege']['action']) === strtolower($this->params['action'])) {
+				$flag = true;
+				break;
+			}
+		}
+		return $flag;
+	}
+
+	// public function beforeFilter() {
+	//     parent::beforeFilter();
+	//     $this->Cookie->time = '2 Days';  // or '1 hour'
+	//     $this->Cookie->path = '/';
+	//    // $this->Cookie->domain = 'example.com';
+	//     $this->Cookie->secure = true;  // i.e. only sent if   using secure HTTPS
+	//     $this->Cookie->key = 'qSI232qs*&sXOw!adre@34SAv!@*(XSL#$%)asGb$@11~_+!@#HKis~#^';
+	//     //$this->Cookie->httpOnly = true;
+	//     $this->Cookie->type('aes');
+	// }
 
 	
 }

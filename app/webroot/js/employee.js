@@ -12,7 +12,6 @@ $(document).ready(function () {
 	var selected_row = null;
 	var selected_cell = null;
 	var dropdownIndex = 0;
-	var selectedTimeCell;
 	var names = [];
 	var positionLevelDropdown = null;
 
@@ -22,10 +21,9 @@ $(document).ready(function () {
 	var companies = [];
 	var positions = [];
 	var positionLevels = [];
+	var roles = [];
 	fillDropDown();
-	var timePicker = null;
-	var selectedTime = "";
-
+	
 	var clicked = false;
 
 	var fields = {'name':1,'employee_id':2,'tin':3,'salary':4,'drug_test':5,'pagibig':6,'philhealth':7,
@@ -34,7 +32,7 @@ $(document).ready(function () {
 				 };
 	$("#btn-select").click(function() {
 		selectedIndex = hot.getSelectedRange().to.row;
-		if(advancedData[selectedIndex].id !== null) {
+		if (advancedData[selectedIndex].id !== null) {
 			$("#txt-errors").html("");
 			$("#edit-last-timein").html('Edit');
 			$("#edit-last-timeout").html('Edit');
@@ -46,7 +44,7 @@ $(document).ready(function () {
 			$("#edit-last-timein").attr('disabled','disabled');
 			$("#edit-last-timeout").attr('disabled','disabled');
 			for(var x in $("#additional-info-container input")) {
-				if(!isNaN(parseFloat(x)) && isFinite(x)) {
+				if (!isNaN(parseFloat(x)) && isFinite(x)) {
 					var input = $("#additional-info-container input")[x];
 					input.value = advancedData[selectedIndex][input.name];
 				}
@@ -57,7 +55,7 @@ $(document).ready(function () {
 	});
 
 	$("#btn-submit").click(function() {
-		if($("#btn-submit").val() === 'Edit') {
+		if ($("#btn-submit").val() === 'Edit') {
 			$("#additional-info-container input").removeAttr('disabled');
 			$("#additional-info-container select").removeAttr('disabled');
 			$("#edit-last-timein").removeAttr('disabled');
@@ -71,38 +69,13 @@ $(document).ready(function () {
 	});
 
 
-	$("#edit-last-timein").click(function(){
-		if($("#btn-submit").val() === 'Save') {
-			if($("#edit-last-timein").html().trim() === 'Edit') {
-				$("#l_time_in").removeAttr('disabled');
-				$("#edit-last-timein").html('Cancel');
-			} else {
-				$("#l_time_in").val("");
-				$("#l_time_in").attr('disabled','disabled');
-				$("#edit-last-timein").html('Edit');
-			}
-		}
-	});
-
-	$("#edit-last-timeout").click(function(){
-		if($("#btn-submit").val() === 'Save') {
-			if($("#edit-last-timeout").html().trim() === 'Edit') {
-				$("#l_time_out").removeAttr('disabled');
-				$("#edit-last-timeout").html('Cancel');
-			} else {
-				$("#l_time_out").val("");
-				$("#l_time_out").attr('disabled','disabled');
-				$("#edit-last-timeout").html('Edit');
-			}
-		}
-	});
 
 	$(document).scroll(showContractButtons);
 
 	$(window).resize(showContractButtons);
 
 	function showContractButtons() {
-		if($("#contract-selections").css('display') === 'block' && lastSelectedIndex >= 0) {
+		if ($("#contract-selections").css('display') === 'block' && lastSelectedIndex >= 0) {
 			var row = hot.getSelectedRange().to.row;
 			var col = hot.getSelectedRange().to.col;
 			var elem = hot.getCell(row,col);
@@ -114,11 +87,11 @@ $(document).ready(function () {
 
 	$(document).dblclick(function(e) {
 		var target = e.target;
-		if(target.className === 'rowHeader' || target.className === 'relative') {
+		if (target.className === 'rowHeader' || target.className === 'relative') {
 			$("#btn-select").click();
 		}		
-		if(typeof hot.getSelectedRange() !== 'undefined') {
-			if(target.className.match('contract')) {
+		if (typeof hot.getSelectedRange() !== 'undefined') {
+			if (target.className.match('contract')) {
 				var top = $("#table-employees").offset().top + target.offsetTop;
 				var left = ($("#table-employees").offset().left + target.offsetLeft) + $(".contract").width() -$("#contract-selections").width();
 				var row = hot.getSelectedRange().to.row;
@@ -127,7 +100,7 @@ $(document).ready(function () {
 				$('.View-Contract').attr('data-id-contract',advancedData[row].id+':'+advancedData[row].contract_id);
 				$("#contract-selections").css({'top':top,'left':left,'display':'block'});
 			}
-			if(target.className.match('shift')) {
+			if (target.className.match('shift')) {
 				$("#modalShift .modal-body").html("");
 				$("#modalShift").modal('show');
 			}
@@ -139,19 +112,19 @@ $(document).ready(function () {
 			$("#modalShift .modal-body").html(data);
 			$(".btn-select-shift").click(function(e) {
 				var c = confirm('Are you sure you want to select this shift?');
-				if(c === true) {
+				if (c === true) {
 					advancedData[currentSelectedRow].shift = e.target.value;
 					advancedData[currentSelectedRow].shift_id = e.target.id;
 					hot.getCell(currentSelectedRow,5).innerHTML = e.target.value;
 					var emp_id = advancedData[currentSelectedRow].id;
 					var shift_id = e.target.id;
-					console.log(emp_id + ' - ' + shift_id);
 					$.post(baseUrl+'employees/updateEmployeeShift',{id:emp_id,shift_id:shift_id},
 						function(success) {
-							if(success) {
+							// hot.validateCells(function(){});
+							if (success) {
 								bootbox.alert('Successfully selected employees shift');
 							} else {
-								bootbox.alert('Failed to update employees shift. Please try again.');
+								bootbox.alert('Failedboot to update employees shift. Please try again.');
 							}
 						});
 					$("#modalShift").modal('hide');
@@ -161,7 +134,7 @@ $(document).ready(function () {
 	}
 
 	$("#modalShift").on('shown.bs.modal', function(){
-		if(advancedData[currentSelectedRow].shift_id.length === 0) {
+		if (advancedData[currentSelectedRow].shift_id.length === 0) {
 			getShiftLists();
 		} else {
 			$.post(baseUrl+'employees/getEmployeeShift',{id:advancedData[currentSelectedRow].shift_id},function(data) {
@@ -196,6 +169,7 @@ $(document).ready(function () {
 			companies = data.companies;
 			positions = data.positions;
 			positionLevels = data.positionLevels;
+			roles = data.roles;
 			getEmployees();
 			getPositions();
 			getPositionLevels();
@@ -212,7 +186,6 @@ $(document).ready(function () {
 	function getPositions() {
 		$("#cbo-position option:first-child").attr('disabled','disabled');
 		for(var x in positions) {
-			console.log(positions[x]);
 			$("#cbo-position").append("<option value='" + positions[x] + "'> " + positions[x] + " </option>");
 		}
 	}
@@ -221,7 +194,7 @@ $(document).ready(function () {
 		$("#cbo-position-level").html("");
 		$("#cbo-position-level").append( "<option value='' disabled> Level </option>");
 		for(var x in positionLevels) {
-			if($("#cbo-position").val() === positionLevels[x].position) {
+			if ($("#cbo-position").val() === positionLevels[x].position) {
 				$("#cbo-position-level").append("<option value='" + positionLevels[x].positionLevel + "'> " + positionLevels[x].positionLevel + " </option>");			
 			}
 		}
@@ -261,17 +234,17 @@ $(document).ready(function () {
 	$(document).click(function(e) {
 		var target = e.target;
 		var textareaExists = false;
-		if(typeof hot.getSelectedRange() !== 'undefined' && positionLevelDropdown === null) {
+		if (typeof hot.getSelectedRange() !== 'undefined' && positionLevelDropdown === null) {
 			var col = hot.getSelectedRange().to.col;
-			if(col === 4 && $("#table-employees textarea").length > 0) {
+			if (col === 4 && $("#table-employees textarea").length > 0) {
 				textareaExists = true;
 			}
 		}
-		if(positionLevelDropdown === null && target.className.match('current') && textareaExists) {
+		if (positionLevelDropdown === null && target.className.match('current') && textareaExists) {
 			appendPositionLevelDropdown();
 		}
-		if(positionLevelDropdown !== null && target.className.match('current')) {
-			if(e.target.className.match('position-level')) {
+		if (positionLevelDropdown !== null && target.className.match('current')) {
+			if (e.target.className.match('position-level')) {
 				$("#table-employees textarea").css('display','none');
 				$("#table-employees select").css({'width':$("#table-employees .position-level").width()+10
 																					});
@@ -281,36 +254,28 @@ $(document).ready(function () {
 				$("#table-employees textarea").css('display','block');
 				$(".position-level-dropdown").css('display','none');
 			}
-			if(hot.getSelectedRange().to.col === 4) {
+			if (hot.getSelectedRange().to.col === 4) {
 				refreshPositionLevel(advancedData[hot.getSelectedRange().to.row].position);
 			}
 		}
-		if(!target.className.match('contract')) {
+		if (!target.className.match('contract')) {
 			$("#contract-selections").css({'display':'none'});
 		}
-		if(target.className.match('current') && typeof hot.getSelectedRange() !== 'undefined') {
+		if (target.className.match('current') && typeof hot.getSelectedRange() !== 'undefined') {
 			lastSelectedIndex = hot.getSelectedRange().to.row;
 		} else {
 			lastSelectedIndex = -1;
 		}
 
-		if(target.className.match('position-level-dropdown')) {
+		if (target.className.match('position-level-dropdown')) {
 			positionLevelDropdown = e.target;
 		}
-		if(target.className.match('modal-backdrop fade in')) {
+		if (target.className.match('modal-backdrop fade in')) {
 			$(".close").click();
 		}
 
-		if(e.target.className.match('txt-time')) {
-			for(var x = 0 ; x < $(".bootstrap-timepicker-widget").length ; x++) {
-				$(".bootstrap-timepicker-widget")[0].style.zIndex = '99999';
-				if(x > 0) {
-					document.body.removeChild($(".bootstrap-timepicker-widget")[0]);
-				}
-			}
-		}
 
-		if(typeof hot.getSelectedRange() !== 'undefined') {
+		if (typeof hot.getSelectedRange() !== 'undefined') {
 			currentSelectedRow = hot.getSelectedRange().to.row;
 		}
 
@@ -375,9 +340,9 @@ $(document).ready(function () {
 				if (advancedData[index].id !== null || advancedData[index].id) {
 					if (data[x][1] !== 'name' && data[x][1] !== 'contract') {
 						if (data[x][3]) {
-							if ((data[x][2] !== data[x][3]) || data[x][1].match('time')) {
+							if (data[x][2] !== data[x][3]) {
 								var employee = {'index':index,id:advancedData[index].id,'field':data[x][1],'value':data[x][3]};
-								if(data[x][1] === 'position_level') {
+								if (data[x][1] === 'position_level') {
 									employee['position'] = advancedData[index].position;
 								}
 								data_arr.push(employee);
@@ -410,7 +375,7 @@ $(document).ready(function () {
 		$.post(baseUrl+'employees/updateAdditionInfo',{employee:data},
 			function(errors) {
 				$("#loading-BG").css('display','none');
-				if(errors) {
+				if (errors) {
 					$("#txt-errors").html("<p>"+errors+"</p>");
 				} else {
 					$(".close").click();
@@ -427,7 +392,7 @@ $(document).ready(function () {
 	function refreshPositionLevel(position) {
 		var options = "<option value=''> Position Level </option>";
 		for(var x in positionLevels) {
-			if(position === positionLevels[x].position) {
+			if (position === positionLevels[x].position) {
 				options += "<option value='"+positionLevels[x].positionLevel+"'>"+positionLevels[x].positionLevel+"</option>";
 			}
 		}
@@ -438,7 +403,7 @@ $(document).ready(function () {
 
 	function validEmployeeID(value, callback) {
 		setTimeout(function() {
-			if(value === null) {
+			if (value === null) {
 				callback(true);
 			} else if (value.length === 0) {
 				callback(true);
@@ -450,66 +415,6 @@ $(document).ready(function () {
 	    }, 1);
 	    return false;		
 	}
-	function validTin(value, callback) {
-		setTimeout(function() {
-			if(value === null) {
-				callback(true);
-			} else if (value.length === 0) {
-				callback(true);
-			} else if (value.match(/[0-9]{4,}/)) {
-		        callback(true);
-		    } else {
-		    	callback(false);
-		    }
-	    }, 1);
-	    return false;		
-	}
-
-	function validCode(value, callback) {
-		setTimeout(function() {
-			if(value === null) {
-				callback(true);
-			} else if (value.length === 0) {
-				callback(true);
-			} else if (value.match(/[0-9]{6,}/)) {
-		        callback(true);
-		    } else {
-		    	callback(false);
-		    }
-	    }, 1);
-	    return false;
-	}
-
-	function validDrugTest(value, callback) {
-		setTimeout(function() {
-			if(value === null) {
-				callback(true);
-			} else if (value.length === 0) {
-				callback(true);
-			} else if (value.toLowerCase().match(/passed|failed/)) {
-		        callback(true);
-		    } else {
-		    	callback(false);
-		    }
-	    }, 1);
-	    return false;
-	}
-
-	function validTime(value, callback) {
-		setTimeout(function(){
-			if(value === null) {
-				callback(true);
-			} else if (value.length === 0) {
-				callback(true);
-			} else if (value.match(/([0-9]{1}):([0-9]{2}) AM|PM/)) {
-		        callback(true);
-		    } else {
-		        callback(false);
-	      	}
-	    }, 1);
-	    return false;
-	}
-
 
 	function sortData() {
 		if (hot.sortIndex.length > 0) {
@@ -532,10 +437,24 @@ $(document).ready(function () {
 	}
 
 	function refreshTable() {
-		timePicker = null;
 		displayEmployees();
 	}
 
+
+	function validateShift(value, callback) {
+		setTimeout(function() {
+			if (value === null) {
+				callback(true);
+			} else if (value.length === 0) {
+				callback(true);
+			} else if (value === 'Select Shift') {
+		      callback(false);
+	    } else {
+	    	callback(true);
+	    }
+    }, 1);
+    return false;		
+	}
 
 	function displayEmployees() {
 		if (hot !== null) {
@@ -581,7 +500,8 @@ $(document).ready(function () {
 	      	data: 'shift', 
 	      	type: 'text',
 	      	readOnly: true,
-	      	className: 'shift current htCenter htMiddle'
+	      	className: 'shift current htCenter htMiddle',
+	      	validator: validateShift
 	      },
 	      {
 	      	data: 'contract', 
@@ -589,20 +509,20 @@ $(document).ready(function () {
 	      	readOnly: true,
 	      	className: 'contract current htCenter htMiddle'
 	      },
-	      {data: 'role', type: 'text'},
+	      {data: 'role', type: 'dropdown', source: roles},
 	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}
 	  	  ]
  	 });
 		hot.addHook('afterRender',function() {
 			if (advancedData[0].id !== null) {
-				hot.validateCells(finished);
+				hot.validateCells(function(){});
 			}
 		})
 		hot.addHook('afterChange',function(data) {
 			updateAll(data);
-			if(data[0][1] === 'position' && data[0][2] !== data[0][3]) {
+			if (data[0][1] === 'position' && data[0][2] !== data[0][3]) {
 				var index = data[0][0];
-				if($(".position-level-dropdown").length > 0) {
+				if ($(".position-level-dropdown").length > 0) {
 					refreshPositionLevel(advancedData[index].position);
 				}
 				advancedData[index].position_level = "";
@@ -630,25 +550,6 @@ $(document).ready(function () {
 	}
 });
 
-var finished = function() {
-	// console.log('Finished!');
-}
 function SelectEmployee() {
 	$("#btn-select").click();
-}
-
-
-var appendViewEmployeeButton = function() {
-	timer = setTimeout('appendViewEmployeeButton()',100);
-	if(rightClicked) {
-	// 	try {
-	// 		$(".htContextMenu .ht_master table tbody tr:last-child").before("<tr id='tr-view-employee-info'><td><div onclick='SelectEmployee()'>View Employee</div></td></tr>");
-	// 	} catch(error) {
-	// 		console.log(error);
-	// 	}
-	// 	rightClicked = false;
-	// 	clearTimeout(timer);
-	// } else {
-	// 	rightClicked = true;
-	}
 }

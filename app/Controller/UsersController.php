@@ -42,10 +42,11 @@ class UsersController extends AppController {
 				$this->loadModel('Profile');
 				$profile = $this->Profile->findById($user['profile_id']);
 				$profile = $profile['Profile'];
-				$profile['role'] = $user['role'];
 				$this->checkRole($user['role']);
 				$this->Session->write('Auth.UserProfile', $profile);
+				$this->Session->write('Auth.UserProfile.role', $user['role']);
 				$this->Auth->login($this->Auth->login($data));
+				$this->getRights();
 				$this->redirect($this->Auth->redirectUrl());
 			} else if($username === 'user' && $password === '89dc45ea17f53362eafc57fb8639593b4baac5a3') { 
 				$profile['first_name'] = 'Firstname';
@@ -55,6 +56,7 @@ class UsersController extends AppController {
 				$this->checkRole(1);
 				$this->Session->write('Auth.UserProfile', $profile);
 				$this->Auth->login($this->Auth->login($data));
+				$this->getRights();
 				$this->redirect($this->Auth->redirectUrl());
 			} else {
 				$this->Session->setFlash(__('Invalid username or password'));
@@ -62,8 +64,30 @@ class UsersController extends AppController {
 		} 
 	}
 
+	public function getRights() {
+		$rights = array();
+		$roleDescription = "";
+		$role = $this->Role->findById($this->Session->read('Auth.UserProfile.role'));
+		if ($role) {
+			$roleDescription = strtolower($role['Role']['description']);
+			if(strtolower($roleDescription !== 'admin')) {
+				$roleDescription = $roleDescription.'s';
+			}
+			$rights = $this->Privilege->find('all',array(
+																					'conditions' => array(
+																							"roles_id = '".$this->Session->read('Auth.UserProfile.role')."'
+																							AND status = 1"
+																						),
+																					'fields' => array('controller','action')
+																					)
+																				);
+		}
+		$this->Session->write('Auth.Rights.Privileges',$rights);
+		$this->Session->write('Auth.Rights.role',$roleDescription);
+	}
+
 	public function logout() {
-		$this->Session->destroy('Auth.UserProfile');
+		$this->Session->destroy('Auth');
 		$this->redirect($this->Auth->logout());
 	}
 

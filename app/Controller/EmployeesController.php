@@ -5,23 +5,20 @@ App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
 
-	public function beforeFilter() {
+	public function dashboard() {
 		$this->layout = 'employee';
 	}
 
-	public function dashboard() {
-
-	}
-
 	public function index() {
-
+		$this->layout = 'employee';
 	}
 
 	public function attendances() {
-
+		$this->layout = 'employee';
 	}
 
 	public function profile($action = 'view') {
+		$this->layout = 'employee';
 		$this->loadModel('Profile');
 		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
 		$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
@@ -30,8 +27,8 @@ class EmployeesController extends AppController {
 		$file = "profile";
 		$errors = array();
 		$success = false;
-		if($action === 'edit') {
-			if($this->request->is('post')) {
+		if ($action === 'edit') {
+			if ($this->request->is('post')) {
 				$this->Profile->mode = 1;
 				$this->Profile->id = $Profile['Profile']['id'];
 				$birthdate = explode('/',$this->request->data['Profile']['birthdate']);
@@ -45,7 +42,7 @@ class EmployeesController extends AppController {
 				}
 
 				$Profile = $this->Profile->findById($Profile['Profile']['id']);
-				if(!$this->Profile->save($this->request->data)) {
+				if (!$this->Profile->save($this->request->data)) {
 					$this->request->data['picture'] = $Profile['Profile']['picture'];
 					$this->request->data['picture'] = $Profile['Profile']['signature'];
 					$Profile = $this->request->data;
@@ -71,6 +68,7 @@ class EmployeesController extends AppController {
 	}*/
 
 	public function accounts() {
+		$this->layout = 'employee';
 		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.id'));
 		$this->Set('Accounts', $accounts['Employee']);
 	}
@@ -122,6 +120,13 @@ class EmployeesController extends AppController {
 													'type' => 'LEFT',
 													'conditions' => array(
 															'Employee.position_level_id = position_levels.id'
+													)
+												),
+											array(
+													'table' => 'roles',
+													'type' => 'LEFT',
+													'conditions' => array(
+															'Employee.role = roles.id'
 													)
 												),
 											array(
@@ -191,7 +196,7 @@ class EmployeesController extends AppController {
 									'shift_id' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['id'] : '',
 									'contract' => $employee['contract_logs']['description'],
 									'contract_id' => $employee['contract_logs']['id'],
-									'role' => $employee['Employee']['role'],
+									'role' => $employee['roles']['description'],
 									'status' => $status
 								);
 			array_push($employees_arr,$data);	
@@ -272,15 +277,15 @@ class EmployeesController extends AppController {
 	}
 
 	public function getEmployeeShift() {
-		if($this->request->is('ajax')) {
+		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$this->loadModel('Employeeshift');
 			$info = $this->Employeeshift->findById($this->request->data['id']);
-			$f_time_in = $this->convertTimeToMilitary($info['Employeeshift']['f_time_in']);
-			$f_time_out = $this->convertTimeToMilitary($info['Employeeshift']['f_time_out']);
-			$l_time_in = ($info['Employeeshift']['l_time_in']) ? $info['Employeeshift']['l_time_out'] : 'None';
-			$l_time_out = ($info['Employeeshift']['l_time_out']) ? $info['Employeeshift']['l_time_out'] : 'None';
-			$overtime_start = ($info['Employeeshift']['overtime_start']) ? $info['Employeeshift']['overtime_start'] : 'None';
+			$f_time_in = ($info['Employeeshift']['f_time_in']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_in']) : '--:-- --';
+			$f_time_out = ($info['Employeeshift']['f_time_out']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_out']) : '--:-- --';
+			$l_time_in = ($info['Employeeshift']['l_time_in']) ? $this->convertTimeToMilitary($info['Employeeshift']['l_time_in']) : '--:-- --';
+			$l_time_out = ($info['Employeeshift']['l_time_out']) ? $this->convertTimeToMilitary($info['Employeeshift']['l_time_out']) : '--:-- --';
+			$overtime_start = ($info['Employeeshift']['overtime_start']) ? $this->convertTimeToMilitary($info['Employeeshift']['overtime_start']) : '--:-- --';
 			echo "<h2> Employee Shift Detail </h2>
 						<table id='table-shift-detail'>
 							<tr>
@@ -321,14 +326,14 @@ class EmployeesController extends AppController {
 	}
 
 	public function updateEmployeeShift() {
-		if($this->request->is('ajax')) {
+		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$this->Employee->id = $this->request->data['id'];
 			$data = array(
 									'employee_shifts_id' => $this->request->data['shift_id']
 								);
 			$success = 0;
-			if($this->Employee->save($data)) {
+			if ($this->Employee->save($data)) {
 				$success = 1;
 			}
 			echo json_encode($success);
@@ -339,7 +344,18 @@ class EmployeesController extends AppController {
 		$this->layout = false;
 		$this->loadModel('Employeeshift');
 		$lists = $this->Employeeshift->find('all');
-		$this->Set('lists',$lists);
+		$shift_lists = array();
+		foreach($lists as $list) {
+			$row = $list['Employeeshift'];
+			$row['f_time_in'] = (strlen($row['f_time_in']) > 0) ? $this->convertTimeToMilitary($row['f_time_in']) : '--:-- --';
+			$row['f_time_out'] = (strlen($row['f_time_out']) > 0) ? $this->convertTimeToMilitary($row['f_time_out']) : '--:-- --';
+			$row['l_time_in'] = (strlen($row['l_time_in']) > 0) ? $this->convertTimeToMilitary($row['l_time_in']) : '--:-- --';
+			$row['l_time_out'] = (strlen($row['l_time_out']) > 0) ? $this->convertTimeToMilitary($row['l_time_out']) : '--:-- --';
+			$row['overtime_start'] = (strlen($row['overtime_start']) > 0) ? $this->convertTimeToMilitary($row['overtime_start']) : '--:-- --';
+			$data['Employeeshift'] = $row;
+			array_push($shift_lists,$data);
+		}
+		$this->Set('lists',$shift_lists);
 		$this->render('employee_shift_lists');
 	}
 
@@ -350,6 +366,7 @@ class EmployeesController extends AppController {
 			$json['companies'] = $this->getCompanyLists();
 			$json['positions'] = $this->getPositionLists();
 			$json['positionLevels'] = $this->getPositionLevelLists();
+			$json['roles'] = $this->getRoleLists();
 			$json['shiftMaster'] = $this->getShiftLists();
 			echo json_encode($json);
 		}
@@ -419,6 +436,23 @@ class EmployeesController extends AppController {
 			array_push($positionLevels,$data);
 		}
 		return $positionLevels;
+	}
+
+	public function getRoleLists() {
+		$this->autoRender = false;
+		$this->loadModel('Role');
+		$roles = $this->Role->find('list',array(
+																	'conditions' => array(
+																			'status' => 1
+																		),
+																	'fields' => array('description')
+																	)
+																);
+		$roles_arr = array();
+		foreach($roles as $role) {
+			array_push($roles_arr, $role);
+		}
+		return $roles_arr;
 	}
 
 	public function getShiftLists() {
@@ -497,7 +531,7 @@ class EmployeesController extends AppController {
 				}
 				$employeeInfo = $employeeInfo['Profile'];
 				$status = 1;
-				if($employee['status'] === 'Active') {
+				if ($employee['status'] === 'Active') {
 					$status = 2;
 				}
 				$saveData['status'] = $status;
@@ -530,6 +564,7 @@ class EmployeesController extends AppController {
 			$this->loadModel('Company_system');
 			$this->loadModel('Position');
 			$this->loadModel('Position_level');
+			$this->loadModel('Role');
 			$error_arr = array();
 			foreach($employees as $employee) {
 				$field = $employee['field'];
@@ -542,10 +577,8 @@ class EmployeesController extends AppController {
 						$value = 2;
 					}
 				}
-				if ($field === 'f_time_in' || $field === 'f_time_out' || $field === 'l_time_in' || $field === 'l_time_out') {
-					$value = $this->convertTimeToDefault($value);
-				}
-				if ($field === 'company_systems' || $field === 'position' || $field === 'position_level') {
+				if ($field === 'company_systems' || $field === 'position' || $field === 'position_level' || 
+						$field === 'role') {
 					$value = "";
 					$field = $field."_id";
 					switch($employee['field']) {
@@ -573,9 +606,16 @@ class EmployeesController extends AppController {
 								}
 							}
 						break;
+						case 'role' :
+							$field = 'role';
+							$searchRole = $this->Role->findByDescription($employee['value']);
+							if ($searchRole) {
+								$value = $searchRole['Role']['id'];
+							}
+						break;
 					}
 				}
-				if($field === 'password') {
+				if ($field === 'password') {
 					$value = Security::hash($value,'sha1',true);
 				}
 				$data = array(
@@ -583,9 +623,9 @@ class EmployeesController extends AppController {
 						);
 				
 				$this->Employee->id = $employee['id'];
-				if($field === 'position_level_id' && $value === 'NULL') {
+				if ($field === 'position_level_id' && $value === 'NULL') {
 					$this->Employee->saveField('position_level_id', null);
-				} else if(!$this->Employee->save($data)) {
+				} else if (!$this->Employee->save($data)) {
 					array_push($error_arr,array(
 															'field' => $field,
 															'value' => $value
@@ -599,7 +639,7 @@ class EmployeesController extends AppController {
 	}
 
 	public function updateAdditionInfo() {
-		if($this->request->is('ajax')) {
+		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$employee = $this->request->data['employee'];
 			$data = array(
@@ -612,15 +652,15 @@ class EmployeesController extends AppController {
 									'insurance_id' => $employee['insurance_id'],
 									'username' => $employee['username']
 								);
-			if(isset($employee['salary'])) {
+			if (isset($employee['salary'])) {
 				$data['salary'] = $employee['salary'];
 			}
-			if($employee['password'] !== 'company_default_password') {
+			if ($employee['password'] !== 'company_default_password') {
 				$data['password'] = Security::hash($employee['password'],'sha1',true);
 			}
 			$this->Employee->id = $employee['id'];
 			$txtErrors = "";
-			if(!$this->Employee->save($data)) {
+			if (!$this->Employee->save($data)) {
 				$errors = $this->Employee->validationErrors;
 				$x = 0 ;
 				foreach ($errors as $key => $error) {
