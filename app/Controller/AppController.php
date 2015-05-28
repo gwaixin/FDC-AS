@@ -59,7 +59,10 @@ class AppController extends Controller {
 		parent::beforeFilter();
 		$this->loadModel('Role');
 		$this->loadModel('Privilege');
-		if(!$this->request->is('ajax') && $this->Session->read('Auth.Rights.Privileges')) {
+		if((!$this->request->is('ajax') && $this->Session->read('Auth.Rights.Privileges') && 
+		strtolower($this->params['controller']) !== 'employees' && 
+		strtolower($this->params['controller']) !== 'main') || 
+		strtolower($this->params['action']) === 'employee_lists') {
 			$this->RestrictPage();
 		}
 	}
