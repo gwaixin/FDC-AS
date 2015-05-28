@@ -40,8 +40,8 @@ class EmployeesController extends AppController {
 					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
 				}
 
-				if (!empty($_FILES['file-signature-picture']['error'])) {
-					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture']['name'];
+				if (!empty($_FILES['file-signature-picture']['name'])) {
+					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture'];
 				}
 
 				$Profile = $this->Profile->findById($Profile['Profile']['id']);
@@ -52,16 +52,16 @@ class EmployeesController extends AppController {
 					$Profile['Profile']['picture'] = 'img/emptyprofile.jpg' ;
 					$errors = $this->Profile->validationErrors;
 				} else {
-					$Profile = $this->Profile->findById($Profile['Profile']['id']);
-					$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
-					$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
-					$success = true;
+					$this->redirect(array(
+															'controller' => 'employees', 
+															'action' => 'profile'
+															)
+														);
 				}
 			}
 			$file = "edit_profile";
 		}
 		$this->Set('errors',$errors);
-		$this->Set('success',$success);
 		$this->Set($Profile);
 		$this->render($file);
 	}

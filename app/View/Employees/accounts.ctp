@@ -32,7 +32,7 @@
 		<tr> 
 			<td> <b>Salary</b> </td>
 			<td> : </td>
-			<td> <?php echo $Accounts['salary']; ?>  </td>
+			<td> <?php echo number_format($Accounts['salary'],2) ?>  </td>
 		</tr>
 		<tr> 
 			<td> <b>Drug Test</b> </td>
@@ -43,6 +43,11 @@
 			<td> <b>Medical</b> </td>
 			<td> : </td>
 			<td> <?php echo $Accounts['medical']; ?>  </td>
+		</tr>
+		<tr> 
+			<td> <b>Pagibig</b> </td>
+			<td> : </td>
+			<td> <?php echo $Accounts['pagibig']; ?>  </td>
 		</tr>
 		<tr> 
 			<td> <b>Phil Health</b> </td>

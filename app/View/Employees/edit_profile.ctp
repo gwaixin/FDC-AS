@@ -1,9 +1,4 @@
 
-<?php 
-	echo $this->Html->css('main');
-	echo $this->Html->css('datepicker');
-	echo $this->Html->script('bootstrap-datepicker');
-?>
 <style>
 #profile-container {
 	font: 17px "Tahoma";
@@ -54,15 +49,16 @@ textarea#address {
 .hide-input {
 	display: none;
 }
+#img-signature {
+	width: 250px;
+	height: 250px;
+}
 </style>
 
 <script>
 $(document).ready(function() {
 
 	$('#birthdate').datepicker();
-	$("button").click(function() {
-		return false;
-	})
 	$("#btn-browse-profile").click(function(){
 		$("#file-profile").click();
 	});
@@ -75,17 +71,25 @@ $(document).ready(function() {
 		$("#file-signature").click();
 	});
 
+	$("#file-signature").change(function() {
+		var img = URL.createObjectURL($("#file-signature")[0].files[0]);
+		$("#img-signature").attr('src',img);
+	});
+
 });
 </script>
 
-
-<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
+<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+       	<h3> Signature </h3>
        </div>
       <div class="modal-body" id="contract-container">
+      	<center>
+	      	<img src="<?php echo $this->webroot."$Profile[signature]"; ?>" id="img-signature">
+	      </center>
       </div>
       <div class="modal-footer">
       </div>
@@ -101,12 +105,6 @@ $(document).ready(function() {
 					    <strong>Warning!</strong> '.$error[0].'.
 					</div>';
 	endforeach;
-	if($success) {
-		echo '<div class="alert alert-success">
-					    <a href="#" class="close" data-dismiss="alert">&times;</a>
-					    <strong>Success!</strong> You have successfully updated you profile information.
-					</div>';
-	}
 ?>
 <div id="profile-container">
 <?php echo $this->Form->create('Profile',array('type' => 'file', 'class' => 'form-horizontal')); ?>
@@ -124,6 +122,7 @@ $(document).ready(function() {
 																		)
 																	);
 			echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
+																								'type' => 'button',
 																								'id' => 'btn-browse-profile',
 																								'class' => 'btn btn-success'
 																							)
@@ -320,13 +319,16 @@ $(document).ready(function() {
 			<td> 
 					<?php
 						echo $this->Form->button('View <span class="icon-search"></span>',array(
+																								'type' => 'button',
 																								'class' => 'btn btn-success',
 																								'data-toggle' => 'modal',
-																								'data-target' => '#modalSignature'
+																								'data-target' => '#modalSignature',
+																								'id' => 'btn-show-signature'
 																							)
 																						);
 						echo " ";
 						echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
+																								'type' => 'button',
 																								'id' => 'btn-browse-signature',
 																								'class' => 'btn btn-success'
 																							)
@@ -347,14 +349,21 @@ $(document).ready(function() {
 		<tr>
 			<td colspan=2> </td>
 			<td>
-					<center>
 						<?php
 							echo $this->Form->submit('Save',array(
+																									'class' => 'btn btn-primary',
+																									'div' => false
+																								)
+																							);
+							echo " ";
+							echo $this->Html->link('Cancel',array(
+																								'controller' => 'employees',
+																								'action' => 'profile'
+																							),array(
 																									'class' => 'btn btn-primary'
 																								)
 																							);
 						?>
-					</center>
 			</td>
 		</tr>
 	</table>

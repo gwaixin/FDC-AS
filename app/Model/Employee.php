@@ -42,8 +42,9 @@ class Employee extends AppModel {
             'message' => 'Invalid Tin No'
          ),
         'salary' => array(
-            'rule' => 'notEmpty'
-         ),
+            'rule' => '/[0-9]{4,}/',
+            'message' => 'Invalid salary format'
+            ),
         'drug_test' => array(
             'rule' => 'validDrugTest',
             'message' => 'Invalid Drug Test'

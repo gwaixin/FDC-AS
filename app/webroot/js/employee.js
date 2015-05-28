@@ -41,7 +41,7 @@ $(document).ready(function () {
 			$("#btn-submit").val('Edit');
 			$("#additional-info-container #txt-errors").html("");
 			$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
-			$("#additional-info-container input:not(#salary):not(#l_time_in):not(#l_time_out)").attr('disabled','disabled');
+			$("#additional-info-container input").attr('disabled','disabled');
 			$("#additional-info-container select").attr('disabled','disabled');
 			$("#edit-last-timein").attr('disabled','disabled');
 			$("#edit-last-timeout").attr('disabled','disabled');
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 	$("#btn-submit").click(function() {
 		if($("#btn-submit").val() === 'Edit') {
-			$("#additional-info-container input:not(#salary):not(#l_time_in):not(#l_time_out)").removeAttr('disabled');
+			$("#additional-info-container input").removeAttr('disabled');
 			$("#additional-info-container select").removeAttr('disabled');
 			$("#edit-last-timein").removeAttr('disabled');
 				$("#edit-last-timeout").removeAttr('disabled');
@@ -145,6 +145,7 @@ $(document).ready(function () {
 					hot.getCell(currentSelectedRow,5).innerHTML = e.target.value;
 					var emp_id = advancedData[currentSelectedRow].id;
 					var shift_id = e.target.id;
+					console.log(emp_id + ' - ' + shift_id);
 					$.post(baseUrl+'employees/updateEmployeeShift',{id:emp_id,shift_id:shift_id},
 						function(success) {
 							if(success) {
@@ -400,7 +401,7 @@ $(document).ready(function () {
 	function updateAdditionalInfo(index) {
 		$("#loading-BG").css('display','block');
 		var data = {};
-		var inputs = $("#additional-info-container input:not(#salary)");
+		var inputs = $("#additional-info-container input");
 		for(var x = 0 ; x < inputs.length ; x++) {
 			data[inputs[x].name] = inputs[x].value;
 		}

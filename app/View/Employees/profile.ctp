@@ -20,7 +20,30 @@
 #profile-picture-container button {
 	margin: 2px;
 }
+#img-signature {
+	width: 250px;
+	height: 250px;
+}
 </style>
+
+
+<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+       	<h3> Signature </h3>
+       </div>
+      <div class="modal-body" id="contract-container">
+      	<center>
+	      	<img src="<?php echo $this->webroot."$Profile[signature]"; ?>" id="img-signature">
+	      </center>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 <div>
 <h3> My Profile </h3>
@@ -28,7 +51,7 @@
 <div id="profile-container">
 	<div id="profile-picture-container">
 		<div id="profile-picture">
-			<img src="<?php echo $this->webroot; ?>upload/250x250_4054051431929527.jpeg">
+			<img src="<?php echo $this->webroot."$Profile[picture]"; ?>">
 		</div>
 	</div>
 	<table>
@@ -108,7 +131,9 @@
 			<td> 
 					<?php
 						echo $this->Form->button('View <span class="icon-search"></span>',array(
-																								'class' => 'btn btn-success'
+																								'class' => 'btn btn-success',
+																								'data-toggle' => 'modal',
+																								'data-target' => '#modalSignature'
 																							)
 																						);
 					?>
