@@ -66,8 +66,18 @@ class EmployeesController extends AppController {
 		$this->render($file);
 	}
 
+	/*public function employee_lists() {
+		$this->layout = $layout;
+	}*/
+
+	public function accounts() {
+		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.id'));
+		$this->Set('Accounts', $accounts['Employee']);
+	}
+
 	public function employee_lists($layout) {
 		$this->layout = $layout;
+
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
 		$position = $this->Position->find('list', array(
