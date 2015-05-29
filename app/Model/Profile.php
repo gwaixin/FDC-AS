@@ -141,6 +141,7 @@ class Profile extends AppModel{
 		$image = $this->createImageFrom($file['tmp_name'], $ext);
 
 		imagecopyresampled($this->tmp, $image,0, 0,0, 0,$newWidth, $newHeight, $w, $h);
+		$image = $this->imgsrc;
 		$this->UploadProcess($ext_type);
 
 		return str_replace($tmppath, '', $this->imgsrc);
@@ -158,7 +159,7 @@ class Profile extends AppModel{
 				imagejpeg($this->tmp, $this->imgsrc, 90);
 				break;
 			case 'image/png':
-				imagepng($this->tmp, $this->imgsrc, 90);
+				imagepng($this->tmp, $this->imgsrc, 0);
 				break;
 			case 'image/gif':
 				imagegif($this->tmp, $this->imgsrc, 90);

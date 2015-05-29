@@ -5,13 +5,27 @@
 		<h1>Role list:</h1>
 			<div id="search-Role-container" class="form-control">
 			<?php 
-				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/roles/search'));
+				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/roles/'));
+				echo $this->Form->select('field',
+						array(
+								'delete' => 'Deleted',
+								'description' => 'Description',
+						),
+						array(
+								'name' => 'action',
+								'empty' => 'Search By',
+								'id' => 'cbo-category',
+								'value' => $action,
+								'class' => 'form-control span4'
+						)
+				);
 				echo $this->Form->input('text',array(
 								'div' => false,
 								'name' => 'search',
 								'id' => 'txtsearch',
-								'value' => '',
-								'label' => 'Description:'
+								'class' => 'span6',
+								'value' => $keyword,
+								'label' => false
 	
 							));
 			   echo $this->Form->end();

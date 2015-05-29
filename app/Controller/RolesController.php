@@ -5,12 +5,42 @@ class RolesController extends AppController{
 	public function index($layout) {
 		
 		$this->layout = $layout;
-
-		$data = $this->Role->find('all',array(
-				'conditions' => array('status' => 1)
-		));
+		$keyword = '';
+		$action = '';
 		
-		$this->set('data',$data);
+		if(isset($this->params['url']['search'])){
+			$keyword = $this->params['url']['search'];
+		}
+				
+		if(isset($this->params['url']['action'])){
+			$action = $this->params['url']['action'];
+		}
+		
+		if($action == 'delete'){
+			$condition = array(
+					'AND' => array(
+							array('status' => 0),
+							array('description LIKE' => '%'.$keyword.'%')
+					)
+			);
+			
+		}else{	
+			$condition = array(
+					'AND' => array(
+							array('status' => 1),
+							array('description LIKE' => '%'.$keyword.'%')
+						)			
+				);
+		}	
+		
+		$this->paginate = array(
+				'conditions' => $condition,
+				'limit' => 10
+		);
+		
+		$this->set('data', $this->paginate());
+		$this->set('action', $action);
+		$this->set('keyword', $keyword);
 	}
 	
 	public function add($layout) {
