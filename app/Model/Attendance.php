@@ -188,6 +188,7 @@ class Attendance extends AppModel {
 				'fields' => array(
 						'es.f_time_out',
 						'es.l_time_out',
+						'es.overtime_start',
 						'Attendance.f_time_out',
 						'Attendance.l_time_out',
 						'Attendance.date'
@@ -198,11 +199,18 @@ class Attendance extends AppModel {
 		
 		
 		$ot = '00:00:00';
+		
 		$lastOutTime = $this->verifyTimeFormat($data['es']['l_time_out']) ? 'l_time_out': 'f_time_out';
-		$lastOut = $data['Attendance']['date'] . ' ' . $data['es'][$lastOutTime];
+		$date = $data['Attendance']['date'];
+		if ($this->verifyTimeFormat($data['es']['overtime_start'])) {
+			$startOT = $date . ' ' . $data['es'][$lastOutTime];
+		} else {
+			$startOT = $date . ' ' . $data['es']['overtime_start'];
+		}
+		
 		$present = $data['Attendance'][$lastOutTime];
-		if (strtotime($lastOut) < strtotime($present)) {
-			$diff = $this->totalDifference($lastOut, $present);
+		if (strtotime($startOT) < strtotime($present)) {
+			$diff = $this->totalDifference($startOT, $present);
 			$ot = $diff['time'];
 		}
 		//$ot = "$lastOut - $present";

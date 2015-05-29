@@ -80,7 +80,7 @@
 				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
 							<li class="nav-header">Admin Menu</li>        
-							<li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/index"><i class="icon-home"></i> Dashboard</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-list"></i> Attendance </a></li>
