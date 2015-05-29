@@ -94,6 +94,10 @@ class Profile extends AppModel{
 
 		$file = $src;
 		$tmppath = $this->webroot.'upload/';
+		
+		if (!file_exists($tmppath)) {
+			mkdir($tmppath, 0777, true);
+		}
 
 		if(empty($file['tmp_name'])){
 			return '';
@@ -105,26 +109,39 @@ class Profile extends AppModel{
 			return false;
 		}
 
-		/* calculate new image size with ratio */
-		$ratio = max($width/$w, $height/$h);
-		$h = ceil($height / $ratio);
-		$x = ($w - $width / $ratio) / 2;
-		$w = ceil($width / $ratio);
-
-		$ext = $file['type'];
+		
+		$newWidth = $width;
+		$rate = ($newWidth / $w);
+		$newHeight = $rate * $h;
+		
+		$ext_type = $file['type'];
 		$extension = $this->getExtenstion($file['type']);
+		$ext = $this->getExtenstionType($file['tmp_name']); //extension .gif , .jpeg and png
+		
+		$this->tmp = imagecreatetruecolor($newWidth, $newHeight);
+		$color  = imagecolorallocate ($this->tmp, 255, 255, 255);
+		
 
 		/* new file name */
-		$this->imgsrc = $tmppath.$width.'x'.$height.'_'.$w.$h.time().'.'.$extension;
+		$this->imgsrc = $tmppath.'img'.date('Ymdis').'.'.$extension;
+		
+		switch ($ext) {
+			case 'png' 	:
+			case 'PNG' 	:
+				imagealphablending($this->tmp, false);
+				imagesavealpha($this->tmp,true);
+				$transparent = imagecolorallocatealpha($this->tmp, 255, 255, 255, 127);
+				imagefilledrectangle($this->tmp, 0, 0, $newWidth, $newHeight, $transparent);
+				break;
+			default:
+				imagefill($this->tmp, 0, 0, $color);
+		}
 
-		/* read binary data from image file */
-		$imgString = file_get_contents($file['tmp_name']);
 
-		/* create image from string */
-		$image = imagecreatefromstring($imgString);
-		$this->tmp = imagecreatetruecolor($width, $height);
-		imagecopyresampled($this->tmp, $image,0, 0,$x, 0,$width, $height, $w, $h);
-		$this->UploadProcess($ext);
+		$image = $this->createImageFrom($file['tmp_name'], $ext);
+
+		imagecopyresampled($this->tmp, $image,0, 0,0, 0,$newWidth, $newHeight, $w, $h);
+		$this->UploadProcess($ext_type);
 
 		return str_replace($tmppath, '', $this->imgsrc);
 
@@ -138,20 +155,51 @@ class Profile extends AppModel{
 	public function UploadProcess($ext){
 		switch ($ext) {
 			case 'image/jpeg':
-				imagejpeg($this->tmp, $this->imgsrc, 100);
+				imagejpeg($this->tmp, $this->imgsrc, 90);
 				break;
 			case 'image/png':
-				imagepng($this->tmp, $this->imgsrc, 0);
+				imagepng($this->tmp, $this->imgsrc, 90);
 				break;
 			case 'image/gif':
-				imagegif($this->tmp, $this->imgsrc);
+				imagegif($this->tmp, $this->imgsrc, 90);
 				break;
 			default:
 				move_uploaded_file($this->tmp, $this->imgsrc);
 				break;
 		}
 	}
+	
+	function getExtenstionType($file) {
+		$ext = 'jpg';
+		switch(exif_imagetype($file)) {
+			case IMAGETYPE_GIF: $ext = 'gif'; break;
+			case IMAGETYPE_JPEG: $ext = 'jpg'; break;
+			case IMAGETYPE_PNG: $ext = 'png'; break;
+		}
+		return $ext;
+	}
 
+	function createImageFrom($src, $ext) {
+		$img = '';
+		switch($ext) {
+			case 'png' 	:
+			case 'PNG' 	:
+				$img = imagecreatefrompng($src);
+				break;
+			case 'jpg' 	:
+			case 'JPG' 	:
+			case 'jpeg' :
+			case 'JPEG' :
+				$img = imagecreatefromjpeg($src);
+				break;
+			case 'gif' 	:
+			case 'GIF'	:
+				$img = imagecreatefromgif($src);
+				break;
+		}
+		return $img;
+	}
+	
 	/**
 	 * return file extesion
 	 * @param unknown $file = source image file extension
@@ -178,16 +226,16 @@ class Profile extends AppModel{
 	public function beforeSave($options  = array()){
 
 		if($this->mode == 0){
-			$this->data[$this->alias]['picture'] = $this->resize($this->data[$this->alias]['picture'], 250, 250);
-			$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 250);
+			$this->data[$this->alias]['picture'] = $this->resize($this->data[$this->alias]['picture'], 250, 0);
+			$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 0);
 		}else{
 
 			if(!empty($this->data[$this->alias]['picture']['name'])){
-				$this->data[$this->alias]['picture'] = $this->resize($this->data[$this->alias]['picture'], 250, 250);
+				$this->data[$this->alias]['picture'] = $this->resize($this->data[$this->alias]['picture'], 250, 0);
 			}
 			
 			if(!empty($this->data[$this->alias]['signature']['name'])){
-				$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 250);
+				$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 0);
 			}
 			
 		}

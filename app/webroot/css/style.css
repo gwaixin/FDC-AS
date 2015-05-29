@@ -107,3 +107,18 @@
 	margin: 20px 0 0 0;
 
 }
+.sm-container{
+	max-width:400px;
+}
+.md-container{
+	max-width:800px;
+}
+.lg-container{
+	max-width:1020px;
+}
+
+.roles-container{
+  margin: 0 auto;
+  padding: 5px 15px;
+  box-shadow: 2px 2px 5px #919191;
+}
