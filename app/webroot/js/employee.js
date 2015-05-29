@@ -400,7 +400,6 @@ $(document).ready(function () {
 		$(".position-level-dropdown")[$(".position-level-dropdown").length-1].value = advancedData[hot.getSelectedRange().to.row].position_level;
 	}
 
-
 	function validEmployeeID(value, callback) {
 		setTimeout(function() {
 			if (value === null) {
@@ -408,12 +407,12 @@ $(document).ready(function () {
 			} else if (value.length === 0) {
 				callback(true);
 			} else if (value.match(/[0-9a-zA-Z-]{5,}/)) {
-		        callback(true);
-		    } else {
-		    	callback(false);
-		    }
-	    }, 1);
-	    return false;		
+		    callback(true);
+	    } else {
+	    	callback(false);
+	    }
+    }, 1);
+    return false;		
 	}
 
 	function sortData() {

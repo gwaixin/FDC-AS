@@ -89,17 +89,5 @@ class AppController extends Controller {
 		}
 		return $flag;
 	}
-
-	// public function beforeFilter() {
-	//     parent::beforeFilter();
-	//     $this->Cookie->time = '2 Days';  // or '1 hour'
-	//     $this->Cookie->path = '/';
-	//    // $this->Cookie->domain = 'example.com';
-	//     $this->Cookie->secure = true;  // i.e. only sent if   using secure HTTPS
-	//     $this->Cookie->key = 'qSI232qs*&sXOw!adre@34SAv!@*(XSL#$%)asGb$@11~_+!@#HKis~#^';
-	//     //$this->Cookie->httpOnly = true;
-	//     $this->Cookie->type('aes');
-	// }
-
 	
 }

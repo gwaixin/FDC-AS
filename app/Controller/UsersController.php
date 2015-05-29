@@ -11,9 +11,7 @@ class UsersController extends AppController {
  }
 
 	public function login() {
-		
-		//if already logged-in, redirect
-		if($this->Session->check('Auth.UserProfile')){
+		if ($this->Session->check('Auth.UserProfile')){
 				$this->redirect(array(
 														'controller' => 'main',
 														'action' => 'index'
@@ -21,7 +19,6 @@ class UsersController extends AppController {
 													);		
 		}
 		
-		// if we get the post information, try to authenticate
 		if ($this->request->is('post')) {
 			$username = $this->request->data['username'];
 			$password = $this->request->data['password'];
@@ -37,7 +34,7 @@ class UsersController extends AppController {
 																	 				 				 `password` = '$password'"
 																	)
 																);
-			if($user) {
+			if ($user) {
 				$user = $user['User'];
 				switch($user['status']) {
 					case "0" :
@@ -58,7 +55,7 @@ class UsersController extends AppController {
 						$this->redirect($this->Auth->redirectUrl());
 					break;
 				}
-			} else if($username === 'user' && $password === '89dc45ea17f53362eafc57fb8639593b4baac5a3') { 
+			} else if ($username === 'user' && $password === '89dc45ea17f53362eafc57fb8639593b4baac5a3') { 
 				$profile['first_name'] = 'Firstname';
 				$profile['middle_name'] = 'Middlename';
 				$profile['last_name'] = 'Lastname';
@@ -81,7 +78,7 @@ class UsersController extends AppController {
 		$role = $this->Role->findById($this->Session->read('Auth.UserProfile.role'));
 		if ($role) {
 			$roleDescription = strtolower($role['Role']['description']);
-			if(strtolower($roleDescription !== 'admin')) {
+			if (strtolower($roleDescription !== 'admin')) {
 				$roleDescription = $roleDescription.'s';
 			}
 			$rights = $this->Privilege->find('all',array(

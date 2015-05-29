@@ -74,19 +74,16 @@ class EmployeesController extends AppController {
 	}
 
 	public function employee_lists($layout = '') {
-		if(!empty($layout)) {
+		if (!empty($layout)) {
 			$this->layout = $layout;
-
 			$this->loadModel('Position');
 			$this->loadModel('Positionlevel');
 			$position = $this->Position->find('list', array(
 					'fields' => array('id', 'description')
 			));
-
 			$positionlevel = $this->Positionlevel->find('list', array(
 					'fields' => array('id', 'description')
 			));
-
 			$this->set('position', $position);
 			$this->set('positionlevel', $positionlevel);
 		} else {
@@ -171,7 +168,6 @@ class EmployeesController extends AppController {
 				case "status":
 					$conditions = array("Employee.status = '" . $this->request->data['value'] . "'");
 				break;
-
 			}
 			$employees = $this->Employee->find('all',array(
 																						'joins' => $joins,
@@ -182,9 +178,9 @@ class EmployeesController extends AppController {
 			$employees_arr = array();
 			foreach($employees as $key => $employee) {
 			$status = 'Trashed';
-			if($employee['Employee']['status'] == 1) {
+			if ($employee['Employee']['status'] == 1) {
 				$status = "Inactive";
-			} else if($employee['Employee']['status'] == 2) {
+			} else if ($employee['Employee']['status'] == 2) {
 				$status = "Active";
 			}
 			
@@ -288,7 +284,7 @@ class EmployeesController extends AppController {
 			return $time;
 		}
 	}
-
+	
 	public function getEmployeeShift() {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
