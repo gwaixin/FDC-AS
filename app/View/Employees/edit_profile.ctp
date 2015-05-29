@@ -102,6 +102,23 @@ echo $this->Html->script('employee-profile');
 			</td>
 		</tr>
 		<tr> 
+			<td> <b> Nick Name </b> </td>
+			<td> : </td>
+			<td>
+				<?php
+					echo $this->Form->input('',array(
+																						'name' => 'Profile[nick_name]',
+																						'value' => $Profile['nick_name'],
+																						'placeholder' => 'Enter Nick Name',
+																						'label' => false,
+																						'div' => false
+																					)
+																				);
+				?>
+				<i class="icon-warning-sign"></i> Optional
+			</td>
+		</tr>
+		<tr> 
 			<td> <b> Birth Date </b> </td>
 			<td> : </td>
 			<td> 

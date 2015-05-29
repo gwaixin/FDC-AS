@@ -9,6 +9,7 @@ var advancedData = [];
 var currentSelectedRow  = -1;
 $(document).ready(function () {
 
+	var myRole = null;
 	var selected_row = null;
 	var selected_cell = null;
 	var dropdownIndex = 0;
@@ -170,6 +171,7 @@ $(document).ready(function () {
 			positions = data.positions;
 			positionLevels = data.positionLevels;
 			roles = data.roles;
+			myRole = data.role;
 			getEmployees();
 			getPositions();
 			getPositionLevels();
@@ -415,6 +417,16 @@ $(document).ready(function () {
     return false;		
 	}
 
+	function validRole(role) {
+		var flag = false;
+		for(var x in roles) {
+			if(roles[x] === role) {
+				flag = true;
+			}
+		}
+		return flag;
+	}
+
 	function sortData() {
 		if (hot.sortIndex.length > 0) {
 			var data = [];
@@ -470,6 +482,21 @@ $(document).ready(function () {
     columnSorting: true,
     contextMenu: true,
     className: "htCenter htMiddle",
+    cells: function (row, col, prop) {
+	    var cellProperties = {};
+
+	    if (col === 7) {
+	    	if(myRole !== 'admin') {
+		    	if(advancedData[row].role === null) {
+		    		cellProperties.readOnly = false;
+		    	} else if(validRole(advancedData[row].role) && 
+		    						advancedData[row].id !== null)
+			      cellProperties.readOnly = true;
+			   }
+	    }
+
+	    return cellProperties;
+  	},
     columns: [
 	   		{
 	   			data: 'name', 

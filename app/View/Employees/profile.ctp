@@ -46,6 +46,11 @@
 			<td> <?php echo $Profile['middle_name']; ?> </td>
 		</tr>
 		<tr> 
+			<td> <b> Nick Name </b> </td>
+			<td> : </td>
+			<td> <?php echo $Profile['nick_name']; ?> </td>
+		</tr>
+		<tr> 
 			<td> <b> Birth Date </b> </td>
 			<td> : </td>
 			<td> 
