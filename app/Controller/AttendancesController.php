@@ -161,9 +161,14 @@ class AttendancesController extends AppController {
 	public function getTotalTime() {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
+
 			$data = $this->request->data;
-			$totalTime = $this->Attendance->updateTime($data);
-			$stat = $this->Attendance->checkStat($data);
+			$empData = $this->Attendance->getEmployeeDetail($data['id']);
+
+			$totalTime = $this->Attendance->updateTime($data, $empData);
+			$stat = $this->Attendance->checkStat($data, $empData);
+
+
 			//$overtime = $this->Attendance->getOT($data['id']);
 			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
 			$this->Attendance->saveTime($data['id'], array('status', $stat));
@@ -171,9 +176,9 @@ class AttendancesController extends AppController {
 			$result = array('total' => $totalTime, 'stat' => $stat);
 
 			if ($this->getAutoOvertime()) {
-				$result['overtime'] = $this->calcOvertime($data['id']);
+				$result['overtime'] = $this->calcOvertime($data['id'], $empData);
 			}
-			//echo $totalTime;
+			
 			echo json_encode($result);
 		}
 	}
@@ -182,12 +187,13 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			echo $this->calcOvertime($data['id']);
+			$empData = $this->Attendance->getEmployeeDetail($data['id']);
+			echo $this->calcOvertime($data['id'], $empData);
 		}
 	}
 
-	private function calcOvertime($id) {
-		$overtime = $this->Attendance->getOT($id);
+	private function calcOvertime($id, $data) {
+		$overtime = $this->Attendance->getOT($id, $data);
 		$this->Attendance->saveTime($id, array('over_time', $overtime));
 		return $overtime;
 	}
@@ -336,10 +342,10 @@ class AttendancesController extends AppController {
 		return $totalTime;
 	}
 	
-	
-	
 	private function getAttendanceStatus() {
 		return $statusArr = array('pending', 'present', 'absent', 'late', 'undertime');
 	}
+
+
 }
 ?>

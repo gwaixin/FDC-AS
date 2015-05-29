@@ -126,32 +126,33 @@ $(document).ready(function () {
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		        
-		    	setTimeout(function() {
+		    	//setTimeout(function() {
 			    	
-					if (colClass == 'status') {
-				  		var statIndex = statusArr.indexOf(change[0][3]);
-				  		if (statIndex < 0) {
-					  		$('#error').html('Invalid status');
-					  		return;
-					  	}
-				    	//console.log(statIndex + rowIndex);
-				  		//checkOvertime();
-				    	updateValue = statIndex;
-				    	updateEmployeeData();
-					} else {
-						/*if (!validateDate(colClass)) {
-							focusElem.addClass('htInvalid');
-							return;
-						}
-						*/
-						
-						updateValue = list[rowIndex][colClass];
-						updateEmployeeData();
-						getTotalTime();
+				if (colClass == 'status') {
+			  		var statIndex = statusArr.indexOf(change[0][3]);
+			  		if (statIndex < 0) {
+				  		$('#error').html('Invalid status');
+				  		return;
+				  	}
+			    	//console.log(statIndex + rowIndex);
+			  		//checkOvertime();
+			    	updateValue = statIndex;
+			    	
+				} else {
+					/*if (!validateDate(colClass)) {
+						focusElem.addClass('htInvalid');
+						return;
 					}
+					*/
+					
+					updateValue = list[rowIndex][colClass];
+					//updateEmployeeData();
+					
+				}
+				updateEmployeeData();
 					
 
-		    	 }, 300);
+		    	 //}, 300);
 			}, cells: function (row, col, prop) {
 				var tmpData = this.instance.getData();
 				
@@ -294,6 +295,9 @@ $(document).ready(function () {
 			success: function(data) {
 				console.log(data);
 				updateAjax = null;
+				if (colClass != 'status') {
+					getTotalTime();
+				}
 			}
 		});
 		
@@ -398,16 +402,20 @@ function getTotalTime() {
 			type		: 	'POST',
 			dataType	:	'JSON',
 			success		:	function(data) {
-				//console.log(data);
-				//list[rowIndex][colClass] = data['total'];
-				focusElem.siblings('.total_time').html(data['total']);
+				/* Reference */
+				//focusElem.siblings('.total_time').html(data['total']);
+				//focusElem.siblings('.otime').html(data['overtime']);
+				//focusElem.siblings('.status').html(statusArr[data['stat']]);
+				
+				list[rowIndex]['total_time'] = data['total'];
 				if (list[rowIndex]['status'] != statusArr[data['stat']]) {
-					console.log(list[rowIndex]['status'] + ' -- ' + data['stat']);
-					focusElem.siblings('.status').html(statusArr[data['stat']]);
+					list[rowIndex]['status'] = statusArr[data['stat']];
 				}
 				if (typeof data['overtime'] !== 'undefined') {
-					focusElem.siblings('.otime').html(data['overtime']);
+					list[rowIndex]['over_time'] = data['overtime'];
 				}
+
+				hot.render();
 			}
 		});
 	} else {
