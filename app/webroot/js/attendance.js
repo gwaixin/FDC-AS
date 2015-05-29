@@ -63,7 +63,9 @@ $(document).ready(function () {
 	function checkOvertime(set) {
 		if (set) {
   			$.post(webroot+'Attendances/getOverTime', {id:list[rowIndex]['id']}, function(data) {
-  				focusElem.html(data);
+  				//focusElem.html(data);
+  				list[rowIndex]['over_time'] = data;
+  				hot.render();
   			});
   		} else {
   			$.post(webroot+'Attendances/resetOvertime', {id:list[rowIndex]['id']}, function(data) {
