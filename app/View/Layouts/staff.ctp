@@ -47,28 +47,30 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top nav-bar-mod">
       <div class="navbar-inner">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="<?php echo $this->webroot;?>">FDC AS</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right">
-              <li class="dropdown">
-                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
-                	<?php echo $this->Session->read('Auth.UserProfile.first_name')." ".
-                						 $this->Session->read('Auth.UserProfile.middle_name')." ".
-                						 $this->Session->read('Auth.UserProfile.last_name'); 
-                	?>
-                  <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                      <li><a href="#">View Profile</a></li>
-                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
-                  </ul>
-              </li>
-          </ul>
-          </div>
+      		<div class="container-fluid">
+	          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="brand" href="<?php echo $this->webroot;?>">FDC AS</a>
+	          <div class="nav-collapse collapse">
+	            <ul class="nav pull-right">
+	              <li class="dropdown">
+	                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
+	                	<?php echo $this->Session->read('Auth.UserProfile.first_name')." ".
+	                						 $this->Session->read('Auth.UserProfile.middle_name')." ".
+	                						 $this->Session->read('Auth.UserProfile.last_name'); 
+	                	?>
+	                  <b class="caret"></b></a>
+	                  <ul class="dropdown-menu">
+	                      <li><a href="#">View Profile</a></li>
+	                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
+	                  </ul>
+	              </li>
+	          </ul>
+	          </div>
+          	</div>
       </div>
     </div>
 	<div id="container" class="container-fluid">
@@ -78,8 +80,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 					<ul class="nav nav-list"> 
 					  <li class="nav-header">Staff Menu</li>        
 					  <li><a href="<?php echo $this->webroot;?>staffs"><i class="icon-home"></i> DashBoard</a></li>
-					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-book"></i> Employee</a></li>
-			          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-list"></i> Attendance </a></li>
+					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-user"></i> Employee</a></li>
+			          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
 			          <li class="divider"></li>
 					  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
 					  <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i> Logout</a></li>
