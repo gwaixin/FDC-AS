@@ -169,8 +169,9 @@ class EmployeesController extends AppController {
 					}
 				break;
 				case "status":
-					$conditions = array("Employee.status = '" . $this->request->data['value'] . "' and Employee.status != 0");
+					$conditions = array("Employee.status = '" . $this->request->data['value'] . "'");
 				break;
+
 			}
 			$employees = $this->Employee->find('all',array(
 																						'joins' => $joins,
@@ -180,7 +181,12 @@ class EmployeesController extends AppController {
 																				);
 			$employees_arr = array();
 			foreach($employees as $key => $employee) {
-			$status = ($employee['Employee']['status'] == 1) ? "Inactive" : "Active";
+			$status = 'Trashed';
+			if($employee['Employee']['status'] == 1) {
+				$status = "Inactive";
+			} else if($employee['Employee']['status'] == 2) {
+				$status = "Active";
+			}
 			
 			$data = array(
 									'id' => $employee['Employee']['id'],
