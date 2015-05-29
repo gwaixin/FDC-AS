@@ -80,6 +80,7 @@ $(function(){
 			$('#img_preview').attr('src',weburl+'upload/'+result.Profile.picture);
 			$('#f_name').html(result.Profile.last_name+', '+result.Profile.first_name+' '+result.Profile.middle_name);
 			$('#birth').html(birthDate.getFullYear() + "-" + (birthDate.getMonth() + 1) + "-" + birthDate.getDate());
+			$('#nk_name').html(result.Profile.nick_name);
 			$('#c_no').html(result.Profile.contact);
 			$('#fb').html(result.Profile.facebook);
 			$('#email').html(result.Profile.email);

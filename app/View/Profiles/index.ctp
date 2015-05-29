@@ -93,6 +93,7 @@
       		 	<ul class="list-group span5">
 	                <li class="list-group-item text-muted" >Profile</li>
 	                <li class="list-group-item "><span class=""><strong class="">Full name:</strong></span> <div id="f_name" class="pull-right"></div></li>
+	                <li class="list-group-item "><span class=""><strong class="">Nick name:</strong></span> <div id="nk_name" class="pull-right"></div></li>
 	                <li class="list-group-item "><span class=""><strong class="">Birth Date:</strong></span> <div id="birth" class="pull-right"></div></li>
 	                <li class="list-group-item "><span class=""><strong class="">Contact no.</strong></span> <div id="c_no" class="pull-right"></div></li>
 	                <li class="list-group-item "><span class=""><strong class="">Facebook:</strong></span> <div id="fb" class="pull-right"></div></li>
