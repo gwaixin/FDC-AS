@@ -377,6 +377,7 @@ class EmployeesController extends AppController {
 			$json['positionLevels'] = $this->getPositionLevelLists();
 			$json['roles'] = $this->getRoleLists();
 			$json['shiftMaster'] = $this->getShiftLists();
+			$json['role'] = $this->Session->read('Auth.Rights.role');
 			echo json_encode($json);
 		}
 	}
@@ -432,6 +433,9 @@ class EmployeesController extends AppController {
 			           )
 							);
 		$positions = $this->Position->find('all',array(
+
+
+
 																								'joins' => $joins,
 																								'fields' => array('*')
 																							)
@@ -503,7 +507,7 @@ class EmployeesController extends AppController {
 				foreach($employee as $key => $detail) {
 					$field = $key;
 					$value = $detail;
-					if ($key === 'position' || $key === 'position_level') {
+					if ($key === 'position' || $key === 'position_level' || $key === 'role') {
 						$value = "";
 						$field = $field."_id";
 						switch($key) {
@@ -524,6 +528,13 @@ class EmployeesController extends AppController {
 								if ($searchPositionLevel) {
 									$value = $searchPositionLevel['Position_level']['id'];
 								}
+							break;
+							case 'role' :
+							$field = 'role';
+							$searchRole = $this->Role->findByDescription($detail);
+							if ($searchRole) {
+								$value = $searchRole['Role']['id'];
+							}
 							break;
 						}
 					}
