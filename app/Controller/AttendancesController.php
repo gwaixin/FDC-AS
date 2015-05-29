@@ -14,10 +14,21 @@ class AttendancesController extends AppController {
 		$this->set('title', 'FDC : ATTENDANCE');
 		$this->set('attendanceStat', $this->getAttendanceStatus());
 		$this->set('autoOvertime', $autoOvertime);
+		$this->set('shifts', $this->getShifts());
+		//pr($this->getShifts());
+		//exit();
 		
 	}
 	
-	
+	private function getShifts() {
+		$this->loadModel('Employeeshift');
+		$eshifts = $this->Employeeshift->find('all', array(
+				'fields' => array('id', 'description'),
+				'conditions' => array('status' => 1)
+			)
+		);
+		return $eshifts;
+	}
 	
 	public function getEmployee() {
 		$this->loadModel('Employee');
@@ -230,8 +241,12 @@ class AttendancesController extends AppController {
 					
 				//$conditions["like"] = "%{$data['keyword']}%";
 			}
-			if (!empty($data['status']) && $data['status'] >= 0) {
+			if (isset($data['status']) && $data['status'] >= 0) {
 				$conditions['attendances.status ='] = $data['status'];
+			}
+
+			if (!empty($data['shifts']) && $data['shifts'] >= 0) {
+				$conditions['Employee.employee_shifts_id ='] = $data['shifts'];
 			}
 	
 		}

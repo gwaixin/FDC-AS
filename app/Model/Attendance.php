@@ -84,11 +84,26 @@ class Attendance extends AppModel {
 		$attendance = array();
 		foreach($col as $c) {
 			$eEmp = $eData['Attendance']['date'] . ' ' . $eData['es'][$c];
-			if ($c == 'f_time_out' || $c == 'l_time_out') {
-				$con = strtotime($data[$c]) > strtotime($eEmp);
-			} else {
-				$con = ($c == 'f_time_in' && strtotime($data[$c]) < strtotime($eEmp));
+
+			switch ($c) {
+				case 'f_time_out':
+				case 'l_time_out':
+					$con = strtotime($data[$c]) > strtotime($eEmp);
+					break;
+				case 'f_time_in':
+				case 'l_time_in':
+					$con = strtotime($data[$c]) < strtotime($eEmp);
+					break;
 			}
+
+			/*if ($c == 'f_time_out' || $c == 'l_time_out') {
+				
+			} else {
+				$con = (
+					$c == 'f_time_in' &&  ||
+					$c == ''
+				);
+			}*/
 			if ($this->valDateTimeFormat($data[$c])) {
 				$attendance[] = ($con) ? $eEmp : $data[$c];
 			} else {
@@ -203,9 +218,9 @@ class Attendance extends AppModel {
 		$lastOutTime = $this->verifyTimeFormat($data['es']['l_time_out']) ? 'l_time_out': 'f_time_out';
 		$date = $data['Attendance']['date'];
 		if ($this->verifyTimeFormat($data['es']['overtime_start'])) {
-			$startOT = $date . ' ' . $data['es'][$lastOutTime];
-		} else {
 			$startOT = $date . ' ' . $data['es']['overtime_start'];
+		} else {
+			$startOT = $date . ' ' . $data['es'][$lastOutTime];
 		}
 		
 		$present = $data['Attendance'][$lastOutTime];

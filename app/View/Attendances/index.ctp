@@ -33,6 +33,13 @@
 			</div>
 			<div class='control-group'>
 				<input type='text' id='date' placeholder='Choose Date' name='date' />
+				<select name='shifts'>
+					<option selected='selected' disabled>Choose Shifts</option>
+					<?php foreach($shifts as $key => $s) { ?>
+					<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
+					<?php }?>
+					<option value='0'>All</option>
+				</select>
 			</div>
 			<div class='control-group'>
 				<button id='btn-search' class='btn btn-inverse'>Search</button>

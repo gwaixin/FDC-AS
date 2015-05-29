@@ -98,14 +98,22 @@ $(document).ready(function () {
 		    ], beforeChange: function(change, sources) {
 		    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
 		    	colClass = change[0][1];
-		    	if (colClass != 'status') {
-		    		var time = convertToDatetime(change[0][3]) + ':00';
+		    	if (
+		    		colClass != 'status' && 
+		    		colClass != 'total_time' &&
+		    		colClass != 'otime' &&
+		    		change[0][2] != change[0][3]
+		    	) {
+		    		var time = convertToDatetime(change[0][3]);
 		    		if (time === 0) {
+		    			console.log(change[0]);
 		    			change[0][3] = change[0][2];
 		    			return;
+		    		} else {
+		    			time += ':00';
+		    			list[rowIndex][colClass] = time;
+		    			change[0][3] = time;
 		    		}
-		    		list[rowIndex][colClass] = time;
-		    		change[0][3] = time;
 		    	}
 		    }, afterChange: function(change, sources) {
 			    if (
@@ -203,9 +211,12 @@ $(document).ready(function () {
 				var time = pad(toTime(val.substr(8, 12)));
 				fDate = year+'-'+month+' '+time;
 				break;
-			default: alert('Not valid time'); 
+			default: alert('Did not follow the allowed format'); 
 		}
-
+		if (fDate != 0 && !isDateTime(fDate)) {
+			fDate = 0;
+			alert('Invalid time format'); 
+		}
 		return fDate;
 	}
 
@@ -299,10 +310,13 @@ $(document).ready(function () {
 	getAttendanceList(formAttendance);
 	function getAttendanceList(formAttendance) {
 		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
-			if (typeof data['error'] !== 'undefined') {
+			$("#employee-attendance").html('');
+			if (data == '') {
+				$('#error').html("No data found");
+			} else if (typeof data['error'] !== 'undefined') {
 				$('#error').html(data['error']);
-				$('.htCore tbody').html('');
 			} else {
+				console.log(data);
 				$('#error').html('');
 				list = data;
 				attendanceList();
@@ -385,6 +399,7 @@ function getTotalTime() {
 			dataType	:	'JSON',
 			success		:	function(data) {
 				//console.log(data);
+				//list[rowIndex][colClass] = data['total'];
 				focusElem.siblings('.total_time').html(data['total']);
 				if (list[rowIndex]['status'] != statusArr[data['stat']]) {
 					console.log(list[rowIndex]['status'] + ' -- ' + data['stat']);

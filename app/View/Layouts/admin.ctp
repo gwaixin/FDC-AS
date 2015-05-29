@@ -85,13 +85,7 @@
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-list"></i> Attendance </a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/privileges/"><i class="fa fa-key" style='color:black;'></i> Privilege </a></li>
-						   	<li>
-						   		<a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-time"></i> Shift schedule</a>
-					   		 	<ul class="nav nav-list tree">
-                                    <li><a href="<?php echo $this->webroot;?>admin/create_shift"><i class="icon-plus"></i> Create</a></li>
-                                    <li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-list"></i> List</a></li>
-                                </ul>
-					  		</li>
+						   	<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
 					  		<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
 						  <!-- 
 					          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
