@@ -105,7 +105,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				echo $this->Form->select('field',
 																		    array(
 																		    		2 => 'Inactive',
-																		    		1 => 'Active'
+																		    		1 => 'Active',
+																		    		0 => 'Deleted'
 																		    ),
 																		    array(
 																		    	'empty' => 'Status',

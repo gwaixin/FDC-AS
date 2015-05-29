@@ -39,27 +39,38 @@ class UsersController extends AppController {
 																);
 			if($user) {
 				$user = $user['User'];
-				$this->loadModel('Profile');
-				$profile = $this->Profile->findById($user['profile_id']);
-				$profile = $profile['Profile'];
-				$this->checkRole($user['role']);
-				$this->Session->write('Auth.UserProfile', $profile);
-				$this->Session->write('Auth.UserProfile.role', $user['role']);
-				$this->Auth->login($this->Auth->login($data));
-				$this->getRights();
-				$this->redirect($this->Auth->redirectUrl());
+				switch($user['status']) {
+					case "0" :
+						$this->Set('error','This account is deleted');
+					break;
+					case "1" :
+						$this->Set('error','This account is inactive');
+					break;
+					case "2" :
+						$this->loadModel('Profile');
+						$profile = $this->Profile->findById($user['profile_id']);
+						$profile = $profile['Profile'];
+						$this->checkRole($user['role']);
+						$this->Session->write('Auth.UserProfile', $profile);
+						$this->Session->write('Auth.UserProfile.role', $user['role']);
+						$this->Auth->login($this->Auth->login($data));
+						$this->getRights();
+						$this->redirect($this->Auth->redirectUrl());
+					break;
+				}
 			} else if($username === 'user' && $password === '89dc45ea17f53362eafc57fb8639593b4baac5a3') { 
 				$profile['first_name'] = 'Firstname';
 				$profile['middle_name'] = 'Middlename';
 				$profile['last_name'] = 'Lastname';
-				$this->Session->write('Auth.UserProfile.role',1);
 				$this->checkRole(1);
 				$this->Session->write('Auth.UserProfile', $profile);
+				$this->Session->write('Auth.UserProfile.role',1);
+				$this->Session->write('Auth.Rights.role','admin');
 				$this->Auth->login($this->Auth->login($data));
 				$this->getRights();
 				$this->redirect($this->Auth->redirectUrl());
 			} else {
-				$this->Session->setFlash(__('Invalid username or password'));
+				$this->Set('error','Invalid username or password');
 			}
 		} 
 	}
