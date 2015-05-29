@@ -66,6 +66,19 @@
 												'placeholder' => ''
 										)
 								);
+		echo $this->Form->input('text',
+				array('div' => array(
+						'class' => 'control-group'
+				),
+						'name' => 'nick_name',
+						'id' => 'txtnick_name',
+						'class' => 'input-block-level',
+						'size' => 16,
+						'label' => 'Nickname',
+						'value' => $data['nick_name'],
+						'placeholder' => ''
+				)
+		);
 		echo $this->Form->input('date',
 								array('div' => array(
 										'class' => 'control-group input-group date',
