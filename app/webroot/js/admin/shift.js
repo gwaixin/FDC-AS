@@ -30,6 +30,8 @@ $(document).ready(function() {
 				//data['changes'].forEach(updatingList);
 				for(var item in data['changes']) {
 					row.find('.' + item).html(data['changes'][item]);
+					//row.find('.' + item).html('21321');
+					console.log(row.find('.' + item));
 					console.log(data['changes'][item]);
 				}
 			} else if (data['result'] == 'fail') {
@@ -53,13 +55,13 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.settime', function() {
-	var type = $(this).attr('timeType');
-	var setting = $(this).attr('timeSet');
-	if (setting === 'deactivated') {
-		$(this).parent('span').siblings('select').removeAttr('disabled');
-		$(this).attr('timeSet', 'activated');
-	} else {
-		$(this).parent('span').siblings('select').attr('disabled', 'true');
-		$(this).attr('timeSet', 'deactivated');
-	} 
+	$(this).parent().parent().siblings('select').prop('disabled', function (_, val) { return ! val; });
+});
+
+$(document).on('click', '.resetTime', function() {
+	if (confirm("Are you sure to reset this time?")) {
+		//$(this).parentsUntil('.input').fadeOut(100);
+		//$(this).parent('span').siblings('select').val(0);
+		$(this).parent().parent().siblings('select').prepend('<option selected value="-1">------</option>');
+	}
 });
