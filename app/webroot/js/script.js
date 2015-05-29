@@ -223,6 +223,18 @@ $(function(){
 		$(div).append($('.input-group-data span4').html());*/
 	});
 	
+	
+	/*
+	 * search privilege
+	 */
+	$('#cbo-category').change(function(e){
+		if($(this).val() == 'deleted'){
+			$('#search-action').show();
+		}else{
+			$('#search-action').hide();
+		}
+	});
+	
 	/*
 	 *Delete privilege 
 	 */

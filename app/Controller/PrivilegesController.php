@@ -7,11 +7,11 @@ class PrivilegesController extends AppController {
 	public function index($layout){
 	
 		$this->layout = $layout;
-	
+		$searchAction = '';
 		$keyword = '';
 		$action = '';
 		$conditions = '';
-	
+		$display = 'display:none';
 	
 		try {
 			$this->paginate();
@@ -31,9 +31,15 @@ class PrivilegesController extends AppController {
 			if(isset($this->params['url']['search'])){
 				$keyword = $this->params['url']['search'];
 			}
+			if(isset($this->params['url']['search'])){
+				$keyword = $this->params['url']['search'];
+			}
+			if(isset($this->params['url']['search-action'])){
+				$searchAction = $this->params['url']['search-action'];
+			}
 				
 				
-			if(!empty($action) && $action !== 'roles'){
+			if(!empty($action) && ($action !== 'roles' && $action !== 'deleted')){
 				$conditions = array(
 						'AND' => array(
 								array("Privilege.{$action} LIKE" => "%{$keyword}%"),
@@ -47,6 +53,14 @@ class PrivilegesController extends AppController {
 								array("Privilege.status" => 1)
 						)
 				);
+			}elseif ($action == 'deleted'){
+				$conditions = array(
+						'AND' => array(
+								array("Privilege.{$searchAction} LIKE" => "%{$keyword}%"),
+								array("Privilege.status " => 0)
+						)
+				);		
+				$display = '';	
 			}else{
 				$conditions = array('Privilege.status = 1');
 			}
@@ -82,8 +96,9 @@ class PrivilegesController extends AppController {
 	
 		$this->set('data', $this->paginate() );
 		$this->set('action' , $action);
+		$this->set('searchAction' , $searchAction);
 		$this->set('search' , $keyword);
-	
+		$this->set('display' , $display);
 	}
 	
 	public function add($layout){
