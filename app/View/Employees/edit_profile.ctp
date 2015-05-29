@@ -1,6 +1,6 @@
 <?php
 echo $this->Html->css('employee-edit-profile');
-echo $this->Html->script('employee-edit-profile');
+echo $this->Html->script('employee-profile');
 ?>
 <div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">

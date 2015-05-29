@@ -18,4 +18,11 @@ $(document).ready(function() {
 		$("#img-signature").attr('src',img);
 	});
 	
+
+	$(document).click(function(e) {
+		if(e.target.className === 'modal-backdrop fade in') {
+			$("#modalSignature").modal('hide');
+		}
+	});
+
 });
