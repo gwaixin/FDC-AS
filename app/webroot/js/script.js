@@ -80,6 +80,7 @@ $(function(){
 			$('#img_preview').attr('src',weburl+'upload/'+result.Profile.picture);
 			$('#f_name').html(result.Profile.last_name+', '+result.Profile.first_name+' '+result.Profile.middle_name);
 			$('#birth').html(birthDate.getFullYear() + "-" + (birthDate.getMonth() + 1) + "-" + birthDate.getDate());
+			$('#nk_name').html(result.Profile.nick_name);
 			$('#c_no').html(result.Profile.contact);
 			$('#fb').html(result.Profile.facebook);
 			$('#email').html(result.Profile.email);
@@ -193,34 +194,16 @@ $(function(){
 	    } );
 		    e.preventDefault();
 	  } );
-	
-	
-	$('.add-input').click(function(e){
 		
-		/*var div = ".input-group-data";
-		$(div)
-			.append('<div class="row-fluid"/>')
-			.find("input,select")
-            .clone()
-            .appendTo($('.input-group-data').append("<br/>"))
-            .val("")
-            .attr("id",function(i,oldVal) {
-            	console.log(i);
-                return oldVal.replace(/\d+/,function(m){
-                    return (+m + 1);
-                });
-            });
-        return false;*/
-		
-		/*  e.preventDefault();
-		   var tr = $('.input-group-data  .row-fluid > .control-group');
-		   var newTr = tr.first().clone();
-		   $('.input-group-data').append('<div class="row-fluid"/>')
-		   newTr.find(":input").val(''); //find all input types (input, textarea), empty it.
-		   newTr.appendTo($('.input-group-data > .row-fluid:last-child'));*/
-		   
-		/*var div = ".input-group-data";
-		$(div).append($('.input-group-data span4').html());*/
+	/*
+	 * search privilege
+	 */
+	$('#cbo-category').change(function(e){
+		if($(this).val() == 'deleted'){
+			$('#search-action').show();
+		}else{
+			$('#search-action').hide();
+		}
 	});
 	
 	/*

@@ -5,18 +5,50 @@ class RolesController extends AppController{
 	public function index($layout) {
 		
 		$this->layout = $layout;
-
-		$data = $this->Role->find('all',array(
-				'conditions' => array('status' => 1)
-		));
+		$keyword = '';
+		$action = '';
 		
-		$this->set('data',$data);
+		if (isset($this->params['url']['search'])) {
+			$keyword = $this->params['url']['search'];
+		}
+				
+		if (isset($this->params['url']['action'])){
+			$action = $this->params['url']['action'];
+		}
+		
+		if ($action == 'delete') {
+			$condition = array(
+					'AND' => array(
+							array('status' => 0),
+							array('description LIKE' => '%'.$keyword.'%')
+					)
+			);
+			
+		}elseif ($action == 'delete'){
+			$condition = array(
+					'AND' => array(
+							array('status' => 1),
+							array('description LIKE' => '%'.$keyword.'%')
+					)
+			);
+		}else {	
+			$condition = array('status' => 1);
+		}	
+		
+		$this->paginate = array(
+				'conditions' => $condition,
+				'limit' => 10
+		);
+		
+		$this->set('data', $this->paginate());
+		$this->set('action', $action);
+		$this->set('keyword', $keyword);
 	}
 	
 	public function add($layout) {
 		
 		$this->layout = $layout;
-		
+		$errors = '';
 		$temp = array(
 				'id' => '',
 				'description' => '',
@@ -48,7 +80,7 @@ class RolesController extends AppController{
 		
 		$id = $this->request->param('id');
 
-		if(!$id){
+		if (!$id) {
 			$this->redirect('/admin/roles');
 		}
 		
@@ -62,7 +94,7 @@ class RolesController extends AppController{
 				'status' => $data['Role']['status']
 		);
 		
-		if($this->request->is(array('post','put'))){
+		if ($this->request->is(array('post','put'))) {
 			
 			$this->Role->id = $id;
 			
@@ -70,9 +102,9 @@ class RolesController extends AppController{
 	
 			$temp = $data;
 			
-			if($this->Role->save($data)){
+			if ($this->Role->save($data)) {
 				$this->redirect('/admin/roles');
-			}else{
+			} else {
 				$errors = $this->Role->validationErrors;
 			}
 			
@@ -84,11 +116,11 @@ class RolesController extends AppController{
 	}
 	
 	
-	public function delete(){
+	public function delete() {
 		
 		$this->autoRender = false;
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$id = $this->request->data;
 			
@@ -96,11 +128,11 @@ class RolesController extends AppController{
 				
 			$data['status'] = 0;
 
-			if($this->Role->save($data)){
+			if ($this->Role->save($data)) {
 				echo json_encode(array(
 						'success' => 1		
 				));
-			}else{
+			} else {
 				echo json_encode(array(
 						'success' => 0
 				));

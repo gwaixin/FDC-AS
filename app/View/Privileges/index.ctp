@@ -2,26 +2,43 @@
  	<div class="row">
 		<div class="privilege-container">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
-		<h1>Privilege List</h1>
+		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">
 			<?php 
 				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/privileges'));
 				echo $this->Form->select('field',
 						array(
-								'roles' => 'Roles',
+								'action' => 'Action',
 								'controller' => 'Controller',
-								'action' => 'Action'
+								'deleted' => 'Deleted',
+								'roles' => 'Roles',
 						),
 						array(
 								'name' => 'action',
 								'empty' => 'Search By',
 								'id' => 'cbo-category',
 								'value' => $action,
-								'class' => 'form-control'
+								'class' => 'form-control span3'
+						)
+				);
+				echo $this->Form->select('field',
+						array(
+								'action' => 'Action',
+								'controller' => 'Controller',
+								'roles' => 'Roles',
+						),
+						array(
+								'name' => 'search-action',
+								'empty' => 'Search By',
+								'id' => 'search-action',
+								'value' => $searchAction,
+								'style' => $display,
+								'class' => 'form-control span3'
 						)
 				);
 				echo $this->Form->input('text',array(
 								'div' => false,
+								'class' => 'form-control span3',
 								'name' => 'search',
 								'id' => 'txtsearch',
 								'value' => $search,

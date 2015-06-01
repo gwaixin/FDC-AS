@@ -1,6 +1,6 @@
 <div class="contract-container">
 	<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
-	<h1>Contract History</h1>
+	<h3>Contract History</h3>
 		<div id="search-container" class="form-control">
 				<?php 
 					echo $this->Form->create('Contractlog',array('type' => 'get','action' => 'employee/'.$id));

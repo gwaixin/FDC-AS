@@ -18,7 +18,8 @@
 						'label' 		=> 	'Shift description',
 						'between' 		=> 	'<div class="control-group">',
 						'after'			=>	'</div>',
-						'value'			=>  $shift['Employeeshift']['description']
+						'value'			=>  $shift['Employeeshift']['description'],
+						'class'			=> 	'span11'
 					) 
 				);
 				echo $this->Form->input('f_time_in', 
@@ -28,9 +29,9 @@
 						'selected' 		=> 	$shift['Employeeshift']['f_time_in'],
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'First Time-In',
-						'class'			=>	'span2',
-						'between' 		=> 	'<div class="control-group">',
-						'after'			=>	'</div>',
+						'class'			=>	'span3',
+						'between' 		=> 	'',
+						'after'			=>	'',
 						'required'		=> true
 					) 
 				);
@@ -43,11 +44,17 @@
 						'label' 		=> 	'First Time-Out',
 						'between' 		=> 	'<div class="control-group">',
 						'after'			=>	'</div>',
-						'class'			=>	'span2'
+						'class'			=>	'span3'
 					) 
 				);
 				
-				$timeOptional = '<span> <a href="javascript:;" class="settime" timeSet="deactivated"><i class="icon-edit"></i></span></a>';
+				
+				$ltiDisable = empty($shift['Employeeshift']['l_time_in']);
+				$ltoDisable = empty($shift['Employeeshift']['l_time_out']);
+				$otDisable = empty($shift['Employeeshift']['overtime_start']);
+
+				$timeOptional = '<div class="centertext"> <span> <a href="javascript:;" class="settime"><i class="fa fa-edit"></i></a> edit</span> &nbsp;&nbsp;';
+				$timeOptional .= '<span> <a href="javascript:;" class="resetTime"><i class="fa fa-refresh"></i></a> reset</span></div>';
 				echo $this->Form->input('l_time_in', 
 					array(
 						'id'			=> 	'l_time_in',
@@ -56,10 +63,10 @@
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-In',
 						'between' 		=> 	'<div class="control-group">',
-						'disabled'		=> 	true,
+						'disabled'		=> 	$ltiDisable,
 						'after'			=>	" $timeOptional </div>",
-						'value'			=>	'',
-						'class'			=>	'span2'
+						//'value'			=>	'',
+						'class'			=>	'span3'
 					) 
 				);
 				echo $this->Form->input('l_time_out', 
@@ -70,9 +77,9 @@
 						'placeholder' 	=> 	'TIME', 
 						'label' 		=> 	'Last Time-Out',
 						'between' 		=> 	'<div class="control-group">',
-						'disabled'		=> 	true,
+						'disabled'		=> 	$ltoDisable,
 						'after'			=>	" $timeOptional </div>",
-						'class'			=>	'span2'
+						'class'			=>	'span3'
 					) 
 				);
 				echo $this->Form->input('overtime_start', 
@@ -83,9 +90,9 @@
 						'placeholder' 	=> 	'OVERTIME', 
 						'label' 		=> 	'OVERTIME STARTS',
 						'between' 		=> 	'<div class="control-group">',
-						'disabled'		=> 	true,
+						'disabled'		=> 	$otDisable,
 						'after'			=>	" $timeOptional </div>",
-						'class'			=>	'span2'
+						'class'			=>	'span3'
 					) 
 			);
 			?>
@@ -97,3 +104,13 @@ $(document).on('submit', '#eshift-form-update', function(e) {
 	e.preventDefault();
 });
 </script>
+<style>
+	.time {
+		float:left;
+		width:50%;
+	}
+	.centertext {
+		margin-top: 8px;
+		text-align: center;
+	}
+</style>

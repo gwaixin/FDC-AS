@@ -77,6 +77,11 @@ class EmployeeshiftsController extends AppController {
 			if ($eshift && $id) {
 				$this->Employeeshift->id = $id;
 				if ($this->Employeeshift->save($eshift)) {
+					$eshift['f_time_in'] 	= !empty($eshift['f_time_in']) 	? date('g:i A', strtotime($eshift['f_time_in'])) 	: '';
+					$eshift['f_time_out'] 	= !empty($eshift['f_time_out']) ? date('g:i A', strtotime($eshift['f_time_out'])) 	: '';
+					$eshift['l_time_in'] 	= !empty($eshift['l_time_in']) 	? date('g:i A', strtotime($eshift['l_time_in'])) 	: '';
+					$eshift['l_time_out'] 	= !empty($eshift['l_time_out']) ? date('g:i A', strtotime($eshift['l_time_out'])) 	: '';
+					$eshift['overtime_start'] = !empty($eshift['overtime_start']) ? date('g:i A', strtotime($eshift['overtime_start'])) : '';
 					$result = array('result' => 'success', 'changes' => $eshift);
 				} else {
 					$errors = $this->Employeeshift->validationErrors;
@@ -106,23 +111,34 @@ class EmployeeshiftsController extends AppController {
 				'f_time_in'	=> date('H:i:s', strtotime($ftimein)),
 				'f_time_out'	=> date('H:i:s', strtotime($ftimeout)),
 		);
-		if (!empty($data['Employee_shift']['l_time_in']) && !empty($data['Employee_shift']['l_time_out'])) {
-			$ltimeinData 	= $data['Employee_shift']['l_time_in'];
-			$ltimeOutData 	= $data['Employee_shift']['l_time_out'];
-			$ltimein 		= $ltimeinData['hour'] 	. ':' . $ltimeinData['min'] 	. ' ' . $ltimeinData['meridian']; //implode(':', $data['Employee_shift']['l_time_in']);
-			$ltimeout 		= $ltimeOutData['hour'] . ':' . $ltimeOutData['min'] 	. ' ' . $ltimeOutData['meridian']; //implode(':', $data['Employee_shift']['l_time_out']);
-			$eshift['l_time_in'] 	= date('H:i:s', strtotime($ltimein));
-			$eshift['l_time_out'] 	= date('H:i:s', strtotime($ltimeout));
-		}
 		if ($id) {
 			$eshift['id'] = $id;
 		}
+
+		if (!empty($data['Employee_shift']['l_time_in']) && !empty($data['Employee_shift']['l_time_out'])) {
+			$ltimeinData 	= $data['Employee_shift']['l_time_in'];
+			$ltimeOutData 	= $data['Employee_shift']['l_time_out'];
+			if ($ltimeinData['hour'] >= 0) {
+				$ltimein = $ltimeinData['hour'] 	. ':' . $ltimeinData['min'] 	. ' ' . $ltimeinData['meridian']; //implode(':', $data['Employee_shift']['l_time_in']);
+				$ltimeout = $ltimeOutData['hour'] . ':' . $ltimeOutData['min'] 	. ' ' . $ltimeOutData['meridian']; //implode(':', $data['Employee_shift']['l_time_out']);
+				$eshift['l_time_in'] 	= date('H:i:s', strtotime($ltimein));
+				$eshift['l_time_out'] 	= date('H:i:s', strtotime($ltimeout));
+			} else {
+				$eshift['l_time_in']	= NULL;
+				$eshift['l_time_out']	= NULL;
+			}
+		}
+		
 
 		if (!empty($data['Employee_shift']['overtime_start'])) {
 			$hr = $data['Employee_shift']['overtime_start']['hour'];
 			$min = $data['Employee_shift']['overtime_start']['min'];
 			$mer = $data['Employee_shift']['overtime_start']['meridian'];
-			$eshift['overtime_start'] = date('H:i:s', strtotime($hr . ':' . $min . ' ' . $mer));
+			if ($hr >= 0) {
+				$eshift['overtime_start'] = date('H:i:s', strtotime($hr . ':' . $min . ' ' . $mer));
+			} else {
+				$eshift['overtime_start'] = NULL;
+			}
 		}
 
 		return $eshift;

@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="profile-container">
 
-		<h1>Profile</h1>
+		<h3>Profile</h3>
 		<div class="img-cont">
 			<div class="img-prev">
 				<?php echo $this->Html->image('emptyprofile.jpg', array('alt' => 'CakePHP', 'id' => 'img_preview', 'class' => 'img-responsive')); ?>
@@ -66,6 +66,19 @@
 												'placeholder' => ''
 										)
 								);
+		echo $this->Form->input('text',
+				array('div' => array(
+						'class' => 'control-group'
+				),
+						'name' => 'nick_name',
+						'id' => 'txtnick_name',
+						'class' => 'input-block-level',
+						'size' => 16,
+						'label' => 'Nickname',
+						'value' => $data['nick_name'],
+						'placeholder' => ''
+				)
+		);
 		echo $this->Form->input('date',
 								array('div' => array(
 										'class' => 'control-group input-group date',

@@ -63,7 +63,9 @@ $(document).ready(function () {
 	function checkOvertime(set) {
 		if (set) {
   			$.post(webroot+'Attendances/getOverTime', {id:list[rowIndex]['id']}, function(data) {
-  				focusElem.html(data);
+  				//focusElem.html(data);
+  				list[rowIndex]['over_time'] = data;
+  				hot.render();
   			});
   		} else {
   			$.post(webroot+'Attendances/resetOvertime', {id:list[rowIndex]['id']}, function(data) {
@@ -98,14 +100,22 @@ $(document).ready(function () {
 		    ], beforeChange: function(change, sources) {
 		    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
 		    	colClass = change[0][1];
-		    	if (colClass != 'status') {
-		    		var time = convertToDatetime(change[0][3]) + ':00';
+		    	if (
+		    		colClass != 'status' && 
+		    		colClass != 'total_time' &&
+		    		colClass != 'otime' &&
+		    		change[0][2] != change[0][3]
+		    	) {
+		    		var time = convertToDatetime(change[0][3]);
 		    		if (time === 0) {
+		    			console.log(change[0]);
 		    			change[0][3] = change[0][2];
 		    			return;
+		    		} else {
+		    			time += ':00';
+		    			list[rowIndex][colClass] = time;
+		    			change[0][3] = time;
 		    		}
-		    		list[rowIndex][colClass] = time;
-		    		change[0][3] = time;
 		    	}
 		    }, afterChange: function(change, sources) {
 			    if (
@@ -118,32 +128,33 @@ $(document).ready(function () {
 		            return; //don't do anything as this is called when table is loaded
 		        }
 		        
-		    	setTimeout(function() {
+		    	//setTimeout(function() {
 			    	
-					if (colClass == 'status') {
-				  		var statIndex = statusArr.indexOf(change[0][3]);
-				  		if (statIndex < 0) {
-					  		$('#error').html('Invalid status');
-					  		return;
-					  	}
-				    	//console.log(statIndex + rowIndex);
-				  		//checkOvertime();
-				    	updateValue = statIndex;
-				    	updateEmployeeData();
-					} else {
-						/*if (!validateDate(colClass)) {
-							focusElem.addClass('htInvalid');
-							return;
-						}
-						*/
-						
-						updateValue = list[rowIndex][colClass];
-						updateEmployeeData();
-						getTotalTime();
+				if (colClass == 'status') {
+			  		var statIndex = statusArr.indexOf(change[0][3]);
+			  		if (statIndex < 0) {
+				  		$('#error').html('Invalid status');
+				  		return;
+				  	}
+			    	//console.log(statIndex + rowIndex);
+			  		//checkOvertime();
+			    	updateValue = statIndex;
+			    	
+				} else {
+					/*if (!validateDate(colClass)) {
+						focusElem.addClass('htInvalid');
+						return;
 					}
+					*/
+					
+					updateValue = list[rowIndex][colClass];
+					//updateEmployeeData();
+					
+				}
+				updateEmployeeData();
 					
 
-		    	 }, 300);
+		    	 //}, 300);
 			}, cells: function (row, col, prop) {
 				var tmpData = this.instance.getData();
 				
@@ -203,9 +214,12 @@ $(document).ready(function () {
 				var time = pad(toTime(val.substr(8, 12)));
 				fDate = year+'-'+month+' '+time;
 				break;
-			default: alert('Not valid time'); 
+			default: alert('Did not follow the allowed format'); 
 		}
-
+		if (fDate != 0 && !isDateTime(fDate)) {
+			fDate = 0;
+			alert('Invalid time format'); 
+		}
 		return fDate;
 	}
 
@@ -283,6 +297,9 @@ $(document).ready(function () {
 			success: function(data) {
 				console.log(data);
 				updateAjax = null;
+				if (colClass != 'status') {
+					getTotalTime();
+				}
 			}
 		});
 		
@@ -299,10 +316,13 @@ $(document).ready(function () {
 	getAttendanceList(formAttendance);
 	function getAttendanceList(formAttendance) {
 		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
-			if (typeof data['error'] !== 'undefined') {
+			$("#employee-attendance").html('');
+			if (data == '') {
+				$('#error').html("No data found");
+			} else if (typeof data['error'] !== 'undefined') {
 				$('#error').html(data['error']);
-				$('.htCore tbody').html('');
 			} else {
+				console.log(data);
 				$('#error').html('');
 				list = data;
 				attendanceList();
@@ -384,15 +404,20 @@ function getTotalTime() {
 			type		: 	'POST',
 			dataType	:	'JSON',
 			success		:	function(data) {
-				//console.log(data);
-				focusElem.siblings('.total_time').html(data['total']);
-				if (list[rowIndex]['status'] != statusArr[data['stat']]) {
-					console.log(list[rowIndex]['status'] + ' -- ' + data['stat']);
-					focusElem.siblings('.status').html(statusArr[data['stat']]);
+				/* Reference */
+				//focusElem.siblings('.total_time').html(data['total']);
+				//focusElem.siblings('.otime').html(data['overtime']);
+				//focusElem.siblings('.status').html(statusArr[data['stat']]);
+				
+				list[rowIndex]['total_time'] = data['render_time'];
+				if (list[rowIndex]['status'] != statusArr[data['status']]) {
+					list[rowIndex]['status'] = statusArr[data['status']];
 				}
-				if (typeof data['overtime'] !== 'undefined') {
-					focusElem.siblings('.otime').html(data['overtime']);
+				if (typeof data['over_time'] !== 'undefined') {
+					list[rowIndex]['over_time'] = data['over_time'];
 				}
+
+				hot.render();
 			}
 		});
 	} else {
