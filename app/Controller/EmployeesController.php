@@ -579,9 +579,15 @@ class EmployeesController extends AppController {
 				if ($success) {
 					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
 					$employeeInfo = $employeeInfo['Employee'];
+					$this->loadModel('Profile');
+					$Profile = $this->Profile->findById($employeeInfo['profile_id']);
+					$Profile = $Profile['Profile'];
 					$json['profile_id'] = $employeeInfo['id'];
 					$json['id'] = $employeeInfo['id'];
 					$json['picture'] = "<img src='".$this->webroot."img/emptyprofile.jpg'>";
+					if(!empty($Profile['picture'])) {
+						$json['picture'] = "<img src='".$this->webroot."upload/".$Profile['picture']."'>";
+					}
 				} else {
 					$success = false;
 				}

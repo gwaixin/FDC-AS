@@ -167,11 +167,12 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																	);
 		echo "</li>";
 		echo "<li>";
-		echo $this->Form->button('View History',array(
+		echo $this->Html->link('View History','',array(
 												'class' => 'btn btn-primary',
 												'data-toggle' => '',
 												'data-target' => '',
-												'onclick' => 'SelectHistory()'
+												'id' => 'btn-view-contract-log',
+												'style' => 'font-size:10px;height:15px;'
 												)
 											);
 		echo "</li>";

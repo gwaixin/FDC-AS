@@ -24,7 +24,7 @@ class UsersController extends AppController {
 			$password = $this->request->data['password'];
 			$data = array('User' => array(
 																	'username' => $username,
-																	'password' => $password
+											  						'password' => $password
 																)
 															);
 			$this->Set($data);
@@ -44,15 +44,19 @@ class UsersController extends AppController {
 						$this->Set('error','This account is inactive');
 					break;
 					case "2" :
-						$this->loadModel('Profile');
-						$profile = $this->Profile->findById($user['profile_id']);
-						$profile = $profile['Profile'];
-						$this->checkRole($user['role']);
-						$this->Session->write('Auth.UserProfile', $profile);
-						$this->Session->write('Auth.UserProfile.role', $user['role']);
-						$this->Auth->login($this->Auth->login($data));
-						$this->getRights();
-						$this->redirect($this->Auth->redirectUrl());
+						if(!empty($user['role'])) {
+							$this->loadModel('Profile');
+							$profile = $this->Profile->findById($user['profile_id']);
+							$profile = $profile['Profile'];
+							$this->checkRole($user['role']);
+							$this->Session->write('Auth.UserProfile', $profile);
+							$this->Session->write('Auth.UserProfile.role', $user['role']);
+							$this->Auth->login($this->Auth->login($data));
+							$this->getRights();
+							$this->redirect($this->Auth->redirectUrl());
+						} else {
+							$this->Set('error','This account doesn\'t have a role yet');
+						}
 					break;
 				}
 			} else if ($username === 'user' && $password === '89dc45ea17f53362eafc57fb8639593b4baac5a3') { 

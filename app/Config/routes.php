@@ -41,8 +41,14 @@
     array(
         'pass' => array('id')
     ));
+	Router::connect(
+    '/admin/employees/contracts/logs/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'contractlogs', 'action' => 'employee',''),
+    array(
+        'pass' => array('id')
+    ));
 
-	Router::connect('/admin/privileges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
+	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
 
@@ -62,6 +68,12 @@
 	Router::connect(
     '/staffs/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
     array('controller' => 'profiles', 'action' => 'profile_update',''),
+    array(
+        'pass' => array('id')
+    ));
+	Router::connect(
+    '/staffs/employees/contracts/logs/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'contractlogs', 'action' => 'employee',''),
     array(
         'pass' => array('id')
     ));
