@@ -345,7 +345,7 @@ $(document).ready(function () {
 				}
 				if (advancedData[index].id !== null || advancedData[index].id) {
 					if (data[x][1] !== 'name' && data[x][1] !== 'contract') {
-						if (data[x][3] || data[x][1] === 'nick_name') {
+						if (data[x][3]) {
 							if (data[x][2] !== data[x][3]) {
 								var employee = {'index':index,id:advancedData[index].id,'field':data[x][1],'value':data[x][3]};
 								if (data[x][1] === 'position_level') {
@@ -517,7 +517,7 @@ $(document).ready(function () {
 	   			className : 'htLeft'
 	   		},
 		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
-		  	{data: 'nick_name', type: 'text',},
+		  	{data: 'nick_name', type: 'text', readOnly: true},
 		  	{
 	      	data: 'company_systems', 
 	      	type: 'dropdown',

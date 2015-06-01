@@ -660,13 +660,6 @@ class EmployeesController extends AppController {
 				$this->Employee->id = $employee['id'];
 				if ($field === 'position_level_id' && $value === 'NULL') {
 					$this->Employee->saveField('position_level_id', null);
-				} else if($field === 'nick_name') {
-					$this->loadModel('Profile');
-					$employeeDetail = $this->Employee->findById($employee['id']);
-					$profile = $employeeDetail['Employee'];
-					$this->Profile->id = $profile['profile_id'];
-					$this->Profile->validate = array();
-					$this->Profile->save($data);
 				} else {
 					$this->Employee->save($data);
 				}
