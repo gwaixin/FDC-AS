@@ -26,6 +26,7 @@
  */
 	Router::connect('/', array('controller' => 'Main', 'action' => 'index', 'home'));
 	
+	
 	//ADMIN
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
@@ -36,7 +37,7 @@
 	Router::connect('/admin/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'admin'));
 	Router::connect(
     '/admin/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
-    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array('controller' => 'profiles', 'action' => 'profile_update',''),
     array(
         'pass' => array('id')
     ));
@@ -60,7 +61,7 @@
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));
 	Router::connect(
     '/staffs/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
-    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array('controller' => 'profiles', 'action' => 'profile_update',''),
     array(
         'pass' => array('id')
     ));
