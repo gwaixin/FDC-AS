@@ -24,13 +24,15 @@ class RolesController extends AppController{
 					)
 			);
 			
-		} else {	
+		}elseif ($action == 'delete'){
 			$condition = array(
 					'AND' => array(
 							array('status' => 1),
 							array('description LIKE' => '%'.$keyword.'%')
-						)			
-				);
+					)
+			);
+		}else {	
+			$condition = array('status' => 1);
 		}	
 		
 		$this->paginate = array(
@@ -46,7 +48,7 @@ class RolesController extends AppController{
 	public function add($layout) {
 		
 		$this->layout = $layout;
-		
+		$errors = '';
 		$temp = array(
 				'id' => '',
 				'description' => '',
