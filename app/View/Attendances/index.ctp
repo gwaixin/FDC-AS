@@ -15,44 +15,46 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<span class='pull-right' style='text-align:center; margin-top:20px;'>
-			<small>Auto Overtime</small> <br/>
-			<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
-		</span>
+		<div class="main-content">
+			<span class='pull-right' style='text-align:center; margin-top:20px;'>
+				<small>Auto Overtime</small> <br/>
+				<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
+			</span>
 
-		<form class='form-horizontal' id='attendance-form'>
-			<h3> Attendance</h3>
-			<div class='control-group'>
-				<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
-				<select name='status'>
-					<option selected='selected' disabled>Choose Status</option>
-					<?php foreach($attendanceStat as $key => $as) { ?>
-					<option value='<?php echo $key;?>'><?php echo $as; ?></option>
-					<?php }?>
-				</select>
-			</div>
-			<div class='control-group'>
-				<input type='text' id='date' placeholder='Choose Date' name='date' />
-				<select name='shifts'>
-					<option selected='selected' disabled>Choose Shifts</option>
-					<?php foreach($shifts as $key => $s) { ?>
-					<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
-					<?php }?>
-					<option value='0'>All</option>
-				</select>
-			</div>
-			<div class='control-group'>
-				<button id='btn-search' class='btn btn-inverse'>Search</button>
-				<button id='btn-reset' class='btn'>Reset</button>
-				<div id="error" class="pull-right"><?php echo $this->Session->flash();?></div>
-				<span class='alert alert-success'>
-					<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
-				</span>
-			</div>
-		</form>
-		
-		<input type="text" style="position:absolute; visibility:hidden" id="datepicker">
-		<div id="employee-attendance"></div>
+			<form class='form-horizontal' id='attendance-form'>
+				<h3> Attendance</h3>
+				<div class='control-group'>
+					<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
+					<select name='status'>
+						<option selected='selected' disabled>Choose Status</option>
+						<?php foreach($attendanceStat as $key => $as) { ?>
+						<option value='<?php echo $key;?>'><?php echo $as; ?></option>
+						<?php }?>
+					</select>
+				</div>
+				<div class='control-group'>
+					<input type='text' id='date' placeholder='Choose Date' name='date' />
+					<select name='shifts'>
+						<option selected='selected' disabled>Choose Shifts</option>
+						<?php foreach($shifts as $key => $s) { ?>
+						<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
+						<?php }?>
+						<option value='0'>All</option>
+					</select>
+				</div>
+				<div class='control-group'>
+					<button id='btn-search' class='btn btn-inverse'>Search</button>
+					<button id='btn-reset' class='btn'>Reset</button>
+					<div id="error" class="pull-right"><?php echo $this->Session->flash();?></div>
+					<span class='alert alert-success'>
+						<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
+					</span>
+				</div>
+			</form>
+			
+			<input type="text" style="position:absolute; visibility:hidden" id="datepicker">
+			<div id="employee-attendance"></div>
+		</div>
 	</div>
 </div>
 
