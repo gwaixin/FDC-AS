@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="sm-container roles-container">
-	         <h4 class="modal-title" id="myModalLabel">Roles</h4>
+	         <h3 class="modal-title" id="myModalLabel">Roles</h3>
 	         <input type="hidden" id="url" value="/">
 	     	 <div class="roles-content-form">
 	     	 

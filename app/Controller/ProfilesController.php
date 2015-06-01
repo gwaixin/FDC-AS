@@ -12,7 +12,7 @@ class ProfilesController extends AppController{
 	/**
 	 * list of profile
 	 */
-	public function index(){
+	public function index() {
 		$this->layout = 'main';
 		$this->Paginator->settings = array(
 					'limit' => 8, 
@@ -22,7 +22,7 @@ class ProfilesController extends AppController{
 		$this->set(compact('data'));
 	}
 	
-	public function profile_register(){
+	public function profile_register() {
 		
 		$this->layout = 'main';
 		$errors = '';
@@ -44,12 +44,12 @@ class ProfilesController extends AppController{
 				'signature' => '',
 		);
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$this->Profile->create();
 			
 			$row = $this->request->data;
-			
+
 			$data = array(
 					'first_name' => $row['first_name'],
 					'last_name' => $row['last_name'],
@@ -70,9 +70,9 @@ class ProfilesController extends AppController{
 			$result = $this->register(false, $data);
 			$result = json_decode($result);
 			
-			if($result->success == 1){
+			if ($result->success == 1) {
 				return $this->redirect('/');
-			}else{
+			} else {
 				$errors = $result->data;
 			}
 			
@@ -84,11 +84,11 @@ class ProfilesController extends AppController{
 		
 	}
 	
-	public function profile_update($id = null){
+	public function profile_update($id = null) {
 		$this->layout = 'main';
 		$errors = '';
 		
-		if(!$id){
+		if (!$id) {
 			return $this->redirect('/');
 		}
 		
@@ -111,9 +111,9 @@ class ProfilesController extends AppController{
 		
 		$data = $this->Profile->findById($id);
 		
-		if($data){
+		if ($data) {
 			
-			if($this->request->is(array('post','put'))){
+			if ($this->request->is(array('post','put'))) {
 				$this->Profile->id = $id;
 				
 				$row = $this->request->data;
@@ -144,13 +144,13 @@ class ProfilesController extends AppController{
 					$data['Profile']['picture'] = $row['Profile']['picture'];
 				}
 				
-				if($row['Profile']['signature']['error'] != 4){
+				if ($row['Profile']['signature']['error'] != 4) {
 					$data['Profile']['signature'] = $row['Profile']['signature'];
 				}
 				
-				if($this->Profile->save($data)){
+				if ($this->Profile->save($data)) {
 					return $this->redirect('/');
-				}else{
+				} else {
 					$errors = $this->Profile->validationErrors;	
 				}
 				$this->Session->setFlash(__('Unable to update your post'));	
@@ -162,7 +162,7 @@ class ProfilesController extends AppController{
 
 			$this->set('errors', $errors);
 			
-		}else{
+		} else {
 			return $this->redirect('/');
 		}
 
@@ -176,11 +176,11 @@ class ProfilesController extends AppController{
 	 * @param unknown $data = array of data return
 	 * @return string return json
 	 */
-	public function register($mode = true,	$data = array()){
+	public function register($mode = true,	$data = array()) {
 		
 
 		
-		if($mode){
+		if ($mode) {
 			$this->autoRender = false;
 			if($this->request->is('ajax')){
 				
@@ -208,7 +208,7 @@ class ProfilesController extends AppController{
 			}
 		}
 		
-		if($this->Profile->save($data)){
+		if ($this->Profile->save($data)) {
 			
 			$result = array(
 					'success' => 1,
@@ -216,7 +216,7 @@ class ProfilesController extends AppController{
 			);
 			
 			return json_encode($result);
-		}else{
+		} else {
 			$result = array(
 					'success' => 0,
 					'data' => $this->Profile->validationErrors
@@ -227,15 +227,15 @@ class ProfilesController extends AppController{
 	}
 	
 	
-	public function delete(){
+	public function delete() {
 		
 		$this->autoRender = false;
 			
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$data = $this->request->data;
 			$dataImg = $this->Profile->findById($data['dataID']);
-			if($this->Profile->delete($data['dataID'])){
+			if ($this->Profile->delete($data['dataID'])) {
 				$file = new File(WWW_ROOT .'upload/'.$dataImg['Profile']['picture'], false, 0777);
 				$file->delete();
 				echo '1';
@@ -244,11 +244,11 @@ class ProfilesController extends AppController{
 
 	}
 	
-	public function view(){
+	public function view() {
 		
 		$this->autoRender = false;		
 		
-		if($this->request->is('ajax')){
+		if ($this->request->is('ajax')) {
 			
 			$data = $this->request->data;
 			

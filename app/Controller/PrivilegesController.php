@@ -4,7 +4,7 @@
 class PrivilegesController extends AppController {
 	
 	
-	public function index($layout){
+	public function index($layout) {
 	
 		$this->layout = $layout;
 		$searchAction = '';
@@ -20,40 +20,40 @@ class PrivilegesController extends AppController {
 		}
 	
 		$this->Privilege->recursive = 0;
-		if($this->request->is('get')){
+		if ($this->request->is('get')) {
 				
 			$data = $this->request->data;
 				
-			if(isset($this->params['url']['action'])){
+			if (isset($this->params['url']['action'])) {
 				$action = $this->params['url']['action'];
 			}
 				
-			if(isset($this->params['url']['search'])){
+			if (isset($this->params['url']['search'])) {
 				$keyword = $this->params['url']['search'];
 			}
-			if(isset($this->params['url']['search'])){
+			if (isset($this->params['url']['search'])) {
 				$keyword = $this->params['url']['search'];
 			}
-			if(isset($this->params['url']['search-action'])){
+			if (isset($this->params['url']['search-action'])) {
 				$searchAction = $this->params['url']['search-action'];
 			}
 				
 				
-			if(!empty($action) && ($action !== 'roles' && $action !== 'deleted')){
+			if (!empty($action) && ($action !== 'roles' && $action !== 'deleted')) {
 				$conditions = array(
 						'AND' => array(
 								array("Privilege.{$action} LIKE" => "%{$keyword}%"),
 								array("Privilege.status " => 1)
 						)
 				);
-			}elseif ($action == 'roles'){
+			} elseif ($action == 'roles') {
 				$conditions = array(
 						'AND' => array(
 								array("rl.description LIKE" => "%{$keyword}%"),
 								array("Privilege.status" => 1)
 						)
 				);
-			}elseif ($action == 'deleted'){
+			} elseif ($action == 'deleted') {
 				$conditions = array(
 						'AND' => array(
 								array("Privilege.{$searchAction} LIKE" => "%{$keyword}%"),
@@ -61,7 +61,7 @@ class PrivilegesController extends AppController {
 						)
 				);		
 				$display = '';	
-			}else{
+			} else {
 				$conditions = array('Privilege.status = 1');
 			}
 				
@@ -101,7 +101,7 @@ class PrivilegesController extends AppController {
 		$this->set('display' , $display);
 	}
 	
-	public function add($layout){
+	public function add($layout) {
 		
 		$errors = '';
 		
@@ -121,7 +121,7 @@ class PrivilegesController extends AppController {
 			'description' => ''				
 		);
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$this->Privilege->create();
 			
@@ -130,9 +130,9 @@ class PrivilegesController extends AppController {
 			
 			$temp = $row;
 			
-			if($this->Privilege->save($row)){
+			if ($this->Privilege->save($row)) {
 				$this->redirect('/admin/privileges/');
-			}else{
+			} else {
 				$errors = $this->Privilege->validationErrors;
 			}	
 		}
@@ -143,7 +143,7 @@ class PrivilegesController extends AppController {
 		
 	}
 	
-	public function edit($layout){
+	public function edit($layout) {
 		
 		$errors = '';
 		
@@ -152,11 +152,11 @@ class PrivilegesController extends AppController {
 		$this->loadModel('Role');
 		
 		$id = $this->request->params['id'];
-		if(!$id){
+		if (!$id) {
 			$this->redirect('/admin/privileges/');
 		}
 		
-		$roles = $this->Role->find('list',array(
+		$roles = $this->Role->find('list', array(
 				'fields' => array('id','description')
 		));
 		
@@ -178,9 +178,9 @@ class PrivilegesController extends AppController {
 		
 			$temp = $row;
 				
-			if($this->Privilege->save($row)){
+			if ($this->Privilege->save($row)) {
 				$this->redirect('/admin/privileges/');
-			}else{
+			} else {
 				$errors = $this->Privilege->validationErrors;
 			}
 		}
@@ -191,11 +191,11 @@ class PrivilegesController extends AppController {
 		
 	}
 			
-	public function delete(){
+	public function delete() {
 		
 		$this->autoRender = false;
 
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$id = $this->request->data;
 			
@@ -204,11 +204,11 @@ class PrivilegesController extends AppController {
 			$data['status'] = 0;
 			
 			
-			if($this->Privilege->save($data)){
+			if ($this->Privilege->save($data)) {
 				echo json_encode(array(
 						'success' => 1		
 				));
-			}else{
+			} else {
 				echo json_encode(array(
 						'success' => 0
 				));

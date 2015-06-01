@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="privilege-container">
-	         <h4 class="modal-title" id="myModalLabel">Privilege</h4>
+	         <h3 class="modal-title" id="myModalLabel">Privilege</h3>
 	         <input type="hidden" id="url" value="/">
 	     	 <div class="privelege-content-form">
 	     	 

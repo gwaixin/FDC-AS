@@ -1,13 +1,13 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="sm-container roles-container">
-	         <h4 class="modal-title" id="myModalLabel">Roles</h4>
+	         <h3class="modal-title" id="myModalLabel">Roles</h3>
 	         <input type="hidden" id="url" value="/">
 	     	 <div class="roles-content-form">
 	     	 
 	     	 		<?php 
 
-	     	 		if(!empty($errors)){
+	     	 		if (!empty($errors)) {
 	     	 			echo '<div class="bg-padd bg-danger">';
 	     	 			foreach ($errors as $row){
 	     	 				echo '<p>'.$row[0].'</p>';

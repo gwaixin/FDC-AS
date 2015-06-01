@@ -8,15 +8,15 @@ class RolesController extends AppController{
 		$keyword = '';
 		$action = '';
 		
-		if(isset($this->params['url']['search'])){
+		if (isset($this->params['url']['search'])) {
 			$keyword = $this->params['url']['search'];
 		}
 				
-		if(isset($this->params['url']['action'])){
+		if (isset($this->params['url']['action'])){
 			$action = $this->params['url']['action'];
 		}
 		
-		if($action == 'delete'){
+		if ($action == 'delete') {
 			$condition = array(
 					'AND' => array(
 							array('status' => 0),
@@ -24,7 +24,7 @@ class RolesController extends AppController{
 					)
 			);
 			
-		}else{	
+		} else {	
 			$condition = array(
 					'AND' => array(
 							array('status' => 1),
@@ -78,7 +78,7 @@ class RolesController extends AppController{
 		
 		$id = $this->request->param('id');
 
-		if(!$id){
+		if (!$id) {
 			$this->redirect('/admin/roles');
 		}
 		
@@ -92,7 +92,7 @@ class RolesController extends AppController{
 				'status' => $data['Role']['status']
 		);
 		
-		if($this->request->is(array('post','put'))){
+		if ($this->request->is(array('post','put'))) {
 			
 			$this->Role->id = $id;
 			
@@ -100,9 +100,9 @@ class RolesController extends AppController{
 	
 			$temp = $data;
 			
-			if($this->Role->save($data)){
+			if ($this->Role->save($data)) {
 				$this->redirect('/admin/roles');
-			}else{
+			} else {
 				$errors = $this->Role->validationErrors;
 			}
 			
@@ -114,11 +114,11 @@ class RolesController extends AppController{
 	}
 	
 	
-	public function delete(){
+	public function delete() {
 		
 		$this->autoRender = false;
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$id = $this->request->data;
 			
@@ -126,11 +126,11 @@ class RolesController extends AppController{
 				
 			$data['status'] = 0;
 
-			if($this->Role->save($data)){
+			if ($this->Role->save($data)) {
 				echo json_encode(array(
 						'success' => 1		
 				));
-			}else{
+			} else {
 				echo json_encode(array(
 						'success' => 0
 				));

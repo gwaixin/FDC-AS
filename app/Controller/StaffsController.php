@@ -6,15 +6,13 @@ App::import('Controller', 'Attendances');
 class StaffsController extends AppController {
 	
 	
-	public function index(){
+	public function index() {
 		
 		$this->layout = 'staff';
-		
-		
-		
+			
 	}
 	
-	public function employees(){
+	public function employees() {
 		
 		$this->layout = 'staff';
 		
@@ -40,12 +38,9 @@ class StaffsController extends AppController {
 		
 	}
 	
-	public function attendances(){
+	public function attendances() {
 		
 		$this->layout = 'staff';
-		
-		
-		
 		
 		$this->render('/attendances/index');
 		
