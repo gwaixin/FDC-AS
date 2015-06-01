@@ -70,6 +70,17 @@ class Attendance extends AppModel {
 		}
 	}
 	
+
+	public function updateTotalTime($id, $data) {
+		$this->read(null, $id);
+		$attendanceData = array(
+				'Attendance' => $data
+		);
+		if ($this->save($attendanceData)) {
+			return true;
+		}
+	}
+
 	public function saveTime($id, $fieldData) {
 		$this->read(null, $id);
 		$this->set($fieldData[0], $fieldData[1]);

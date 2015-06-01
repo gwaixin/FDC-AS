@@ -409,12 +409,12 @@ function getTotalTime() {
 				//focusElem.siblings('.otime').html(data['overtime']);
 				//focusElem.siblings('.status').html(statusArr[data['stat']]);
 				
-				list[rowIndex]['total_time'] = data['total'];
-				if (list[rowIndex]['status'] != statusArr[data['stat']]) {
-					list[rowIndex]['status'] = statusArr[data['stat']];
+				list[rowIndex]['total_time'] = data['render_time'];
+				if (list[rowIndex]['status'] != statusArr[data['status']]) {
+					list[rowIndex]['status'] = statusArr[data['status']];
 				}
-				if (typeof data['overtime'] !== 'undefined') {
-					list[rowIndex]['over_time'] = data['overtime'];
+				if (typeof data['over_time'] !== 'undefined') {
+					list[rowIndex]['over_time'] = data['over_time'];
 				}
 
 				hot.render();

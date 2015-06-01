@@ -74,8 +74,8 @@
       </div>
     </div>
 	<div id="container" class="container-fluid">
-		<div class="row-fluid">
-			<div class="span2">
+		<div class="row-fluid row">
+			<div class="span2 side-well">
 				<div class="sidebar-nav">
 				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
