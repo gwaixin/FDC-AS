@@ -112,7 +112,7 @@ $(document).ready(function () {
 		    			change[0][3] = change[0][2];
 		    			return;
 		    		} else {
-		    			time += ':00';
+		    			time = time.length == 19 ? time : time+':00';
 		    			list[rowIndex][colClass] = time;
 		    			change[0][3] = time;
 		    		}
@@ -213,6 +213,9 @@ $(document).ready(function () {
 				var month = pad(toMonth(val.substr(4, 8)));
 				var time = pad(toTime(val.substr(8, 12)));
 				fDate = year+'-'+month+' '+time;
+				break;
+			case 19:
+				fDate = val;
 				break;
 			default: alert('Did not follow the allowed format'); 
 		}

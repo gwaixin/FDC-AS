@@ -257,15 +257,19 @@ $(function(){
 	      data: new FormData( this ),
 	      processData: false,
 	      contentType: false,
+	      beforeSend: function() {
+	    	  $('.layout-transparent').show();
+	      },
 	      success:function(data){
 				var res = JSON.parse(data);
-
+				$('.layout-transparent').hide();
 				if(res.success == 0){
 					for(var err in res.data){
 						$('.bg-padd').show();
 						$('.bg-padd').append('<p>'+res.data[err]+'</p>');
 					}
 				}else{
+					$('.bg-padd').hide();
 					$('#ProfileRegister').trigger("reset");
 					$('.close').click();
 				}

@@ -768,3 +768,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	<div class="input-group-addon"> 
 	<span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>
 	</div>
+<div class="layout-transparent" style="display:none;">	
+	<div class="loading-gif">
+		<img src="<?php echo $this->webroot;?>img/icon-loading.gif" class="img-responsive"/>
+	</div>
+</div>	
