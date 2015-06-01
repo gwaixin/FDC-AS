@@ -34,6 +34,7 @@ $(document).ready(function () {
 	$("#btn-select").click(function() {
 		selectedIndex = hot.getSelectedRange().to.row;
 		if (advancedData[selectedIndex].id !== null) {
+			$("#btn-view-profile").attr('href',baseUrl+'profiles/profile_update/'+advancedData[selectedIndex].profile_id);
 			$("#txt-errors").html("");
 			$("#edit-last-timein").html('Edit');
 			$("#edit-last-timeout").html('Edit');
@@ -326,6 +327,7 @@ $(document).ready(function () {
 			function(data) {
 				if (data.success) {
 					advancedData[index].id = data.id;
+					advancedData[index].profile_id = data.profile_id;
 					refresh();
 				}
 			},'JSON');
@@ -476,21 +478,27 @@ $(document).ready(function () {
     height: 396,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Name","Employee ID", "Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
+    colHeaders: ["Name","Nick Name","Picture","Employee ID", "Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
     rowHeaders: true,
     stretchH: 'all',
     columnSorting: true,
     contextMenu: true,
-    className: "htCenter htMiddle",
+    className: "htCenter",
     cells: function (row, col, prop) {
 	    var cellProperties = {};
 
-	    if (col === 7) {
+	    if (col === 1) {
+    		if(advancedData[row].id !== null) {
+	    		cellProperties.readOnly = true;
+	    	}
+	    }
+
+	    if (col === 9) {
 	    	if(myRole !== 'admin') {
 		    	if(advancedData[row].role === null) {
 		    		cellProperties.readOnly = false;
 		    	} else if(validRole(advancedData[row].role) && 
-		    						advancedData[row].id !== null)
+		    			advancedData[row].id !== null)
 			      cellProperties.readOnly = true;
 			   }
 	    }
@@ -505,6 +513,8 @@ $(document).ready(function () {
 	   			strict: false,
 	   			className : 'htLeft'
 	   		},
+	   		{data: 'picture', renderer: 'html', width: 80, readOnly: true},
+	   		{data: 'nick_name', type: 'text'},
 		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
 		  	{
 	      	data: 'company_systems', 
@@ -519,21 +529,21 @@ $(document).ready(function () {
 	      {
 	      	data: 'position_level', 
 	      	type: 'text',
-	      	className: 'position-level current htCenter htMiddle',
+	      	className: 'position-level current htCenter',
 	      	readOnly: true
 	      },
 	      {
 	      	data: 'shift', 
 	      	type: 'text',
 	      	readOnly: true,
-	      	className: 'shift current htCenter htMiddle',
+	      	className: 'shift current htCenter',
 	      	validator: validateShift
 	      },
 	      {
 	      	data: 'contract', 
 	      	type: 'text', 
 	      	readOnly: true,
-	      	className: 'contract current htCenter htMiddle'
+	      	className: 'contract current htCenter'
 	      },
 	      {data: 'role', type: 'dropdown', source: roles},
 	      {data: 'status', type: 'dropdown', source: ['Active', 'Inactive']}

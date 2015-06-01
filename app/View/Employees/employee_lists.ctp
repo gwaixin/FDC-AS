@@ -517,6 +517,14 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				  </div>
       </div>
       <div class="modal-footer">
+      	<?php
+      		echo $this->Html->link('Edit Profile','',array(
+      																					'class' => 'btn btn-primary',
+      																					'id' => 'btn-view-profile',
+      																					'target' => 'blank'
+      																				)
+      																			);
+      	?>
 			  <input type="button" value="Edit" class="btn btn-primary" id="btn-submit">
       </div>
     </div>
