@@ -15,7 +15,7 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<span class='pull-right' style='text-align:center;'>
+		<span class='pull-right' style='text-align:center; margin-top:20px;'>
 			<small>Auto Overtime</small> <br/>
 			<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
 		</span>
