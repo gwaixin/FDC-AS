@@ -1,6 +1,6 @@
 <div class="container">
  	<div class="row">
-		<div class="privilege-container">
+		<div class="md-container main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
 		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">
