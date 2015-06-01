@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="privilege-container">
+		<div class="sm-container main-content box-center">
 	         <h3 class="modal-title" id="myModalLabel">Privilege</h3>
 	         <input type="hidden" id="url" value="/">
 	     	 <div class="privelege-content-form">
