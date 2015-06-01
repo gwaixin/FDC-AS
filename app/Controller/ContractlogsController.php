@@ -6,7 +6,7 @@ class ContractlogsController extends AppController{
 	
 	public $helpers  = array('Html', 'Form');
 	
-	public function index(){
+	public function index() {
 		
 
 		$this->layout = 'main';
@@ -28,7 +28,7 @@ class ContractlogsController extends AppController{
 				'fields' => array('id', 'description')
 		));
 
-		if($this->request->is('ajax')){
+		if ($this->request->is('ajax')) {
 			
 			$this->Contractlog->create();
 			
@@ -51,10 +51,10 @@ class ContractlogsController extends AppController{
 			
 			$this->__checkEmployeeStatus($row['Contractlog']['id']);
 			
-			if($this->Contractlog->save($data)){
+			if ($this->Contractlog->save($data)) {
 				
 				$lastid = $this->Contractlog->getLastInsertId();
-				if($currentContract){
+				if ($currentContract) {
 					$data = array(
 							'status' => 0
 					);
@@ -68,7 +68,7 @@ class ContractlogsController extends AppController{
 				}
 				$row['contract_id'] = $lastid;
 				$this->__updateEmpContract($row['Contractlog']['id'], $row);
-			}else{
+			} else {
 				$errors = array(
 						'success' => 1,
 						'ErrMessage' => $this->Contractlog->validationErrors
@@ -90,7 +90,7 @@ class ContractlogsController extends AppController{
 	 * Update Contract employee
 	 * @param string $id
 	 */
-	public function update($id = null){
+	public function update($id = null) {
 		
 		$this->layout = 'main';
 		
@@ -100,7 +100,7 @@ class ContractlogsController extends AppController{
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
 		
-		if(!$id){
+		if (!$id) {
 			return $this->redirect('/');
 		}
 		
@@ -123,7 +123,7 @@ class ContractlogsController extends AppController{
 		
 		$detail = $this->Contractlog->getDetail($id);
 		
-		if(!$detail){
+		if (!$detail) {
 			return $this->redirect('/');
 		}
 		
@@ -142,7 +142,7 @@ class ContractlogsController extends AppController{
 		
 		$this->Contractlog->id = $detail['Contractlog']['id'];
 		
-		if($this->request->is(array('post','put'))){
+		if ($this->request->is(array('post','put'))) {
 				
 			$row = $this->request->data;
 		
@@ -164,12 +164,12 @@ class ContractlogsController extends AppController{
 			
 			$this->__checkEmployeeStatus($detail['Contractlog']['employees_id']);
 			
-			if($this->Contractlog->save($data)){
+			if ($this->Contractlog->save($data)) {
 				
 				$row['contract_id'] = $id;
 				$this->__updateEmpContract($detail['Contractlog']['employees_id'], $row);
 				$this->redirect('/');
-			}else{
+			} else {
 				$errors = $this->Contractlog->validationErrors;
 			}
 		}
@@ -183,9 +183,9 @@ class ContractlogsController extends AppController{
 	 * list of employee contract history
 	 * @param string $id = table id 
 	 */
-	public function employee($id = null){
+	public function employee($id = null) {
 		
-		if(!$id){
+		if (!$id) {
 			$this->redirect('/');
 		}
 		
@@ -199,19 +199,19 @@ class ContractlogsController extends AppController{
 		$condition = '';
 		
 		
-		if(isset($this->params['url']['action'])){
+		if (isset($this->params['url']['action'])) {
 			$action = $this->params['url']['action'];
 		}
 		
-		if(isset($this->params['url']['search'])){
+		if (isset($this->params['url']['search'])) {
 			$keyword = $this->params['url']['search'];
 		}
 		
-		if(!empty($action) && !empty($keyword)){
+		if (!empty($action) && !empty($keyword)) {
 			
-			if($action == 'position'){
+			if ($action == 'position') {
 				$condition = ' AND post.description LIKE '.'"%'.$keyword.'%"';
-			}else{
+			} else {
 				$condition = ' AND Contractlog.'.$action.' LIKE '.'"%'.$keyword.'%"';
 			}		
 			
@@ -232,11 +232,11 @@ class ContractlogsController extends AppController{
 	/*
 	 * delete contract
 	 */
-	public  function delete(){
+	public  function delete() {
 		
 		$this->autoRender = false;
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			$data = $this->request->data;
 			$data = $this->Contractlog->findById($data['dataID']);
 			$this->Contractlog->delete($data['dataID']);
@@ -248,11 +248,11 @@ class ContractlogsController extends AppController{
 	 * Ajax request view
 	 * of Contract
 	 */
-	public function view(){
+	public function view() {
 		
 		$this->autoRender = false;
 		
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			
 			$data = $this->request->data;
 			list($id, $emp) = explode(':', $data['dataid']);
@@ -270,11 +270,11 @@ class ContractlogsController extends AppController{
 	 * @param string $emp = Contract Id 
 	 * @return unknown
 	 */
-	public function ContractDetail($id = null, $contID = null, $index = '' ,$limit = '',$options = null){
+	public function ContractDetail($id = null, $contID = null, $index = '' , $limit = '', $options = null) {
 
-		if(!$contID){
+		if (!$contID) {
 			$condition = array('Contractlog.employees_id = '.$id.$options);
-		}else{
+		} else {
 			$condition = array("Contractlog.employees_id = '{$id}' AND Contractlog.id = '{$contID}'");
 		}
 	
@@ -333,36 +333,36 @@ class ContractlogsController extends AppController{
 	 * 
 	 * Ajax request
 	 */
-	public function GetPosition(){
+	public function GetPosition() {
 		
 		$this->loadModel('Position');
 		$this->loadModel('Positionlevel');
 		
 		$this->autoRender = false;
 		
-		if($this->request->is('ajax')){
+		if ($this->request->is('ajax')) {
 			
 			$data = $this->request->data;
 			
-			if($data['mode'] == 0){
+			if ($data['mode'] == 0) {
 				
 				$result = $this->Positionlevel->find('list',array(
 						'fields' => array('id', 'description'),
 						'conditions' => array('positions_id' => $data['id'])
 				));
-				if(empty($result)){
+				if (empty($result)) {
 					$result = 0;
 				}
 	
-			}else{
+			} else {
 				
 				$result = $this->Positionlevel->findById($data['id']);
-				if(!empty($result)){
+				if (!empty($result)) {
 					$result = $this->Position->find('list',array(
 							'fields' => array('id','description'),
 							'conditions' => array('id' => $result['Positionlevel']['positions_id'])
 					));
-				}else{
+				} else {
 					$result = 0;
 				}
 				
@@ -389,7 +389,7 @@ class ContractlogsController extends AppController{
 				'position_level_id' => $row['position_levels_id'],
 				'current_contract_id' => $row['contract_id'],
 		);
-		if($this->Employee->save($data)){
+		if ($this->Employee->save($data)) {
 			return true;
 		}
 		
@@ -401,13 +401,13 @@ class ContractlogsController extends AppController{
 	 * @param string $id = Employee id
 	 * @return boolean
 	 */
-	public function __checkEmployeeStatus($id = null){
+	public function __checkEmployeeStatus($id = null) {
 		
 		$this->loadModel('Employee');
 		
 		$data = $this->Employee->findById($id);
 		
-		if($data['Employee']['status'] == 1 ){
+		if ($data['Employee']['status'] == 1 ) {
 			//$this->Contractlog->validationErrors['message'] = "Cannot add contract employee inactive";
 			return $this->Contractlog->invalidate('id', 'Cannot add contract employee is inactive');
 		}

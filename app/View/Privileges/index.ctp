@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="privilege-container">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
-		<h1>Privilege List</h1>
+		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">
 			<?php 
 				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/privileges'));

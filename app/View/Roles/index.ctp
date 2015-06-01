@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="sm-container roles-container">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
-		<h1>Role list:</h1>
+		<h3>Role list:</h3>
 			<div id="search-Role-container" class="form-control">
 			<?php 
 				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/roles/'));

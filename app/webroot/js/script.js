@@ -194,37 +194,7 @@ $(function(){
 	    } );
 		    e.preventDefault();
 	  } );
-	
-	
-	$('.add-input').click(function(e){
 		
-		/*var div = ".input-group-data";
-		$(div)
-			.append('<div class="row-fluid"/>')
-			.find("input,select")
-            .clone()
-            .appendTo($('.input-group-data').append("<br/>"))
-            .val("")
-            .attr("id",function(i,oldVal) {
-            	console.log(i);
-                return oldVal.replace(/\d+/,function(m){
-                    return (+m + 1);
-                });
-            });
-        return false;*/
-		
-		/*  e.preventDefault();
-		   var tr = $('.input-group-data  .row-fluid > .control-group');
-		   var newTr = tr.first().clone();
-		   $('.input-group-data').append('<div class="row-fluid"/>')
-		   newTr.find(":input").val(''); //find all input types (input, textarea), empty it.
-		   newTr.appendTo($('.input-group-data > .row-fluid:last-child'));*/
-		   
-		/*var div = ".input-group-data";
-		$(div).append($('.input-group-data span4').html());*/
-	});
-	
-	
 	/*
 	 * search privilege
 	 */

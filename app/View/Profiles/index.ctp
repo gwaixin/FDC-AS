@@ -2,7 +2,7 @@
 	<div class='row'>
 		<div class="list-container">
 			<div class="span12">
-				<h4>Profile list</h4>
+				<h3>Profile list</h3>
 				<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
 				<a href="<?php echo $this->webroot.'profiles/profile_register'; ?>" ><i class="fa fa-plus-square"></i> ADD</a>
 			</div>

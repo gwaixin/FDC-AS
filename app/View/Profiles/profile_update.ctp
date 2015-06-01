@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="profile-container">
 
-		<h1>Update Profile</h1>
+		<h3>Update Profile</h3>
 		<div class="img-cont">
 			<div class="img-prev">
 				<img src="<?php echo $data['Profile']['picture']; ?>" alt="CakePHP" id="img_preview" class="img-responsive">

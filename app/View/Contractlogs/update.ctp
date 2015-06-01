@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="contract-container">
 		<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
-		<h1>Update Contract</h1>
+		<h3>Update Contract</h3>
 		
 <?php 
 		if(!empty($errors)){

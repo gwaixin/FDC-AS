@@ -2,7 +2,7 @@
  	<div class="row">
 		<div class="profile-container">
 
-		<h1>Profile</h1>
+		<h3>Profile</h3>
 		<div class="img-cont">
 			<div class="img-prev">
 				<?php echo $this->Html->image('emptyprofile.jpg', array('alt' => 'CakePHP', 'id' => 'img_preview', 'class' => 'img-responsive')); ?>
