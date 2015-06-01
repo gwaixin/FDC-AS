@@ -170,31 +170,36 @@ class AttendancesController extends AppController {
 
 
 			//$overtime = $this->Attendance->getOT($data['id']);
-			$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
-			$this->Attendance->saveTime($data['id'], array('status', $stat));
+			//$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
+			//$this->Attendance->saveTime($data['id'], array('status', $stat));
 
-			$result = array('total' => $totalTime, 'stat' => $stat);
+			$result = array('render_time' => $totalTime, 'status' => $stat);
 
 			if ($this->getAutoOvertime()) {
-				$result['overtime'] = $this->calcOvertime($data['id'], $empData);
+				$result['over_time'] = $this->calcOvertime($data['id'], $empData);
 			}
 			
-			echo json_encode($result);
+			if ($this->Attendance->updateTotalTime($data['id'], $result)) {
+				echo json_encode($result);
+			}
 		}
 	}
+	
 	
 	public function getOverTime() {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
 			$empData = $this->Attendance->getEmployeeDetail($data['id']);
-			echo $this->calcOvertime($data['id'], $empData);
+			echo $this->calcOvertime($data['id'], $empData, true);
 		}
 	}
 
-	private function calcOvertime($id, $data) {
+	private function calcOvertime($id, $data, $saves = false) {
 		$overtime = $this->Attendance->getOT($id, $data);
-		$this->Attendance->saveTime($id, array('over_time', $overtime));
+		if ($saves) { //used for getting overtime only
+			$this->Attendance->saveTime($id, array('over_time', $overtime));
+		}
 		return $overtime;
 	}
 	
