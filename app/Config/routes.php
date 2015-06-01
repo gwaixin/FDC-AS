@@ -26,6 +26,7 @@
  */
 	Router::connect('/', array('controller' => 'Main', 'action' => 'index', 'home'));
 	
+	
 	//ADMIN
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
@@ -36,12 +37,18 @@
 	Router::connect('/admin/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'admin'));
 	Router::connect(
     '/admin/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
-    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array('controller' => 'profiles', 'action' => 'profile_update',''),
+    array(
+        'pass' => array('id')
+    ));
+	Router::connect(
+    '/admin/employees/contracts/logs/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'contractlogs', 'action' => 'employee',''),
     array(
         'pass' => array('id')
     ));
 
-	Router::connect('/admin/privileges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
+	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
 
@@ -60,7 +67,13 @@
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));
 	Router::connect(
     '/staffs/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
-    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array('controller' => 'profiles', 'action' => 'profile_update',''),
+    array(
+        'pass' => array('id')
+    ));
+	Router::connect(
+    '/staffs/employees/contracts/logs/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'contractlogs', 'action' => 'employee',''),
     array(
         'pass' => array('id')
     ));

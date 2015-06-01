@@ -271,9 +271,10 @@ $(document).ready(function () {
 			lastSelectedIndex = -1;
 		}
 
-		if (target.className.match('position-level-dropdown')) {
-			positionLevelDropdown = e.target;
+		if(currentSelectedRow !== -1) {
+			$("#btn-view-contract-log").attr('href',baseUrl+myRole+'/employees/contracts/logs/'+advancedData[currentSelectedRow].id);
 		}
+
 		if (target.className.match('modal-backdrop fade in')) {
 			$(".close").click();
 		}
@@ -477,7 +478,7 @@ $(document).ready(function () {
 		}
   	hot = new Handsontable($("#table-employees")[0], {
     data: advancedData,
-    height: 396,
+    height: 600,
     manualColumnResize: true,
     manualRowResize: true,
     colHeaders: ["Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
@@ -554,6 +555,11 @@ $(document).ready(function () {
 		hot.addHook('afterRender',function() {
 			if (advancedData[0].id !== null) {
 				hot.validateCells(function(){});
+			}
+			for(var x in advancedData) {
+				if(advancedData[x].id === null) {
+					advancedData[x].picture = "<img src='"+baseUrl+'img/emptyprofile.jpg'+"'>";
+				}
 			}
 		})
 		hot.addHook('afterChange',function(data) {

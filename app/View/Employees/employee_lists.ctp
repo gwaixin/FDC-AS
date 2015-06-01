@@ -85,7 +85,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 </div>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div id="employee-container" class="main-content">
+		<div id="employee-container">
 			<div id="search-container" class="form-control">
 			<h3> Employees </h3>
 				<?php 
@@ -167,11 +167,12 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																	);
 		echo "</li>";
 		echo "<li>";
-		echo $this->Form->button('View History',array(
+		echo $this->Html->link('View History','',array(
 												'class' => 'btn btn-primary',
 												'data-toggle' => '',
 												'data-target' => '',
-												'onclick' => 'SelectHistory()'
+												'id' => 'btn-view-contract-log',
+												'style' => 'font-size:10px;height:15px;'
 												)
 											);
 		echo "</li>";
