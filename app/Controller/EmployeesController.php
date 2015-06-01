@@ -148,25 +148,30 @@ class EmployeesController extends AppController {
 													)
 												)
 											);
-			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and Employee.status != 0");
+			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 			switch($this->request->data['field']) {
 				case "name":
-					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . $this->request->data['value'] . "%' and Employee.status != 0");
+					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 				break;
 				case "employee_id":
-					$conditions = array("employee_id LIKE '%" . $this->request->data['value'] . "%' and Employee.status != 0");
+					$conditions = array('AND' => 
+																	array("employee_id LIKE '%" . addslashes($this->request->data['value']) . "%'"),
+																	array('Employee.status != 0')
+															);
 				break;
 				case "position":
 					if ($this->request->data['value']) {
-						$positionLevelCondition = "";
+						$conditions = array('AND' => 
+																		array('positions.description' => $this->request->data['value'])
+																);
 						if ($this->request->data['position_level']) {
-							$positionLevelCondition = "and position_levels.description = '" . $this->request->data['position_level'] . "'";
+							$positionLevelCondition = array('position_levels.description' => $this->request->data['position_level']);
+							array_push($conditions['AND'],$positionLevelCondition);
 						}
-						$conditions = array("positions.description = '" . $this->request->data['value'] . "' $positionLevelCondition and Employee.status != 0");
 					}
 				break;
 				case "status":
-					$conditions = array("Employee.status = '" . $this->request->data['value'] . "'");
+					$conditions = array('Employee.status' => $this->request->data['value']);
 				break;
 			}
 			$employees = $this->Employee->find('all',array(
@@ -183,11 +188,17 @@ class EmployeesController extends AppController {
 			} else if ($employee['Employee']['status'] == 2) {
 				$status = "Active";
 			}
-			
+			$picture = "<img src='".$this->webroot."img/emptyprofile.jpg.'>";
+			if(!empty($employee['profiles']['picture'])) {
+				$picture = "<img src='".$this->webroot. "upload/".$employee['profiles']['picture']."'>";
+			}
 			$data = array(
 									'id' => $employee['Employee']['id'],
 									'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
+									'nick_name' => $employee['profiles']['nick_name'],
+									'picture' => $picture,
 									'employee_id' => $employee['Employee']['employee_id'],
+									'profile_id' => $employee['profiles']['id'],
 									'company_systems' => $employee['company_systems']['name'],
 									'username' => $employee['Employee']['username'],
 									'password' => $employee['Employee']['password'],
@@ -215,7 +226,10 @@ class EmployeesController extends AppController {
 										'id' => null,
 										'employee_id' => null,
 										'company_systems' => null,
+										'profile_id' => null,
 										'name' => null,
+										'nick_name' => null,
+										'picture' => '<img src="'.$this->webroot.'img/emptyprofile.jpeg">',
 										'username' => null,
 										'password' => null,
 										'tin' => null,
@@ -402,7 +416,9 @@ class EmployeesController extends AppController {
 		$this->autoRender = false;
 		$this->loadModel('Company_system');
 		$companies = $this->Company_system->find('list',array(
-																										'conditions' => array("status = '1'"),
+																										'conditions' => array(
+																												'status' => 1
+																										),
 																										'fields' => array('name')
 																										)
 																									);
@@ -433,9 +449,6 @@ class EmployeesController extends AppController {
 			           )
 							);
 		$positions = $this->Position->find('all',array(
-
-
-
 																								'joins' => $joins,
 																								'fields' => array('*')
 																							)
@@ -499,7 +512,7 @@ class EmployeesController extends AppController {
 			$this->loadModel('Profile');
 			$validatedFields = array();
 			$employeeInfo = $this->Profile->find('first',array(
-															'conditions' => array("concat(first_name,' ',middle_name,' ',last_name) = '$employee[name]'")
+															'conditions' => array("concat(first_name,' ',middle_name,' ',last_name) = '".addslashes($employee['name'])."'")
 														)
 													);
 			if ($employeeInfo) {
@@ -566,7 +579,9 @@ class EmployeesController extends AppController {
 				if ($success) {
 					$employeeInfo = $this->Employee->findByEmployee_id($employee['employee_id']);
 					$employeeInfo = $employeeInfo['Employee'];
+					$json['profile_id'] = $employeeInfo['id'];
 					$json['id'] = $employeeInfo['id'];
+					$json['picture'] = "<img src='".$this->webroot."img/emptyprofile.jpg'>";
 				} else {
 					$success = false;
 				}

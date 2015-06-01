@@ -36,3 +36,6 @@
 #table-shift-detail tr td {
 	padding: 5px 10px;
 }
+#table-employees table th {
+	cursor: pointer;
+}

@@ -8,12 +8,17 @@
 	padding: 10px 5px;
 }
 #profile-picture-container {
-	border: 1px solid #999;
 	width: 230px;
 	height: 230px;
 	background: #fff;
 	border-radius: 5px;
 	overflow: none;
+}
+#profile-picture img {
+	height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
 }
 #profile-picture-container button {
 	margin: 2px;
