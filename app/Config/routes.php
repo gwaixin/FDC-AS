@@ -26,7 +26,6 @@
  */
 	Router::connect('/', array('controller' => 'Main', 'action' => 'index', 'home'));
 	
-	
 	//ADMIN
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
@@ -35,8 +34,13 @@
 	//Router::connect('/admin1/employee/employee_lists', array('controller' => 'Employee', 'action' => 'index'));
 	Router::connect('/admin/attendances', array('controller' => 'Attendances', 'action' => 'index', 'admin'));
 	Router::connect('/admin/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'admin'));
+	Router::connect(
+    '/admin/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array(
+        'pass' => array('id')
+    ));
 
-	
 	Router::connect('/admin/privileges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
@@ -54,7 +58,12 @@
 	Router::connect('/staffs/attendances', array('controller' => 'Attendances', 'action' => 'index', 'staff'));
 	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index'));
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));
-
+	Router::connect(
+    '/staffs/employees/profile/:id', // E.g. /blog/3-CakePHP_Rocks
+    array('controller' => 'profiles', 'action' => 'profile_update',0),
+    array(
+        'pass' => array('id')
+    ));
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

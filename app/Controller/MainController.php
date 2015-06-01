@@ -7,7 +7,10 @@ App::uses('Component', 'Controller');
 class MainController extends AppController {
 
 	public function index() {
-		$this->layout = 'main';
+		$this->redirect(array(
+											'controller' => $this->Session->read('Auth.Rights.role')
+											)
+										);
 	}
 
 }

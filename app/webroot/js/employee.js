@@ -34,7 +34,7 @@ $(document).ready(function () {
 	$("#btn-select").click(function() {
 		selectedIndex = hot.getSelectedRange().to.row;
 		if (advancedData[selectedIndex].id !== null) {
-			$("#btn-view-profile").attr('href',baseUrl+'profiles/profile_update/'+advancedData[selectedIndex].profile_id);
+			$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
 			$("#txt-errors").html("");
 			$("#edit-last-timein").html('Edit');
 			$("#edit-last-timeout").html('Edit');
@@ -345,7 +345,7 @@ $(document).ready(function () {
 				}
 				if (advancedData[index].id !== null || advancedData[index].id) {
 					if (data[x][1] !== 'name' && data[x][1] !== 'contract') {
-						if (data[x][3]) {
+						if (data[x][3] || data[x][1] === 'nick_name') {
 							if (data[x][2] !== data[x][3]) {
 								var employee = {'index':index,id:advancedData[index].id,'field':data[x][1],'value':data[x][3]};
 								if (data[x][1] === 'position_level') {
@@ -510,13 +510,14 @@ $(document).ready(function () {
     columns: [
 	   		{data: 'picture', renderer: 'html', width: 80, readOnly: true},
 	   		{
-	   			data: 'name', 
+	   			data: 'name',
 	   			type: 'autocomplete',
 	   			source: names,
 	   			strict: false,
 	   			className : 'htLeft'
 	   		},
 		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
+		  	{data: 'nick_name', type: 'text',},
 		  	{
 	      	data: 'company_systems', 
 	      	type: 'dropdown',
