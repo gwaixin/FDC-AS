@@ -76,7 +76,7 @@
 				</div>
 			</div>
 			<div class="span9">
-				<div id="content">
+				<div id="content" class="main-content">
 					<?php echo $this->fetch('content'); ?>
 				</div>
 			</div>
