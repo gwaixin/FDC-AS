@@ -581,6 +581,7 @@ class EmployeesController extends AppController {
 					$employeeInfo = $employeeInfo['Employee'];
 					$json['profile_id'] = $employeeInfo['id'];
 					$json['id'] = $employeeInfo['id'];
+					$json['picture'] = "<img src='".$this->webroot."img/emptyprofile.jpg'>";
 				} else {
 					$success = false;
 				}

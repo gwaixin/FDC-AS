@@ -89,7 +89,8 @@ $(document).ready(function () {
 
 	$(document).dblclick(function(e) {
 		var target = e.target;
-		if (target.className === 'rowHeader' || target.className === 'relative') {
+		if (target.className === 'rowHeader' || target.className === 'relative' || 
+				e.target.tagName === 'TH') {
 			$("#btn-select").click();
 		}		
 		if (typeof hot.getSelectedRange() !== 'undefined') {
@@ -328,6 +329,7 @@ $(document).ready(function () {
 				if (data.success) {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
+					advancedData[index].picture = data.picture;
 					refresh();
 				}
 			},'JSON');
@@ -478,7 +480,7 @@ $(document).ready(function () {
     height: 396,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Name","Nick Name","Picture","Employee ID", "Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
+    colHeaders: ["Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
     rowHeaders: true,
     stretchH: 'all',
     columnSorting: true,
@@ -506,6 +508,7 @@ $(document).ready(function () {
 	    return cellProperties;
   	},
     columns: [
+	   		{data: 'picture', renderer: 'html', width: 80, readOnly: true},
 	   		{
 	   			data: 'name', 
 	   			type: 'autocomplete',
@@ -513,8 +516,6 @@ $(document).ready(function () {
 	   			strict: false,
 	   			className : 'htLeft'
 	   		},
-	   		{data: 'picture', renderer: 'html', width: 80, readOnly: true},
-	   		{data: 'nick_name', type: 'text'},
 		  	{data: 'employee_id',validator: validEmployeeID, type: 'text'},
 		  	{
 	      	data: 'company_systems', 
