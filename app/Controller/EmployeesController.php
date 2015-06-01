@@ -656,16 +656,12 @@ class EmployeesController extends AppController {
 				$data = array(
 							$field => $value
 						);
-				
+
 				$this->Employee->id = $employee['id'];
 				if ($field === 'position_level_id' && $value === 'NULL') {
 					$this->Employee->saveField('position_level_id', null);
-				} else if (!$this->Employee->save($data)) {
-					array_push($error_arr,array(
-															'field' => $field,
-															'value' => $value
-																)
-															);
+				} else {
+					$this->Employee->save($data);
 				}
 			}
 			$json['errors'] = $error_arr;
