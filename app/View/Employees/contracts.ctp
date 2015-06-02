@@ -1,3 +1,49 @@
+
+<script>
+var baseUrl = '<?php echo $this->webroot; ?>';
+$(document).ready(function() {
+	$("a.document").click(function(){
+		$("#document-viewer iframe").attr('src',baseUrl+'document/'+$(this).attr('href'));
+		$("#document-viewer").css('display','block');
+		return false;
+	})
+	$(document).click(function(e) {
+		if($("#document-viewer").css('display') === 'block') {
+			if(e !== $("#document-viewer iframe")[0]) {
+				$("#document-viewer").css('display','none');
+			}
+		}
+	})
+	$(document).keyup(function(e) {
+		if(e.keyCode === 27) {
+			$("#document-viewer").css('display','none');
+		}
+	})
+});
+</script>
+
+<style>
+#document-viewer {
+	width: 96%;
+	height: 96%;
+	position: fixed;
+	background: #f9f9f9;
+	border: 1px solid #999;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	margin-left: 2.5%;
+	margin-top: 1%;
+	display: none;
+}
+#document-viewer iframe {
+	width: 100%;
+	height: 100%;
+}
+</style>
+
+<div id="document-viewer"><iframe></iframe></div>
+
 <?php if (count($currentContract) > 0) { 
 $currentContract = $currentContract[0];
 ?>
@@ -40,7 +86,7 @@ $currentContract = $currentContract[0];
 	<tr>
 		<td> Document </td>
 		<td> 
-			<a href="<?php echo $this->webroot."document/".$currentContract['Contractlog']['document']; ?>" target="blank">Document</a> 
+			<a href="<?php echo $this->webroot.$currentContract['Contractlog']['document']; ?>" class="document" target="blank">Document</a> 
 			</td>
 	</tr>
 </table>
@@ -83,7 +129,7 @@ $currentContract = $currentContract[0];
       <td><?php echo $row['Contractlog']['description'];?></td>
       <td><center><?php echo $row['Contractlog']['date_start'];?></center></td>
       <td><center><?php echo $row['Contractlog']['date_end'];?></center></td>
-      <td><center><a href="<?php echo $this->webroot."document/".$row['Contractlog']['document']; ?>" target="blank">Document</a></center></td>
+      <td><center><a href="<?php echo $this->webroot.$row['Contractlog']['document']; ?>" target="blank" class="document">Document</a></center></td>
       <td><?php echo "P".number_format($row['Contractlog']['salary'],2);?></td>
       <td><?php echo "P".number_format($row['Contractlog']['deminise'],2);?></td>
       <td><?php echo $row['Contractlog']['term'];?></td>
