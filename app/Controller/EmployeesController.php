@@ -13,10 +13,6 @@ class EmployeesController extends AppController {
 		$this->layout = 'employee';
 	}
 
-	public function attendances() {
-		$this->layout = 'employee';
-	}
-
 	public function profile($action = 'view') {
 		$this->layout = 'employee';
 		$this->loadModel('Profile');
@@ -63,13 +59,53 @@ class EmployeesController extends AppController {
 		$this->render($file);
 	}
 
-	/*public function employee_lists() {
-		$this->layout = $layout;
-	}*/
+	public function contracts() {
+		$this->loadModel('Contractlog');
+		$conditions = array('AND' => array(
+															array('\'' . date('Y-m-d h:i:s') .'\' >= date_start'),
+															array('\'' . date('Y-m-d h:i:s') .'\' <= date_end'),
+															array('Contractlog.id = (Select current_contract_id from employees where id = \''.$this->Session->read('Auth.UserProfile.employee_id').'\')'),
+															array('Contractlog.status' => 1)
+														)
+													);
+		$joins = array(
+								array(
+									'table' => 'positions',
+									'conditions' => array('Contractlog.positions_id = positions.id')
+								),
+								array(
+									'table' => 'position_levels',
+									'conditions' => array('Contractlog.position_levels_id = position_levels.id')
+								)
+							);
+
+		$current_contract = $this->Contractlog->find('all',array(
+																											'joins' => $joins,
+																											'conditions' => $conditions,
+																											'limit' => array(1),
+																											'fields' => array('description','date_start','date_end','Contractlog.salary',
+																																				'document','deminise','term','positions.description',
+																																				'position_levels.description')
+																											)
+																										);
+		$contracts = $this->Contractlog->find('all',array(
+																							'joins' => $joins,
+																							'conditions' => array(
+																									'employees_id' => $this->Session->read('Auth.UserProfile.employee_id')
+																								),
+																							'fields' => array('Contractlog.description','Contractlog.date_start','Contractlog.date_end',
+																																'Contractlog.salary','Contractlog.document','Contractlog.deminise','Contractlog.term',
+																																'Contractlog.status','positions.description','position_levels.description'),
+																							'order' => array('Contractlog.date_start ASC'))
+																						);
+		$this->Set('data',$contracts);
+		$this->Set('currentContract',$current_contract);
+		$this->layout = 'employee';
+	}
 
 	public function accounts() {
 		$this->layout = 'employee';
-		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.id'));
+		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.employee_id'));
 		$this->Set('Accounts', $accounts['Employee']);
 	}
 
@@ -217,7 +253,8 @@ class EmployeesController extends AppController {
 									'contract' => $employee['contract_logs']['description'],
 									'contract_id' => $employee['contract_logs']['id'],
 									'role' => $employee['roles']['description'],
-									'status' => $status
+									'status' => $status,
+									'btnAction' => '<span class="btn btn-default btn-view-employee"> VIEW <i class="icon-search"></i></span>'
 								);
 			array_push($employees_arr,$data);	
 			}
@@ -247,7 +284,8 @@ class EmployeesController extends AppController {
 										'contract' => null,
 										'contract_id' => null,
 										'role' => null,
-										'status' => null
+										'status' => null,
+										'btnAction' => ''
 									);
 				array_push($employees_arr,$data);
 			}
@@ -585,6 +623,7 @@ class EmployeesController extends AppController {
 					$json['profile_id'] = $employeeInfo['id'];
 					$json['id'] = $employeeInfo['id'];
 					$json['picture'] = "<img src='".$this->webroot."img/emptyprofile.jpg'>";
+					$json['nick_name'] = $Profile['nick_name'];
 					if(!empty($Profile['picture'])) {
 						$json['picture'] = "<img src='".$this->webroot."upload/".$Profile['picture']."'>";
 					}
@@ -689,9 +728,6 @@ class EmployeesController extends AppController {
 									'insurance_id' => $employee['insurance_id'],
 									'username' => $employee['username']
 								);
-			if (isset($employee['salary'])) {
-				$data['salary'] = $employee['salary'];
-			}
 			if ($employee['password'] !== 'company_default_password') {
 				$data['password'] = Security::hash($employee['password'],'sha1',true);
 			}

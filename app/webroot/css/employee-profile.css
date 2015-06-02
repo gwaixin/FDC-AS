@@ -12,7 +12,11 @@
 	height: 230px;
 	background: #fff;
 	border-radius: 5px;
-	overflow: none;
+}
+#profile-picture {
+	width: 230px;
+	height: 230px;
+	overflow: hidden;
 }
 #profile-picture img {
 	height: auto;

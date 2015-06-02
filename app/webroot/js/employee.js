@@ -27,34 +27,29 @@ $(document).ready(function () {
 	
 	var clicked = false;
 
-	var fields = {'name':1,'employee_id':2,'tin':3,'salary':4,'drug_test':5,'pagibig':6,'philhealth':7,
-				  'medical':8,'sss':9,'insurance_id':10,'f_time_in':14,'f_time_out':15,'l_time_in':16,
-				  'l_time_out':17
-				 };
-	$("#btn-select").click(function() {
+	function ViewEmployee() {
+		$("#modalAccounts").modal('show');
 		selectedIndex = hot.getSelectedRange().to.row;
-		if (advancedData[selectedIndex].id !== null) {
-			$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
-			$("#txt-errors").html("");
-			$("#edit-last-timein").html('Edit');
-			$("#edit-last-timeout").html('Edit');
-			$("#btn-submit").val('Edit');
-			$("#additional-info-container #txt-errors").html("");
-			$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
-			$("#additional-info-container input").attr('disabled','disabled');
-			$("#additional-info-container select").attr('disabled','disabled');
-			$("#edit-last-timein").attr('disabled','disabled');
-			$("#edit-last-timeout").attr('disabled','disabled');
-			for(var x in $("#additional-info-container input")) {
-				if (!isNaN(parseFloat(x)) && isFinite(x)) {
-					var input = $("#additional-info-container input")[x];
-					input.value = advancedData[selectedIndex][input.name];
-				}
+		$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
+		$("#txt-errors").html("");
+		$("#edit-last-timein").html('Edit');
+		$("#edit-last-timeout").html('Edit');
+		$("#btn-submit").val('Edit');
+		$("#additional-info-container #txt-errors").html("");
+		$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
+		$("#additional-info-container input").attr('disabled','disabled');
+		$("#additional-info-container select").attr('disabled','disabled');
+		$("#edit-last-timein").attr('disabled','disabled');
+		$("#edit-last-timeout").attr('disabled','disabled');
+		for(var x in $("#additional-info-container input")) {
+			if (!isNaN(parseFloat(x)) && isFinite(x)) {
+				var input = $("#additional-info-container input")[x];
+				input.value = advancedData[selectedIndex][input.name];
 			}
-			$("#password").val("company_default_password");
-			$("#drug_test").val(advancedData[selectedIndex].drug_test);
 		}
-	});
+		$("#password").val("company_default_password");
+		$("#drug_test").val(advancedData[selectedIndex].drug_test);
+	}
 
 	$("#btn-submit").click(function() {
 		if ($("#btn-submit").val() === 'Edit') {
@@ -127,7 +122,7 @@ $(document).ready(function () {
 							if (success) {
 								bootbox.alert('Successfully selected employees shift');
 							} else {
-								bootbox.alert('Failedboot to update employees shift. Please try again.');
+								bootbox.alert('Failed to update employees shift. Please try again.');
 							}
 						});
 					$("#modalShift").modal('hide');
@@ -137,7 +132,9 @@ $(document).ready(function () {
 	}
 
 	$("#modalShift").on('shown.bs.modal', function(){
-		if (advancedData[currentSelectedRow].shift_id.length === 0) {
+		if (advancedData[currentSelectedRow].shift_id === null) {
+			$("#modalShift .modal-body").html("<h2> Invalid Employee </h2>");
+		} else if(advancedData[currentSelectedRow].shift_id.length === 0) {
 			getShiftLists();
 		} else {
 			$.post(baseUrl+'employees/getEmployeeShift',{id:advancedData[currentSelectedRow].shift_id},function(data) {
@@ -331,6 +328,8 @@ $(document).ready(function () {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
 					advancedData[index].picture = data.picture;
+					advancedData[index].btnAction = '<span class="btn btn-default btn-view-employee">VIEW <i class="icon-search"></i></span>'; 
+					advancedData[index].nick_name = data.nick_name;
 					refresh();
 				}
 			},'JSON');
@@ -481,22 +480,21 @@ $(document).ready(function () {
     height: 600,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
-    rowHeaders: true,
+    colHeaders: ["Action","Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
     stretchH: 'all',
     columnSorting: true,
     contextMenu: true,
     className: "htCenter",
     cells: function (row, col, prop) {
 	    var cellProperties = {};
-
-	    if (col === 1) {
+	    $(".btn-view-employee").click(ViewEmployee);
+	    if (col === 2) {
     		if(advancedData[row].id !== null) {
 	    		cellProperties.readOnly = true;
 	    	}
 	    }
 
-	    if (col === 9) {
+	    if (col === 10) {
 	    	if(myRole !== 'admin') {
 		    	if(advancedData[row].role === null) {
 		    		cellProperties.readOnly = false;
@@ -509,6 +507,7 @@ $(document).ready(function () {
 	    return cellProperties;
   	},
     columns: [
+    		{data: 'btnAction', renderer: 'html', className: 'htMiddle htCenter', readOnly: true},
 	   		{data: 'picture', renderer: 'html', width: 80, readOnly: true},
 	   		{
 	   			data: 'name',
@@ -593,7 +592,3 @@ $(document).ready(function () {
 		});
 	}
 });
-
-function SelectEmployee() {
-	$("#btn-select").click();
-}
