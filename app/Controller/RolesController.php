@@ -24,7 +24,7 @@ class RolesController extends AppController{
 					)
 			);
 			
-		}elseif ($action == 'delete'){
+		}elseif ($action == 'description'){
 			$condition = array(
 					'AND' => array(
 							array('status' => 1),

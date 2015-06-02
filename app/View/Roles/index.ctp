@@ -5,7 +5,7 @@
 		<h3>Role list:</h3>
 			<div id="search-Role-container" class="form-control">
 			<?php 
-				echo $this->Form->create('Role',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/roles/'));
+				echo $this->Form->create('Role',array('id' => 'roleslist','type' => 'get', 'url' => '/admin/roles/'));
 				echo $this->Form->select('field',
 						array(
 								'delete' => 'Deleted',
@@ -50,7 +50,7 @@
                 <tr class="role-id-<?php echo $row['Role']['id'];?>">
                   <td><?php echo $num; ?></td>
                   <td><?php echo $row['Role']['description'];?></td>
-                  <td><?php echo $row['Role']['status'];?></td>
+                  <td><?php echo ($row['Role']['status'])? 'Active' : 'Inactive';?></td>
                   <td>
                   	<a href="#" class="btn btn-danger btnRole" type="button" data-Role-id="<?php echo $row['Role']['id'];?>">Delete</a>
                   	<a href="<?php echo $this->webroot; ?>admin/roles/edit/<?php echo $row['Role']['id']; ?>" class="btn btn-primary" data-Role-id="<?php echo $row['Role']['id'];?>">Edit</a>

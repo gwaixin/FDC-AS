@@ -3,6 +3,7 @@
 
 class PrivilegesController extends AppController {
 	
+	public $components = array('RequestHandler','Paginator');
 	
 	public function index($layout) {
 	
@@ -12,14 +13,14 @@ class PrivilegesController extends AppController {
 		$action = '';
 		$conditions = '';
 		$display = 'display:none';
-	
+		
 		try {
-			$this->paginate();
+			$this->Paginator->paginate();
 		} catch (NotFoundException $e) {
-			$this->redirect('/admin/privileges/');
+		
+			
 		}
-	
-		$this->Privilege->recursive = 0;
+
 		if ($this->request->is('get')) {
 				
 			$data = $this->request->data;
@@ -54,12 +55,17 @@ class PrivilegesController extends AppController {
 						)
 				);
 			} elseif ($action == 'deleted') {
-				$conditions = array(
-						'AND' => array(
-								array("Privilege.{$searchAction} LIKE" => "%{$keyword}%"),
-								array("Privilege.status " => 0)
-						)
-				);		
+				
+				if(!empty($searchAction)){
+					$conditions = array(
+							'AND' => array(
+									array("Privilege.{$searchAction} LIKE" => "%{$keyword}%"),
+									array("Privilege.status " => 0)
+							)
+					);
+				}else{
+					$conditions = array('Privilege.status = 0');
+				}			
 				$display = '';	
 			} else {
 				$conditions = array('Privilege.status = 1');
@@ -91,7 +97,7 @@ class PrivilegesController extends AppController {
 						'Privilege.status'
 	
 				),
-				'limit' => 10
+				'limit' => 1
 		);
 	
 		$this->set('data', $this->paginate() );

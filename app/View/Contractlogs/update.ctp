@@ -140,7 +140,7 @@
 	   		)
 	   );
 
-	    echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "/*",'style' => 'display:none;'));
+	    echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "application/pdf",'style' => 'display:none;'));
 	    echo $this->Form->button('Browse File',
 	    		array(
 	    				'id' => 'BrowseFile',

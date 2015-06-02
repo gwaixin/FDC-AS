@@ -4,11 +4,49 @@
 App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
+	
 
 	public function dashboard() {
 		$this->layout = 'employee';
 	}
 
+	public function view($id = null){
+		$this->layout = '';
+	
+		$pdf = '';
+		
+		if(!$id){
+			$this->redirect('/');
+		}
+		
+		$this->loadModel('Contractlog');
+		
+		list($contractID , $empID) = explode('-', $id);
+	
+		$condition = array("Contractlog.employees_id = {$empID} AND Contractlog.id = {$contractID} ");
+		
+		$options = array(
+				array(
+						'table' => 'employees',
+						'type' => 'LEFT',
+						'alias' => 'emp',
+						'conditions' => array('emp.id = Contractlog.employees_id')
+				),
+		);
+		
+		$pdf = $this->Contractlog->find('first',array(
+				'joins' => $options,
+				'conditions' => $condition,
+				'order' => 'Contractlog.id ASC',
+				'fields' => array(
+						'Contractlog.document',
+				)
+			)	
+		);
+		
+		$this->set('pdf', $pdf['Contractlog']['document']);
+	}
+	
 	public function index() {
 		$this->layout = 'employee';
 	}

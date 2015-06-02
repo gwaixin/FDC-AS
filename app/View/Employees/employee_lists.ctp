@@ -1,6 +1,5 @@
 
 <?php 
-	echo $this->Html->css('main');
 	echo $this->Html->css('employee');
 	echo $this->Html->css('hot.full.min');
 	echo $this->Html->css('bootstrap-timepicker.min');
@@ -317,20 +316,25 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				'default' => 'Y'
 		);
 		echo $this->Form->input('Status',$attributes); */
-	    echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "/*",'style' => 'display:none;'));
-	    echo $this->Form->button('Browse File',
-	    		array(
-	    				'id' => 'BrowseFile',
-	    				'class' => 'btn btn-default'
-	    		)
-	    );
-	    echo $this->Form->button('Submit', array('type' => 'submit','class' => 'btn btn-primary btnContract'));
-	    echo $this->Form->end();
+	   	   
 		?>
 		</div>    		 	
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      	<?php 
+      	
+      	echo $this->Form->file('document', array('id' => 'uploadDocument','required' => false,'accept' => "application/pdf",'style' => 'display:none;'));
+      	echo $this->Form->button('Browse File',
+      			array(
+      					'id' => 'BrowseFile',
+      					'class' => 'btn btn-default'
+      			)
+      	);
+      	
+      	echo $this->Form->button('Submit', array('type' => 'submit','class' => 'btn btn-primary btnContract'));
+      	echo $this->Form->end();
+      	
+      	?>
       </div>
     </div>
   </div>
@@ -373,7 +377,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 			 <div class="control-group">
 			    <label for="inputPassword3" class="col-sm-2 control-label">Document</label>
 			    <div class="controls">
-			      <span id="document"></span>
+			      <a href="#" id="link-doc"><span id="document"></span></a>
 			    </div>
 			 </div>
 			  <div class="control-group">
@@ -531,8 +535,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
     </div>
   </div>
 </div>
-
-
 <div class="modal fade" id="addNewProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
