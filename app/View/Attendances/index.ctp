@@ -9,60 +9,97 @@
 <?php echo $this->Html->script('attendance'); ?>
 
 <script>
-	var webroot = '<?php echo $this->webroot;?>';
 	var phpDate = '<?php echo date("Y-m-d");?>';
 </script>
 
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="main-content">
-			<span class='pull-right' style='text-align:center; margin-top:20px;'>
-				<small>Auto Overtime</small> <br/>
-				<a href="javascript:;" id='auto-overtime'><i class="fa fa-2x <?php echo $autoOvertime; ?>"></i></a>
-			</span>
-
-			<form class='form-horizontal' id='attendance-form'>
-				<h3> Attendance</h3>
-				<div class='control-group'>
-					<input type='text' placeholder='Search Employee ID or Name' name='keyword'/>
-					<select name='status'>
-						<option selected='selected' disabled>Choose Status</option>
-						<?php foreach($attendanceStat as $key => $as) { ?>
-						<option value='<?php echo $key;?>'><?php echo $as; ?></option>
-						<?php }?>
-					</select>
-				</div>
-				<div class='control-group'>
-					<input type='text' id='date' placeholder='Choose Date' name='date' />
-					<select name='shifts'>
-						<option selected='selected' disabled>Choose Shifts</option>
-						<?php foreach($shifts as $key => $s) { ?>
-						<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
-						<?php }?>
-						<option value='0'>All</option>
-					</select>
-				</div>
-				<div class='control-group'>
-					<button id='btn-search' class='btn btn-inverse'>Search</button>
-					<button id='btn-reset' class='btn'>Reset</button>
-					<div id="error" class="pull-right"><?php echo $this->Session->flash();?></div>
-					<span class='alert alert-success'>
-						<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
-					</span>
-				</div>
-			</form>
-			
-			<input type="text" style="position:absolute; visibility:hidden" id="datepicker">
-			<div id="employee-attendance"></div>
+			<div class="span9">
+				<form class='form-horizontal' id='attendance-form'>
+					<h3> 
+						Attendance 
+						<a href="javascript:;" id='auto-overtime' style='margin-left: 5px;' title='Auto Overtime calculation'>
+							<i class="fa fa-1x <?php echo $autoOvertime; ?>"></i> 
+						</a>
+					</h3>
+					<div class='control-group'>
+						<div class="input-append">
+							<input type='text' placeholder='Search Employee ID or Name' name='keyword' id='keyword'/>
+							<button id='btn-search-monthly' class='btn btn-inverse'><i class="fa fa-search"></i> Monthly</button>
+						</div>
+						
+					</div>
+					<div class='control-group'>
+						<!--<input type='text' id='date' placeholder='Choose Date' name='date' />-->
+						<select name='status'>
+							<option selected='selected' disabled>Choose Status</option>
+							<?php foreach($attendanceStat as $key => $as) { ?>
+							<option value='<?php echo $key;?>'><?php echo $as; ?></option>
+							<?php }?>
+						</select>
+						<select name='shifts'>
+							<option selected='selected' disabled>Choose Shifts</option>
+							<?php foreach($shifts as $key => $s) { ?>
+							<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
+							<?php }?>
+							<option value='0'>All</option>
+						</select>
+					</div>
+					<div class='control-group'>
+						<button id='btn-search' class='btn btn-inverse'>Filter Search</button>
+						<button id='btn-reset' class='btn'>Reset</button>
+						<span class='alert alert-success'>
+							<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
+						</span>
+					</div>
+					<div class='control-group'>
+						<div id="error" class="alert alert-danger" style="display:none;"><?php echo $this->Session->flash();?></div>
+					</div>
+				</form>
+			</div>
+			<div id="calendar" class="span3">
+				<?php
+					echo $this->element('calendar');
+				?>
+			</div>
+			<div class="clearfix"></div>
 		</div>
+
+		<div id="employee-attendance"></div>
 	</div>
 </div>
-
 <style>
 .htCore thead tr th b{
 	font-size: 10px;
 	position:absolute;
 	top: -3px;
+}
+.days, .calendar-nav{
+	cursor: pointer;
+	transition: color .25s ease-in-out;
+}
+.calendar-nav:hover {
+	color:#0088cc;
+}
+
+#calendar {
+	table-layout: fixed;
+}
+
+#focus-day {
+	border: 1px solid #0088cc!important;
+}
+
+.day-head {
+	background: #222;
+	color: #eee;
+}
+#calendar {
+	font-size: 0.8rem;
+}
+#calendar .table {
+	margin-bottom: 5px;
 }
 </style>
 

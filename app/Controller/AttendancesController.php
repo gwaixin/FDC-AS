@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Calendar', 'Lib');
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
 
@@ -15,8 +16,39 @@ class AttendancesController extends AppController {
 		$this->set('attendanceStat', $this->getAttendanceStatus());
 		$this->set('autoOvertime', $autoOvertime);
 		$this->set('shifts', $this->getShifts());
+
+		$this->getCalendar();
+		
 		//pr($this->getShifts());
 		//exit();
+	}
+
+	public function getCalendar() {
+		$date = "";
+		$calendar = new Calendar();
+		
+		if ($this->request->is('Ajax') ) {
+			$this->layout = 'ajax';
+			$data = $this->request->data;
+			if (!empty($data)) {
+				$date = $data['date'];
+			}
+		}
+
+		$calendar->ini($date);
+		$this->set('month', $calendar->month);
+		$this->set('days', $calendar->days);
+		$this->set('today', $calendar->today);
+		$this->set('week', $calendar->week);
+		$this->set('d', $calendar->d);
+		$this->set('firstDay', $calendar->firstDay);
+		$this->set('totalDays', $calendar->totalDays);
+		$this->set('currentDate', $calendar->currentDate);
+
+		if ($this->request->is('Ajax')) { 
+			$this->render('view_calendar');
+			return;
+		}
 		
 	}
 	
@@ -45,17 +77,17 @@ class AttendancesController extends AppController {
 		);
 
 		$employees = $this->Employee->find('all',
-				array(
-						'conditions' => array('Employee.status = 2'),
-						'joins'	=> $join,
-						'fields' => array(
-							'id',
-							'employee_shifts.f_time_in',
-							'employee_shifts.f_time_out',
-							'employee_shifts.l_time_in',
-							'employee_shifts.l_time_out'
-						)
+			array(
+				'conditions' => array('Employee.status = 2'),
+				'joins'	=> $join,
+				'fields' => array(
+					'id',
+					'employee_shifts.f_time_in',
+					'employee_shifts.f_time_out',
+					'employee_shifts.l_time_in',
+					'employee_shifts.l_time_out'
 				)
+			)
 		);
 			
 		return $employees;
@@ -98,6 +130,7 @@ class AttendancesController extends AppController {
 						'total_time'	=>  $employee['attendances']['render_time'],
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
+						'day'			=>	date('j', strtotime($employee['attendances']['date'])),
 						'id'			=>	$employee['attendances']['id'],
 						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
 						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_out']),
@@ -228,22 +261,56 @@ class AttendancesController extends AppController {
 		} 
 	}
 
+	public function attendanceHistory($layout) {
+		$this->layout = $layout;
+		$id = $this->params['url']['id'];
+		$getMonthly = true;
+		if (empty($id)) {
+			$this->redirect('/');
+			return;
+		}
+
+		$history = $this->Attendance->getAttendanceHistory($id, $getMonthly); //Get monthly History
+		$this->set('history', $history);
+		$this->set('empId', $id);
+	}
+
+	public function getAttendanceDetail() {
+		if ($this->request->is('Ajax')) {
+			$this->layout = 'Ajax';
+			$id = $this->request->data['id'];
+			$date = $this->request->data['date'];
+			$history = $this->Attendance->getAttendanceHistory($id, false, $date);
+			$this->set('history', $history);
+			$this->render('history_detail');
+			return;
+		}
+	}
+	
+
+	/* Private Functions */
 	private function getAutoOvertime() {
 		$autoOvertime = $this->Cookie->read('autoOvertime');
 		return empty($autoOvertime) ? false : true;// 'fa-toggle-off' : 'fa-toggle-on';
 	}
 
-	
-	/* Private Functions */
-	
 	private function getEmployeeAttendance($data) {
 		//Check date
 		$currentDate = date("Y-m-d");
 		$conditions = array();
+		$searchByMonth = false;
 		if (!empty($data)) {
 			if (!empty($data['date'])) {
 				$currentDate = date('Y-m-d', strtotime($data['date']));
 			}
+
+			if (!empty($data['monthly'])) {
+				$currentDate = date('Y-m-d', strtotime($data['monthly']));
+				$conditions['MONTH(attendances.date) ='] = date('n', strtotime($currentDate));
+				$conditions['YEAR(attendances.date) ='] = date('Y', strtotime($currentDate));
+				$searchByMonth = true;
+			}
+
 			if (!empty($data['keyword'])) {
 				$conditions['OR'] = array(
 						array("concat_ws(' ', profiles.first_name, profiles.middle_name, profiles.last_name) like" => "%{$data['keyword']}%"),
@@ -259,6 +326,8 @@ class AttendancesController extends AppController {
 			if (!empty($data['shifts']) && $data['shifts'] >= 0) {
 				$conditions['Employee.employee_shifts_id ='] = $data['shifts'];
 			}
+
+			
 	
 		}
 		$emp = $this->getEmployee();
@@ -268,8 +337,9 @@ class AttendancesController extends AppController {
 			return 1;
 		}
 		
-			
-		$conditions['attendances.date ='] = $currentDate;
+		if (!$searchByMonth) {
+			$conditions['attendances.date ='] = $currentDate;
+		}
 		$conditions['Employee.status <>'] = 0;
 			
 		$this->loadModel('Employee');
@@ -306,6 +376,7 @@ class AttendancesController extends AppController {
 				'attendances.l_time_in',
 				'attendances.l_time_out',
 				'attendances.status',
+				'attendances.date',
 				'attendances.id',
 				'attendances.over_time',
 				'attendances.render_time',
@@ -319,8 +390,8 @@ class AttendancesController extends AppController {
 				array(
 						'joins' => $join,
 						'fields' => $selectFields,
-						'conditions' => $conditions
-							
+						'conditions' => $conditions,
+						'order' => array('Employee.id' => 'ASC', 'attendances.date' => 'ASC')
 				)
 		);
 		

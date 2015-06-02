@@ -38,6 +38,7 @@
 		echo $this->fetch('script');
 
 	?>
+	<script> var webroot = '<?php echo $this->webroot;?>'; </script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top nav-bar-mod">
@@ -79,11 +80,13 @@
 				<div class="sidebar-nav">
 				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
-							<li class="nav-header">Admin Menu</li>        
+							<li class="nav-header">Admin Menu</li>
 							<li><a href="<?php echo $this->webroot;?>admin/index"><i class="icon-home"></i> Dashboard</a></li>
-							<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
+							<li class="divider"></li>
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
-			          		<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+			          		<li class="divider"></li>
+			          		<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/privileges/"><i class="fa fa-key" style='color:black;'></i> Privilege </a></li>
 						   	<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
 					  		<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
