@@ -97,7 +97,7 @@ class PrivilegesController extends AppController {
 						'Privilege.status'
 	
 				),
-				'limit' => 1
+				'limit' => 10
 		);
 	
 		$this->set('data', $this->paginate() );
