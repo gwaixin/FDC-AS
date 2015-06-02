@@ -38,6 +38,7 @@
 		echo $this->fetch('script');
 
 	?>
+	<script> var webroot = '<?php echo $this->webroot;?>'; </script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top nav-bar-mod">
