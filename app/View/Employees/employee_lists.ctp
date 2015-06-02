@@ -32,8 +32,9 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				<?php 
 				echo $this->Form->select('field',
 																		    array(
-																		    	'employee_id' => 'Employee ID',
+																		    	'employee-id' => 'Employee ID',
 																		    	'name' => 'Name',
+																		    	'nick-name' => 'Nick Name',
 																		    	'position' => 'Position',
 																		    	'status' => 'Status'
 																		    ),

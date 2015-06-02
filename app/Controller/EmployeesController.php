@@ -189,7 +189,10 @@ class EmployeesController extends AppController {
 				case "name":
 					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 				break;
-				case "employee_id":
+				case "nick-name":
+					$conditions = array("profiles.nick_name LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
+				break;
+				case "employee-id":
 					$conditions = array('AND' => 
 																	array("employee_id LIKE '%" . addslashes($this->request->data['value']) . "%'"),
 																	array('Employee.status != 0')
