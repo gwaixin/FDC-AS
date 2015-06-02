@@ -5,7 +5,7 @@
 		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">
 			<?php 
-				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/privileges'));
+				echo $this->Form->create('Privilege',array('id' => 'Privlegelist','type' => 'get', 'url' => '/admin/privileges/'));
 				echo $this->Form->select('field',
 						array(
 								'action' => 'Action',
@@ -70,7 +70,7 @@
                   <td><?php echo $row['Privilege']['controller'];?></td>
                   <td><?php echo $row['Privilege']['action'];?></td>
                   <td><?php echo $row['Privilege']['description'];?></td>
-                  <td><?php echo $row['Privilege']['status'];?></td>
+                  <td><?php echo ($row['Privilege']['status'])? 'Active' : 'Inactive';?></td>
                   <td>
                   	<a href="#" class="btn btn-danger btnDeleteRole" type="button" data-role-id="<?php echo $row['Privilege']['id'];?>">Delete</a>
                   	<a href="<?php echo $this->webroot; ?>admin/privileges/edit/<?php echo $row['Privilege']['id']; ?>" class="btn btn-primary" data-role-id="<?php echo $row['Privilege']['id'];?>">Edit</a>

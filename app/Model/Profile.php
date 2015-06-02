@@ -127,7 +127,6 @@ class Profile extends AppModel{
 		
 		switch ($ext) {
 			case 'png' 	:
-			case 'PNG' 	:
 				imagealphablending($this->tmp, false);
 				imagesavealpha($this->tmp,true);
 				$transparent = imagecolorallocatealpha($this->tmp, 255, 255, 255, 127);
