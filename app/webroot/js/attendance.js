@@ -75,171 +75,7 @@ $(document).ready(function () {
   		}
 	}
 	
-	function attendanceList() {
-		//$('#employee-attendance').html('');
-		statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
-		hot = new Handsontable($("#employee-attendance")[0], {
-		    data: list,
-		    height: 396,
-		    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEOUT <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS"],
-		    rowHeaders: true,
-		    stretchH: 'all',
-		    columnSorting: true,
-		    contextMenu: true,
-		    className: "htCenter htMiddle normal-col",
-		    columns: [
-		      {data: 'employee_id', type: 'text', className:'txt-name', readOnly: true},
-			  {data: 'name', type: 'text', readOnly: true},
-		      {data: 'f_time_in', type: 'text', className:'f_time_in time htCenter htMiddle'},
-		      {data: 'f_time_out', type: 'text', className:'f_time_out time htCenter htMiddle'},
-		      {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
-		      {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
-		      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
-		      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
-		      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'}
-		    ], beforeChange: function(change, sources) {
-		    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
-		    	colClass = change[0][1];
-		    	if (
-		    		colClass != 'status' && 
-		    		colClass != 'total_time' &&
-		    		colClass != 'otime' &&
-		    		change[0][2] != change[0][3]
-		    	) {
-		    		var time = convertToDatetime(change[0][3]);
-		    		if (time === 0) {
-		    			console.log(change[0]);
-		    			change[0][3] = change[0][2];
-		    			return;
-		    		} else {
-		    			time = time.length == 19 ? time : time+':00';
-		    			list[rowIndex][colClass] = time;
-		    			change[0][3] = time;
-		    		}
-		    	}
-		    }, afterChange: function(change, sources) {
-			    if (
-			    	sources === 'loadData' || 
-			    	change[0][3] == '' ||
-			    	change[0][2] == change[0][3]
-			    	
-			    ) {
-			    	//console.log(list);
-		            return; //don't do anything as this is called when table is loaded
-		        }
-		        
-		    	//setTimeout(function() {
-			    	
-				if (colClass == 'status') {
-			  		var statIndex = statusArr.indexOf(change[0][3]);
-			  		if (statIndex < 0) {
-				  		$('#error').html('Invalid status');
-				  		return;
-				  	}
-			    	//console.log(statIndex + rowIndex);
-			  		//checkOvertime();
-			    	updateValue = statIndex;
-			    	
-				} else {
-					/*if (!validateDate(colClass)) {
-						focusElem.addClass('htInvalid');
-						return;
-					}
-					*/
-					
-					updateValue = list[rowIndex][colClass];
-					//updateEmployeeData();
-					
-				}
-				updateEmployeeData();
-					
-
-		    	 //}, 300);
-			}, cells: function (row, col, prop) {
-				var tmpData = this.instance.getData();
-				
-				if (list.length <= 0) {
-					return;
-				}
-				var cellProperties = {};
-				var insData = tmpData[row][col];
-				if (list[row]['estatus'] == 1) {
-					cellProperties.readOnly = true;
-				} else {
-					switch (col) {
-						case 2:
-							if (list[row]['ef_time_in']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 3: 
-							if (list[row]['ef_time_out']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 4: 
-							if (list[row]['el_time_in']) {
-								cellProperties.readOnly = true;
-							}
-							break;
-						case 5: 
-							if (list[row]['el_time_out']) {
-								cellProperties.readOnly = true;
-							}
-							break; 
-							
-					}
-				}
-				
-				return cellProperties;
-			}
-	  	});
-	}
 	
-	function convertToDatetime(val) {
-		var fDate = 0;
-		switch (val.length) {
-			case 4: 
-				var time = pad(toTime(val));
-				fDate = cYear+'-'+cMonthDay+' '+time;
-				break;
-			case 8:
-				var month = pad(toMonth(val.substr(0, 4)));
-				var time = pad(toTime(val.substr(4, 8)));
-				fDate = cYear+'-'+month+' '+time;
-				break;
-			case 12: 
-				var year = pad(toYear(val.substr(0, 4)));
-				var month = pad(toMonth(val.substr(4, 8)));
-				var time = pad(toTime(val.substr(8, 12)));
-				fDate = year+'-'+month+' '+time;
-				break;
-			case 19:
-				fDate = val;
-				break;
-			default: alert('Did not follow the allowed format'); 
-		}
-		if (fDate != 0 && !isDateTime(fDate)) {
-			fDate = 0;
-			alert('Invalid time format'); 
-		}
-		return fDate;
-	}
-
-	function toTime(val) {
-		var time = val.split('');
-		return time[0] + time[1] +':'+ time[2] + time[3];
-	}
-
-	function toMonth(val) {
-		var date = val.split('');
-		return date[0] + date[1] +'-'+ date[2] + date[3];
-	}
-
-	function toYear(val) {
-		var year = val.split('');
-		return year[0] + year[1] + year[2] + year[3];
-	}
 
 
 	function validateDate(dateClass) {
@@ -282,57 +118,11 @@ $(document).ready(function () {
 			$('#error').html(data);
 		});
 	}
-
-	var updateAjax;
-	var updateValue;
-	function updateEmployeeData() {
-		var formData = new FormData();
-		//var physicalIndex = isSorted(hot) ? hot.sortIndex[rowIndex][0] : rowIndex;
-		formData.append('id', list[rowIndex]['id']);
-		formData.append('value', updateValue);
-		formData.append('field', colClass);
-		updateAjax = $.ajax({
-			url: webroot+'attendances/updateAttendance',
-			data: formData,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function(data) {
-				console.log(data);
-				updateAjax = null;
-				if (colClass != 'status') {
-					getTotalTime();
-				}
-			}
-		});
-		
-		//$.post('updateAttendance'
-	}
-
-	function isSorted(hotInstance) {
-	  return hotInstance.sortingEnabled && typeof hotInstance.sortColumn !== 'undefined';
-	}
 	
 	
 	//getEmployeeData();
 	//getAttendanceList('2015-05-15');
 	getAttendanceList(formAttendance);
-	function getAttendanceList(formAttendance) {
-		$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
-			$("#employee-attendance").html('');
-			if (data == '') {
-				$('#error').html("No data found");
-			} else if (typeof data['error'] !== 'undefined') {
-				$('#error').html(data['error']);
-			} else {
-				console.log(data);
-				$('#error').html('');
-				list = data;
-				attendanceList();
-			}
-			//}
-		}, 'JSON');
-	}
 
 	function resetAttendance(formAttendance) {
 		$.post(webroot + 'attendances/resetAttendance', formAttendance, function(data) {
@@ -349,7 +139,13 @@ $(document).ready(function () {
 		e.preventDefault();
 		getAttendanceList($('#attendance-form').serialize());
 		changeDate();
-		
+	});
+
+	$('#btn-search-monthly').click(function(e) {
+		e.preventDefault();
+		var keyword = $('#keyword').val();
+		getAttendanceList({keyword:keyword, monthly:currentDate});
+		changeDate();
 	});
 	
 	$('#date').datepicker();
@@ -374,7 +170,223 @@ $(document).ready(function () {
 	
 	
 });
-		
+
+function convertToDatetime(val) {
+	var fDate = 0;
+	switch (val.length) {
+		case 4: 
+			var time = pad(toTime(val));
+			fDate = cYear+'-'+cMonthDay+' '+time;
+			break;
+		case 8:
+			var month = pad(toMonth(val.substr(0, 4)));
+			var time = pad(toTime(val.substr(4, 8)));
+			fDate = cYear+'-'+month+' '+time;
+			break;
+		case 12: 
+			var year = pad(toYear(val.substr(0, 4)));
+			var month = pad(toMonth(val.substr(4, 8)));
+			var time = pad(toTime(val.substr(8, 12)));
+			fDate = year+'-'+month+' '+time;
+			break;
+		case 19:
+			fDate = val;
+			break;
+		default: alert('Did not follow the allowed format'); 
+	}
+	if (fDate != 0 && !isDateTime(fDate)) {
+		fDate = 0;
+		alert('Invalid time format'); 
+	}
+	return fDate;
+}
+
+function toTime(val) {
+	var time = val.split('');
+	return time[0] + time[1] +':'+ time[2] + time[3];
+}
+
+function toMonth(val) {
+	var date = val.split('');
+	return date[0] + date[1] +'-'+ date[2] + date[3];
+}
+
+function toYear(val) {
+	var year = val.split('');
+	return year[0] + year[1] + year[2] + year[3];
+}
+function isSorted(hotInstance) {
+  return hotInstance.sortingEnabled && typeof hotInstance.sortColumn !== 'undefined';
+}
+
+function attendanceList() {
+	//$('#employee-attendance').html('');
+	statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
+	hot = new Handsontable($("#employee-attendance")[0], {
+	    data: list,
+	    height: 396,
+	    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEOUT <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
+	    rowHeaders: false,
+	    stretchH: 'all',
+	    columnSorting: true,
+	    contextMenu: true,
+	    className: "htCenter htMiddle normal-col",
+	    columns: [
+	      {data: 'employee_id', type: 'text', className:'txt-name', readOnly: true},
+		  {data: 'name', type: 'text', readOnly: true},
+	      {data: 'f_time_in', type: 'text', className:'f_time_in time htCenter htMiddle'},
+	      {data: 'f_time_out', type: 'text', className:'f_time_out time htCenter htMiddle'},
+	      {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
+	      {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
+	      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
+	      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
+	      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'},
+	      {data: 'day', type: 'text', className:'htCenter htMiddle', readOnly: true}
+	    ], beforeChange: function(change, sources) {
+	    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
+	    	colClass = change[0][1];
+	    	if (
+	    		colClass != 'status' && 
+	    		colClass != 'total_time' &&
+	    		colClass != 'otime' &&
+	    		change[0][2] != change[0][3]
+	    	) {
+	    		var time = convertToDatetime(change[0][3]);
+	    		if (time === 0) {
+	    			console.log(change[0]);
+	    			change[0][3] = change[0][2];
+	    			return;
+	    		} else {
+	    			time = time.length == 19 ? time : time+':00';
+	    			list[rowIndex][colClass] = time;
+	    			change[0][3] = time;
+	    		}
+	    	}
+	    }, afterChange: function(change, sources) {
+		    if (
+		    	sources === 'loadData' || 
+		    	change[0][3] == '' ||
+		    	change[0][2] == change[0][3]
+		    	
+		    ) {
+		    	//console.log(list);
+	            return; //don't do anything as this is called when table is loaded
+	        }
+	        
+	    	//setTimeout(function() {
+		    	
+			if (colClass == 'status') {
+		  		var statIndex = statusArr.indexOf(change[0][3]);
+		  		if (statIndex < 0) {
+			  		$('#error').html('Invalid status');
+			  		$('#error').fadeIn(200);
+			  		return;
+			  	}
+		    	//console.log(statIndex + rowIndex);
+		  		//checkOvertime();
+		    	updateValue = statIndex;
+		    	
+			} else {
+				/*if (!validateDate(colClass)) {
+					focusElem.addClass('htInvalid');
+					return;
+				}
+				*/
+				
+				updateValue = list[rowIndex][colClass];
+				//updateEmployeeData();
+				
+			}
+			updateEmployeeData();
+				
+
+	    	 //}, 300);
+		}, cells: function (row, col, prop) {
+			var tmpData = this.instance.getData();
+			
+			if (list.length <= 0) {
+				return;
+			}
+			var cellProperties = {};
+			var insData = tmpData[row][col];
+			if (list[row]['estatus'] == 1) {
+				cellProperties.readOnly = true;
+			} else {
+				switch (col) {
+					case 2:
+						if (list[row]['ef_time_in']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 3: 
+						if (list[row]['ef_time_out']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 4: 
+						if (list[row]['el_time_in']) {
+							cellProperties.readOnly = true;
+						}
+						break;
+					case 5: 
+						if (list[row]['el_time_out']) {
+							cellProperties.readOnly = true;
+						}
+						break; 
+						
+				}
+			}
+			
+			return cellProperties;
+		}
+  	});
+}	
+
+function getAttendanceList(formAttendance) {
+	$.post(webroot + 'attendances/attendanceList', formAttendance, function(data) {
+		$("#employee-attendance").html('');
+		if (data == '') {
+			$('#error').html("No data found");
+			$('#error').fadeIn(200);
+		} else if (typeof data['error'] !== 'undefined') {
+			$('#error').html(data['error']);
+			$('#error').fadeIn(200);
+		} else {
+			console.log(data);
+			$('#error').html('');
+			$('#error').hide();
+			list = data;
+			attendanceList();
+		}
+		//}
+	}, 'JSON');
+}
+
+var updateAjax;
+var updateValue;
+function updateEmployeeData() {
+	var formData = new FormData();
+	//var physicalIndex = isSorted(hot) ? hot.sortIndex[rowIndex][0] : rowIndex;
+	formData.append('id', list[rowIndex]['id']);
+	formData.append('value', updateValue);
+	formData.append('field', colClass);
+	updateAjax = $.ajax({
+		url: webroot+'attendances/updateAttendance',
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function(data) {
+			console.log(data);
+			updateAjax = null;
+			if (colClass != 'status') {
+				getTotalTime();
+			}
+		}
+	});
+	
+	//$.post('updateAttendance'
+}
 
 function changeStat(stat) {
 	hot.setDataAtRowProp(0, 'status', statusArr[stat]);
@@ -459,3 +471,20 @@ function formatDate(date, fmt) {
         }
     });
 }
+
+//For calendar Events
+$(document).on('click', '.days', function() {
+   $('#focus-day').removeAttr('id');
+   $(this).attr('id', 'focus-day');
+   var day = pad($(this).html());
+   //alert(yearMonth+day);
+   var yearMonth = $('#yearmonth').val();
+   getAttendanceList({date:(yearMonth+day)});
+});
+
+$(document).on('click', '.calendar-nav', function() {
+	var date = $(this).attr('date');
+    $.post(webroot+'attendances/getCalendar', {date: date}, function(data) {
+        $("#calendar").html(data);
+    });
+});

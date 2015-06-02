@@ -251,6 +251,23 @@ class Attendance extends AppModel {
 		return str_pad($val, 2, "0", STR_PAD_LEFT);
 	}
 	
+
+	public function getAttendanceHistory($id, $byMonth = false, $monthly = "") {
+		$groupby = empty($byMonth) ? array() : array('YEAR(date)', 'MONTH(date)');
+		$conditions['employees_id'] = $id;
+		if (!empty($monthly)) {
+			$conditions['YEAR(date)'] = date('Y', strtotime($monthly));
+			$conditions['MONTH(date)'] = date('n', strtotime($monthly));
+		}
+		$data = $this->find('all', array(
+			//'fields' => array('*'),
+				'conditions' => $conditions,
+				'group' => $groupby
+			)
+		);
+		return $data;
+	}
+
 	public function getEmployeeDetail($id, $condtion = "") {
 		$join = array(
 				array(
