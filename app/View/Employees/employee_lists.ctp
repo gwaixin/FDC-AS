@@ -11,65 +11,6 @@
 	echo $this->Html->script('bootbox');
 ?>
 
-
-<style>
-.datepicker{
-	z-index: 1060 !important;
-}
-#additional-info-container {
-	margin: 10px 10px;
-}
-.bootstrap-timepicker-widget  {
-	z-index: 9999;
-}
-#additional-info-container input {
-	width: 400px;
-	height: 30px;
-}
-#loading-BG {
-	display: none;
-	left: 0;
-	top: 0;
-	position: fixed;
-	z-index: 9999;
-	width: 100%;
-	height: 100%;
-	background: RGBA(0,0,0,0.5);
-}
-#loading-BG div {
-	margin: 5% auto;
-	width: 250px;
-	background: #fff;
-	border-radius: 10px;
-}
-.contract:hover {
-	cursor: pointer;
-}
-#contract-selections ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-}
-#contract-selections li {
-	padding: 2px 5px;
-}
-#contract-selections li button {
-	margin: 0px auto;
-	font: 10px "Trebuchet MS",sans-serif;
-}
-#contract-selections {
-	position: fixed;
-	z-index: 99;
-	top: 0;
-	left: 0;
-	height: 80px;
-	background: #f9f9f9;
-	border-radius: 2px;
-	display: none;
-}
-</style>
-
 <script>
 var baseUrl = "<?php echo $this->webroot; ?>";
 </script>
@@ -417,7 +358,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 </div>
 
 
-<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
+<div class="modal fade" id="modalAccounts" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -445,14 +386,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	        																	'id' => 'tin',
 	        																	'disabled' => 'disabled',
 	        																	'placeholder' => 'Enter Tin No',
-	        																	'div' => false
-	        																	)
-	        																);
-		        		echo $this->Form->input('Salary',array(
-	        																	'name' => 'salary',
-	        																	'id' => 'salary',
-	        																	'disabled' => 'disabled',
-	        																	'placeholder' => 'Enter Salary',
 	        																	'div' => false
 	        																	)
 	        																);
@@ -761,10 +694,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
     </div>
   </div>
 </div>
-
-  <div class="row text-center" style="display:none;">
-    <a href="#" class="btn btn-lg btn-primary" id="btn-select" data-toggle="modal" data-target="#largeModal">Click to open Modal</a>
-	</div>
 
 	<div class="input-group-addon"> 
 	<span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>

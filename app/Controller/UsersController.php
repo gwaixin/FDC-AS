@@ -50,6 +50,7 @@ class UsersController extends AppController {
 							$profile = $profile['Profile'];
 							$this->checkRole($user['role']);
 							$this->Session->write('Auth.UserProfile', $profile);
+							$this->Session->write('Auth.UserProfile.employee_id', $user['id']);
 							$this->Session->write('Auth.UserProfile.role', $user['role']);
 							$this->Auth->login($this->Auth->login($data));
 							$this->getRights();

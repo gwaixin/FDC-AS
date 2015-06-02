@@ -50,33 +50,38 @@
           </button>
           <a class="brand" href="<?php echo $this->webroot;?>">FDC AS</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-              </li>
-            </ul>
-          </ul>
-          </div>
+	            <ul class="nav pull-right">
+	              <li class="dropdown">
+	                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
+	                	<?php echo $this->Session->read('Auth.UserProfile.first_name')." ".
+	                						 $this->Session->read('Auth.UserProfile.middle_name')." ".
+	                						 $this->Session->read('Auth.UserProfile.last_name'); 
+	                	?>
+	                	</a>
+	              </li>
+	          </ul>
+	          </div>
+          	</div>
         </div>
       </div>
-    </div>
 	<div id="container" class="container-fluid">
-		<div class="row-fluid">
-			<div class="span3">
+		<div class="row-fluid row">
+			<div class="span2 side-well">
 				<div class="sidebar-nav">
-				    <div class="well" style="width:300px; padding: 8px 0;">
+				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
-						  <li class="nav-header">Employee Menu</li>        
+							<li class="nav-header">Employee Menu</li>        
 						  <li><a href="/employees"><i class="icon-home"></i> Dashboard</a></li>
 							<li><a href="/employees/profile"><i class="icon-user"></i> My Profile</a></li>
+							<li><a href="/employees/contracts"><i class="icon-file"></i> My Contracts</a></li>
 							<li><a href="/employees/accounts"><i class="icon-file"></i> Accounts</a></li>
-							<li><a href="/employees/attendances"><i class="icon-calendar"></i> My Attendances</a></li>
 						  <li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="span9">
-				<div id="content" class="main-content">
+			<div class="span10">
+				<div id="content">
 					<?php echo $this->fetch('content'); ?>
 				</div>
 			</div>
