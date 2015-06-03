@@ -24,27 +24,36 @@
 						</a>
 					</h3>
 					<div class='control-group'>
-						<div class="input-append">
+						<div class='span3'>
 							<input type='text' placeholder='Search Employee ID or Name' name='keyword' id='keyword'/>
-							<button id='btn-search-monthly' class='btn btn-inverse'><i class="fa fa-search"></i> Monthly</button>
+						</div>
+						<div class='span5'>
+							<div class="input-append">
+								<input type='text' placeholder='Date' name='date' id='date' class='span10'/>
+								<button id='btn-search-monthly' class='btn btn-inverse' title='Monthly search'><i class="fa fa-search"></i></button>
+							</div>
 						</div>
 						
 					</div>
 					<div class='control-group'>
 						<!--<input type='text' id='date' placeholder='Choose Date' name='date' />-->
-						<select name='status'>
-							<option selected='selected' disabled>Choose Status</option>
-							<?php foreach($attendanceStat as $key => $as) { ?>
-							<option value='<?php echo $key;?>'><?php echo $as; ?></option>
-							<?php }?>
-						</select>
-						<select name='shifts'>
-							<option selected='selected' disabled>Choose Shifts</option>
-							<?php foreach($shifts as $key => $s) { ?>
-							<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
-							<?php }?>
-							<option value='0'>All</option>
-						</select>
+						<div class='span3'>
+							<select name='status'>
+								<option selected='selected' disabled>Choose Status</option>
+								<?php foreach($attendanceStat as $key => $as) { ?>
+								<option value='<?php echo $key;?>'><?php echo $as; ?></option>
+								<?php }?>
+							</select>
+						</div>
+						<div class='span5'>
+							<select name='shifts'>
+								<option selected='selected' disabled>Choose Shifts</option>
+								<?php foreach($shifts as $key => $s) { ?>
+								<option value="<?php echo $s['Employeeshift']['id'];?>"><?php echo $s['Employeeshift']['description']; ?></option>
+								<?php }?>
+								<option value='0'>All</option>
+							</select>
+						</div>
 					</div>
 					<div class='control-group'>
 						<button id='btn-search' class='btn btn-inverse'>Filter Search</button>

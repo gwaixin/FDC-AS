@@ -149,12 +149,18 @@ $(document).ready(function () {
 	$('#btn-search-monthly').click(function(e) {
 		e.preventDefault();
 		var keyword = $('#keyword').val();
+		changeDate();
 		currentRequest = {keyword:keyword, monthly:currentDate};
 		getAttendanceList(currentRequest);
-		changeDate();
+		
 	});
 	
-	$('#date').datepicker();
+	$('#date').datepicker({
+		autoclose: true,
+		viewMode: "months",
+		minViewMode: "months",
+		format: "yyyy-mm"
+	});
 
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();

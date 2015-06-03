@@ -339,14 +339,14 @@ class AttendancesController extends AppController {
 	
 		}
 		$emp = $this->getEmployee();
-		$create = $this->Attendance->createAttendance($currentDate, $emp);
-		if ($create == 'FAIL') {
-			//$this->Session->setFlash(__('No attendance for this date'));
-			return 1;
-		}
 		
 		if (!$searchByMonth) {
 			$conditions['attendances.date ='] = $currentDate;
+			$create = $this->Attendance->createAttendance($currentDate, $emp);
+			if ($create == 'FAIL') {
+				//$this->Session->setFlash(__('No attendance for this date'));
+				return 1;
+			}
 		}
 		$conditions['Employee.status <>'] = 0;
 			
