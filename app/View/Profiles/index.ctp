@@ -4,7 +4,7 @@
 			<div class="span12">
 				<h3>Profile list</h3>
 				<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
-				<a href="<?php echo $this->webroot.'profiles/profile_register'; ?>" ><i class="fa fa-plus-square"></i> ADD</a>
+				<a href="<?php echo $this->webroot.$this->Session->read('Auth.Rights.role'); ?>/profiles/add"><i class="fa fa-plus-square"></i> ADD</a>
 			</div>
 	<?php
 		foreach($data as $row) {
@@ -20,11 +20,8 @@
 	          	</div>
 				<div class="prof-table">
 					<div class="prof-img-cont">
-						<?php 
-							
+						<?php
 							$img = ($row['Profile']['picture'])? $this->webroot.'upload/'.$row['Profile']['picture'] :  $this->webroot.'img/emptyprofile.jpg' ;
-							
-							
 						?>					
 						<img class="img-responsive" src="<?php echo $img; ?>" alt="...">
 					</div>
@@ -38,7 +35,7 @@
 							</a>
 						</span>
 						<span>
-							<a href='<?php echo $this->webroot.'profiles/profile_update/'.$row['Profile']['id']; ?>'>
+							<a href='<?php echo $this->webroot.$this->Session->read('Auth.Rights.role').'/profiles/update/'.$row['Profile']['id']; ?>'>
 								<i class="fa fa-pencil"></i>
 							</a>
 						</span>

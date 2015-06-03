@@ -12,8 +12,8 @@ class ProfilesController extends AppController{
 	/**
 	 * list of profile
 	 */
-	public function index() {
-		$this->layout = 'main';
+	public function index($role = null) {
+		$this->layout = $role;
 		$this->Paginator->settings = array(
 					'limit' => 8, 
 				);
@@ -22,9 +22,9 @@ class ProfilesController extends AppController{
 		$this->set(compact('data'));
 	}
 	
-	public function profile_register() {
+	public function profile_register($role = null) {
 		
-		$this->layout = 'main';
+		$this->layout = $role;
 		$errors = '';
 		
 		$data = array(
@@ -85,7 +85,12 @@ class ProfilesController extends AppController{
 	}
 	
 	public function profile_update($id = null) {
-		$this->layout = 'main';
+		$role = $this->Session->read('Auth.Rights.role');
+		if($role === 'staffs') {
+			$role = 'staff';
+		}
+			
+		$this->layout = $role;
 		$errors = '';
 		
 		if (!$id) {
@@ -177,8 +182,6 @@ class ProfilesController extends AppController{
 	 * @return string return json
 	 */
 	public function register($mode = true,	$data = array()) {
-		
-
 		
 		if ($mode) {
 			$this->autoRender = false;

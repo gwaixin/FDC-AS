@@ -91,8 +91,11 @@ class ContractlogsController extends AppController{
 	 * @param string $id
 	 */
 	public function update($id = null) {
-		
-		$this->layout = 'main';
+		$role = $this->Session->read('Auth.Rights.role');
+		if($role === 'staffs') {
+			$role = 'staff';
+		}
+		$this->layout = $role;
 		
 		$errors = '';
 		

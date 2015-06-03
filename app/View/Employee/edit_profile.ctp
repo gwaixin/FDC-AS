@@ -36,14 +36,13 @@ echo $this->Html->script('employee-profile');
 			<img src="<?php echo $this->webroot."$Profile[picture]"; ?>" id="img-profile">
 		</div>
 		<?php 			
-			echo $this->Form->file(' ',array(
-																			'name' => 'file-profile-picture',
-																			'class' => 'file',
-																			'id' => 'file-profile',
-																			'required' => false,
-																			'accept' => "image/*",'style' => 'display:none;'
-																		)
-																	);
+			echo $this->Form->file(' ',array('name' => 'file-profile-picture',
+																			 'class' => 'file',
+																			 'id' => 'file-profile',
+																			 'required' => false,
+																			 'accept' => "image/*",'style' => 'display:none;'
+																			)
+																		);
 			echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
 																								'type' => 'button',
 																								'id' => 'btn-browse-profile',
@@ -58,12 +57,11 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td> 
 				<?php
-					echo $this->Form->input('',array(
-																						'name' => 'Profile[first_name]',
-																						'value' => $Profile['first_name'],
-																						'placeholder' => 'Enter First Name',
-																						'label' => false,
-																						'div' => false
+					echo $this->Form->input('',array('name' => 'Profile[first_name]',
+																					 'value' => $Profile['first_name'],
+																					 'placeholder' => 'Enter First Name',
+																					 'label' => false,
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -74,14 +72,13 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 					<?php
-						echo $this->Form->input('',array(
-																						'name' => 'Profile[last_name]',
-																						'value' => $Profile['last_name'],
-																						'placeholder' => 'Enter Las Name',
-																						'label' => false,
-																						'div' => false
-																					)
-																				);
+						echo $this->Form->input('',array('name' => 'Profile[last_name]',
+																						 'value' => $Profile['last_name'],
+																						 'placeholder' => 'Enter Las Name',
+																						 'label' => false,
+																					 	'div' => false
+																						)
+																					);
 					?>
 			</td>
 		</tr>
@@ -90,12 +87,11 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 				<?php
-					echo $this->Form->input('',array(
-																						'name' => 'Profile[middle_name]',
-																						'value' => $Profile['middle_name'],
-																						'placeholder' => 'Enter Middle Name',
-																						'label' => false,
-																						'div' => false
+					echo $this->Form->input('',array('name' => 'Profile[middle_name]',
+																					 'value' => $Profile['middle_name'],
+																					 'placeholder' => 'Enter Middle Name',
+																					 'label' => false,
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -106,12 +102,11 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 				<?php
-					echo $this->Form->input('',array(
-																						'name' => 'Profile[nick_name]',
-																						'value' => $Profile['nick_name'],
-																						'placeholder' => 'Enter Nick Name',
-																						'label' => false,
-																						'div' => false
+					echo $this->Form->input('',array('name' => 'Profile[nick_name]',
+																					 'value' => $Profile['nick_name'],
+																					 'placeholder' => 'Enter Nick Name',
+																					 'label' => false,
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -128,12 +123,11 @@ echo $this->Html->script('employee-profile');
 				        <?php 
 				        		$birthdate = explode('-',$Profile['birthdate']);
 										$birthdate = $birthdate[1].'/'.substr($birthdate[2],0,2).'/'.$birthdate[0];
-										echo $this->Form->input('',array(
-																											'name' => 'Profile[birthdate]',
-																											'id' => 'birthdate',
-																											'value' => $birthdate,
-																											'label' => false,
-																											'div' => false
+										echo $this->Form->input('',array('name' => 'Profile[birthdate]',
+																										 'id' => 'birthdate',
+																										 'value' => $birthdate,
+																										 'label' => false,
+																										 'div' => false
 																										)
 																									);
 								?>
@@ -146,14 +140,13 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 					<?php 
-						echo $this->Form->input('',array(
-																						'name' => 'Profile[contact]',
-																						'value' => $Profile['contact'],
-																						'placeholder' => 'Enter Contact No',
-																						'label' => false,
-																						'div' => false
-																					)
-																				);
+						echo $this->Form->input('',array('name' => 'Profile[contact]',
+																						 'value' => $Profile['contact'],
+																						 'placeholder' => 'Enter Contact No',
+																						 'label' => false,
+																						 'div' => false
+																						)
+																					);
 					?>
 			</td>
 		</tr>
@@ -162,14 +155,13 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 				<?php 
-						echo $this->Form->input('',array(
-																						'name' => 'Profile[facebook]',
-																						'value' => $Profile['facebook'],
-																						'placeholder' => 'Enter Facebook',
-																						'label' => false,
-																						'div' => false
-																					)
-																				);
+						echo $this->Form->input('',array('name' => 'Profile[facebook]',
+																						 'value' => $Profile['facebook'],
+																						 'placeholder' => 'Enter Facebook',
+																						 'label' => false,
+																						 'div' => false
+																						)
+																					);
 					?>
 			</td>
 		</tr>
@@ -178,14 +170,13 @@ echo $this->Html->script('employee-profile');
 			<td> : </td>
 			<td>
 				<?php 
-						echo $this->Form->input('',array(
-																						'name' => 'Profile[email]',
-																						'value' => $Profile['email'],
-																						'placeholder' => 'Enter Email Address',
-																						'label' => false,
-																						'div' => false
-																					)
-																				);
+						echo $this->Form->input('',array('name' => 'Profile[email]',
+																						 'value' => $Profile['email'],
+																						 'placeholder' => 'Enter Email Address',
+																						 'label' => false,
+																						 'div' => false
+																						)
+																					);
 					?>
 			</td>
 		</tr>
@@ -227,13 +218,13 @@ echo $this->Html->script('employee-profile');
 			<td>
 				<?php
 					echo $this->Form->input('',array(
-																					'name' => 'Profile[contact_person]',
-																					'value' => $Profile['contact_person'],
-																					'placeholder' => 'Enter Contact Person ',
-																					'label' => false,
-																					'div' => false
-																				)
-																			);
+																			'name' => 'Profile[contact_person]',
+																			'value' => $Profile['contact_person'],
+																			'placeholder' => 'Enter Contact Person ',
+																			'label' => false,
+																			'div' => false
+																		)
+																	);
 				?>
 			</td>
 		</tr>
@@ -243,13 +234,13 @@ echo $this->Html->script('employee-profile');
 			<td>
 				<?php 
 						echo $this->Form->input('',array(
-																						'name' => 'Profile[contact_person_no]',
-																						'value' => $Profile['contact_person_no'],
-																						'placeholder' => 'Enter Contact Person No',
-																						'label' => false,
-																						'div' => false
-																					)
-																				);
+																			'name' => 'Profile[contact_person_no]',
+																			'value' => $Profile['contact_person_no'],
+																			'placeholder' => 'Enter Contact Person No',
+																			'label' => false,
+																			'div' => false
+																		)
+																	);
 					?>
 			</td>
 		</tr>
@@ -259,29 +250,29 @@ echo $this->Html->script('employee-profile');
 			<td> 
 					<?php
 						echo $this->Form->button('View <span class="icon-search"></span>',array(
-																								'type' => 'button',
-																								'class' => 'btn btn-success',
-																								'data-toggle' => 'modal',
-																								'data-target' => '#modalSignature',
-																								'id' => 'btn-show-signature'
-																							)
-																						);
+																							'type' => 'button',
+																							'class' => 'btn btn-success',
+																							'data-toggle' => 'modal',
+																							'data-target' => '#modalSignature',
+																							'id' => 'btn-show-signature'
+																						)
+																					);
 						echo " ";
 						echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
-																								'type' => 'button',
-																								'id' => 'btn-browse-signature',
-																								'class' => 'btn btn-success'
-																							)
-																						);
+																							'type' => 'button',
+																							'id' => 'btn-browse-signature',
+																							'class' => 'btn btn-success'
+																						)
+																					);
 
 						echo $this->Form->file(' ',array(
-																						'name' => 'file-signature-picture',
-																						'id' => 'file-signature',
-																						'class' => 'file',
-																						'required' => false,
-																						'accept' => "image/*",'style' => 'display:none;'
-																					)
-																				);
+																		'name' => 'file-signature-picture',
+																		'id' => 'file-signature',
+																		'class' => 'file',
+																		'required' => false,
+																		'accept' => "image/*",'style' => 'display:none;'
+																	)
+																);
 					?>
 
 			</td>

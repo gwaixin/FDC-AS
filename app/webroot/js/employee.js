@@ -7,9 +7,10 @@ var timer = null;
 var hot = null;
 var advancedData = [];
 var currentSelectedRow  = -1;
+var myRole = null;
+
 $(document).ready(function () {
 
-	var myRole = null;
 	var selected_row = null;
 	var selected_cell = null;
 	var dropdownIndex = 0;
@@ -559,11 +560,6 @@ $(document).ready(function () {
 		hot.addHook('afterRender',function() {
 			if (advancedData[0].id !== null) {
 				hot.validateCells(function(){});
-			}
-			for(var x in advancedData) {
-				if(advancedData[x].id === null) {
-					advancedData[x].picture = "<img src='"+baseUrl+'img/emptyprofile.jpg'+"'>";
-				}
 			}
 		})
 		hot.addHook('afterChange',function(data) {

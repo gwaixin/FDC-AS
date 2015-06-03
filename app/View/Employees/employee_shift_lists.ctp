@@ -6,8 +6,6 @@
 		<th> Description </th>
 		<th> First Time in </th>
 		<th> First Time out </th>
-		<th> Last Time in </th>
-		<th> Last Time out </th>
 		<th> Overtime start </th>
 	</tr>
 	<?php
@@ -25,8 +23,6 @@
 							<td>".$row['description']."</td>
 							<td>".$row['f_time_in']."</td>
 							<td>".$row['f_time_out']."</td>
-							<td>".$row['l_time_in']."</td>
-							<td>".$row['l_time_out']."</td>
 							<td>".$row['overtime_start']."</td>
 						</tr>";
 		}
