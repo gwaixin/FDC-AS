@@ -58,6 +58,10 @@
 		array(
         'pass' => array('id')
     ));
+	Router::connect('/admin/contracts/update/:id', array('controller' => 'contractlogs', 'action' => 'update'),
+		array(
+        'pass' => array('id')
+    ));
 	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
@@ -76,7 +80,11 @@
 	Router::connect('/staffs/profiles/update/:id', array('controller' => 'profiles', 'action' => 'profile_update'),
 		array(
         'pass' => array('id')
-    ),'staff');
+    ));
+	Router::connect('/staffs/contracts/update/:id', array('controller' => 'contractlogs', 'action' => 'update'),
+		array(
+        'pass' => array('id')
+    ));
 	Router::connect( '/staffs/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','staff'));
 	Router::connect( '/staffs/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','staff'));
 	Router::connect( '/staffs/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','staff'));

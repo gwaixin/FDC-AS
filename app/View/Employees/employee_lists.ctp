@@ -114,6 +114,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 												'data-toggle' => '',
 												'data-target' => '',
 												'id' => 'btn-view-contract-log',
+												'target' => 'blank',
 												'style' => 'font-size:10px;height:15px;'
 												)
 											);

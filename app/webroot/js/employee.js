@@ -7,9 +7,10 @@ var timer = null;
 var hot = null;
 var advancedData = [];
 var currentSelectedRow  = -1;
+var myRole = null;
+
 $(document).ready(function () {
 
-	var myRole = null;
 	var selected_row = null;
 	var selected_cell = null;
 	var dropdownIndex = 0;
