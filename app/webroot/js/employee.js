@@ -560,11 +560,6 @@ $(document).ready(function () {
 			if (advancedData[0].id !== null) {
 				hot.validateCells(function(){});
 			}
-			for(var x in advancedData) {
-				if(advancedData[x].id === null) {
-					advancedData[x].picture = "<img src='"+baseUrl+'img/emptyprofile.jpg'+"'>";
-				}
-			}
 		})
 		hot.addHook('afterChange',function(data) {
 			updateAll(data);
