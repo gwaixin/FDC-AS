@@ -84,7 +84,9 @@
 						<ul class="nav nav-list"> 
 							<li class="nav-header">Admin Menu</li>
 							<li><a href="<?php echo $this->webroot;?>admin/index"><i class="icon-home"></i> Dashboard</a></li>
+
 							<li class="divider"></li>
+							
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
 
