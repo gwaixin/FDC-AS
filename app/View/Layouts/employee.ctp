@@ -71,11 +71,14 @@
 				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
 							<li class="nav-header">Employee Menu</li>        
-						  <li><a href="/employees"><i class="icon-home"></i> Dashboard</a></li>
+						 	<li><a href="/employees"><i class="icon-home"></i> Dashboard</a></li>
+						  	<li class="divider"></li>
 							<li><a href="/employees/profile"><i class="icon-user"></i> My Profile</a></li>
 							<li><a href="/employees/contracts"><i class="icon-file"></i> My Contracts</a></li>
 							<li><a href="/employees/accounts"><i class="icon-file"></i> Accounts</a></li>
-						  <li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
+							<li><a href="/employees/attendance/2"><i class="icon-calendar"></i> Attendance</a></li>
+							<li class="divider"></li>
+						  	<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
 					</div>
 				</div>
