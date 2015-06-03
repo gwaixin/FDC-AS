@@ -11,8 +11,10 @@ class CompanysystemsController extends AppController{
 			'status' => '',
 	);
 	
-	public function index(){
-		
+	public function index($layout = ''){
+		if (!empty($layout)) {
+			$this->layout = $layout;
+		}
 		$action = '';
 		$action_delete = '';
 		$keyword = '';
