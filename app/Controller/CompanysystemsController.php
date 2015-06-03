@@ -96,13 +96,11 @@ class CompanysystemsController extends AppController{
 	}
 	
 	public function edit($id = null){
-		
+
 		$errors = '';
-		
 		$this->layout = 'admin';
 
 		$data = $this->Companysystem->findById($id);
-		
 		if(!$data){
 			$this->redirect('/');
 		}
