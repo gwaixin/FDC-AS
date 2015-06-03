@@ -79,8 +79,8 @@ class EmployeeshiftsController extends AppController {
 				if ($this->Employeeshift->save($eshift)) {
 					$eshift['f_time_in'] 	= !empty($eshift['f_time_in']) 	? date('g:i A', strtotime($eshift['f_time_in'])) 	: '';
 					$eshift['f_time_out'] 	= !empty($eshift['f_time_out']) ? date('g:i A', strtotime($eshift['f_time_out'])) 	: '';
-					$eshift['l_time_in'] 	= !empty($eshift['l_time_in']) 	? date('g:i A', strtotime($eshift['l_time_in'])) 	: '';
-					$eshift['l_time_out'] 	= !empty($eshift['l_time_out']) ? date('g:i A', strtotime($eshift['l_time_out'])) 	: '';
+					//$eshift['l_time_in'] 	= !empty($eshift['l_time_in']) 	? date('g:i A', strtotime($eshift['l_time_in'])) 	: '';
+					//$eshift['l_time_out'] 	= !empty($eshift['l_time_out']) ? date('g:i A', strtotime($eshift['l_time_out'])) 	: '';
 					$eshift['overtime_start'] = !empty($eshift['overtime_start']) ? date('g:i A', strtotime($eshift['overtime_start'])) : '';
 					$result = array('result' => 'success', 'changes' => $eshift);
 				} else {
@@ -107,15 +107,15 @@ class EmployeeshiftsController extends AppController {
 		$ftimeout 	= $ftimeoutData['hour'] . ':' . $ftimeoutData['min']  	. ' ' . $ftimeoutData['meridian']; //implode(':', $data['Employee_shift']['f_time_out']);
 		
 		$eshift = array(
-				'description' => $data['Employee_shift']['description'],
-				'f_time_in'	=> date('H:i:s', strtotime($ftimein)),
-				'f_time_out'	=> date('H:i:s', strtotime($ftimeout)),
+				'description' 	=> $data['Employee_shift']['description'],
+				'f_time_in'		=> date('H:i:s', strtotime($ftimein)),
+				'f_time_out'	=> date('H:i:s', strtotime($ftimeout))
 		);
 		if ($id) {
 			$eshift['id'] = $id;
 		}
 
-		if (!empty($data['Employee_shift']['l_time_in']) && !empty($data['Employee_shift']['l_time_out'])) {
+		/*if (!empty($data['Employee_shift']['l_time_in']) && !empty($data['Employee_shift']['l_time_out'])) {
 			$ltimeinData 	= $data['Employee_shift']['l_time_in'];
 			$ltimeOutData 	= $data['Employee_shift']['l_time_out'];
 			if ($ltimeinData['hour'] >= 0) {
@@ -127,8 +127,12 @@ class EmployeeshiftsController extends AppController {
 				$eshift['l_time_in']	= NULL;
 				$eshift['l_time_out']	= NULL;
 			}
-		}
+		}*/
 		
+		if (isset($data['Employee_shift']['break'])) {
+			$break = trim($data['Employee_shift']['break']);
+			$eshift['break'] = empty($break) ? NULL : $break;
+		}
 
 		if (!empty($data['Employee_shift']['overtime_start'])) {
 			$hr = $data['Employee_shift']['overtime_start']['hour'];
