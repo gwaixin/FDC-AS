@@ -66,6 +66,13 @@ $(document).ready(function () {
 		}
 	});
 
+	$("#btn-search").click(function() {
+		if($("#cbo-category").val() === 'employee-id' || $("#cbo-category").val() === 'name' ||
+			 $("#cbo-category").val() === 'nick-name' || $("#cbo-category").val().length === 0) {
+			searchValue = $("#txt-search").val();
+			getEmployees();
+		}
+	});
 
 
 	$(document).scroll(showContractButtons);
@@ -76,7 +83,7 @@ $(document).ready(function () {
 		if ($("#contract-selections").css('display') === 'block' && lastSelectedIndex >= 0) {
 			var row = hot.getSelectedRange().to.row;
 			var col = hot.getSelectedRange().to.col;
-			var elem = hot.getCell(row,col);
+			var elem = hot.getCell(row,col); 
 			var top = ($("#table-employees").offset().top + elem.offsetTop) - $('body').scrollTop();
 			var left = (($("#table-employees").offset().left + elem.offsetLeft) + $(".contract").width() -$("#contract-selections").width()) - $('#table-employees').scrollLeft();
 			$("#contract-selections").css({'top':top,'left':left,'display':'block'});
@@ -98,6 +105,15 @@ $(document).ready(function () {
 				$('.empID').val(advancedData[row].id);
 				$('.View-Contract').attr('data-id-contract',advancedData[row].id+':'+advancedData[row].contract_id);
 				$("#contract-selections").css({'top':top,'left':left,'display':'block'});
+				if(advancedData[row].contract === null) {
+					$(".btn-contact-edit").css('display','none');
+				} else {
+					if(advancedData[row].contract.length === 0) {
+						$(".btn-contact-edit").css('display','none');
+					} else {
+						$(".btn-contact-edit").css('display','');
+					}
+				}
 			}
 			if (target.className.match('shift')) {
 				$("#modalShift .modal-body").html("");
