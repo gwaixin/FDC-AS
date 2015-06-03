@@ -17,7 +17,6 @@
 		        </ul>
 		    </div>
 		    <div class='span9'>
-		    	<span class='pull-right'><i class='fa fa-calendar fa-3x'></i></span>
 		    	<div id='attendance-detail'>
 
 		    	</div>

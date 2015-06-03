@@ -38,6 +38,7 @@
 		echo $this->fetch('script');
 
 	?>
+	<script>var webroot = "<?php echo $this->webroot;?>";</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top nav-bar-mod">
@@ -71,13 +72,13 @@
 				    <div class="well" style=" padding: 8px 0;">
 						<ul class="nav nav-list"> 
 							<li class="nav-header">Employee Menu</li>        
-						  <li><a href="/employee"><i class="icon-home"></i> Dashboard</a></li>
-						  <li class="divider"></li>
-						  <li><a href="/employee/myprofile"><i class="icon-th-list"></i> My Information</a></li>
+							<li><a href="/employee"><i class="icon-home"></i> Dashboard</a></li>
+							<li class="divider"></li>
+							<li><a href="/employee/myprofile"><i class="icon-th-list"></i> My Information</a></li>
 							<li><a href="/employee/myprofile"><i class="icon-user"></i> My Profile</a></li>
 							<li><a href="/employee/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
 							<li><a href="/employee/myaccounts"><i class="icon-file"></i> Accounts</a></li>
-							<li><a href="/employees/attendance/<?php $this->session->read('Auth.UserProfile.employee_id') ?>"><i class="icon-calendar"></i> Attendance</a></li>
+							<li><a href="/employee/attendance/<?php echo $this->session->read('Auth.UserProfile.employee_id'); ?>"><i class="icon-calendar"></i> Attendance</a></li>
 							<li class="divider"></li>
 						  <li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>

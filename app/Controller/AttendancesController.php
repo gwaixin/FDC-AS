@@ -262,13 +262,13 @@ class AttendancesController extends AppController {
 				$this->Cookie->delete('autoOvertime');
 				echo 'fa-toggle-off';
 			}
-			
+
 		} 
 	}
 
 	public function attendanceHistory($layout) {
 		$this->layout = $layout;
-		$id = $this->params['url']['id'];
+		$id = $this->params['id'];
 		$getMonthly = true;
 		if (empty($id)) {
 			$this->redirect('/');
