@@ -28,6 +28,7 @@
 
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('twitter-bootstrap.min');
+		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
 		echo $this->Html->css('font-awesome.min.css');
 		

@@ -92,7 +92,7 @@ class ContractlogsController extends AppController{
 	 */
 	public function update($id = null) {
 		
-		$this->layout = 'main';
+		$this->layout = 'admin';
 		
 		$errors = '';
 		
@@ -192,7 +192,7 @@ class ContractlogsController extends AppController{
 		$this->loadModel('Employee');
 		$this->loadModel('position');
 		$this->loadModel('Positionlevel');
-		$this->layout = 'main';
+		$this->layout = 'admin';
 		
 		$keyword = '';
 		$action = '';

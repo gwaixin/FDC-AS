@@ -34,16 +34,11 @@
 .table-list-contract tbody tr:nth-child(odd) {
 	background: #FCFDCC;
 }
-.bg-padd{
-	padding: 10px;
-	margin:10px 0;
-	box-shadow: 2px 2px 5px #919191;
-	border-radius: 5px;
-}
 
 .bg-padd p{
-  margin: 0;
-  font-weight: 600;
+  margin: 3px 0;
+  font-size: 13px;
+  padding: 6px;
 }
 .paginate{
 	height:60px;
@@ -175,4 +170,10 @@
   width: 70px;
   margin: 0 auto;
   display: block;
+}
+.detail-title, .detail-content, .detail-footer{
+	  border-color: #333;
+}
+.detail-title h5, .detail-content h5, .detail-footer h5{
+	color:#333;
 }

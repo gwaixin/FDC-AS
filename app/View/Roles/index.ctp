@@ -44,6 +44,9 @@
               </thead>
               <tbody>
               <?php
+	              if(empty($data)){
+	              	echo '<tr><td colspan="4"><h5 class="alert alert-info">No Records found</h5></td></tr>';
+	              }
               	 $num = 1;
               	 foreach ($data as $row){
               ?>

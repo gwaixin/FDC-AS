@@ -119,7 +119,14 @@ $(function(){
 	
 	
 	$('.btn-Addcontract').on('click', function(e){
+		$('.bg-padd').html("");
 		$('.notice').hide();
+		$('#ProfileRegister').trigger("reset");
+	});
+	
+	
+	$('.add-cont a').on('click', function(e){
+		$('.bg-padd').html("");
 	});
 	
 	/*
@@ -173,13 +180,17 @@ $(function(){
 	      data: new FormData( this ),
 	      processData: false,
 	      contentType: false,
+	      beforeSend: function() {
+	    	  $('.layout-transparent').show();
+	      },
 	      success:function(data){
 				var res = JSON.parse(data);
+				$('.layout-transparent').hide();
 				$('.bg-padd').html("");
 				if(res.errors.success == 1){
 					for(var err in res.errors.ErrMessage){
 						$('.bg-padd').show();
-						$('.bg-padd').append('<p>'+res.errors.ErrMessage[err][0]+'</p>');
+						$('.bg-padd').append('<p class="alert alert-error">'+res.errors.ErrMessage[err][0]+'</p>');
 					}
 				}else{
 					for(var row in res){
@@ -298,7 +309,7 @@ $(function(){
 				if(res.success == 0){
 					for(var err in res.data){
 						$('.bg-padd').show();
-						$('.bg-padd').append('<p>'+res.data[err]+'</p>');
+						$('.bg-padd').append('<p class="alert alert-error">'+res.data[err]+'</p>');
 					}
 				}else{
 					$('.bg-padd').hide();

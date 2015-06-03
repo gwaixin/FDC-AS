@@ -63,6 +63,9 @@
               </thead>
               <tbody>
               <?php
+              	 if(empty($data)){
+              	 	echo '<tr><td colspan="6"><h5 class="alert alert-info">No Records found</h5></td></tr>';
+              	 }
               	 foreach ($data as $row){
               ?>
                 <tr class="role-id-<?php echo $row['Privilege']['id'];?>">
