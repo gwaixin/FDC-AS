@@ -31,9 +31,11 @@ class AppController extends Controller {
 	public function RestrictPage() {
 		$url = split('/',$this->here);
 		$url = $url[1];
-		if($url !== $this->Session->read('Auth.Rights.role') && $url !== 'users' &&
-			 $url !== 'main' && !$this->request->is('ajax')) {
-			$this->redirect('/'.$this->Session->read('Auth.Rights.role'));
+		if ($this->Session->read('Auth.UserProfile')) {
+			if($url !== $this->Session->read('Auth.Rights.role') && $url !== 'users' &&
+				 $url !== 'main' && !$this->request->is('ajax')) {
+				$this->redirect('/'.$this->Session->read('Auth.Rights.role'));
+			}
 		}
 	}
 	

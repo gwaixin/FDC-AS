@@ -71,6 +71,8 @@ class CompanysystemsController extends AppController{
 	public function add(){
 		
 		$errors = '';
+
+		$this->layout = 'admin';
 		
 		if($this->request->is('post')){
 
@@ -94,15 +96,15 @@ class CompanysystemsController extends AppController{
 	}
 	
 	public function edit($id = null){
-		
-		if(!$id){
+
+		$errors = '';
+		$this->layout = 'admin';
+
+		$data = $this->Companysystem->findById($id);
+		if(!$data){
 			$this->redirect('/');
 		}
-		
-		$errors = '';
-		
-		$data = $this->Companysystem->findById($id);
-		
+
 		$this->arrdata['name'] = $data['Companysystem']['name'];
 		$this->arrdata['address'] = $data['Companysystem']['address'];
 		$this->arrdata['description'] = $data['Companysystem']['description'];

@@ -72,6 +72,11 @@
 	Router::connect('/admin/roles/*', array('controller' => 'roles', 'action' => 'index', 'admin'));
 
 	Router::connect('/admin/company/', array('controller' => 'companysystems', 'action' => 'index', 'admin'));
+	Router::connect('/admin/company/add', array('controller' => 'companysystems', 'action' => 'add'));
+	Router::connect('/admin/company/edit/:id', array('controller' => 'companysystems', 'action' => 'edit'),
+		array(
+        'pass' => array('id')
+    ));
 
 	//STAFFFFFFFF
 	/**
