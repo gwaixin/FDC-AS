@@ -71,6 +71,9 @@
 	Router::connect('/admin/roles/search', array('controller' => 'roles', 'action' => 'search', 'admin'));
 	Router::connect('/admin/roles/*', array('controller' => 'roles', 'action' => 'index', 'admin'));
 
+	Router::connect('/admin/company/', array('controller' => 'companysystems', 'action' => 'index', 'admin'));
+
+	//STAFFFFFFFF
 	/**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
@@ -104,6 +107,10 @@
     array(
         'pass' => array('id')
     ));
+
+	//EMPLOYEE
+	Router::connect('/employee/attendance/:id', array('controller' => 'Attendances', 'action' => 'attendanceHistory', 'employee'), array('id'));
+   //
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

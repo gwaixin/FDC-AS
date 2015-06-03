@@ -48,7 +48,7 @@
 					</div>
 					<div class='control-group'>
 						<button id='btn-search' class='btn btn-inverse'>Filter Search</button>
-						<button id='btn-reset' class='btn'>Reset</button>
+						<input type='reset' class='btn' id='btn-reset' value='Reset'/>
 						<span class='alert alert-success'>
 							<b>Allowed format : </b> HHmm, MMDDHHmm, YYYYMMDDHHmm.. <small>ex: `201505281830`</small>
 						</span>

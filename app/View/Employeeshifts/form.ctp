@@ -49,13 +49,10 @@
 				);
 				
 				
-				$ltiDisable = empty($shift['Employeeshift']['l_time_in']);
-				$ltoDisable = empty($shift['Employeeshift']['l_time_out']);
-				$otDisable = empty($shift['Employeeshift']['overtime_start']);
-
-				$timeOptional = '<div class="centertext"> <span> <a href="javascript:;" class="settime"><i class="fa fa-edit"></i></a> edit</span> &nbsp;&nbsp;';
-				$timeOptional .= '<span> <a href="javascript:;" class="resetTime"><i class="fa fa-refresh"></i></a> reset</span></div>';
-				echo $this->Form->input('l_time_in', 
+				//$ltiDisable = empty($shift['Employeeshift']['l_time_in']);
+				//$ltoDisable = empty($shift['Employeeshift']['l_time_out']);
+				
+				/*echo $this->Form->input('l_time_in', 
 					array(
 						'id'			=> 	'l_time_in',
 						'type' 			=> 	'time', 
@@ -81,6 +78,24 @@
 						'after'			=>	" $timeOptional </div>",
 						'class'			=>	'span3'
 					) 
+				);*/
+
+				$otDisable = empty($shift['Employeeshift']['overtime_start']);
+				$breakDisable = empty($shift['Employeeshift']['break']);
+				$editOption = '<br/><span> <a href="javascript:;" class="settime"><i class="fa fa-edit"></i></a> edit</span> &nbsp;&nbsp;';
+				$resetOption = '<span> <a href="javascript:;" class="resetTime"><i class="fa fa-refresh"></i></a> reset</span>';
+
+				echo $this->Form->input('break', 
+					array(
+						'id'			=> 	'break',
+						'type' 			=> 	'text', 
+						'placeholder' 	=> 	'00:00:00', 
+						'label' 		=> 	'Break',
+						'between' 		=> 	'<div class="control-group" elem="input">',
+						'disabled'		=> 	$breakDisable,
+						'after'			=>	" <span class='alert alert-info'><i class='icon-exclamation-sign'></i> Format should be '00:00:00'</span> $editOption</div>",
+						'value'			=>	$shift['Employeeshift']['break']
+					) 
 				);
 				echo $this->Form->input('overtime_start', 
 					array(
@@ -89,12 +104,14 @@
 						'selected' 		=> 	$shift['Employeeshift']['overtime_start'],
 						'placeholder' 	=> 	'OVERTIME', 
 						'label' 		=> 	'OVERTIME STARTS',
-						'between' 		=> 	'<div class="control-group">',
+						'between' 		=> 	'<div class="control-group" elem="select">',
 						'disabled'		=> 	$otDisable,
-						'after'			=>	" $timeOptional </div>",
-						'class'			=>	'span3'
+						'after'			=>	" $editOption $resetOption</div>",
+						'class'			=>	'span3',
+						'value'			=> $shift['Employeeshift']['overtime_start']
+
 					) 
-			);
+				);
 			?>
 		</div>
 	</fieldset>

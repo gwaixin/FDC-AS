@@ -28,7 +28,7 @@
 								'type' 			=> 	'time',
 								'selected' 		=> 	'00:00:00',
 								'placeholder' 	=> 	'TIME', 
-								'label' 		=> 	'First Time-In',
+								'label' 		=> 	'Time-In',
 								'between' 		=> 	'<div class="control-group">',
 								'after'			=>	'</div>',
 								'required'		=> true
@@ -40,14 +40,26 @@
 								'type' 			=> 	'time',
 								'selected' 		=> 	'00:00:00',
 								'placeholder' 	=> 	'TIME', 
-								'label' 		=> 	'First Time-Out',
+								'label' 		=> 	'Time-Out',
 								'between' 		=> 	'<div class="control-group">',
 								'after'			=>	'</div>'
 							) 
 						);
 						
-						$timeOptional = '<span> <a href="javascript:;" class="settime" timeSet="deactivated"><i class="icon-edit"></i></span></a>';
-						echo $this->Form->input('l_time_in', 
+						$timeOptional = '<span> <a href="javascript:;" class="settime"><i class="icon-edit"></i></a></span>';
+						echo $this->Form->input('break', 
+							array(
+								'id'			=> 	'break',
+								'type' 			=> 	'text', 
+								'placeholder' 	=> 	'00:00:00', 
+								'label' 		=> 	'Break',
+								'between' 		=> 	'<div class="control-group" elem="input">',
+								'disabled'		=> 	true,
+								'after'			=>	" $timeOptional <span class='alert alert-info'><i class='icon-exclamation-sign'></i> Format should be '00:00 or 00:00:00'</span></div>",
+								'value'			=>	''
+							) 
+						);
+						/*echo $this->Form->input('l_time_in', 
 							array(
 								'id'			=> 	'l_time_in',
 								'type' 			=> 	'time', 
@@ -71,7 +83,7 @@
 								'disabled'		=> 	true,
 								'after'			=>	" $timeOptional </div>"
 							) 
-						);
+						);*/
 						echo $this->Form->input('overtime_start', 
 							array(
 								'id'			=> 	'overtime_start',
@@ -79,7 +91,7 @@
 								'selected' 		=> 	'00:00:00',
 								'placeholder' 	=> 	'OVERTIME', 
 								'label' 		=> 	'OVERTIME STARTS',
-								'between' 		=> 	'<div class="control-group">',
+								'between' 		=> 	'<div class="control-group" elem="select">',
 								'disabled'		=> 	true,
 								'after'			=>	" $timeOptional </div>"
 							) 

@@ -1,6 +1,5 @@
 var weburl = $('#url').val(); //base url
 var positionmode = 0; //position select box
-		
 $(function(){
 	
 	$('#dp3').datepicker({
@@ -149,6 +148,7 @@ $(function(){
 					$('#date-start').html(dateStart.getFullYear() + "-" + (dateStart.getMonth() + 1) + "-" + dateStart.getDate());
 					$('#date-end').html(dateEnd.getFullYear() + "-" + (dateEnd.getMonth() + 1) + "-" + dateEnd.getDate());
 					$('#document').html(res[row].Contractlog.document);
+					$('#link-doc').attr('href',weburl+'employees/view/'+res[row].Contractlog.id+'-'+res[row].Contractlog.employees_id);
 					$('#salary').html(res[row].Contractlog.salary);
 					$('#deminise').html(res[row].Contractlog.deminise);
 					$('#term').html(res[row].Contractlog.term);
@@ -229,6 +229,25 @@ $(function(){
 		
 	});
 	
+	$('.btnCompDelete').on('click',function(e){
+		
+		var dataID = $(this).data('role-id');
+		var posturl = weburl+'companysystems/delete';
+		if(confirm('Are you sure you want to delete this privilege?')){
+		
+			$.post(posturl,{dataID:dataID},function(data){
+				var res = JSON.parse(data);
+				if(res.success == 1){
+					$('.role-id-'+dataID).remove();
+				}else{
+					alert('Failed to delete');
+				}
+			});
+			
+		}
+		
+	});
+	
 	$('.btnRole').on('click',function(e){
 		
 		var dataID = $(this).data('role-id');
@@ -248,6 +267,13 @@ $(function(){
 		
 	});
 	
+	$('#cm-search').change(function(e){
+		if($(this).val() == 'deleted'){
+			$('#cm-search-by').show();
+		}else{
+			$('#cm-search-by').hide();
+		}
+	});
 	
 	$('#ProfileRegister').submit(function(e){
 		$('.bg-padd').html("");
@@ -255,7 +281,7 @@ $(function(){
 		$.ajax( {
 	      url: url,
 	      type: 'POST',
-	      data: new FormData( this ),
+	      data: new FormData(this),
 	      processData: false,
 	      contentType: false,
 	      beforeSend: function() {

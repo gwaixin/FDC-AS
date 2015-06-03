@@ -3,8 +3,6 @@
 		<div class="main-content">
 			<div class='span3'>
 				<h3>Attendance History</h3>
-				<hr/>
-			
 				<ul class="nav nav-list bs-docs-sidenav affix-top" id="attendance-menu">
 		          	<?php
 						$currentDate = '';
@@ -19,7 +17,6 @@
 		        </ul>
 		    </div>
 		    <div class='span9'>
-		    	<span class='pull-right'><i class='fa fa-calendar fa-3x'></i></span>
 		    	<div id='attendance-detail'>
 
 		    	</div>

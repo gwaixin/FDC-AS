@@ -37,6 +37,20 @@ class Contractlog extends AppModel{
 						'message' => 'Please provide valid date end'
 				)
 			),
+			'document' => array(
+					'rule1'=>array(
+							'rule' => array('extension',array('pdf')),
+							'required' => 'create',
+							'allowEmpty' => true,
+							'message' => 'Select valid image for pdf file',
+							'on' => 'create',
+							'last'=>true
+					),
+					'rule2' => array(
+							'rule' => array('fileSize', '<=', '1MB'),
+							'message' => 'pdf must be less than 1MB'
+					)
+			),
 			'salary' => array(
 				'rule1' => array(	
 					'rule' => 'notEmpty',
