@@ -10,7 +10,7 @@
 	     	 		if (!empty($errors)) {
 	     	 			echo '<div class="bg-padd bg-danger">';
 	     	 			foreach ($errors as $row){
-	     	 				echo '<p>'.$row[0].'</p>';
+	     	 				echo '<p class="alert alert-error">'.$row[0].'</p>';
 	     	 					
 	     	 			}
 	     	 			echo '</div>';

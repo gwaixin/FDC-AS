@@ -1,6 +1,6 @@
 <div class="container-fluid">
  	<div class="row-fluid">
-		<div class="sm-container main-content box-center">
+		<div class="main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
 		<h3>Role list:</h3>
 			<div id="search-Role-container" class="form-control">
@@ -44,6 +44,9 @@
               </thead>
               <tbody>
               <?php
+	              if(empty($data)){
+	              	echo '<tr><td colspan="4"><h5 class="alert alert-info">No Records found</h5></td></tr>';
+	              }
               	 $num = 1;
               	 foreach ($data as $row){
               ?>

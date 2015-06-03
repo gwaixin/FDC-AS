@@ -91,6 +91,7 @@ class ContractlogsController extends AppController{
 	 * @param string $id
 	 */
 	public function update($id = null) {
+		
 		$role = $this->Session->read('Auth.Rights.role');
 		if($role === 'staffs') {
 			$role = 'staff';
@@ -195,7 +196,7 @@ class ContractlogsController extends AppController{
 		$this->loadModel('Employee');
 		$this->loadModel('position');
 		$this->loadModel('Positionlevel');
-		$this->layout = 'main';
+		$this->layout = 'admin';
 		
 		$keyword = '';
 		$action = '';
@@ -388,6 +389,7 @@ class ContractlogsController extends AppController{
 		
 		$this->Employee->id = $id;
 		$data = array(
+				'salary' => $row['salary'],
 				'position_id' => $row['positions_id'],
 				'position_level_id' => $row['position_levels_id'],
 				'current_contract_id' => $row['contract_id'],

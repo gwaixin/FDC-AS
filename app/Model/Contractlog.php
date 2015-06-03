@@ -129,7 +129,7 @@ class Contractlog extends AppModel{
 	 */
 	public function dateValidation(){
 				
-		return date('Y-m-d',strtotime($this->data[$this->alias]['date_start'])) <= date('Y-m-d',strtotime($this->data[$this->alias]['date_end']));
+		return date('Y-m-d',strtotime($this->data[$this->alias]['date_start'])) < date('Y-m-d',strtotime($this->data[$this->alias]['date_end']));
 	
 	}
 	/*

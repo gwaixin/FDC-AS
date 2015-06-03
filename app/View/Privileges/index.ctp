@@ -1,6 +1,6 @@
 <div class="container-fluid">
  	<div class="row-fluid">
-		<div class="lg-container main-content box-center">
+		<div class="main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
 		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">
@@ -63,6 +63,9 @@
               </thead>
               <tbody>
               <?php
+              	 if(empty($data)){
+              	 	echo '<tr><td colspan="6"><h5 class="alert alert-info">No Records found</h5></td></tr>';
+              	 }
               	 foreach ($data as $row){
               ?>
                 <tr class="role-id-<?php echo $row['Privilege']['id'];?>">
