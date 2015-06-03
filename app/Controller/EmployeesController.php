@@ -31,55 +31,49 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$this->loadModel('Employee');
 			$joins = array(
-							        array(
-							            'table' => 'profiles',
-							            'conditions' => array(
-							                'Employee.profile_id = profiles.id'
-							            )
-							       	 	),
-							        array(
-													'table' => 'company_systems',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.company_systems_id = company_systems.id'
-													)
-												),
-											array(
-													'table' => 'positions',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.position_id = positions.id'
-													)
-												),
-											array(
-													'table' => 'position_levels',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.position_level_id = position_levels.id'
-													)
-												),
-											array(
-													'table' => 'roles',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.role = roles.id'
-													)
-												),
-											array(
-													'table' => 'contract_logs',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.current_contract_id = contract_logs.id'
-													)
-												),
-											array(
-													'table' => 'employee_shifts',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.employee_shifts_id = employee_shifts.id'
-													)
-												)
-											);
+        array(
+          'table' => 'profiles',
+          'conditions' => array(
+              'Employee.profile_id = profiles.id'
+          )
+     	 	),array(
+					'table' => 'company_systems',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.company_systems_id = company_systems.id'
+					)
+				),array(
+					'table' => 'positions',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.position_id = positions.id'
+					)
+				),array(
+					'table' => 'position_levels',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.position_level_id = position_levels.id'
+					)
+				),array(
+					'table' => 'roles',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.role = roles.id'
+					)
+				),array(
+					'table' => 'contract_logs',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.current_contract_id = contract_logs.id'
+					)
+				),array(
+					'table' => 'employee_shifts',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.employee_shifts_id = employee_shifts.id'
+					)
+				)
+			);
 			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 			switch($this->request->data['field']) {
 				case "name":

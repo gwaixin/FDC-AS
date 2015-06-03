@@ -57,6 +57,14 @@
 	                						 $this->Session->read('Auth.UserProfile.middle_name')." ".
 	                						 $this->Session->read('Auth.UserProfile.last_name'); 
 	                	?>
+
+	                	<b class="caret"></b></a>
+	                  <ul class="dropdown-menu">
+	                  <li><a href="/employee/myprofile"><i class="icon-user"></i> My Profile</a></li>
+										<li><a href="/employee/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
+										<li><a href="/employee/myaccounts"><i class="icon-briefcase"></i> My Accounts</a></li>
+	                      <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i>Logout</a></li>
+	                  </ul>
 	                	</a>
 	              </li>
 	          </ul>
@@ -73,10 +81,10 @@
 							<li class="nav-header">Employee Menu</li>        
 						  <li><a href="/employee"><i class="icon-home"></i> Dashboard</a></li>
 						  <li class="divider"></li>
-						  <li><a href="/employee/myprofile"><i class="icon-th-list"></i> My Information</a></li>
+						  <li><a href=""><i class="icon-th-list"></i> My Information</a></li>
 							<li><a href="/employee/myprofile"><i class="icon-user"></i> My Profile</a></li>
 							<li><a href="/employee/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
-							<li><a href="/employee/myaccounts"><i class="icon-file"></i> Accounts</a></li>
+							<li><a href="/employee/myaccounts"><i class="icon-briefcase"></i> My Accounts</a></li>
 							<li class="divider"></li>
 						  <li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
