@@ -25,14 +25,15 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 </div>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div id="employee-container">
+		<div id="employee-container" class="main-content">
 			<div id="search-container" class="form-control">
 			<h3> Employees </h3>
 				<?php 
 				echo $this->Form->select('field',
 																		    array(
-																		    	'employee_id' => 'Employee ID',
+																		    	'employee-id' => 'Employee ID',
 																		    	'name' => 'Name',
+																		    	'nick-name' => 'Nick Name',
 																		    	'position' => 'Position',
 																		    	'status' => 'Status'
 																		    ),

@@ -210,7 +210,12 @@ $(document).ready(function () {
 				$("#txt-search").css('display','');
 				$("#cbo-status").css('display','none');
 			break;
-			case "employee_id" :
+			case "employee-id" :
+				$(".cbo-position").css('display','none');
+				$("#txt-search").css('display','');
+				$("#cbo-status").css('display','none');
+			break;
+			case "nick-name" :
 				$(".cbo-position").css('display','none');
 				$("#txt-search").css('display','');
 				$("#cbo-status").css('display','none');

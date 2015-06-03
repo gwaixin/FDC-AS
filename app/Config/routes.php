@@ -28,6 +28,10 @@
 	
 	
 	//ADMIN
+	Router::connect( '/admin/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','admin'));
+	Router::connect( '/admin/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','admin'));
+	Router::connect( '/admin/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','admin'));
+	Router::connect( '/admin/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','admin'));
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
 	Router::connect('/admin/view_list_shift/*', array('controller' => 'Employeeshifts', 'action' => 'listShift', 'admin'));
@@ -48,6 +52,7 @@
         'pass' => array('id')
     ));
 
+
 	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
@@ -65,6 +70,10 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
+	Router::connect( '/staffs/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','staff'));
+	Router::connect( '/staffs/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','staff'));
+	Router::connect( '/staffs/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','staff'));
+	Router::connect( '/staffs/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','staff'));
 	Router::connect('/staffs/attendances', array('controller' => 'Attendances', 'action' => 'index', 'staff'));
 	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index'));
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));

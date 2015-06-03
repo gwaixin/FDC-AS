@@ -5,148 +5,6 @@ App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
 	
-
-	public function dashboard() {
-		$this->layout = 'employee';
-	}
-
-	public function view($id = null){
-		$this->layout = '';
-	
-		$pdf = '';
-		
-		if(!$id){
-			$this->redirect('/');
-		}
-		
-		$this->loadModel('Contractlog');
-		
-		list($contractID , $empID) = explode('-', $id);
-	
-		$condition = array("Contractlog.employees_id = {$empID} AND Contractlog.id = {$contractID} ");
-		
-		$options = array(
-				array(
-						'table' => 'employees',
-						'type' => 'LEFT',
-						'alias' => 'emp',
-						'conditions' => array('emp.id = Contractlog.employees_id')
-				),
-		);
-		
-		$pdf = $this->Contractlog->find('first',array(
-				'joins' => $options,
-				'conditions' => $condition,
-				'order' => 'Contractlog.id ASC',
-				'fields' => array(
-						'Contractlog.document',
-				)
-			)	
-		);
-		
-		$this->set('pdf', $pdf['Contractlog']['document']);
-	}
-	
-	public function index() {
-		$this->layout = 'employee';
-	}
-
-	public function profile($action = 'view') {
-		$this->layout = 'employee';
-		$this->loadModel('Profile');
-		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
-		$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
-		$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
-		$this->Set('action',$action);
-		$file = "profile";
-		$errors = array();
-		$success = false;
-		if ($action === 'edit') {
-			if ($this->request->is('post')) {
-				$this->Profile->mode = 1;
-				$this->Profile->id = $Profile['Profile']['id'];
-				$birthdate = explode('/',$this->request->data['Profile']['birthdate']);
-				$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
-				if (!empty($_FILES['file-profile-picture']['name'])) {
-					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
-				}
-
-				if (!empty($_FILES['file-signature-picture']['name'])) {
-					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture'];
-				}
-
-				$Profile = $this->Profile->findById($Profile['Profile']['id']);
-				if (!$this->Profile->save($this->request->data)) {
-					$this->request->data['picture'] = $Profile['Profile']['picture'];
-					$this->request->data['picture'] = $Profile['Profile']['signature'];
-					$Profile = $this->request->data;
-					$Profile['Profile']['picture'] = 'img/emptyprofile.jpg' ;
-					$errors = $this->Profile->validationErrors;
-				} else {
-					$this->redirect(array(
-															'controller' => 'employees', 
-															'action' => 'profile'
-															)
-														);
-				}
-			}
-			$file = "edit_profile";
-		}
-		$this->Set('errors',$errors);
-		$this->Set($Profile);
-		$this->render($file);
-	}
-
-	public function contracts() {
-		$this->loadModel('Contractlog');
-		$conditions = array('AND' => array(
-															array('\'' . date('Y-m-d h:i:s') .'\' >= date_start'),
-															array('\'' . date('Y-m-d h:i:s') .'\' <= date_end'),
-															array('Contractlog.id = (Select current_contract_id from employees where id = \''.$this->Session->read('Auth.UserProfile.employee_id').'\')'),
-															array('Contractlog.status' => 1)
-														)
-													);
-		$joins = array(
-								array(
-									'table' => 'positions',
-									'conditions' => array('Contractlog.positions_id = positions.id')
-								),
-								array(
-									'table' => 'position_levels',
-									'conditions' => array('Contractlog.position_levels_id = position_levels.id')
-								)
-							);
-
-		$current_contract = $this->Contractlog->find('all',array(
-																											'joins' => $joins,
-																											'conditions' => $conditions,
-																											'limit' => array(1),
-																											'fields' => array('description','date_start','date_end','Contractlog.salary',
-																																				'document','deminise','term','positions.description',
-																																				'position_levels.description')
-																											)
-																										);
-		$contracts = $this->Contractlog->find('all',array(
-																							'joins' => $joins,
-																							'conditions' => array(
-																									'employees_id' => $this->Session->read('Auth.UserProfile.employee_id')
-																								),
-																							'fields' => array('Contractlog.description','Contractlog.date_start','Contractlog.date_end',
-																																'Contractlog.salary','Contractlog.document','Contractlog.deminise','Contractlog.term',
-																																'Contractlog.status','positions.description','position_levels.description'),
-																							'order' => array('Contractlog.date_start ASC'))
-																						);
-		$this->Set('data',$contracts);
-		$this->Set('currentContract',$current_contract);
-		$this->layout = 'employee';
-	}
-
-	public function accounts() {
-		$this->layout = 'employee';
-		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.employee_id'));
-		$this->Set('Accounts', $accounts['Employee']);
-	}
-
 	public function employee_lists($layout = '') {
 		if (!empty($layout)) {
 			$this->layout = $layout;
@@ -227,7 +85,10 @@ class EmployeesController extends AppController {
 				case "name":
 					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 				break;
-				case "employee_id":
+				case "nick-name":
+					$conditions = array("profiles.nick_name LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
+				break;
+				case "employee-id":
 					$conditions = array('AND' => 
 																	array("employee_id LIKE '%" . addslashes($this->request->data['value']) . "%'"),
 																	array('Employee.status != 0')
