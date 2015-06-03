@@ -138,7 +138,8 @@ $(function(){
 		var dataid;
 		if(typeof advancedData !== 'undefined'){
 			dataid = advancedData[currentSelectedRow].id + ':' +advancedData[currentSelectedRow].contract_id;
-			$('.btn-contact-edit').attr('href',weburl+'contractlogs/update/'+advancedData[currentSelectedRow].contract_id);
+			var role = myRole;
+			$('.btn-contact-edit').attr('href',weburl+myRole+'/contracts/update/'+advancedData[currentSelectedRow].contract_id);
 		}else{
 			dataid = $(this).data('id-contract');
 		}

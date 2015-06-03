@@ -25,14 +25,15 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 </div>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div id="employee-container">
+		<div id="employee-container" class="main-content">
 			<div id="search-container" class="form-control">
 			<h3> Employees </h3>
 				<?php 
 				echo $this->Form->select('field',
 																		    array(
-																		    	'employee_id' => 'Employee ID',
+																		    	'employee-id' => 'Employee ID',
 																		    	'name' => 'Name',
+																		    	'nick-name' => 'Nick Name',
 																		    	'position' => 'Position',
 																		    	'status' => 'Status'
 																		    ),
@@ -44,8 +45,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																		    );
 				echo $this->Form->select('field',
 																		    array(
-																		    		2 => 'Inactive',
-																		    		1 => 'Active',
+																		    		2 => 'Active',
+																		    		1 => 'Inactive',
 																		    		0 => 'Deleted'
 																		    ),
 																		    array(
@@ -73,6 +74,12 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																			'class' => 'form-control',
 																			'div' => false,
 																			'label' => false
+																		)
+																	);
+				echo " ";
+				echo $this->Form->button('Search',array(
+																		'class' => 'btn btn-inverse',
+																		'id' => 'btn-search'
 																		)
 																	);
 				?>		
@@ -112,6 +119,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 												'data-toggle' => '',
 												'data-target' => '',
 												'id' => 'btn-view-contract-log',
+												'target' => 'blank',
 												'style' => 'font-size:10px;height:15px;'
 												)
 											);

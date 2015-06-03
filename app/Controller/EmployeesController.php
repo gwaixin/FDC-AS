@@ -5,148 +5,6 @@ App::uses('AppController', 'Controller');
 
 class EmployeesController extends AppController {
 	
-
-	public function dashboard() {
-		$this->layout = 'employee';
-	}
-
-	public function view($id = null){
-		$this->layout = '';
-	
-		$pdf = '';
-		
-		if(!$id){
-			$this->redirect('/');
-		}
-		
-		$this->loadModel('Contractlog');
-		
-		list($contractID , $empID) = explode('-', $id);
-	
-		$condition = array("Contractlog.employees_id = {$empID} AND Contractlog.id = {$contractID} ");
-		
-		$options = array(
-				array(
-						'table' => 'employees',
-						'type' => 'LEFT',
-						'alias' => 'emp',
-						'conditions' => array('emp.id = Contractlog.employees_id')
-				),
-		);
-		
-		$pdf = $this->Contractlog->find('first',array(
-				'joins' => $options,
-				'conditions' => $condition,
-				'order' => 'Contractlog.id ASC',
-				'fields' => array(
-						'Contractlog.document',
-				)
-			)	
-		);
-		
-		$this->set('pdf', $pdf['Contractlog']['document']);
-	}
-	
-	public function index() {
-		$this->layout = 'employee';
-	}
-
-	public function profile($action = 'view') {
-		$this->layout = 'employee';
-		$this->loadModel('Profile');
-		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
-		$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
-		$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
-		$this->Set('action',$action);
-		$file = "profile";
-		$errors = array();
-		$success = false;
-		if ($action === 'edit') {
-			if ($this->request->is('post')) {
-				$this->Profile->mode = 1;
-				$this->Profile->id = $Profile['Profile']['id'];
-				$birthdate = explode('/',$this->request->data['Profile']['birthdate']);
-				$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
-				if (!empty($_FILES['file-profile-picture']['name'])) {
-					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
-				}
-
-				if (!empty($_FILES['file-signature-picture']['name'])) {
-					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture'];
-				}
-
-				$Profile = $this->Profile->findById($Profile['Profile']['id']);
-				if (!$this->Profile->save($this->request->data)) {
-					$this->request->data['picture'] = $Profile['Profile']['picture'];
-					$this->request->data['picture'] = $Profile['Profile']['signature'];
-					$Profile = $this->request->data;
-					$Profile['Profile']['picture'] = 'img/emptyprofile.jpg' ;
-					$errors = $this->Profile->validationErrors;
-				} else {
-					$this->redirect(array(
-															'controller' => 'employees', 
-															'action' => 'profile'
-															)
-														);
-				}
-			}
-			$file = "edit_profile";
-		}
-		$this->Set('errors',$errors);
-		$this->Set($Profile);
-		$this->render($file);
-	}
-
-	public function contracts() {
-		$this->loadModel('Contractlog');
-		$conditions = array('AND' => array(
-															array('\'' . date('Y-m-d h:i:s') .'\' >= date_start'),
-															array('\'' . date('Y-m-d h:i:s') .'\' <= date_end'),
-															array('Contractlog.id = (Select current_contract_id from employees where id = \''.$this->Session->read('Auth.UserProfile.employee_id').'\')'),
-															array('Contractlog.status' => 1)
-														)
-													);
-		$joins = array(
-								array(
-									'table' => 'positions',
-									'conditions' => array('Contractlog.positions_id = positions.id')
-								),
-								array(
-									'table' => 'position_levels',
-									'conditions' => array('Contractlog.position_levels_id = position_levels.id')
-								)
-							);
-
-		$current_contract = $this->Contractlog->find('all',array(
-																											'joins' => $joins,
-																											'conditions' => $conditions,
-																											'limit' => array(1),
-																											'fields' => array('description','date_start','date_end','Contractlog.salary',
-																																				'document','deminise','term','positions.description',
-																																				'position_levels.description')
-																											)
-																										);
-		$contracts = $this->Contractlog->find('all',array(
-																							'joins' => $joins,
-																							'conditions' => array(
-																									'employees_id' => $this->Session->read('Auth.UserProfile.employee_id')
-																								),
-																							'fields' => array('Contractlog.description','Contractlog.date_start','Contractlog.date_end',
-																																'Contractlog.salary','Contractlog.document','Contractlog.deminise','Contractlog.term',
-																																'Contractlog.status','positions.description','position_levels.description'),
-																							'order' => array('Contractlog.date_start ASC'))
-																						);
-		$this->Set('data',$contracts);
-		$this->Set('currentContract',$current_contract);
-		$this->layout = 'employee';
-	}
-
-	public function accounts() {
-		$this->layout = 'employee';
-		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.employee_id'));
-		$this->Set('Accounts', $accounts['Employee']);
-	}
-
 	public function employee_lists($layout = '') {
 		if (!empty($layout)) {
 			$this->layout = $layout;
@@ -173,61 +31,58 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$this->loadModel('Employee');
 			$joins = array(
-							        array(
-							            'table' => 'profiles',
-							            'conditions' => array(
-							                'Employee.profile_id = profiles.id'
-							            )
-							       	 	),
-							        array(
-													'table' => 'company_systems',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.company_systems_id = company_systems.id'
-													)
-												),
-											array(
-													'table' => 'positions',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.position_id = positions.id'
-													)
-												),
-											array(
-													'table' => 'position_levels',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.position_level_id = position_levels.id'
-													)
-												),
-											array(
-													'table' => 'roles',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.role = roles.id'
-													)
-												),
-											array(
-													'table' => 'contract_logs',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.current_contract_id = contract_logs.id'
-													)
-												),
-											array(
-													'table' => 'employee_shifts',
-													'type' => 'LEFT',
-													'conditions' => array(
-															'Employee.employee_shifts_id = employee_shifts.id'
-													)
-												)
-											);
+        array(
+          'table' => 'profiles',
+          'conditions' => array(
+              'Employee.profile_id = profiles.id'
+          )
+     	 	),array(
+					'table' => 'company_systems',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.company_systems_id = company_systems.id'
+					)
+				),array(
+					'table' => 'positions',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.position_id = positions.id'
+					)
+				),array(
+					'table' => 'position_levels',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.position_level_id = position_levels.id'
+					)
+				),array(
+					'table' => 'roles',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.role = roles.id'
+					)
+				),array(
+					'table' => 'contract_logs',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.current_contract_id = contract_logs.id'
+					)
+				),array(
+					'table' => 'employee_shifts',
+					'type' => 'LEFT',
+					'conditions' => array(
+							'Employee.employee_shifts_id = employee_shifts.id'
+					)
+				)
+			);
 			$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 			switch($this->request->data['field']) {
 				case "name":
 					$conditions = array("concat(profiles.first_name, ' ',profiles.middle_name,' ',profiles.last_name) LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
 				break;
-				case "employee_id":
+				case "nick-name":
+					$conditions = array("profiles.nick_name LIKE '%" . addslashes($this->request->data['value']) . "%' and Employee.status != 0");
+				break;
+				case "employee-id":
 					$conditions = array('AND' => 
 																	array("employee_id LIKE '%" . addslashes($this->request->data['value']) . "%'"),
 																	array('Employee.status != 0')
@@ -266,65 +121,63 @@ class EmployeesController extends AppController {
 			if(!empty($employee['profiles']['picture'])) {
 				$picture = "<img src='".$this->webroot. "upload/".$employee['profiles']['picture']."'>";
 			}
-			$data = array(
-									'id' => $employee['Employee']['id'],
-									'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
-									'nick_name' => $employee['profiles']['nick_name'],
-									'picture' => $picture,
-									'employee_id' => $employee['Employee']['employee_id'],
-									'profile_id' => $employee['profiles']['id'],
-									'company_systems' => $employee['company_systems']['name'],
-									'username' => $employee['Employee']['username'],
-									'password' => $employee['Employee']['password'],
-									'tin' => $employee['Employee']['tin'],
-									'salary' => $employee['Employee']['salary'],
-									'drug_test' => $employee['Employee']['drug_test'],
-									'pagibig' => $employee['Employee']['pagibig'],
-									'philhealth' => $employee['Employee']['philhealth'],
-									'medical' => $employee['Employee']['medical'],
-									'sss' => $employee['Employee']['sss'],
-									'insurance_id' => $employee['Employee']['insurance_id'],
-									'position' => $employee['positions']['description'],
-									'position_level' => $employee['position_levels']['description'],
-									'shift' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['description'] : 'Select Shift',
-									'shift_id' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['id'] : '',
-									'contract' => $employee['contract_logs']['description'],
-									'contract_id' => $employee['contract_logs']['id'],
-									'role' => $employee['roles']['description'],
-									'status' => $status,
-									'btnAction' => '<span class="btn btn-default btn-view-employee"> VIEW <i class="icon-search"></i></span>'
+			$data = array('id' => $employee['Employee']['id'],
+									  'name' => $employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
+									  'nick_name' => $employee['profiles']['nick_name'],
+										'picture' => $picture,
+										'employee_id' => $employee['Employee']['employee_id'],
+										'profile_id' => $employee['profiles']['id'],
+										'company_systems' => $employee['company_systems']['name'],
+										'username' => $employee['Employee']['username'],
+										'password' => $employee['Employee']['password'],
+										'tin' => $employee['Employee']['tin'],
+										'salary' => $employee['Employee']['salary'],
+										'drug_test' => $employee['Employee']['drug_test'],
+										'pagibig' => $employee['Employee']['pagibig'],
+										'philhealth' => $employee['Employee']['philhealth'],
+										'medical' => $employee['Employee']['medical'],
+										'sss' => $employee['Employee']['sss'],
+										'insurance_id' => $employee['Employee']['insurance_id'],
+										'position' => $employee['positions']['description'],
+										'position_level' => $employee['position_levels']['description'],
+										'shift' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['description'] : 'Select Shift',
+										'shift_id' => ($employee['Employee']['employee_shifts_id']) ? $employee['employee_shifts']['id'] : '',
+										'contract' => $employee['contract_logs']['description'],
+										'contract_id' => $employee['contract_logs']['id'],
+										'role' => $employee['roles']['description'],
+										'status' => $status,
+										'btnAction' => '<span class="btn btn-default btn-view-employee"> VIEW <i class="icon-search"></i></span>'
 								);
 			array_push($employees_arr,$data);	
 			}
 			if (!$employees_arr) {
-				$data = array(
-										'id' => null,
-										'employee_id' => null,
-										'company_systems' => null,
-										'profile_id' => null,
-										'name' => null,
-										'nick_name' => null,
-										'picture' => '<img src="'.$this->webroot.'img/emptyprofile.jpeg">',
-										'username' => null,
-										'password' => null,
-										'tin' => null,
-										'salary' => null,
-										'drug_test' => null,
-										'pagibig' => null,
-										'philhealth' => null,
-										'medical' => null,
-										'sss' => null,
-										'insurance_id' => null,
-										'position' => null,
-										'position_level' => null,
-										'shift' => null,
-										'shift_id' => null,
-										'contract' => null,
-										'contract_id' => null,
-										'role' => null,
-										'status' => null,
-										'btnAction' => ''
-									);
+				$data = array('id' => null,
+											'employee_id' => null,
+											'company_systems' => null,
+											'profile_id' => null,
+											'name' => null,
+											'nick_name' => null,
+											'picture' => null,
+											'username' => null,
+											'password' => null,
+											'tin' => null,
+											'salary' => null,
+											'drug_test' => null,
+											'pagibig' => null,
+											'philhealth' => null,
+											'medical' => null,
+											'sss' => null,
+											'insurance_id' => null,
+											'position' => null,
+											'position_level' => null,
+											'shift' => null,
+											'shift_id' => null,
+											'contract' => null,
+											'contract_id' => null,
+											'role' => null,
+											'status' => null,
+											'btnAction' => ''
+										);
 				array_push($employees_arr,$data);
 			}
 			echo json_encode($employees_arr);
@@ -382,8 +235,6 @@ class EmployeesController extends AppController {
 			$info = $this->Employeeshift->findById($this->request->data['id']);
 			$f_time_in = ($info['Employeeshift']['f_time_in']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_in']) : '--:-- --';
 			$f_time_out = ($info['Employeeshift']['f_time_out']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_out']) : '--:-- --';
-			$l_time_in = ($info['Employeeshift']['l_time_in']) ? $this->convertTimeToMilitary($info['Employeeshift']['l_time_in']) : '--:-- --';
-			$l_time_out = ($info['Employeeshift']['l_time_out']) ? $this->convertTimeToMilitary($info['Employeeshift']['l_time_out']) : '--:-- --';
 			$overtime_start = ($info['Employeeshift']['overtime_start']) ? $this->convertTimeToMilitary($info['Employeeshift']['overtime_start']) : '--:-- --';
 			echo "<h2> Employee Shift Detail </h2>
 						<table id='table-shift-detail'>
@@ -402,17 +253,6 @@ class EmployeesController extends AppController {
 								<td> : </td>
 								<td>".$f_time_out."</td>
 							</tr>
-							<tr>
-								<td> Last Timein </td>
-								<td> : </td>
-								<td>".$l_time_in."</td>
-							</tr>
-							<tr>
-								<td> Last Timeout </td>
-								<td> : </td>
-								<td>".$l_time_out."</td>
-							</tr>
-							<tr>
 								<td> Overtime Start </td>
 								<td> : </td>
 								<td>".$overtime_start."</td>
@@ -429,8 +269,8 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$this->Employee->id = $this->request->data['id'];
 			$data = array(
-									'employee_shifts_id' => $this->request->data['shift_id']
-								);
+								'employee_shifts_id' => $this->request->data['shift_id']
+							);
 			$success = 0;
 			if ($this->Employee->save($data)) {
 				$success = 1;
@@ -448,8 +288,6 @@ class EmployeesController extends AppController {
 			$row = $list['Employeeshift'];
 			$row['f_time_in'] = (strlen($row['f_time_in']) > 0) ? $this->convertTimeToMilitary($row['f_time_in']) : '--:-- --';
 			$row['f_time_out'] = (strlen($row['f_time_out']) > 0) ? $this->convertTimeToMilitary($row['f_time_out']) : '--:-- --';
-			$row['l_time_in'] = (strlen($row['l_time_in']) > 0) ? $this->convertTimeToMilitary($row['l_time_in']) : '--:-- --';
-			$row['l_time_out'] = (strlen($row['l_time_out']) > 0) ? $this->convertTimeToMilitary($row['l_time_out']) : '--:-- --';
 			$row['overtime_start'] = (strlen($row['overtime_start']) > 0) ? $this->convertTimeToMilitary($row['overtime_start']) : '--:-- --';
 			$data['Employeeshift'] = $row;
 			array_push($shift_lists,$data);
@@ -492,12 +330,12 @@ class EmployeesController extends AppController {
 		$this->autoRender = false;
 		$this->loadModel('Company_system');
 		$companies = $this->Company_system->find('list',array(
-																										'conditions' => array(
-																												'status' => 1
-																										),
-																										'fields' => array('name')
-																										)
-																									);
+																							'conditions' => array(
+																									'status' => 1
+																							),
+																							'fields' => array('name')
+																							)
+																						);
 		$company_lists = array();
 		foreach($companies as $company) {
 			array_push($company_lists,$company);
@@ -525,10 +363,10 @@ class EmployeesController extends AppController {
 			           )
 							);
 		$positions = $this->Position->find('all',array(
-																								'joins' => $joins,
-																								'fields' => array('*')
-																							)
-																						);
+																						'joins' => $joins,
+																						'fields' => array('Position.description','position_levels.description')
+																					)
+																				);
 		$positionLevels = array();
 		foreach($positions as $position) {
 		$data = array(
@@ -757,15 +595,15 @@ class EmployeesController extends AppController {
 			$this->autoRender = false;
 			$employee = $this->request->data['employee'];
 			$data = array(
-									'tin' => $employee['tin'],
-									'drug_test' => $employee['drug_test'],
-									'medical' => $employee['medical'],
-									'pagibig' => $employee['pagibig'],
-									'sss' => $employee['sss'],
-									'philhealth' => $employee['philhealth'],
-									'insurance_id' => $employee['insurance_id'],
-									'username' => $employee['username']
-								);
+					'tin' => $employee['tin'],
+					'drug_test' => $employee['drug_test'],
+					'medical' => $employee['medical'],
+					'pagibig' => $employee['pagibig'],
+					'sss' => $employee['sss'],
+					'philhealth' => $employee['philhealth'],
+					'insurance_id' => $employee['insurance_id'],
+					'username' => $employee['username']
+				);
 			if ($employee['password'] !== 'company_default_password') {
 				$data['password'] = Security::hash($employee['password'],'sha1',true);
 			}

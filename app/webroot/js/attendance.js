@@ -9,6 +9,7 @@ var dateObj;
 var cMonthDay;
 var cYear;
 var currentDate;
+var currentRequest = "";
 $(document).ready(function () {
 	//$('#time-in').timepicker({defaultTime : false});
 	//For dates
@@ -125,26 +126,31 @@ $(document).ready(function () {
 	getAttendanceList(formAttendance);
 
 	function resetAttendance(formAttendance) {
-		$.post(webroot + 'attendances/resetAttendance', formAttendance, function(data) {
-			//console.log(data);
-			//$('#error').html(data);
-			getAttendanceList(formAttendance);
+		$.ajax({
+		    type: 'POST',
+		    url: webroot + 'attendances/resetAttendance',
+		    data: {ids: JSON.stringify(formAttendance)},
+		    success: function(data) {
+		    	getAttendanceList(currentRequest);
+		    }
 		});
 	}
 	
 	var formAttendance = new FormData();
-
+	
 
 	$('#btn-search').click(function(e) {
 		e.preventDefault();
-		getAttendanceList($('#attendance-form').serialize());
+		currentRequest = $('#attendance-form').serialize();
+		getAttendanceList(currentRequest);
 		changeDate();
 	});
 
 	$('#btn-search-monthly').click(function(e) {
 		e.preventDefault();
 		var keyword = $('#keyword').val();
-		getAttendanceList({keyword:keyword, monthly:currentDate});
+		currentRequest = {keyword:keyword, monthly:currentDate};
+		getAttendanceList(currentRequest);
 		changeDate();
 	});
 	
@@ -152,9 +158,23 @@ $(document).ready(function () {
 
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();
-		if(confirm('Are you sure to reset all the time in and out??')) {
-			resetAttendance($('#attendance-form').serialize());
-		}
+		/*if(currentRequest != "" && confirm('Are you sure to reset all the time in and out??')) {
+			var id = [];
+			var l;
+			for (l in list) {
+			  
+			  id[l] = list[l]['id'];
+			}
+			if (id != null) {
+				console.log(id);
+				resetAttendance(id);
+			}
+		}*/
+		$('#attendance-form')[0].reset();
+		currentRequest = $('#attendance-form').serialize();
+		getAttendanceList(currentRequest);
+		changeDate();
+		console.log('testing');
 	});
   
     $('#auto-overtime').click(function() {
@@ -201,6 +221,26 @@ function convertToDatetime(val) {
 	return fDate;
 }
 
+function convertToTime(val) {
+	var time = 0;
+	switch (val.length) {
+		case 4: 
+			time = pad(toTime(val));
+			
+			break;
+		case 5:
+		case 8:
+			time = val;
+			break;
+		default: alert('Available format for break HH:mm, HHmm');
+	}
+	if (time != 0 && !isDateTime('2015-11-24 ' + time)) {
+		time = 0;
+		alert('Invalid time format');
+	}
+	return time;
+}
+
 function toTime(val) {
 	var time = val.split('');
 	return time[0] + time[1] +':'+ time[2] + time[3];
@@ -225,7 +265,7 @@ function attendanceList() {
 	hot = new Handsontable($("#employee-attendance")[0], {
 	    data: list,
 	    height: 396,
-	    colHeaders: ["ID", "NAME", "TIMEIN <b>1st</b>", "TIMEOUT <b>1st</b>", "TIMEIN <b>2nd</b>", "TIMEOUT <b>2nd</b>", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
+	    colHeaders: ["ID", "NAME", "TIMEIN", "TIMEOUT", "BREAK", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
 	    rowHeaders: false,
 	    stretchH: 'all',
 	    columnSorting: true,
@@ -236,8 +276,9 @@ function attendanceList() {
 		  {data: 'name', type: 'text', readOnly: true},
 	      {data: 'f_time_in', type: 'text', className:'f_time_in time htCenter htMiddle'},
 	      {data: 'f_time_out', type: 'text', className:'f_time_out time htCenter htMiddle'},
-	      {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
-	      {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
+	      {data: 'break', type:'text', className:'break time htCenter htMiddle'},
+	     // {data: 'l_time_in', type: 'text', className:'l_time_in time htCenter htMiddle'},
+	     // {data: 'l_time_out', type: 'text', className:'l_time_out time htCenter htMidlle'},
 	      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
 	      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
 	      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'},
@@ -251,13 +292,14 @@ function attendanceList() {
 	    		colClass != 'otime' &&
 	    		change[0][2] != change[0][3]
 	    	) {
-	    		var time = convertToDatetime(change[0][3]);
+
+	    		var time = colClass == 'break' ? convertToTime(change[0][3]) : convertToDatetime(change[0][3]);
 	    		if (time === 0) {
 	    			console.log(change[0]);
 	    			change[0][3] = change[0][2];
 	    			return;
 	    		} else {
-	    			time = time.length == 19 ? time : time+':00';
+	    			time = ((colClass == 'break' && time.length == 8) || (time.length == 19)) ? time : time+':00';
 	    			list[rowIndex][colClass] = time;
 	    			change[0][3] = time;
 	    		}
@@ -323,7 +365,7 @@ function attendanceList() {
 							cellProperties.readOnly = true;
 						}
 						break;
-					case 4: 
+					/*case 4: 
 						if (list[row]['el_time_in']) {
 							cellProperties.readOnly = true;
 						}
@@ -332,7 +374,7 @@ function attendanceList() {
 						if (list[row]['el_time_out']) {
 							cellProperties.readOnly = true;
 						}
-						break; 
+						break; */
 						
 				}
 			}
@@ -348,9 +390,11 @@ function getAttendanceList(formAttendance) {
 		if (data == '') {
 			$('#error').html("No data found");
 			$('#error').fadeIn(200);
+			currentRequest = "";
 		} else if (typeof data['error'] !== 'undefined') {
 			$('#error').html(data['error']);
 			$('#error').fadeIn(200);
+			currentRequest = "";
 		} else {
 			console.log(data);
 			$('#error').html('');
@@ -396,19 +440,20 @@ function getTotalTime() {
 	
 	var ftimein 	= list[rowIndex]['f_time_in'];
 	var ftimeout 	= list[rowIndex]['f_time_out'];
-	var ltimein 	= list[rowIndex]['l_time_in'];
-	var ltimeout 	= list[rowIndex]['l_time_out'];
+	//var ltimein 	= list[rowIndex]['l_time_in'];
+	//var ltimeout 	= list[rowIndex]['l_time_out'];
 	var id 			= list[rowIndex]['id'];
 	if ( 
-		(isDateTime(ftimein) && isDateTime(ftimeout)) ||
-		(isDateTime(ltimein) && isDateTime(ltimeout))
+		colClass == 'break' ||
+		(isDateTime(ftimein) && isDateTime(ftimeout))// ||
+		//(isDateTime(ltimein) && isDateTime(ltimeout))
 	) {
 			
 		var formData = new FormData();
 		formData.append('f_time_in', ftimein);
 		formData.append('f_time_out', ftimeout);
-		formData.append('l_time_in', ltimein);
-		formData.append('l_time_out', ltimeout);
+		//formData.append('l_time_in', ltimein);
+		//formData.append('l_time_out', ltimeout);
 		formData.append('id', id);
 		//console.log(ftimein + ":" + ftimeout + ":" + ltimein + ":" + ltimeout);
 		$.ajax({
@@ -479,7 +524,8 @@ $(document).on('click', '.days', function() {
    var day = pad($(this).html());
    //alert(yearMonth+day);
    var yearMonth = $('#yearmonth').val();
-   getAttendanceList({date:(yearMonth+day)});
+   currentRequest = {date:(yearMonth+day)};
+   getAttendanceList(currentRequest);
 });
 
 $(document).on('click', '.calendar-nav', function() {

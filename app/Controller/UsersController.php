@@ -83,7 +83,9 @@ class UsersController extends AppController {
 		$role = $this->Role->findById($this->Session->read('Auth.UserProfile.role'));
 		if ($role) {
 			$roleDescription = strtolower($role['Role']['description']);
-			if (strtolower($roleDescription !== 'admin')) {
+			if (strtolower($roleDescription !== 'staff')) {
+				$roleDescription = $roleDescription;
+			} else {
 				$roleDescription = $roleDescription.'s';
 			}
 			$rights = $this->Privilege->find('all',array(
@@ -109,7 +111,7 @@ class UsersController extends AppController {
 		switch($role) {
 			case 1: $redir = "/admin"; break;//return //$this->redirect('/admin'); break;
 			case 2: $redir = "/staffs";break;
-			case 3: $redir = "/employees";break;
+			case 3: $redir = "/employee";break;
 			case 4: break;
 			default: $redir = "/main"; break;
 		}

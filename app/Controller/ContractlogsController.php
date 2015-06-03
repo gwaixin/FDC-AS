@@ -92,7 +92,11 @@ class ContractlogsController extends AppController{
 	 */
 	public function update($id = null) {
 		
-		$this->layout = 'admin';
+		$role = $this->Session->read('Auth.Rights.role');
+		if($role === 'staffs') {
+			$role = 'staff';
+		}
+		$this->layout = $role;
 		
 		$errors = '';
 		

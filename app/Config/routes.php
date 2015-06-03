@@ -28,6 +28,10 @@
 	
 	
 	//ADMIN
+	Router::connect( '/admin/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','admin'));
+	Router::connect( '/admin/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','admin'));
+	Router::connect( '/admin/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','admin'));
+	Router::connect( '/admin/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','admin'));
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
 	Router::connect('/admin/view_list_shift/*', array('controller' => 'Employeeshifts', 'action' => 'listShift', 'admin'));
@@ -42,12 +46,22 @@
         'pass' => array('id')
     ));
 	Router::connect(
-    '/admin/employees/contracts/logs/:id', // E.g. /blog/3-CakePHP_Rocks
+    '/admin/employees/contracts/logs/:id', 
     array('controller' => 'contractlogs', 'action' => 'employee',''),
     array(
         'pass' => array('id')
     ));
 
+	Router::connect('/admin/profiles', array('controller' => 'profiles', 'action' => 'index','admin'));
+	Router::connect('/admin/profiles/add', array('controller' => 'profiles', 'action' => 'profile_register','admin'));
+	Router::connect('/admin/profiles/update/:id', array('controller' => 'profiles', 'action' => 'profile_update'),
+		array(
+        'pass' => array('id')
+    ));
+	Router::connect('/admin/contracts/update/:id', array('controller' => 'contractlogs', 'action' => 'update'),
+		array(
+        'pass' => array('id')
+    ));
 	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
@@ -57,11 +71,27 @@
 	Router::connect('/admin/roles/search', array('controller' => 'roles', 'action' => 'search', 'admin'));
 	Router::connect('/admin/roles/*', array('controller' => 'roles', 'action' => 'index', 'admin'));
 
+	Router::connect('/admin/company/', array('controller' => 'companysystems', 'action' => 'index', 'admin'));
+
+	//STAFFFFFFFF
 	/**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-	
+	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index','staff'));
+	Router::connect('/staffs/profiles/add', array('controller' => 'profiles', 'action' => 'profile_register','staff'));
+	Router::connect('/staffs/profiles/update/:id', array('controller' => 'profiles', 'action' => 'profile_update'),
+		array(
+        'pass' => array('id')
+    ));
+	Router::connect('/staffs/contracts/update/:id', array('controller' => 'contractlogs', 'action' => 'update'),
+		array(
+        'pass' => array('id')
+    ));
+	Router::connect( '/staffs/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','staff'));
+	Router::connect( '/staffs/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','staff'));
+	Router::connect( '/staffs/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','staff'));
+	Router::connect( '/staffs/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','staff'));
 	Router::connect('/staffs/attendances', array('controller' => 'Attendances', 'action' => 'index', 'staff'));
 	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index'));
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));
@@ -77,6 +107,10 @@
     array(
         'pass' => array('id')
     ));
+
+	//EMPLOYEE
+	Router::connect('/employee/attendance/:id', array('controller' => 'Attendances', 'action' => 'attendanceHistory', 'employee'), array('id'));
+   //
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

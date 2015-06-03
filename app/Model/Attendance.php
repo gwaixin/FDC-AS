@@ -50,15 +50,17 @@ class Attendance extends AppModel {
 			if (!$hasAttendance) {
 				$fTimein = $e['employee_shifts']['f_time_in'];
 				$fTimeout = $e['employee_shifts']['f_time_out'];
-				$lTimein = $e['employee_shifts']['l_time_in'];
-				$lTimeout = $e['employee_shifts']['l_time_out'];
+				$break	 = $e['employee_shifts']['break'];
+				//$lTimein = $e['employee_shifts']['l_time_in'];
+				//$lTimeout = $e['employee_shifts']['l_time_out'];
 
-				$totalTime = $this->getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout);
+				$totalTime = $this->getTotalTime($fTimein, $fTimeout);
 				$data = array(
 						'employees_id' 	=> $e['Employee']['id'],
 						'satus'			=> 0,
 						'date'			=> $date,
-						'total_time'	=> $totalTime
+						'total_time'	=> $totalTime,
+						'break'			=> $break
 				);
 				array_push($attendance, $data);
 			}
@@ -88,25 +90,16 @@ class Attendance extends AppModel {
  			return true;
  		}
 	}
-	public function updateTime($data, $eData) {
+	public function calcRenderTime($data, $eData) {
 		//$eData = $this->getEmployeeDetail($data['id']);
 		
-		$col = array('f_time_in', 'f_time_out', 'l_time_in', 'l_time_out');
+		$col = array('f_time_in', 'f_time_out'/*, 'l_time_in', 'l_time_out'*/);
 		$attendance = array();
 		foreach($col as $c) {
 			$date = date('Y-m-d', strtotime($data[$c]));
 			$eEmp = $date . ' ' . $eData['es'][$c];
 
-			switch ($c) {
-				case 'f_time_out':
-				case 'l_time_out':
-					$con = strtotime($data[$c]) > strtotime($eEmp);
-					break;
-				case 'f_time_in':
-				case 'l_time_in':
-					$con = strtotime($data[$c]) < strtotime($eEmp);
-					break;
-			}
+			$con = $c == 'f_time_in' ? strtotime($data[$c]) < strtotime($eEmp) : strtotime($data[$c]) > strtotime($eEmp);
 
 			if ($this->valDateTimeFormat($data[$c])) {
 				$attendance[] = ($con) ? $eEmp : $data[$c];
@@ -116,12 +109,15 @@ class Attendance extends AppModel {
 		}
 		//return $attendance[0] . $attendance[1] . $attendance[2] . $attendance[3];
 		$firstLog 	= $this->totalDifference($attendance[0], $attendance[1]);
-		$lastLog 	= $this->totalDifference($attendance[2], $attendance[3]);
+		//$lastLog 	= $this->totalDifference($attendance[2], $attendance[3]);
 		
 		//return $attendance[1];
 		
-		$totalTime 	= $this->sumTime($firstLog['time'], $lastLog['time']);
-		
+		//$totalTime 	= $firstLog['time'];// $this->sumTime($firstLog['time'], $lastLog['time']);
+		$break = $eData['Attendance']['break'];
+		//return $firstLog['time'] . ' === ' . $break;
+		$totalTime = $this->diffTime($firstLog['time'], $break);//diffTime($firstLog['time'], $break);
+
 		return $totalTime;
 	}
 	
@@ -135,14 +131,14 @@ class Attendance extends AppModel {
 		$eTimeOut = strtotime(date('Y-m-d', strtotime($d['f_time_out'])) . ' ' . $data['es']['f_time_out']);
 		$cTimeOut = strtotime($d['f_time_out']);
 		
-		$eLTimeIn = strtotime(date('Y-m-d', strtotime($d['l_time_in'])) . ' ' . $data['es']['l_time_in']);
+		/*$eLTimeIn = strtotime(date('Y-m-d', strtotime($d['l_time_in'])) . ' ' . $data['es']['l_time_in']);
 		$cLTimeIn = strtotime($d['l_time_in']);
 
 		$eLTimeOut = strtotime(date('Y-m-d', strtotime($d['l_time_out'])) . ' ' . $data['es']['l_time_out']);
-		$cLTimeOut = strtotime($d['l_time_out']);
+		$cLTimeOut = strtotime($d['l_time_out']);*/
 		
-		$elastOut = $this->verifyTimeFormat($eLTimeOut) ? $eLTimeOut : $eTimeOut;
-		$cLastOut = $this->verifyTimeFormat($cLTimeOut) ? $cLTimeOut : $cTimeOut;
+		$elastOut = /*$this->verifyTimeFormat($eLTimeOut) ? $eLTimeOut :*/$eTimeOut;
+		$cLastOut = /*$this->verifyTimeFormat($cLTimeOut) ? $cLTimeOut :*/$cTimeOut;
 		
 		if ($cLastOut < $elastOut) {
 			$stat = 4;
@@ -159,7 +155,7 @@ class Attendance extends AppModel {
 	public function getOT($id, $data) {
 		$ot = '00:00:00';
 		
-		$lastOutTime = $this->verifyTimeFormat($data['es']['l_time_out']) ? 'l_time_out': 'f_time_out';
+		$lastOutTime = /*$this->verifyTimeFormat($data['es']['l_time_out']) ? 'l_time_out':*/ 'f_time_out';
 		$date = $data['Attendance']['date'];
 		if ($this->verifyTimeFormat($data['es']['overtime_start'])) {
 			$startOT = $date . ' ' . $data['es']['overtime_start'];
@@ -197,14 +193,27 @@ class Attendance extends AppModel {
 			return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds); // Thanks to Patrick
 		}
 	}
+	public function diffTime($time1, $time2) {
+		if (!empty($time1) || !empty($time2)) {
+			
+			$seconds = strtotime($time1) - strtotime($time2);
+
+			$hours = floor($seconds/3600);
+			$seconds -= $hours*3600;
+			$minutes  = floor($seconds/60);
+			$seconds -= $minutes*60;
+			// return "{$hours}:{$minutes}:{$seconds}";
+			return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds); // Thanks to Patrick
+		}
+	}
 	
 	//private
-	private function getTotalTime($fTimein, $fTimeout, $lTimein, $lTimeout) {
+	private function getTotalTime($fTimein, $fTimeout, $lTimein = "", $lTimeout = "") {
 		$first 	= $this->totalDifference($fTimein, $fTimeout);
-		$last 	= $this->totalDifference($lTimein, $lTimeout);
-		if ($this->verifyTimeFormat($last['time'])) {
+		//$last 	= $this->totalDifference($lTimein, $lTimeout);
+		/*if ($this->verifyTimeFormat($last['time'])) {
 			$total = $this->sumTime($last['time'], $first['time']); //$this->totalDifference($first["time"], $last["time"]);
-		} else if($this->verifyTimeFormat($first['time'])) {
+		} else */if ($this->verifyTimeFormat($first['time'])) {
 			$total = $first["time"];
 		} else {
 			$total = $fTimein . '@' . $fTimeout;
@@ -283,15 +292,16 @@ class Attendance extends AppModel {
 				'fields' => array(
 						'es.f_time_in',
 						'es.f_time_out',
-						'es.l_time_in',
-						'es.l_time_out',
+						//'es.l_time_in',
+						//'es.l_time_out',
 						'es.overtime_start',
 						'Attendance.status',
 						'Attendance.total_time',
 						'Attendance.render_time',
 						'Attendance.f_time_out',
-						'Attendance.l_time_out',
-						'Attendance.date'
+						//'Attendance.l_time_out',
+						'Attendance.date',
+						'Attendance.break'
 				),
 				'joins' => $join,
 				'conditions' => array('Attendance.id' => $id)

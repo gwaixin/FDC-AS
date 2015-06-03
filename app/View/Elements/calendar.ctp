@@ -44,7 +44,7 @@
 ?>    
 </table>
 
-<input type='hidden' id='yearmonth' value="<?php echo date('Y/m/', strtotime($currentDate)); ?>'"/>
+<input type='hidden' id='yearmonth' value="<?php echo date('Y/m/', strtotime($currentDate)); ?>"/>
 
 <?php $d->modify('+1 month'); ?>
 <span class='calendar-nav pull-right' date="<?php echo $d->format('Y-m-d'); ?>">

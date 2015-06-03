@@ -55,13 +55,16 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.settime', function() {
-	$(this).parent().parent().siblings('select').prop('disabled', function (_, val) { return ! val; });
+	//$(this).parent().parent().siblings('select').prop('disabled', function (_, val) { return ! val; });
+	var parent = $(this).parentsUntil('.control-group').parent();
+	var input = parent.attr('elem');
+	parent.find(input).prop('disabled', function (_, val) { return ! val; });
 });
 
 $(document).on('click', '.resetTime', function() {
 	if (confirm("Are you sure to reset this time?")) {
 		//$(this).parentsUntil('.input').fadeOut(100);
 		//$(this).parent('span').siblings('select').val(0);
-		$(this).parent().parent().siblings('select').prepend('<option selected value="-1">------</option>');
+		$(this).parent().siblings('select').prepend('<option selected value="-1">------</option>');
 	}
 });
