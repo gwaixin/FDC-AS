@@ -9,6 +9,7 @@ var dateObj;
 var cMonthDay;
 var cYear;
 var currentDate;
+var currentRequest = "";
 $(document).ready(function () {
 	//$('#time-in').timepicker({defaultTime : false});
 	//For dates
@@ -136,7 +137,7 @@ $(document).ready(function () {
 	}
 	
 	var formAttendance = new FormData();
-	var currentRequest;
+	
 
 	$('#btn-search').click(function(e) {
 		e.preventDefault();
@@ -157,7 +158,7 @@ $(document).ready(function () {
 
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();
-		if(confirm('Are you sure to reset all the time in and out??')) {
+		if(currentRequest != "" && confirm('Are you sure to reset all the time in and out??')) {
 			var id = [];
 			var l;
 			for (l in list) {
@@ -362,9 +363,11 @@ function getAttendanceList(formAttendance) {
 		if (data == '') {
 			$('#error').html("No data found");
 			$('#error').fadeIn(200);
+			currentRequest = "";
 		} else if (typeof data['error'] !== 'undefined') {
 			$('#error').html(data['error']);
 			$('#error').fadeIn(200);
+			currentRequest = "";
 		} else {
 			console.log(data);
 			$('#error').html('');
@@ -493,7 +496,8 @@ $(document).on('click', '.days', function() {
    var day = pad($(this).html());
    //alert(yearMonth+day);
    var yearMonth = $('#yearmonth').val();
-   getAttendanceList({date:(yearMonth+day)});
+   currentRequest = {date:(yearMonth+day)};
+   getAttendanceList(currentRequest);
 });
 
 $(document).on('click', '.calendar-nav', function() {
