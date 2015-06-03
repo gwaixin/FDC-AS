@@ -13,7 +13,7 @@
 	<tbody>
 <?php
 	foreach($history as $key => $val) {
-		$dayCount = date('N', strtotime($val['Attendance']['date']));
+		$dayCount = date('d', strtotime($val['Attendance']['date']));
 		$month 	= date('M', strtotime($val['Attendance']['date']));
 		$day 	= date('D', strtotime($val['Attendance']['date']));
 ?>
