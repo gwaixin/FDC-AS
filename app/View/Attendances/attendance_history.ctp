@@ -3,8 +3,6 @@
 		<div class="main-content">
 			<div class='span3'>
 				<h3>Attendance History</h3>
-				<hr/>
-			
 				<ul class="nav nav-list bs-docs-sidenav affix-top" id="attendance-menu">
 		          	<?php
 						$currentDate = '';
