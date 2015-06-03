@@ -123,7 +123,7 @@
 			<td colspan=2> </td>
 			<td>
 					<?php
-						echo $this->Html->link('Edit',"/employees/profile/edit",array(
+						echo $this->Html->link('Edit',$this->webroot.$this->Session->read('Auth.Rights.role')."/myprofile/edit",array(
 																								'class' => 'btn btn-primary'
 																							)
 																						);

@@ -25,36 +25,16 @@ class AppController extends Controller {
 		parent::beforeFilter();
 		$this->loadModel('Role');
 		$this->loadModel('Privilege');
-		if(((!$this->request->is('ajax') && 
-				strtolower($this->params['controller']) !== 'employees' && 
-				strtolower($this->params['controller']) !== 'main') || 
-				strtolower($this->params['action']) === 'employee_lists') &&
-				$this->Session->read('Auth.Rights.Privileges')) {
-			$this->RestrictPage();
-		}
+		$this->RestrictPage();
 	}
 
 	public function RestrictPage() {
-		if (strtolower($this->params['controller']) !== 'users' && 
-				!(strtolower($this->Session->read('Auth.Rights.role')) === strtolower($this->params['controller']) &&
-				strtolower($this->params['action']) === 'index')) {
-			if (!$this->isAccessible() && $this->Session->read('Auth.Rights.role') !== 'admin') {
-				$mainPage = $this->webroot.$this->Session->read('Auth.Rights.role');
-				$this->redirect(array('controller' => $mainPage));
-			}
+		$url = split('/',$this->here);
+		$url = $url[1];
+		if($url !== $this->Session->read('Auth.Rights.role') && $url !== 'users' &&
+			!$this->request->is('ajax')) {
+			$this->redirect('/'.$this->Session->read('Auth.Rights.role'));
 		}
-	}
-
-	public function isAccessible() {
-		$flag = false;
-		foreach($this->Session->read('Auth.Rights.Privileges') as $right) {
-			if (strtolower($right['Privilege']['controller']) === strtolower($this->params['controller']) &&
-				strtolower($right['Privilege']['action']) === strtolower($this->params['action'])) {
-				$flag = true;
-				break;
-			}
-		}
-		return $flag;
 	}
 	
 }

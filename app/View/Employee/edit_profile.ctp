@@ -296,10 +296,7 @@ echo $this->Html->script('employee-profile');
 																								)
 																							);
 							echo " ";
-							echo $this->Html->link('Cancel',array(
-																								'controller' => 'employees',
-																								'action' => 'profile'
-																							),array(
+							echo $this->Html->link('Cancel','../',array(
 																									'class' => 'btn btn-primary'
 																								)
 																							);
