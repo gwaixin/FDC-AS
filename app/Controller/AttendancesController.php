@@ -170,22 +170,27 @@ class AttendancesController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
 			$data = $this->request->data;
-			$eAttendance = $this->getEmployeeAttendance($data);
-			$updateData =array();
-			foreach($eAttendance as $ea) {
-				array_push($updateData, array('Attendance.id' => $ea['attendances']['id']));
+			$eAttendance = json_decode($data['ids']); //$this->getEmployeeAttendance($data);
+			$updateData = array();
+			if (!empty($eAttendance)) {
+					foreach($eAttendance as $ea) {
+					array_push($updateData, array('Attendance.id' => $ea));
+				}
+				$resetData = array(
+						'Attendance.l_time_in' 	=> NULL,
+						'Attendance.l_time_out'	=> NULL,
+						'Attendance.f_time_in'	=> NULL,
+						'Attendance.f_time_out'	=> NULL,
+						'Attendance.over_time'	=> NULL,
+						'Attendance.render_time' => NULL,
+						'Attendance.status'		=> 0	
+				);
+				$this->Attendance->updateAll($resetData, array('OR'=>$updateData));
+				echo "success";
+			} else {
+				echo "wala";
 			}
-			$resetData = array(
-					'Attendance.l_time_in' 	=> NULL,
-					'Attendance.l_time_out'	=> NULL,
-					'Attendance.f_time_in'	=> NULL,
-					'Attendance.f_time_out'	=> NULL,
-					'Attendance.over_time'	=> NULL,
-					'Attendance.render_time' => NULL,
-					'Attendance.status'		=> 0	
-			);
-			echo $this->Attendance->updateAll($resetData, array('OR'=>$updateData));
-			echo json_encode($resetData);
+			
 			
 		}
 	}

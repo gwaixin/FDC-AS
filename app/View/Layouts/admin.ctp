@@ -23,11 +23,13 @@
 
 		<?php echo $this->fetch('title'); ?>
 	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<?php
 
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('bootstrap-2.3');
+		echo $this->Html->css('bootstrap-responsive');
 		echo $this->Html->css('datepicker');
 		echo $this->Html->css('style.css');
 		echo $this->Html->css('font-awesome.min.css');
@@ -85,17 +87,17 @@
 							<li class="divider"></li>
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+
 			          		<li class="divider"></li>
+
 			          		<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/privileges/"><i class="fa fa-key" style='color:black;'></i> Privilege </a></li>
 						   	<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
 					  		<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
-						  <!-- 
-					          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-					          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>
-							  <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
-						   -->
+					  		<li><a href="<?php echo $this->webroot;?>admin/company/"><i class="fa fa-institution" style='color:black;'></i> Company </a></li>
+
 							<li class="divider"></li>
+
 							<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 							<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>

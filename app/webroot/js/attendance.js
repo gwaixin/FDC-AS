@@ -125,26 +125,31 @@ $(document).ready(function () {
 	getAttendanceList(formAttendance);
 
 	function resetAttendance(formAttendance) {
-		$.post(webroot + 'attendances/resetAttendance', formAttendance, function(data) {
-			//console.log(data);
-			//$('#error').html(data);
-			getAttendanceList(formAttendance);
+		$.ajax({
+		    type: 'POST',
+		    url: webroot + 'attendances/resetAttendance',
+		    data: {ids: JSON.stringify(formAttendance)},
+		    success: function(data) {
+		    	getAttendanceList(currentRequest);
+		    }
 		});
 	}
 	
 	var formAttendance = new FormData();
-
+	var currentRequest;
 
 	$('#btn-search').click(function(e) {
 		e.preventDefault();
-		getAttendanceList($('#attendance-form').serialize());
+		currentRequest = $('#attendance-form').serialize();
+		getAttendanceList(currentRequest);
 		changeDate();
 	});
 
 	$('#btn-search-monthly').click(function(e) {
 		e.preventDefault();
 		var keyword = $('#keyword').val();
-		getAttendanceList({keyword:keyword, monthly:currentDate});
+		currentRequest = {keyword:keyword, monthly:currentDate};
+		getAttendanceList(currentRequest);
 		changeDate();
 	});
 	
@@ -153,7 +158,16 @@ $(document).ready(function () {
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();
 		if(confirm('Are you sure to reset all the time in and out??')) {
-			resetAttendance($('#attendance-form').serialize());
+			var id = [];
+			var l;
+			for (l in list) {
+			  
+			  id[l] = list[l]['id'];
+			}
+			if (id != null) {
+				console.log(id);
+				resetAttendance(id);
+			}
 		}
 	});
   
