@@ -84,8 +84,9 @@ class AttendancesController extends AppController {
 					'id',
 					'employee_shifts.f_time_in',
 					'employee_shifts.f_time_out',
-					'employee_shifts.l_time_in',
-					'employee_shifts.l_time_out'
+					'employee_shifts.break'//,
+					//'employee_shifts.l_time_in',
+					//'employee_shifts.l_time_out'
 				)
 			)
 		);
@@ -109,11 +110,11 @@ class AttendancesController extends AppController {
 			foreach($employees as $key => $employee) {
 				$ftimein 	= $employee['attendances']['f_time_in'];
 				$ftimeout 	= $employee['attendances']['f_time_out'];
-				$ltimein 	= $employee['attendances']['l_time_in'];
-				$ltimeout 	= $employee['attendances']['l_time_out'];
+				//$ltimein 	= $employee['attendances']['l_time_in'];
+				//$ltimeout 	= $employee['attendances']['l_time_out'];
 			
 				$firstLog 	= $this->Attendance->totalDifference($ftimein, $ftimeout);
-				$lastLog 	= $this->Attendance->totalDifference($ltimein, $ltimeout);
+				//$lastLog 	= $this->Attendance->totalDifference($ltimein, $ltimeout);
 				//$totalTime 	= $this->Attendance->sumTime($firstLog['time'], $lastLog['time']);
 				
 				
@@ -125,8 +126,9 @@ class AttendancesController extends AppController {
 						'name' 			=> 	$employee['profiles']['first_name']. " " . $employee['profiles']['middle_name'] . " " .$employee['profiles']['last_name'],
 						'f_time_in' 	=>	$ftimein,
 						'f_time_out' 	=>	$ftimeout,
-						'l_time_in' 	=>	$ltimein,
-						'l_time_out' 	=>	$ltimeout,
+						'break'			=>  $employee['attendances']['break'],
+						//'l_time_in' 	=>	$ltimein,
+						//'l_time_out' 	=>	$ltimeout,
 						'total_time'	=>  $employee['attendances']['render_time'],
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
@@ -134,10 +136,11 @@ class AttendancesController extends AppController {
 						'id'			=>	$employee['attendances']['id'],
 						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
 						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_out']),
-						'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
-						'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
+						//'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
+						//'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
 						'e_ot_start'	=> 	$employee['employee_shifts']['overtime_start'],
-						'estatus'		=> 	$employee['Employee']['status']
+						'estatus'		=> 	$employee['Employee']['status'],
+						'ebreak'		=>	$employee['employee_shifts']['break']
 				);
 				array_push($employees_arr, $data);
 			}
@@ -177,8 +180,8 @@ class AttendancesController extends AppController {
 					array_push($updateData, array('Attendance.id' => $ea));
 				}
 				$resetData = array(
-						'Attendance.l_time_in' 	=> NULL,
-						'Attendance.l_time_out'	=> NULL,
+						//'Attendance.l_time_in' 	=> NULL,
+						//'Attendance.l_time_out'	=> NULL,
 						'Attendance.f_time_in'	=> NULL,
 						'Attendance.f_time_out'	=> NULL,
 						'Attendance.over_time'	=> NULL,
@@ -203,7 +206,7 @@ class AttendancesController extends AppController {
 			$data = $this->request->data;
 			$empData = $this->Attendance->getEmployeeDetail($data['id']);
 
-			$totalTime = $this->Attendance->updateTime($data, $empData);
+			$totalTime = $this->Attendance->calcRenderTime($data, $empData);
 			$stat = $this->Attendance->checkStat($data, $empData);
 
 
@@ -378,8 +381,9 @@ class AttendancesController extends AppController {
 				'profiles.middle_name',
 				'attendances.f_time_in',
 				'attendances.f_time_out',
-				'attendances.l_time_in',
-				'attendances.l_time_out',
+				'attendances.break',
+				//'attendances.l_time_in',
+				//'attendances.l_time_out',
 				'attendances.status',
 				'attendances.date',
 				'attendances.id',
@@ -387,9 +391,10 @@ class AttendancesController extends AppController {
 				'attendances.render_time',
 				'employee_shifts.f_time_in',
 				'employee_shifts.f_time_out',
-				'employee_shifts.l_time_in',
-				'employee_shifts.l_time_out',
+				//'employee_shifts.l_time_in',
+				//'employee_shifts.l_time_out',
 				'employee_shifts.overtime_start',
+				'employee_shifts.break'
 		);
 		$employees = $this->Employee->find('all',
 				array(
