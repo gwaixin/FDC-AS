@@ -385,6 +385,7 @@ class ContractlogsController extends AppController{
 		
 		$this->Employee->id = $id;
 		$data = array(
+				'salary' => $row['salary'],
 				'position_id' => $row['positions_id'],
 				'position_level_id' => $row['position_levels_id'],
 				'current_contract_id' => $row['contract_id'],

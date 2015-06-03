@@ -117,6 +117,11 @@ $(function(){
 		GetPostion($(this).val(),$('#contract-position'));
 	});
 	
+	
+	$('.btn-Addcontract').on('click', function(e){
+		$('.notice').hide();
+	});
+	
 	/*
 	 * View Contract Profile
 	 */
@@ -133,15 +138,16 @@ $(function(){
 
 		$.post(url,{dataid:dataid},function(data){
 			var res = JSON.parse(data);
-			$('.form-horizontal').show();
+			
 			if(res.length == 0){
-				$('.modal-body').append('<h1 class="notice"> No contract available </h1>');
-				$('.form-horizontal').hide();
+				$('#form-contract').hide();
+				$('.notice').show();
 			}else{
+				$('#form-contract').show();
+				$('.notice').hide();
 				for(var row in res){
 					var dateStart = new Date(res[row].Contractlog.date_start);
 					var dateEnd = new Date(res[row].Contractlog.date_end);
-					$('.notice').remove();
 					$('#employee-id').html(res[row].emp.employee_id);
 					$('#description').html(res[row].Contractlog.description);
 					$('#date-start').html(dateStart.getFullYear() + "-" + (dateStart.getMonth() + 1) + "-" + dateStart.getDate());

@@ -64,7 +64,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	                	?>
 	                  <b class="caret"></b></a>
 	                  <ul class="dropdown-menu">
-	                      <li><a href="#">View Profile</a></li>
+	                      <li><a href="#">My Profile</a></li>
+	                      <li><a href="#">My Account</a></li>
 	                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
 	                  </ul>
 	              </li>
@@ -74,21 +75,23 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       </div>
     </div>
 	<div id="container" class="container-fluid">
-		<div class="row-fluid">
-			<div class="span3">
-			    <div class="well" style="width:300px; padding: 8px 0;">
-					<ul class="nav nav-list"> 
-					  <li class="nav-header">Staff Menu</li>        
-					  <li><a href="<?php echo $this->webroot;?>staffs"><i class="icon-home"></i> DashBoard</a></li>
-					  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-user"></i> Employee</a></li>
-			          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
-			          <li class="divider"></li>
-					  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
-					  <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i> Logout</a></li>
-					</ul>
+		<div class="row-fluid row">
+			<div class="span2 side-well">
+				<div class="sidebar-nav">
+					  <div class="well" style="padding: 8px 0;">
+							<ul class="nav nav-list"> 
+							  <li class="nav-header">Staff Menu</li>        
+							  <li><a href="<?php echo $this->webroot;?>staffs"><i class="icon-home"></i> DashBoard</a></li>
+							  <li><a href="<?php echo $this->webroot;?>staffs/employees/"><i class="icon-user"></i> Employee</a></li>
+					          <li><a href="<?php echo $this->webroot;?>staffs/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+					          <li class="divider"></li>
+							  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
+							  <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i> Logout</a></li>
+							</ul>
+						</div>
 				</div>
 			</div>		
-			<div id="content" class="span9">
+			<div class="span10">
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div id="footer">	

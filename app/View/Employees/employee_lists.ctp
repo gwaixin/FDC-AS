@@ -90,7 +90,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		echo $this->Form->input('id', array('type'=>'hidden','id'=>'empID','value' => ''));
 		echo "<li>";
 		echo $this->Form->button('Add Contract',array(
-																			'class' => 'btn btn-primary',
+																			'class' => 'btn btn-primary btn-Addcontract',
 																			'data-toggle' => 'modal',
 																			'data-target' => '#modalContract',
 																			'onclick' => ''
@@ -290,7 +290,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
         <h4 class="modal-title" id="myModalLabel">Detail</h4>
       </div>
       <div class="modal-body">
-			<div class="form-horizontal">
+      		<h1 class="notice" style="display:none; "> No contract available </h1>
+			<div class="form-horizontal" id="form-contract">
 			  <div class="control-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">Employees ID:</label>
 			    <div class="controls">

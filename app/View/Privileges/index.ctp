@@ -1,6 +1,6 @@
 <div class="container-fluid">
  	<div class="row-fluid">
-		<div class="lg-container main-content box-center">
+		<div class="main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
 		<h3>Privilege List</h3>
 			<div id="search-role-container" class="form-control">

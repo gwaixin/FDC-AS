@@ -1,6 +1,6 @@
 <div class="container-fluid">
  	<div class="row-fluid">
-		<div class="sm-container main-content box-center">
+		<div class="main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot; ?>">
 		<h3>Role list:</h3>
 			<div id="search-Role-container" class="form-control">
