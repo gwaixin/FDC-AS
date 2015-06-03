@@ -77,6 +77,12 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																			'label' => false
 																		)
 																	);
+				echo " ";
+				echo $this->Form->button('Search',array(
+																		'class' => 'btn btn-inverse',
+																		'id' => 'btn-search'
+																		)
+																	);
 				?>		
 			</div>
 			<div class="add-cont">
