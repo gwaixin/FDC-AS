@@ -94,12 +94,11 @@
 
 			          		<li><a href="<?php echo $this->webroot;?>admin/position_and_level"><i class="icon-info-sign"></i> Position and level</a></li>
 			          		<li><a href="<?php echo $this->webroot;?>admin/privileges/"><i class="fa fa-key" style='color:black;'></i> Privilege </a></li>
-						   	<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
-					  		<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
-					  		<li><a href="<?php echo $this->webroot;?>admin/company/"><i class="fa fa-institution" style='color:black;'></i> Company </a></li>
-
+						   	<li><a href="<?php echo $this->webroot;?>admin/roles/"><i class="icon-eye-open" style='color:black;'></i> Roles </a></li>
+					  	
 							<li class="divider"></li>
-
+							<li><a href="<?php echo $this->webroot;?>admin/company/"><i class="fa fa-institution" style='color:black;'></i> Company </a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
 							<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 							<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
