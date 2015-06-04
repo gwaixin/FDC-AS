@@ -2,6 +2,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('sss', 'Lib');
 
 class EmployeeController extends AppController {
 
@@ -78,10 +79,6 @@ class EmployeeController extends AppController {
 				$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
 				if (!empty($_FILES['file-profile-picture']['name'])) {
 					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
-				}
-
-				if (!empty($_FILES['file-signature-picture']['name'])) {
-					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture'];
 				}
 
 				$Profile = $this->Profile->findById($Profile['Profile']['id']);

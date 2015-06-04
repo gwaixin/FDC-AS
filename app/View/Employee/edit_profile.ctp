@@ -51,7 +51,7 @@ echo $this->Html->script('employee-profile');
 																						);
 		?>
 	</div>
-	<table>
+	<table class="table table-striped">
 		<tr> 
 			<td> <b> First Name </b> </td>
 			<td> : </td>
@@ -244,39 +244,6 @@ echo $this->Html->script('employee-profile');
 					?>
 			</td>
 		</tr>
-		<tr> 
-			<td> <b> Signature </b> </td>
-			<td> : </td>
-			<td> 
-					<?php
-						echo $this->Form->button('View <span class="icon-search"></span>',array(
-																							'type' => 'button',
-																							'class' => 'btn btn-success',
-																							'data-toggle' => 'modal',
-																							'data-target' => '#modalSignature',
-																							'id' => 'btn-show-signature'
-																						)
-																					);
-						echo " ";
-						echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
-																							'type' => 'button',
-																							'id' => 'btn-browse-signature',
-																							'class' => 'btn btn-success'
-																						)
-																					);
-
-						echo $this->Form->file(' ',array(
-																		'name' => 'file-signature-picture',
-																		'id' => 'file-signature',
-																		'class' => 'file',
-																		'required' => false,
-																		'accept' => "image/*",'style' => 'display:none;'
-																	)
-																);
-					?>
-
-			</td>
-		</tr>
 		<tr>
 			<td colspan=2> </td>
 			<td>
@@ -287,7 +254,7 @@ echo $this->Html->script('employee-profile');
 																								)
 																							);
 							echo " ";
-							echo $this->Html->link('Cancel','../',array(
+							echo $this->Html->link('Cancel',$this->webroot.$this->Session->read('Auth.Rights.role').'/myprofile',array(
 																									'class' => 'btn btn-primary'
 																								)
 																							);
