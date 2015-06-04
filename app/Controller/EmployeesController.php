@@ -235,6 +235,7 @@ class EmployeesController extends AppController {
 			$info = $this->Employeeshift->findById($this->request->data['id']);
 			$f_time_in = ($info['Employeeshift']['f_time_in']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_in']) : '--:-- --';
 			$f_time_out = ($info['Employeeshift']['f_time_out']) ? $this->convertTimeToMilitary($info['Employeeshift']['f_time_out']) : '--:-- --';
+			$break = ($info['Employeeshift']['break'] && $info['Employeeshift']['break'] !== '00:00:00') ? $info['Employeeshift']['break'] : '--:--:--';
 			$overtime_start = ($info['Employeeshift']['overtime_start']) ? $this->convertTimeToMilitary($info['Employeeshift']['overtime_start']) : '--:-- --';
 			echo "<h2> Employee Shift Detail </h2>
 						<table id='table-shift-detail'>
@@ -252,6 +253,11 @@ class EmployeesController extends AppController {
 								<td> First Timeout </td>
 								<td> : </td>
 								<td>".$f_time_out."</td>
+							</tr>
+							<tr>
+								<td> Break </td>
+								<td> : </td>
+								<td>".$break."</td>
 							</tr>
 								<td> Overtime Start </td>
 								<td> : </td>
@@ -289,6 +295,7 @@ class EmployeesController extends AppController {
 			$row['f_time_in'] = (strlen($row['f_time_in']) > 0) ? $this->convertTimeToMilitary($row['f_time_in']) : '--:-- --';
 			$row['f_time_out'] = (strlen($row['f_time_out']) > 0) ? $this->convertTimeToMilitary($row['f_time_out']) : '--:-- --';
 			$row['overtime_start'] = (strlen($row['overtime_start']) > 0) ? $this->convertTimeToMilitary($row['overtime_start']) : '--:-- --';
+			$row['break'] = ($row['break'] && $row['break'] !== '00:00:00') ? $row['break'] : '--:--:--';
 			$data['Employeeshift'] = $row;
 			array_push($shift_lists,$data);
 		}
