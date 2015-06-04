@@ -115,8 +115,7 @@ class Attendance extends AppModel {
 		
 		//$totalTime 	= $firstLog['time'];// $this->sumTime($firstLog['time'], $lastLog['time']);
 		$break = $eData['Attendance']['break'];
-		//return $firstLog['time'] . ' === ' . $break;
-		$totalTime = $this->diffTime($firstLog['time'], $break);//diffTime($firstLog['time'], $break);
+		$totalTime = empty($break) ? $firstLog['time'] : $this->diffTime($firstLog['time'], $break);//diffTime($firstLog['time'], $break);
 
 		return $totalTime;
 	}

@@ -151,21 +151,33 @@ class AttendancesController extends AppController {
 	public function updateAttendance() {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
+
 			$data = $this->request->data;
+
+			$fieldData = json_decode($data['field']);
+			$idData = json_decode($data['id']);
+			$val 	= $data['value'] == '' ? NULL : $data['value'];
+
+			$updateData = array();
+			$condition = array();
 			
-			$val = ($data['field'] != 'status') ? date('Y-m-d H:i:s', strtotime($data['value'])) : $data['value'];
-			$attendanceData = array(
-					'Attendance' => array(
-						$data['field'] => $val
-					)
-			);
-			
-			$this->Attendance->id = $data['id'];
-			if ($this->Attendance->save($attendanceData)) {
+			foreach ($fieldData as $key => $field) {
+				if (!$field != 'status') {
+					$updateData[$field] = empty($val) ? $val : "'". date('Y-m-d H:i:s', strtotime($val)) ."'";
+				} else {
+					$updateData[$field] = $val;
+				}
+			}
+
+			foreach ($idData as $key => $id) {
+				$condition[] = $id;
+			}
+			if ($this->Attendance->updateAll($updateData, array('Attendance.id' => $condition))) {
 				echo 'success';
 			} else {
 				echo json_encode($this->Attendance->validationErrors);
 			}
+			
 		}
 	}
 	
@@ -198,27 +210,28 @@ class AttendancesController extends AppController {
 		}
 	}
 	
-	
 	public function getTotalTime() {
 		if ($this->request->is('ajax')) {
 			$this->autoRender = false;
-
 			$data = $this->request->data;
-			$empData = $this->Attendance->getEmployeeDetail($data['id']);
-
-			$totalTime = $this->Attendance->calcRenderTime($data, $empData);
-			$stat = $this->Attendance->checkStat($data, $empData);
-
-
-			//$overtime = $this->Attendance->getOT($data['id']);
-			//$this->Attendance->saveTime($data['id'], array('render_time', $totalTime));
-			//$this->Attendance->saveTime($data['id'], array('status', $stat));
-
-			$result = array('render_time' => $totalTime, 'status' => $stat);
-
-			if ($this->getAutoOvertime()) {
-				$result['over_time'] = $this->calcOvertime($data['id'], $empData);
+			if (
+				empty($data['f_time_in']) || empty($data['f_time_out'])
+			) {
+				$empData = NULL;
+				$totalTime = NULL;
+				$stat = 0;
+				$overtime = NULL;
+			} else {
+				$empData = $this->Attendance->getEmployeeDetail($data['id']);
+				$totalTime = $this->Attendance->calcRenderTime($data, $empData);
+				$stat = $this->Attendance->checkStat($data, $empData);
+				$overtime = '';
+				if ($this->getAutoOvertime()) {
+					$overtime = $this->calcOvertime($data['id'], $empData);
+				}
 			}
+			
+			$result = array('render_time' => $totalTime, 'status' => $stat, 'over_time' => $overtime);
 			
 			if ($this->Attendance->updateTotalTime($data['id'], $result)) {
 				echo json_encode($result);
