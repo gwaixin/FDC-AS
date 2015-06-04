@@ -221,17 +221,20 @@ class AttendancesController extends AppController {
 				$totalTime = NULL;
 				$stat = 0;
 				$overtime = NULL;
+				$result = array('render_time' => $totalTime, 'status' => $stat, 'over_time' => $overtime);
 			} else {
 				$empData = $this->Attendance->getEmployeeDetail($data['id']);
 				$totalTime = $this->Attendance->calcRenderTime($data, $empData);
 				$stat = $this->Attendance->checkStat($data, $empData);
 				$overtime = '';
+				$result = array('render_time' => $totalTime, 'status' => $stat);
 				if ($this->getAutoOvertime()) {
 					$overtime = $this->calcOvertime($data['id'], $empData);
+					$result['over_time'] = $overtime;
 				}
 			}
 			
-			$result = array('render_time' => $totalTime, 'status' => $stat, 'over_time' => $overtime);
+			
 			
 			if ($this->Attendance->updateTotalTime($data['id'], $result)) {
 				echo json_encode($result);

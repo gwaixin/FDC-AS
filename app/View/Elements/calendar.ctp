@@ -47,11 +47,11 @@
 <input type='hidden' id='yearmonth' value="<?php echo date('Y/m/', strtotime($currentDate)); ?>"/>
 
 <?php $d->modify('+1 month'); ?>
-<span class='calendar-nav pull-right' date="<?php echo $d->format('Y-m-d'); ?>">
+<span class='calendar-nav pull-right' title='Next month' date="<?php echo $d->format('Y-m-d'); ?>">
     <i class='fa fa-2x fa-chevron-circle-right'></i>
 </span>
 
 <?php $d->modify('-2 month'); ?>
-<span class='calendar-nav' date="<?php echo $d->format('Y-m-d'); ?>">
+<span class='calendar-nav' title='Prev month' date="<?php echo $d->format('Y-m-d'); ?>">
     <i class='fa fa-2x fa-chevron-circle-left'></i>
 </span>

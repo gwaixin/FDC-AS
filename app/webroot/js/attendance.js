@@ -197,6 +197,9 @@ $(document).ready(function () {
     	
     });
 
+    //Tooltips
+    $('.calendar-nav').tooltip({placement: 'bottom'});
+	$('#btn-search-monthly').tooltip({placement: 'right'});
 
 	
 });
