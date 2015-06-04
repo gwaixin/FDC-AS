@@ -2,6 +2,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('sss', 'Lib');
 
 class EmployeeController extends AppController {
 
