@@ -108,13 +108,16 @@ $(document).ready(function () {
 				if(advancedData[row].contract === null) {
 					$(".btn-contact-edit").css('display','none');
 					$(".View-Contract").css('display','none');
+					$("#btn-view-contract-log").css('display','none');
 				} else {
 					if(advancedData[row].contract.length === 0) {
 						$(".btn-contact-edit").css('display','none');
 						$(".View-Contract").css('display','none');
+						$("#btn-view-contract-log").css('display','none');
 					} else {
 						$(".btn-contact-edit").css('display','');	
 						$(".View-Contract").css('display','');
+						$("#btn-view-contract-log").css('display','');
 						if(myRole === 'admin') {
 							$(".btn-Addcontract").css('display','');
 						} else {
@@ -507,7 +510,7 @@ $(document).ready(function () {
 		}
   	hot = new Handsontable($("#table-employees")[0], {
     data: advancedData,
-    height: 600,
+    height: 9999,
     manualColumnResize: true,
     manualRowResize: true,
     colHeaders: ["Action","Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
