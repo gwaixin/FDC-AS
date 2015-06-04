@@ -2,28 +2,30 @@
 
 <table class="table table-condensed">
 	<tr>
-		<th> Select </th>
-		<th> Description </th>
-		<th> First Time in </th>
-		<th> First Time out </th>
-		<th> Overtime start </th>
+		<th> <center> Select </center> </th>
+		<th> <center> Description </center> </th>
+		<th> <center> First Time in </center> </th>
+		<th> <center> First Time out </center> </th>
+		<th> <center> Break </center> </th>
+		<th> <center> Overtime start </center> </th>
 	</tr>
 	<?php
 		foreach($lists as $list) {
 			$row = $list['Employeeshift'];
 			echo "<tr>
-							<td>".
+							<td><center>".
 										$this->Form->button('Select',array(
 																					'class' => 'btn btn-default btn-select-shift',
 																					'id' => $row['id'],
 																					'value' => $row['description']
 																					)
 																				)
-							."</td>
-							<td>".$row['description']."</td>
-							<td>".$row['f_time_in']."</td>
-							<td>".$row['f_time_out']."</td>
-							<td>".$row['overtime_start']."</td>
+							."</center></td>
+							<td><center>".$row['description']."</center></td>
+							<td><center>".$row['f_time_in']."</center></td>
+							<td><center>".$row['f_time_out']."</center></td>
+							<td><center>".$row['break']."</center></td>
+							<td><center>".$row['overtime_start']."</center></td>
 						</tr>";
 		}
 	?>
