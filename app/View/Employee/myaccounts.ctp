@@ -22,7 +22,7 @@
 
 
 <div id="Accounts-container">
-	<table class="table table-striped table-bordered">
+	<table class="table table-striped" style="width:600px;margin-top: 20px;">
 		<tr>
 			<td colspan=2> 
 				<h3> Accounts Details </h3> </td>
@@ -31,7 +31,7 @@
 			<td> <b>Tin No</b> </td>
 			<td > <?php echo $Accounts['tin']; ?> </td>
 		</tr>
-		<tr> 
+		<tr>
 			<td> <b>Drug Test</b> </td>
 			<td> <?php echo $Accounts['drug_test']; ?>  </td>
 		</tr>
@@ -40,7 +40,7 @@
 			<td> <?php echo $Accounts['medical']; ?>  </td>
 		</tr>
 		<tr> 
-			<td> <b>Pagibig</b> </td>
+			<td> <b>Pagiibg</b> </td>
 			<td> <?php echo $Accounts['pagibig']; ?>  </td>
 		</tr>
 		<tr> 

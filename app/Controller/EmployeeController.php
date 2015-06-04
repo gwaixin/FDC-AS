@@ -80,10 +80,6 @@ class EmployeeController extends AppController {
 					$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
 				}
 
-				if (!empty($_FILES['file-signature-picture']['name'])) {
-					$this->request->data['Profile']['signature'] = $_FILES['file-signature-picture'];
-				}
-
 				$Profile = $this->Profile->findById($Profile['Profile']['id']);
 				if (!$this->Profile->save($this->request->data)) {
 					$this->request->data['picture'] = $Profile['Profile']['picture'];
