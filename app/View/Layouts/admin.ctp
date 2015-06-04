@@ -67,8 +67,10 @@
                 	?>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                      <li><a href="#">View Profile</a></li>
-                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
+						<li><a href="/admin/myprofile"><i class="icon-user"></i> My Profile</a></li>
+						<li><a href="/admin/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
+						<li><a href="/admin/myaccounts"><i class="icon-briefcase"></i> My Accounts</a></li>
+						<li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i>Logout</a></li>
                   </ul>
               </li>
           </ul>
