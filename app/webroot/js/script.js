@@ -350,7 +350,6 @@ function GetPostion(id,elem){
 				}	
 			}else{
 				for(var row in res){
-					
 					elem.val(row);
 				}
 			}
