@@ -198,6 +198,7 @@ $(document).ready(function () {
     });
 
     //Tooltips
+    $('#auto-overtime').tooltip({placement: 'right'});
     $('.calendar-nav').tooltip({placement: 'bottom'});
 	$('#btn-search-monthly').tooltip({placement: 'right'});
 
