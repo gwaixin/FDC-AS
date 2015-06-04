@@ -301,7 +301,7 @@ class AttendancesController extends AppController {
 
 	public function getAttendanceDetail() {
 		if ($this->request->is('Ajax')) {
-			$this->layout = 'Ajax';
+			$this->layout = 'ajax';
 			$id = $this->request->data['id'];
 			$date = $this->request->data['date'];
 			$history = $this->Attendance->getAttendanceHistory($id, false, $date);
