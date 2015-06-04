@@ -43,6 +43,7 @@
 
 <script>
 var baseUrl = "<?php echo $this->webroot; ?>";
+var webroot  = '<?php echo $this->webroot;?>';
 </script>
 
 <body>
@@ -65,9 +66,10 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	                	?>
 	                  <b class="caret"></b></a>
 	                  <ul class="dropdown-menu">
-	                      <li><a href="#">My Profile</a></li>
-	                      <li><a href="#">My Account</a></li>
-	                      <li><a href="<?php echo $this->webroot."users/logout"; ?>">Logout</a></li>
+	                      	<li><a href="/staffs/myprofile"><i class="icon-user"></i> My Profile</a></li>
+							<li><a href="/staffs/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
+							<li><a href="/staffs/myaccounts"><i class="icon-briefcase"></i> My Accounts</a></li>
+	                      	<li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i>Logout</a></li>
 	                  </ul>
 	              </li>
 	          </ul>

@@ -10,6 +10,8 @@ var cMonthDay;
 var cYear;
 var currentDate;
 var currentRequest = "";
+var isMonthly = false;
+var rowArr = [];
 $(document).ready(function () {
 	//$('#time-in').timepicker({defaultTime : false});
 	//For dates
@@ -124,7 +126,7 @@ $(document).ready(function () {
 	//getEmployeeData();
 	//getAttendanceList('2015-05-15');
 	getAttendanceList(formAttendance);
-
+	
 	function resetAttendance(formAttendance) {
 		$.ajax({
 		    type: 'POST',
@@ -151,6 +153,7 @@ $(document).ready(function () {
 		var keyword = $('#keyword').val();
 		changeDate();
 		currentRequest = {keyword:keyword, monthly:currentDate};
+		isMonthly = true;
 		getAttendanceList(currentRequest);
 		
 	});
@@ -193,7 +196,11 @@ $(document).ready(function () {
     	});
     	
     });
-	
+
+    //Tooltips
+    $('.calendar-nav').tooltip({placement: 'bottom'});
+	$('#btn-search-monthly').tooltip({placement: 'right'});
+
 	
 });
 
@@ -265,6 +272,61 @@ function isSorted(hotInstance) {
   return hotInstance.sortingEnabled && typeof hotInstance.sortColumn !== 'undefined';
 }
 
+function isEmptyRow(instance, row) {
+	var rowData = instance.getData()[row];
+	if (!instance.isEmptyRow(row)) {
+		return false;
+	}
+
+	return true;
+}
+
+function defaultValueRenderer(instance, td, row, col, prop, value, cellProperties) {
+	var args = arguments;
+
+	if (args[5] === null && instance.isEmptyRow(row)) {
+		var val = tplTotal[col];
+		switch (col) {
+			case 4: 
+			case 5: 
+			case 6: 
+				val = calculateTotalTime(instance, row, col); 
+				break;
+		}
+		args[5] = val;
+		cellProperties.readOnly = true;
+		td.style.color = '#000';
+		td.style.background = '#EEE';
+	}
+	Handsontable.renderers.TextRenderer.apply(this, args);
+}
+
+function calculateTotalTime(instance, row, col) {
+	var total = 0;
+	var seconds = 0;
+	for (var i = row-1; i >= 0; --i) {
+		var time = instance.getDataAtCell(i, col);
+		if (time != null && time != '' && typeof time != 'undefined') {
+			var splitTime = time.split(':');
+			seconds += (parseFloat(splitTime[0])*3600);
+			seconds += (parseFloat(splitTime[1])*60);
+			seconds += parseFloat(splitTime[2]);//splitTime[2];
+		}
+	}
+	var hours = Math.floor(seconds/3600);
+	seconds -= hours*3600;
+	var minutes  = Math.floor(seconds/60);
+	seconds -= minutes*60;
+	
+	hours = (hours <= 0 ) ? '' : hours + ' hr ';
+	minutes = (minutes <= 0) ? '' : minutes + ' min ';
+	seconds = (seconds <= 0) ? '' : seconds +' sec ';
+
+	total = hours + minutes + seconds;
+	return total;
+}
+
+var tplTotal = ["TOTAL", "", "", "", "BREAK", "RENDERTIME", "OVERTIME"];
 function attendanceList() {
 	//$('#employee-attendance').html('');
 	statusArr = ['pending', 'present', 'absent', 'late', 'undertime'];
@@ -290,13 +352,46 @@ function attendanceList() {
 	      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'},
 	      {data: 'day', type: 'text', className:'htCenter htMiddle', readOnly: true}
 	    ], beforeChange: function(change, sources) {
+
+	    	var instance = hot,
+        	ilen = change.length,
+        	clen = instance.colCount,
+	        rowColumnSeen = {},
+	        rowsToFill = {},
+	        i,
+	        c;
+
+			for (i = 0; i < ilen; i++) {
+			// if oldVal is empty
+				if (change[i][2] === null && change[i][3] !== null) {
+				  if (!instance.isEmptyRow(change[i][0])) {
+				    // add this row/col combination to cache so it will not be overwritten by template
+				    rowColumnSeen[change[i][0] + '/' + change[i][1]] = true;
+				    rowsToFill[change[i][0]] = true;
+				  }
+				}
+			}
+			for (var r in rowsToFill) {
+				if (rowsToFill.hasOwnProperty(r)) {
+				  for (c = 0; c < clen; c++) {
+				    // if it is not provided by user in this change set, take value from template
+				    if (!rowColumnSeen[r + '/' + c]) {
+				      change.push([r, c, null, tplTotal[c]]);
+				    }
+				  }
+				}
+			}
+ 
 	    	rowIndex = isSorted(hot) ? hot.sortIndex[change[0][0]][0] : change[0][0];
 	    	colClass = change[0][1];
+
+
 	    	if (
 	    		colClass != 'status' && 
 	    		colClass != 'total_time' &&
 	    		colClass != 'otime' &&
-	    		change[0][2] != change[0][3]
+	    		change[0][2] != change[0][3] &&
+	    		change[0][3] != ''
 	    	) {
 
 	    		var time = colClass == 'break' ? convertToTime(change[0][3]) : convertToDatetime(change[0][3]);
@@ -311,41 +406,65 @@ function attendanceList() {
 	    		}
 	    	}
 	    }, afterChange: function(change, sources) {
-		    if (
-		    	sources === 'loadData' || 
-		    	change[0][3] == '' ||
-		    	change[0][2] == change[0][3]
-		    	
-		    ) {
-		    	//console.log(list);
-	            return; //don't do anything as this is called when table is loaded
-	        }
-	        
-	    	//setTimeout(function() {
-		    	
-			if (colClass == 'status') {
-		  		var statIndex = statusArr.indexOf(change[0][3]);
-		  		if (statIndex < 0) {
-			  		$('#error').html('Invalid status');
-			  		$('#error').fadeIn(200);
-			  		return;
-			  	}
-		    	//console.log(statIndex + rowIndex);
-		  		//checkOvertime();
-		    	updateValue = statIndex;
-		    	
-			} else {
-				/*if (!validateDate(colClass)) {
-					focusElem.addClass('htInvalid');
-					return;
+
+	    	if (sources == 'loadData') {
+	    		return;
+	    	}
+	    	rowArr = []; //empty row
+	    	var data;//id value field
+	    	var ctr = 0;
+	    	var idArr = [];
+	        var fieldArr = [];
+	        var value;
+	    	for (var r in change) {
+			    if (
+			    	sources === 'loadData' || 
+			    	change[r][2] == change[r][3]
+			    ) {
+			    	//console.log(list);
+		            return; //don't do anything as this is called when table is loaded
+		        }
+		       
+		        
+		    	//setTimeout(function() {
+			    rowIndex = change[r][0];
+			    colClass = change[r][1];
+				if (colClass == 'status') {
+			  		var statIndex = statusArr.indexOf(change[r][3]);
+			  		if (statIndex < 0) {
+				  		$('#error').html('Invalid status');
+				  		$('#error').fadeIn(200);
+				  		return;
+				  	}
+			    	//console.log(statIndex + rowIndex);
+			  		//checkOvertime();
+			    	updateValue = statIndex;
+			    } else {
+					/*if (!validateDate(colClass)) {
+						focusElem.addClass('htInvalid');
+						return;
+					}
+					*/
+					
+					updateValue = list[rowIndex][colClass];
+					//updateEmployeeData();
+					
 				}
-				*/
-				
-				updateValue = list[rowIndex][colClass];
-				//updateEmployeeData();
+				value = updateValue;
+				if (idArr.indexOf(list[rowIndex]['id']) < 0) {
+					idArr.push(list[rowIndex]['id']);
+				}
+				if (fieldArr.indexOf(colClass) < 0) {
+					fieldArr.push(colClass);
+				}
+				rowArr.push(rowIndex);
 				
 			}
-			updateEmployeeData();
+
+			data = {id: JSON.stringify(idArr), field: JSON.stringify(fieldArr), value:value};
+			//console.log(JSON.stringify(data));
+
+			updateEmployeeData(data);
 				
 
 	    	 //}, 300);
@@ -384,7 +503,7 @@ function attendanceList() {
 						
 				}
 			}
-			
+			cellProperties.renderer = defaultValueRenderer;
 			return cellProperties;
 		}
   	});
@@ -407,6 +526,10 @@ function getAttendanceList(formAttendance) {
 			$('#error').hide();
 			list = data;
 			attendanceList();
+			if (isMonthly) {
+				hot.alter('insert_row');
+				isMonthly = false;
+			}	
 		}
 		//}
 	}, 'JSON');
@@ -414,23 +537,24 @@ function getAttendanceList(formAttendance) {
 
 var updateAjax;
 var updateValue;
-function updateEmployeeData() {
-	var formData = new FormData();
+function updateEmployeeData(formData) {
+	/*var formData = new FormData();
 	//var physicalIndex = isSorted(hot) ? hot.sortIndex[rowIndex][0] : rowIndex;
 	formData.append('id', list[rowIndex]['id']);
 	formData.append('value', updateValue);
-	formData.append('field', colClass);
+	formData.append('field', colClass);*/
 	updateAjax = $.ajax({
 		url: webroot+'attendances/updateAttendance',
 		data: formData,
-		processData: false,
-		contentType: false,
 		type: 'POST',
 		success: function(data) {
 			console.log(data);
 			updateAjax = null;
 			if (colClass != 'status') {
-				getTotalTime();
+				for(var i=0; i< rowArr.length; i++) {
+					getTotalTime(rowArr[i]);
+					//console.log(rowArr[i]);
+				}
 			}
 		}
 	});
@@ -442,18 +566,14 @@ function changeStat(stat) {
 	hot.setDataAtRowProp(0, 'status', statusArr[stat]);
 }
 
-function getTotalTime() {
+function getTotalTime(row) {
 	
-	var ftimein 	= list[rowIndex]['f_time_in'];
-	var ftimeout 	= list[rowIndex]['f_time_out'];
-	//var ltimein 	= list[rowIndex]['l_time_in'];
-	//var ltimeout 	= list[rowIndex]['l_time_out'];
-	var id 			= list[rowIndex]['id'];
-	if ( 
-		colClass == 'break' ||
-		(isDateTime(ftimein) && isDateTime(ftimeout))// ||
-		//(isDateTime(ltimein) && isDateTime(ltimeout))
-	) {
+	var ftimein 	= list[row]['f_time_in'] ? list[row]['f_time_in'] : '';
+	var ftimeout 	= list[row]['f_time_out'] ? list[row]['f_time_out'] : '';
+	//var ltimein 	= list[row]['l_time_in'];
+	//var ltimeout 	= list[row]['l_time_out'];
+	var id 			= list[row]['id'];
+	if (colClass != 'status') {
 			
 		var formData = new FormData();
 		formData.append('f_time_in', ftimein);
@@ -475,20 +595,20 @@ function getTotalTime() {
 				//focusElem.siblings('.otime').html(data['overtime']);
 				//focusElem.siblings('.status').html(statusArr[data['stat']]);
 				
-				list[rowIndex]['total_time'] = data['render_time'];
-				if (list[rowIndex]['status'] != statusArr[data['status']]) {
-					list[rowIndex]['status'] = statusArr[data['status']];
+				list[row]['total_time'] = data['render_time'];
+				if (list[row]['status'] != statusArr[data['status']]) {
+					list[row]['status'] = statusArr[data['status']];
 				}
 				if (typeof data['over_time'] !== 'undefined') {
-					list[rowIndex]['over_time'] = data['over_time'];
+					list[row]['over_time'] = data['over_time'];
 				}
 
 				hot.render();
 			}
 		});
 	} else {
-		if (!isDateTime(list[rowIndex][colClass])) {
-			focusElem.addClass('htInvalid');
+		if (!isDateTime(list[row][colClass])) {
+			//focusElem.addClass('htInvalid');
 		}
 	}
 }

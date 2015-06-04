@@ -30,7 +30,7 @@
 						<div class='span5'>
 							<div class="input-append">
 								<input type='text' placeholder='Date' name='date' id='date' class='span10'/>
-								<button id='btn-search-monthly' class='btn btn-inverse' title='Monthly search'><i class="fa fa-search"></i></button>
+								<button id='btn-search-monthly' class='btn btn-inverse' data-toggle="tooltip" title='Monthly search'><i class="fa fa-search"></i></button>
 							</div>
 						</div>
 						
