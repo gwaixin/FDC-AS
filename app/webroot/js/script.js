@@ -117,6 +117,18 @@ $(function(){
 		GetPostion($(this).val(),$('#contract-position'));
 	});
 	
+	
+	$('.btn-Addcontract').on('click', function(e){
+		$('.bg-padd').html("");
+		$('.notice').hide();
+		$('#ProfileRegister').trigger("reset");
+	});
+	
+	
+	$('.add-cont a').on('click', function(e){
+		$('.bg-padd').html("");
+	});
+	
 	/*
 	 * View Contract Profile
 	 */
@@ -134,15 +146,16 @@ $(function(){
 
 		$.post(url,{dataid:dataid},function(data){
 			var res = JSON.parse(data);
-			$('.form-horizontal').show();
+			
 			if(res.length == 0){
-				$('.modal-body').append('<h1 class="notice"> No contract available </h1>');
-				$('.form-horizontal').hide();
+				$('#form-contract').hide();
+				$('.notice').show();
 			}else{
+				$('#form-contract').show();
+				$('.notice').hide();
 				for(var row in res){
 					var dateStart = new Date(res[row].Contractlog.date_start);
 					var dateEnd = new Date(res[row].Contractlog.date_end);
-					$('.notice').remove();
 					$('#employee-id').html(res[row].emp.employee_id);
 					$('#description').html(res[row].Contractlog.description);
 					$('#date-start').html(dateStart.getFullYear() + "-" + (dateStart.getMonth() + 1) + "-" + dateStart.getDate());
@@ -168,13 +181,17 @@ $(function(){
 	      data: new FormData( this ),
 	      processData: false,
 	      contentType: false,
+	      beforeSend: function() {
+	    	  $('.layout-transparent').show();
+	      },
 	      success:function(data){
 				var res = JSON.parse(data);
+				$('.layout-transparent').hide();
 				$('.bg-padd').html("");
 				if(res.errors.success == 1){
 					for(var err in res.errors.ErrMessage){
 						$('.bg-padd').show();
-						$('.bg-padd').append('<p>'+res.errors.ErrMessage[err][0]+'</p>');
+						$('.bg-padd').append('<p class="alert alert-error">'+res.errors.ErrMessage[err][0]+'</p>');
 					}
 				}else{
 					for(var row in res){
@@ -293,7 +310,7 @@ $(function(){
 				if(res.success == 0){
 					for(var err in res.data){
 						$('.bg-padd').show();
-						$('.bg-padd').append('<p>'+res.data[err]+'</p>');
+						$('.bg-padd').append('<p class="alert alert-error">'+res.data[err]+'</p>');
 					}
 				}else{
 					$('.bg-padd').hide();

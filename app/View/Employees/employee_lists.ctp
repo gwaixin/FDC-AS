@@ -97,7 +97,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		echo $this->Form->input('id', array('type'=>'hidden','id'=>'empID','value' => ''));
 		echo "<li>";
 		echo $this->Form->button('Add Contract',array(
-																			'class' => 'btn btn-primary',
+																			'class' => 'btn btn-primary btn-Addcontract',
 																			'data-toggle' => 'modal',
 																			'data-target' => '#modalContract',
 																			'onclick' => ''
@@ -298,67 +298,61 @@ var baseUrl = "<?php echo $this->webroot; ?>";
         <h4 class="modal-title" id="myModalLabel">Detail</h4>
       </div>
       <div class="modal-body">
-			<div class="form-horizontal">
-			  <div class="control-group">
-			    <label for="inputEmail3" class="col-sm-2 control-label">Employees ID:</label>
-			    <div class="controls">
-			      	<span id="employee-id"></span>
-			    </div>
-			  </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
-			    <div class="controls">
-			      <span id="description"></span>
-			    </div>
-			  </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Date Start</label>
-			    <div class="controls">
-			      <span id="date-start"></span>
-			    </div>
-			 </div>
-			 <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Date End</label>
-			    <div class="controls">
-			      <span id="date-end"></span>
-			    </div>
-			 </div>
-			 <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Document</label>
-			    <div class="controls">
-			      <a href="#" id="link-doc"><span id="document"></span></a>
-			    </div>
-			 </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Salary</label>
-			    <div class="controls">
-			      <span id="salary"></span>
-			    </div>
-			 </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Deminise</label>
-			    <div class="controls">
-			      <span id="deminise"></span>
-			    </div>
-			 </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Term</label>
-			    <div class="controls">
-			      <span id="term"></span>
-			    </div>
-			 </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Position</label>
-			    <div class="controls">
-			      <span id="position"></span>
-			    </div>
-			 </div>
-			  <div class="control-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Position level</label>
-			    <div class="controls">
-			      <span id="position-level"></span>
-			    </div>
-			 </div>
+      		<h5 class="notice alert alert-info" style="display:none; "> No contract available </h5>
+      		<div class="contract-detail-modal" id="form-contract">
+	      		<div class="detail-title alert alert-info">
+	      			<div class="row-fluid">
+		      			<div class="span6">
+			      			<h5><i class="icon-user"></i> Employee ID:</h5>
+			      			<span id="employee-id"></span>
+		      			</div>
+		      			<div class="span6">
+			      			<h5><i class="icon-calendar"></i> Date:</h5>
+			      			<span id="date-start"></span> to
+			      			<span id="date-end"></span>
+		      			</div>
+	      			</div>
+	      		</div>
+	      		
+	      		<div class="detail-content alert alert-info">
+	      			<div class="row-fluid">
+	      				<div class="span6">
+			      			<h5><i class="icon-info-sign"></i> Job Description:</h5>
+			      			<span id="position-level"></span>	 
+			      			<span id="position"></span>     			
+		      			</div>
+		      			<div class="span3">
+			      			<h5><i class="fa fa-usd"></i> Salary:</h5>
+			      			<span id="salary"></span>  			
+		      			</div>
+		      			<div class="span3">
+			      			<h5><i class="fa fa-money"></i> Deminise:</h5>
+			      			<span id="deminise"></span>			
+		      			</div>
+			      		<div class="row-fluid">
+			      			<div class="span12">
+				      			<h5><i class="icon-info-sign"></i> Description:</h5>
+				      			<span id="description"></span>
+			      			</div>
+		      			</div>
+	      			</div>
+	      		</div>
+	      		
+	      		<div class="detail-footer alert alert-info">
+	      			<div class="row-fluid">
+		      			<div class="span6">
+				      			<h5><i class="icon-info-sign"></i> Term:</h5>
+				      			<span id="term"></span>
+			      		</div>
+			      		<div class="span6">
+			      			<h5><i class="fa fa-folder-open"></i> Contract Pdf:</h5>
+			      			 <div class="controls">
+				     		 	<a href="#" id="link-doc"><span id="document"></span></a>
+				    		</div>
+			      		</div>
+		      		</div>
+	      		</div>  		
+      		</div>
 		</div>    		 	
       </div>
       <div class="modal-footer">

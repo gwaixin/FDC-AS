@@ -1,6 +1,6 @@
-<div class="container">
- 	<div class="row">
-		<div class="contract-container">
+<div class="container-fluid">
+ 	<div class="row-fluid">
+		<div class="main-content">
 		<input type="hidden" id="url" value="<?php echo $this->webroot;?>">
 		<h3>Update Contract</h3>
 		
@@ -8,26 +8,14 @@
 		if(!empty($errors)){
 			echo '<div class="bg-padd bg-danger">';
 			foreach ($errors as $row){
-				echo '<p>'.$row[0].'</p>';
+				echo '<p class="alert alert-error">'.$row[0].'</p>';
 				 
 			}
 			echo '</div>';
 		}
 
 		echo $this->Form->create('Contractlog',array('type' => 'file', 'class' => 'form-horizontal'));
-	 	/* echo $this->Form->input('position',
-						array(
-							'div' => 'control-group',
-							'type'=>'select',
-							'class' => 'input-block-level',
-							'label' => 'Employee ID',
-						    'name' => 'employees_id',
-							'value' => $data['employees_id'],
-							'options' => $empId,
-							'empty' => __('Select'),
-						)
-			); */
-	
+
 		echo $this->Form->input('Description',
 									array('div' => array(
 											'class' => 'control-group'

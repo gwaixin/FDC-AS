@@ -61,7 +61,7 @@
                    <th>Owner</th>
                   <th>Status</th>
                   <th>
-                 	 <a href="<?php echo $this->webroot; ?>admin/company/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
+                 	<a href="<?php echo $this->webroot; ?>admin/company/add" class="btn pull-right" ><i class="icon-plus-sign"></i> ADD</a>
                   </th>
                 </tr>
               </thead>
