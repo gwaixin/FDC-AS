@@ -337,6 +337,7 @@ function GetPostion(id,elem){
 		var res = JSON.parse(data);
 
 		if(res !== 0){
+			elem.removeAttr('disabled');
 			len = Object.keys(res).length;
 			if (len  > 1){
 				for(var row in res){
@@ -349,12 +350,14 @@ function GetPostion(id,elem){
 				}	
 			}else{
 				for(var row in res){
+					
 					elem.val(row);
 				}
 			}
 
 		}else{
-			elem.val('');
+			elem.attr('disabled',true);
+			elem.empty();
 		}
 		
 	});
