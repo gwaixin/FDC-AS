@@ -26,6 +26,7 @@
 									'name' => 'roles_id',
 									'value' => $temp['roles_id'],
 									'options' => $roles,
+	     	 						'required' => true,
 									'empty' => __('Select'),
 							));
 	     	 		?>
@@ -43,6 +44,7 @@
 	     	 							'id' => 'txtController',
 	     	 							'class' => 'input-block-level',
 	     	 							'label' => 'Controller:',
+										'required' => true,
 	     	 							'value' => $temp['controller'],
 	     	 							'placeholder' => ''
 	     	 					)
@@ -57,6 +59,7 @@
 													'class' => 'input-block-level',
 													'label' => 'Action:',
 													'value' => $temp['action'],
+													'required' => true,
 													'placeholder' => ''
 											)
 									);
@@ -67,6 +70,7 @@
 												'class' => 'input-block-level',
 												'label' => 'Status:',
 												'name' => 'status',
+												'required' => true,
 												'value' => $temp['status'],
 												'options' => array(
 														'0' => '0',

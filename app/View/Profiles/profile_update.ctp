@@ -35,6 +35,7 @@
 								 'class' => 'input-block-level',
 								 'size' => 16,
 								 'label' => 'First Name',
+								 'required' => true,
 								 'after' => '',
 								 'value' => $data['Profile']['first_name'],
 								 'placeholder' => ''
@@ -49,6 +50,7 @@
 											'class' => 'input-block-level',
 											'size' => 16,
 											'label' => 'Last Name',
+											'required' => true,
 											'value' => $data['Profile']['last_name'],
 											'placeholder' => ''
 									)
@@ -61,6 +63,7 @@
 												'id' => 'txtMiddleName',
 												'class' => 'input-block-level',
 												'size' => 16,
+												'required' => true,
 												'label' => 'Middle Name',
 												'value' => $data['Profile']['middle_name'],
 												'placeholder' => ''
@@ -75,6 +78,7 @@
 						'class' => 'input-block-level',
 						'size' => 16,
 						'label' => 'Nickname',
+						'required' => true,
 						'value' => $data['Profile']['nick_name'],
 						'placeholder' => ''
 				)
@@ -90,6 +94,7 @@
 										'id' => 'dp3',
 										'class' => 'input-block-level',
 										'size' => 16,
+										'required' => true,
 										'value' => date("Y-m-d", strtotime($data['Profile']['birthdate'])),
 										'label' => 'Birth Date',
 										'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
@@ -105,6 +110,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Contact',
+		    				'required' => true,
 		    				'value' => $data['Profile']['contact'],
 		    				'placeholder' => ''
 		    		)
@@ -117,6 +123,7 @@
 		    				'id' => 'txtFacebook',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Facebook',
 		    				'value' => $data['Profile']['facebook'],
 		    				'placeholder' => ''
@@ -130,6 +137,7 @@
 		    				'id' => 'txtEmail',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Email',
 		    				'value' => $data['Profile']['email'],
 		    				'placeholder' => ''
@@ -142,6 +150,7 @@
 								'class' => 'input-block-level',
 								'label' => 'Gender',
 							    'name' => 'gender',
+								'required' => true,
 								'options' => array(
 										'M' => 'MALE',
 										'F' => 'FEMALE',
@@ -160,6 +169,7 @@
 		    				'size' => 16,
 		    				'type' => 'textarea',
 		    				'label' => 'Address',
+		    				'required' => true,
 		    				'value' => $data['Profile']['address'],
 		    				'placeholder' => ''
 		    		)
@@ -172,6 +182,7 @@
 		    				'id' => 'txtContact',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Contact Person',
 		    				'value' => $data['Profile']['contact_person'],
 		    				'placeholder' => ''
@@ -185,6 +196,7 @@
 		    				'id' => 'txtContactNo',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Contact Person Number',
 		    				'value' => $data['Profile']['contact_person_no'],
 		    				'placeholder' => ''
