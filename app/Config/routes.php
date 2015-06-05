@@ -63,7 +63,7 @@
 		array(
         'pass' => array('id')
     ));
-	Router::connect('/admin/privilseges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
+	Router::connect('/admin/privileges/add', array('controller' => 'privileges', 'action' => 'add', 'admin'));
 	Router::connect('/admin/privileges/edit/:id', array('controller' => 'privileges', 'action' => 'edit', 'admin'), array('id'));
 	Router::connect('/admin/privileges/*', array('controller' => 'privileges', 'action' => 'index', 'admin'));
 

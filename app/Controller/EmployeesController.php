@@ -147,7 +147,7 @@ class EmployeesController extends AppController {
 										'role' => $employee['roles']['description'],
 										'status' => $status,
 										'btnAction' => '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a>
-																	  <a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile"> <i class="icon-user"></i>Profile</a>'
+																	  <a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile" onclick="viewProfile('.$employee['Employee']['profile_id'].')"> <i class="icon-user"></i>Profile</a>'
 								);
 			array_push($employees_arr,$data);	
 			}
@@ -228,6 +228,7 @@ class EmployeesController extends AppController {
 			return $time;
 		}
 	}
+
 	
 	public function getEmployeeShift() {
 		if ($this->request->is('ajax')) {
@@ -284,6 +285,42 @@ class EmployeesController extends AppController {
 			}
 			echo json_encode($success);
 		}
+	}
+
+	public function getEmployeeProfile() {
+		$id = $this->request->data['id'];
+		$this->loadModel('Profile');
+		$Profile = $this->Profile->findById($id);
+		$Profile['Profile']['id'] = $id;
+		if(!empty($Profile['Profile']['picture'])) {
+			$Profile['Profile']['picture'] = $this->webroot.'upload/'.$Profile['Profile']['picture'];
+		} else {
+			$Profile['Profile']['picture'] = $this->webroot.'img/emptyprofile.jpeg';
+		}
+		$this->layout = false;
+		$this->Set($Profile);
+		$this->render('employee_profile');
+	}
+
+	public function updateEmployeeProfile() {
+		$this->autoRender = false;
+		$this->loadModel('Profile');
+		$this->Profile->id = $this->request->data['Profile']['id'];
+		if (!empty($_FILES['file-profile-picture']['name'])) {
+			$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
+		}
+		if (!empty($_FILES['file-profile-picture']['name'])) {
+			$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
+		}
+		if($this->request->data['Profile']['birthdate']) {
+			$birthdate = split('/',$this->request->data['Profile']['birthdate']);
+			$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
+		}
+		$errors = array();
+		if(!$this->Profile->save($this->request->data['Profile'])) {
+			$errors = $this->Profile->validationErrors;
+		}
+		echo json_encode($errors);
 	}
 
 	public function getShiftMasterLists() {

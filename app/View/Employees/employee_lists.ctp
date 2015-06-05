@@ -5,6 +5,7 @@
 	echo $this->Html->css('bootstrap-timepicker.min');
 	echo $this->Html->script('hot.full.min');
 	echo $this->Html->script('employee');
+	echo $this->Html->css('employee-edit-profile');
 	echo $this->Html->script('bootstrap-timepicker');
 	echo $this->Html->script('bootstrap-timepicker.min');
 	echo $this->Html->script('bootbox');
@@ -14,15 +15,24 @@
 var baseUrl = "<?php echo $this->webroot; ?>";
 </script>
 
-<div id="loading-BG">
-	<div>
-	<center>
-		<?php 
-			echo $this->Html->image('icon-loading.gif');
-		?>
-	</div>
-	</center>
+<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+       	<h3> Signature </h3>
+       </div>
+      <div class="modal-body" id="contract-container">
+      	<center>
+	      	<img src="<?php echo $this->webroot."$Profile[signature]"; ?>" id="img-signature">
+	      </center>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
+
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div id="employee-container" class="main-content">
@@ -476,219 +486,27 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+    <?php echo $this->form->create('post',array(
+																		'novalidate'  																		
+																		)
+																	);
+    ?>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h2 class="modal-title" id="myModalLabel"> PROFILE </h2>
 				<big style="color:red;" id="txt-errors"></big>
        </div>
       <div class="modal-body">
-			  <div id="profile-container">
-				<?php echo $this->Form->create('Profile',array('type' => 'file', 'class' => 'form-horizontal')); ?>
-					<div id="profile-picture-container">
-						<div id="profile-picture">
-							<img src="<?php echo $this->webroot; ?>img/emptyprofile.jpg" id="img-profile" style="max-width: 230px;max-height:230px;">
-						</div>
-						<?php 			
-							echo $this->Form->file(' ',array('name' => 'file-profile-picture',
-																							 'class' => 'file',
-																							 'id' => 'file-profile',
-																							 'required' => false,
-																							 'accept' => "image/*",'style' => 'display:none;'
-																							)
-																						);
-							echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
-																												'type' => 'button',
-																												'id' => 'btn-browse-profile',
-																												'class' => 'btn btn-success'
-																											)
-																										);
-						?>
-					</div>
-					<table class="table table-striped">
-						<tr> 
-							<td> <b> First Name </b> </td>
-							<td> : </td>
-							<td> 
-								<?php
-									echo $this->Form->input('',array('name' => 'Profile[first_name]',
-																									 'placeholder' => 'Enter First Name',
-																									 'label' => false,
-																									 'div' => false
-																									)
-																								);
-								?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Last Name </b> </td>
-							<td> : </td>
-							<td>
-									<?php
-										echo $this->Form->input('',array('name' => 'Profile[last_name]',
-																										 'placeholder' => 'Enter Las Name',
-																										 'label' => false,
-																									 	'div' => false
-																										)
-																									);
-									?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Middle Name </b> </td>
-							<td> : </td>
-							<td>
-								<?php
-									echo $this->Form->input('',array('name' => 'Profile[middle_name]',
-																									 'placeholder' => 'Enter Middle Name',
-																									 'label' => false,
-																									 'div' => false
-																									)
-																								);
-								?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Nick Name </b> </td>
-							<td> : </td>
-							<td>
-								<?php
-									echo $this->Form->input('',array('name' => 'Profile[nick_name]',
-																									 'placeholder' => 'Enter Nick Name',
-																									 'label' => false,
-																									 'div' => false
-																									)
-																								);
-								?>
-								<i class="icon-warning-sign"></i> Optional
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Birth Date </b> </td>
-							<td> : </td>
-							<td> 
-								<div class="col-xs-6" >
-								    <div class="right-inner-addon">
-								        <?php 
-														echo $this->Form->input('',array('name' => 'Profile[birthdate]',
-																														 'id' => 'birthdate',
-																														 'label' => false,
-																														 'div' => false
-																														)
-																													);
-												?>
-								    </div>
-								</div>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Contact </b> </td>
-							<td> : </td>
-							<td>
-									<?php 
-										echo $this->Form->input('',array('name' => 'Profile[contact]',
-																										 'placeholder' => 'Enter Contact No',
-																										 'label' => false,
-																										 'div' => false
-																										)
-																									);
-									?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Facebook </b> </td>
-							<td> : </td>
-							<td>
-								<?php 
-										echo $this->Form->input('',array('name' => 'Profile[facebook]',
-																										 'placeholder' => 'Enter Facebook',
-																										 'label' => false,
-																										 'div' => false
-																										)
-																									);
-									?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Email </b> </td>
-							<td> : </td>
-							<td>
-								<?php 
-										echo $this->Form->input('',array('name' => 'Profile[email]',
-																										 'placeholder' => 'Enter Email Address',
-																										 'label' => false
-																										)
-																									);
-									?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Gender </b> </td>
-							<td> : </td>
-							<td> 
-								<?php 
-										echo $this->Form->select('',array(
-																										'M' => 'Male',
-																										'F' => 'Female'
-																											),
-																								array(
-																									'name' => 'Profile[gender]',
-																									'empty' => 'Select Gender'
-																									)
-																								);
-								?>
-							</td>
-						</tr>
-							<tr> 
-							<td> <b> Address </b> </td>
-							<td> : </td>
-							<td>  
-								<?php
-									echo $this->Form->textarea('',array(
-																										'name' => 'Profile[address]',
-																										'id' => 'address'
-																									)
-																								);
-								?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Contact Person </b> </td>
-							<td> : </td>
-							<td>
-								<?php
-									echo $this->Form->input('',array(
-																							'name' => 'Profile[contact_person]',
-																							'placeholder' => 'Enter Contact Person',
-																							'label' => false,
-																							'div' => false
-																						)
-																					);
-								?>
-							</td>
-						</tr>
-						<tr> 
-							<td> <b> Contact Person No </b> </td>
-							<td> : </td>
-							<td>
-								<?php 
-										echo $this->Form->input('',array(
-																							'name' => 'Profile[contact_person_no]',
-																							'placeholder' => 'Enter Contact Person No',
-																							'label' => false,
-																							'div' => false
-																						)
-																					);
-									?>
-							</td>
-						</tr>
-					</table>
-					<?php echo $this->Form->end(); ?>
-				</div>
       </div>
       <div class="modal-footer">
-			  <input type="button" value="Edit" class="btn btn-primary" id="btn-submit">
+			  <?php echo $this->form->submit('Update',array(
+			  																'class' => 'btn btn-primary'
+			  															)
+			  														);
+			  ?>
       </div>
     </div>
+    <?php echo $this->form->end;?>
   </div>
 </div>
 
