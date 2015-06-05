@@ -1,6 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Calendar', 'Lib');
+App::uses('AttendanceStatus', 'Lib');
+
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
 
@@ -291,7 +293,7 @@ class AttendancesController extends AppController {
 
 	public function attendanceHistory($layout) {
 		$this->layout = $layout;
-		$id = $this->params['id'];
+		$id = $this->Session->read('Auth.UserProfile.employee_id');//$this->params['id'];
 		$getMonthly = true;
 		if (empty($id)) {
 			$this->redirect('/');
@@ -309,7 +311,10 @@ class AttendancesController extends AppController {
 			$id = $this->request->data['id'];
 			$date = $this->request->data['date'];
 			$history = $this->Attendance->getAttendanceHistory($id, false, $date);
+			$status = new AttendanceStatus();
+			$status->ini();
 			$this->set('history', $history);
+			$this->set('status', $status->status);
 			$this->render('history_detail');
 			return;
 		}
