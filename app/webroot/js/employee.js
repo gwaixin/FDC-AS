@@ -510,7 +510,6 @@ $(document).ready(function () {
 		}
   	hot = new Handsontable($("#table-employees")[0], {
     data: advancedData,
-    height: 9999,
     manualColumnResize: true,
     manualRowResize: true,
     colHeaders: ["Action","Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
@@ -536,7 +535,6 @@ $(document).ready(function () {
 			      cellProperties.readOnly = true;
 			   }
 	    }
-
 	    return cellProperties;
   	},
     columns: [
