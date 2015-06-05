@@ -26,6 +26,7 @@
 											'id' => 'txtDescription',
 											'class' => 'input-block-level',
 											'label' => 'Description:',
+											'required' => true,
 											'value' => $data['description'],
 											'placeholder' => ''
 									)
@@ -40,6 +41,7 @@
 									'name' => 'status',
 									'empty' => 'Select',
 									'id' => 'cbo-category',
+									'required' => true,
 									'value' => $data['status'],
 									'class' => 'form-control'
 							)

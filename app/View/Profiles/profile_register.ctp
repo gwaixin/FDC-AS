@@ -36,6 +36,7 @@
 								 'size' => 16,
 								 'label' => 'First name',
 								 'after' => '',
+								 'required' => true,
 								 'value' => $data['first_name'],
 								 'placeholder' => ''
 							)
@@ -49,6 +50,7 @@
 											'class' => 'input-block-level',
 											'size' => 16,
 											'label' => 'Last Name',
+											'required' => true,
 											'value' => $data['last_name'],
 											'placeholder' => ''
 									)
@@ -62,6 +64,7 @@
 												'class' => 'input-block-level',
 												'size' => 16,
 												'label' => 'Middel Name',
+												'required' => true,
 												'value' => $data['middle_name'],
 												'placeholder' => ''
 										)
@@ -75,6 +78,7 @@
 						'class' => 'input-block-level',
 						'size' => 16,
 						'label' => 'Nickname',
+						'required' => true,
 						'value' => $data['nick_name'],
 						'placeholder' => ''
 				)
@@ -88,6 +92,7 @@
 									),
 										'name' => 'birthdate',
 										'id' => 'dp3',
+										'required' => true,
 										'class' => 'input-block-level ',
 										'size' => 16,
 										'label' => 'Birth date',
@@ -105,6 +110,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Contact',
+		    				'required' => true,
 		    				'value' => $data['contact'],
 		    				'placeholder' => ''
 		    		)
@@ -118,6 +124,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Facebook',
+		    				'required' => true,
 		    				'value' => $data['facebook'],
 		    				'placeholder' => ''
 		    		)
@@ -131,6 +138,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Email',
+		    				'required' => true,
 		    				'value' => $data['email'],
 		    				'placeholder' => ''
 		    		)
@@ -142,6 +150,7 @@
 								'class' => 'input-block-level',
 								'label' => 'Gender',
 							    'name' => 'gender',
+								'required' => true,
 								'value' => $data['gender'],
 								'options' => array(
 										'M' => 'MALE',
@@ -160,6 +169,7 @@
 		    				'size' => 16,
 		    				'type' => 'textarea',
 		    				'label' => 'Address',
+		    				'required' => true,
 		    				'value' => $data['address'],
 		    				'placeholder' => ''
 		    		)
@@ -172,6 +182,7 @@
 		    				'id' => 'txtContact',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Contact Person',
 		    				'value' => $data['contact_person'],
 		    				'placeholder' => ''
@@ -185,6 +196,7 @@
 		    				'id' => 'txtContactNo',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+		    				'required' => true,
 		    				'label' => 'Contact Person Number',
 		    				'value' => $data['contact_person_no'],
 		    				'placeholder' => ''

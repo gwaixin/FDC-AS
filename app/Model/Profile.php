@@ -19,16 +19,28 @@ class Profile extends AppModel{
 					'message' => 'Please provide a valid Last name.'
 			),
 			'email' => array(
-					'rule' => array('email', true),
-					'message' => 'Please provide a valid email address.'
+					'rule1' => array(
+						'rule' => array('email', true),
+						'message' => 'Please provide a valid email address.'
+					),
+					'rule2' => array(
+							'rule' => 'isUnique',
+            				'message' => 'Email already registered'
+					)
 			),
 			'birthdate' => array(
 					'rule' => 'date',
 					'message' => 'Please enter a valid date and time.'
 			),
 			'facebook' => array(
-					'rule' => array('email', true),
-					'message' => 'Please provide a valid email address.'
+					'rule1' => array(
+						'rule' => array('email', true),
+						'message' => 'Please provide a valid facebook email address.'
+					),
+					'rule2' => array(
+							'rule' => 'isUnique',
+            				'message' => 'Facebook email already registered'
+					)
 			),
 			'picture' => array(
 					'rule1'=>array(
@@ -115,7 +127,6 @@ class Profile extends AppModel{
 		$newHeight = $rate * $h;
 		
 		$ext_type = $file['type'];
-		$extension = $this->getExtenstion($file['type']);
 		$ext = $this->getExtenstionType($file['tmp_name']); //extension .gif , .jpeg and png
 		
 		$this->tmp = imagecreatetruecolor($newWidth, $newHeight);
@@ -123,7 +134,7 @@ class Profile extends AppModel{
 		
 
 		/* new file name */
-		$this->imgsrc = $tmppath.'img'.date('Ymdis').'.'.$extension;
+		$this->imgsrc = $tmppath.'img'.date('Ymdis').'.'.$ext;
 		
 		switch ($ext) {
 			case 'png' 	:
@@ -200,29 +211,6 @@ class Profile extends AppModel{
 		return $img;
 	}
 	
-	/**
-	 * return file extesion
-	 * @param unknown $file = source image file extension
-	 * @return boolean|string
-	 */
-	function getExtenstion($file) {
-		$ext = 'jpg';
-		switch ($file) {
-			case 'image/jpeg':
-				$ext = 'jpeg';
-				break;
-			case 'image/png':
-				$ext = 'png'; break;
-				break;
-			case 'image/gif':
-				$ext = 'gif';
-				break;
-			default:
-				return false;
-		}
-		return $ext;
-	}
-
 	public function beforeSave($options  = array()){
 
 		if($this->mode == 0){

@@ -9,7 +9,7 @@
 	     	 		if(!empty($errors)){
 	     	 			echo '<div class="bg-padd bg-danger">';
 	     	 			foreach ($errors as $row){
-	     	 				echo '<p>'.$row[0].'</p>';
+	     	 				echo '<p class="alert alert-error">'.$row[0].'</p>';
 	     	 					
 	     	 			}
 	     	 			echo '</div>';
@@ -30,6 +30,7 @@
 	     	 							'id' => 'txtName',
 	     	 							'class' => 'input-block-level',
 	     	 							'label' => 'Name:',
+	     	 							'required' => true,
 	     	 							'value' => $data['name'],
 	     	 							'placeholder' => ''
 	     	 					)
@@ -43,6 +44,7 @@
 													'id' => 'txtAddress',
 													'class' => 'input-block-level',
 													'label' => 'Address:',
+													'required' => true,
 													'value' => $data['address'],
 													'placeholder' => ''
 											)
@@ -61,6 +63,7 @@
 											'id' => 'txtDescription',
 											'class' => 'input-block-level',
 											'label' => 'Description:',
+											'required' => true,
 											'value' => $data['description'],
 											'placeholder' => ''
 									)
@@ -78,6 +81,7 @@
 									'class' => 'input-block-level ',
 									'size' => 16,
 									'label' => 'Date Start:',
+									'required' => true,
 									'value' => date("Y-m-d", strtotime($data['date_start'])),
 									'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
 									'placeholder' => ''
@@ -92,6 +96,7 @@
 									'id' => 'txtOwner',
 									'class' => 'input-block-level',
 									'label' => 'Owner:',
+									'required' => true,
 									'value' => $data['owner'],
 									'placeholder' => ''
 							)
