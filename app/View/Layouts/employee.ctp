@@ -20,7 +20,6 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -64,6 +63,7 @@
 	                  <li><a href="/employee/myprofile"><i class="icon-user"></i> My Profile</a></li>
 										<li><a href="/employee/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
 										<li><a href="/employee/myaccounts"><i class="icon-briefcase"></i> My Accounts</a></li>
+										<li><a href="/employee/changepassword"><i class="fa fa-key"></i> Change Password</a></li>
 	                      <li><a href="<?php echo $this->webroot."users/logout"; ?>"><i class="icon-share"></i>Logout</a></li>
 	                  </ul>
 	                	</a>

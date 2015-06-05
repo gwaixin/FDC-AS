@@ -28,9 +28,17 @@ class Employee extends AppModel {
                 )
         ),
         'password' => array(
-                'rule' => 'notEmpty',
-                'message' => 'Password must empty'
-            ),
+            'rule'    => array('minLength', 8),
+            'message' => 'Password must be atleast 8 characters'
+        ),
+        'new_password' => array(
+            'rule'    => array('minLength', 8),
+            'message' => 'New Password must be atleast 8 characters'
+        ),
+        'confirm_password' => array(
+           'rule'    => array('minLength',8),
+            'message' => 'Confirm Password must be atleast 8 characters'
+        ),
      	'name' => array(
             'rule' => 'notEmpty'
         ),
@@ -87,6 +95,13 @@ class Employee extends AppModel {
             'rule' => 'numeric'
         )
     );
+
+   public function beforeSave($options  = array()) {
+        if($this->data[$this->alias]['password']) {
+            $this->data[$this->alias]['password'] = Security::hash($this->data[$this->alias]['password'],'sha1',true);
+        }
+        return true;
+    }
     
     public function ValidCode($check) {
        foreach($check as $key => $value) {
