@@ -10,7 +10,7 @@
 							if ($currentDate != $val['Attendance']['date']) {
 								$currentDate = $val['Attendance']['date'];
 								$dateFormat = date('Y F', strtotime($currentDate));
-								echo "<li><a href='javascript:;' date='$currentDate'><i class='icon-chevron-right'></i> $currentDate </a></li>";
+								echo "<li><a href='javascript:;' date='$currentDate'><i class='icon-chevron-right'></i> $dateFormat </a></li>";
 							}
 						}
 				   	?>

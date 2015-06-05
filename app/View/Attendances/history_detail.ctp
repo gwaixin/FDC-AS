@@ -3,8 +3,8 @@
 	<thead>
 		<tr>
 			<td>Date</td>
-			<td>1st Logtime</td>
-			<td>2nd Logtime</td>
+			<td>Logtime</td>
+			<td>Break</td>
 			<td>Overtime</td>
 			<td>Rendered</td>
 			<td>Status</td>
@@ -20,7 +20,7 @@
 	<tr>
 		<td><?php echo "$month $dayCount - $day "; ?></td>
 		<td><?php echo formatTime($val['Attendance']['f_time_in']);?> - <?php echo formatTime($val['Attendance']['f_time_out']);?></td>
-		<td><?php echo formatTime($val['Attendance']['l_time_in']);?> - <?php echo formatTime($val['Attendance']['l_time_out']);?></td>
+		<td><?php echo formatTime($val['Attendance']['break']); ?></td>
 		<td><?php echo $val['Attendance']['over_time'];?></td>
 		<td><?php echo $val['Attendance']['render_time'];?></td>
 		<td><?php echo $val['Attendance']['status']?></td>

@@ -29,7 +29,7 @@
 			<img src="<?php echo $this->webroot."$Profile[picture]"; ?>">
 		</div>
 	</div>
-	<table>
+	<table class="table table-striped">
 		<tr> 
 			<td> <b> First Name </b> </td>
 			<td> : </td>

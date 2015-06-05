@@ -29,8 +29,10 @@
 						</div>
 						<div class='span5'>
 							<div class="input-append">
-								<input type='text' placeholder='Date' name='date' id='date' class='span10'/>
-								<button id='btn-search-monthly' class='btn btn-inverse' title='Monthly search'><i class="fa fa-search"></i></button>
+								<input type='hidden' id='calendar-day' value='<?php echo date("d", strtotime($currentDate)); ?>'/>
+								<input type='hidden' id='calendar-yearmonth' value='<?php echo date("Y-m", strtotime($focus)); ?>'/>
+								<input type='text' placeholder='Date' name='date' id='date' class='span10' value=''/>
+								<button id='btn-search-monthly' class='btn btn-inverse' data-toggle="tooltip" title='Monthly search'><i class="fa fa-search"></i></button>
 							</div>
 						</div>
 						
@@ -74,7 +76,6 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
-
 		<div id="employee-attendance"></div>
 	</div>
 </div>

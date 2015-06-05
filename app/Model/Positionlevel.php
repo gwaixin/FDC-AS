@@ -7,7 +7,10 @@ class Positionlevel extends AppModel {
  				'Rule-1' => array(
 					'rule' => 'notEmpty',
  					'message' => 'Position level description must not be empty.'
-				)
+				), 'Rule-2' => array(
+					'rule'	=> '/^[a-z\d\-_\s]+$/i',
+					'message' => 'Position level cannot contain special characters.'
+ 				)
  			),
 			'positions_id' => array(
 				'rule' => 'numeric'

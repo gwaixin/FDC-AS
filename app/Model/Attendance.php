@@ -96,7 +96,7 @@ class Attendance extends AppModel {
 		$col = array('f_time_in', 'f_time_out'/*, 'l_time_in', 'l_time_out'*/);
 		$attendance = array();
 		foreach($col as $c) {
-			$date = date('Y-m-d', strtotime($data[$c]));
+			$date = date('Y-m-d', strtotime($eData['Attendance']['date']));
 			$eEmp = $date . ' ' . $eData['es'][$c];
 
 			$con = $c == 'f_time_in' ? strtotime($data[$c]) < strtotime($eEmp) : strtotime($data[$c]) > strtotime($eEmp);
@@ -115,8 +115,7 @@ class Attendance extends AppModel {
 		
 		//$totalTime 	= $firstLog['time'];// $this->sumTime($firstLog['time'], $lastLog['time']);
 		$break = $eData['Attendance']['break'];
-		//return $firstLog['time'] . ' === ' . $break;
-		$totalTime = $this->diffTime($firstLog['time'], $break);//diffTime($firstLog['time'], $break);
+		$totalTime = empty($break) ? $firstLog['time'] : $this->diffTime($firstLog['time'], $break);//diffTime($firstLog['time'], $break);
 
 		return $totalTime;
 	}

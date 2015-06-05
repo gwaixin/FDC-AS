@@ -3,6 +3,7 @@
 }
 #profile-container table {
 	margin-top: 40px;
+	max-width: 800px;
 }
 #profile-container table tr td {
 	padding: 5px;
