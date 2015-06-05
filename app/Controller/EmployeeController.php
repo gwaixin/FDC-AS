@@ -147,7 +147,7 @@ class EmployeeController extends AppController {
 		}
 	}
 
-	public function myaccounts($role = null) {
+	public function myAccounts($role = null) {
 		if($role === null) {
 			$this->layout = 'employee';
 		} else {
@@ -155,6 +155,50 @@ class EmployeeController extends AppController {
 		}
 		$accounts = $this->Employee->findById($this->Session->read('Auth.UserProfile.employee_id'));
 		$this->Set('Accounts', $accounts['Employee']);
+	}
+
+	public function changePassword() {
+		$role = $this->Session->read('Auth.Rights.role');
+		if($this->Session->read('Auth.Rights.role') === 'staffs') {
+			$role = 'staff';
+		}
+		$this->layout = $role;
+		$errors = array();
+		if($this->request->is('post')) {
+			if($this->request->data['new_password'] === $this->request->data['confirm_password']) {
+				$this->loadModel('Employee');
+				$id = $this->Session->read('Auth.UserProfile.employee_id');
+				$password = Security::hash($this->request->data['current_password'],'sha1',true);
+				$result = $this->Employee->findByIdAndPassword($id,$password);
+				if($result) {
+						$data = array(
+							'current_password' => $this->request->data['current_password'],
+							'password' => $this->request->data['new_password'],
+							'confirm_password' => $this->request->data['confirm_password'],
+						);
+						$this->Employee->set($data);
+						if($this->Employee->validates()) {
+							if($this->request->data['current_password'] !== $this->request->data['new_password']) {
+								$this->Employee->id = $id;
+								$this->Employee->save($data);
+								echo "<script>alert('Successfully change your password');</script>";
+								echo "<script>location.href = '".$this->webroot.$this->Session->read('Auth.Rights.role')."';</script>";
+							} else {
+								array_push($errors,'New Password and Current Password must not matched');
+							}
+						} else {
+							array_push($errors,'Both New Password must be at least 8 characters');
+						}
+				} else {
+					array_push($errors,'Password is incorrect');
+				}
+			} else {
+				array_push($errors,'Both new password must match');
+			}
+			$this->Set($this->request->data);
+		}
+		$this->Set('errors',$errors);
+		$this->set('title_for_layout', 'Change Password');
 	}
 
 }

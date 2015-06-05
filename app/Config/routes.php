@@ -31,6 +31,7 @@
 	Router::connect( '/admin/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','admin'));
 	Router::connect( '/admin/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','admin'));
 	Router::connect( '/admin/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','admin'));
+	Router::connect( '/admin/changepassword', array('controller' => 'employee', 'action' => 'changepassword'));
 	Router::connect( '/admin/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','admin'));
 	Router::connect('/admin/viewAttendance', array('controller' => 'Attendances', 'action' => 'index'));
 	Router::connect('/admin/create_shift', array('controller' => 'Employeeshifts', 'action' => 'create'));
@@ -97,6 +98,7 @@
 	Router::connect( '/staffs/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','staff'));
 	Router::connect( '/staffs/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','staff'));
 	Router::connect( '/staffs/myaccounts', array('controller' => 'employee', 'action' => 'myaccounts','staff'));
+	Router::connect( '/staffs/changepassword', array('controller' => 'employee', 'action' => 'changepassword'));
 	Router::connect('/staffs/attendances', array('controller' => 'Attendances', 'action' => 'index', 'staff'));
 	Router::connect('/staffs/profiles', array('controller' => 'profiles', 'action' => 'index'));
 	Router::connect('/staffs/employees', array('controller' => 'employees', 'action' => 'employee_lists', 'staff'));

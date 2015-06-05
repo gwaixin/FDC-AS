@@ -612,7 +612,7 @@ class EmployeesController extends AppController {
 					'username' => $employee['username']
 				);
 			if ($employee['password'] !== 'company_default_password') {
-				$data['password'] = Security::hash($employee['password'],'sha1',true);
+				$data['password'] = $employee['password'];
 			}
 			$this->Employee->id = $employee['id'];
 			$txtErrors = "";
