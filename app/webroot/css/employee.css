@@ -1,13 +1,36 @@
 #employee-container {
-/* 	margin: 80px auto; */
+	height: auto;
 }
 #table-employees {
-	margin: 10px;
+	margin: 50px auto;
 	z-index: 0;
+}
+#table-employees a {
+	width: 80px;
+	text-align: left;
+}
+.btn-view-profile {
+	margin-top: 2px;
 }
 
 #search-container {
 	margin-left: 10px;
+}
+#guides-container {
+	margin-left: 10px;
+	width: 300px;
+	border: 1px solid #999;
+	padding: 2px 10px;
+	border-radius: 3px;
+	float: right;
+	margin: -100px 40px;
+}
+#guides-container li span {
+	  color: #08c;
+}
+#guides-container li span:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 .cbo-position {
 	display: none;
