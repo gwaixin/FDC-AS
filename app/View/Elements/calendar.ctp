@@ -1,4 +1,7 @@
-<h4><?php echo date('F Y', strtotime($currentDate)); ?></h4>
+
+<div class='span4'>
+    <h4><?php echo date('F Y', strtotime($currentDate)); ?></h4>
+</div>
 <table class="table table-bordered"> 
 <?php
 	$row = 5;
