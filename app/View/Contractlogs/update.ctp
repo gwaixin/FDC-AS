@@ -26,6 +26,7 @@
 											'class' => 'input-block-level',
 											'size' => 16,
 											'label' => 'Description',
+											'required' => true,
 											'value' => $data['description'],
 											'escape' => false,
 											'placeholder' => ''
@@ -40,6 +41,7 @@
 							'class' => 'input-block-level',
 							'size' => 16,
 							'label' => 'Date Start',
+							'required' => true,
 							'value' => date('Y-m-d',strtotime($data['date_start'])),
 							'placeholder' => ''
 					)
@@ -54,6 +56,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Date End',
+		    				'required' => true,
 		    				'value' => date('Y-m-d',strtotime($data['date_end'])),
 		    				'placeholder' => ''
 		    		)
@@ -67,6 +70,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Salary',
+		    				'required' => true,
 		    				'value' => $data['salary'],
 		    				'placeholder' => ''
 		    		)
@@ -80,6 +84,7 @@
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
 		    				'label' => 'Deminise',
+		    				'required' => true,
 		    				'value' => $data['deminise'],
 		    				'placeholder' => ''
 		    		)
@@ -94,6 +99,7 @@
 	   				'class' => 'input-block-level',
 	   				'size' => 16,
 	   				'label' => 'Term',
+	   				'required' => true,
 	   				'value' => $data['term'],
 	   				'placeholder' => ''
 	   		)
@@ -107,6 +113,7 @@
 							'label' => 'Position',
 						    'name' => 'positions_id',
 							'id' => 'contract-position',
+							'required' => true,
 							'value' => $data['positions_id'],
 							'options' => $position,
 							'empty' => __('Select'),
@@ -124,6 +131,7 @@
 	   				'id' => 'contract-position-level',
 	   				'value' => $data['position_levels_id'],
 	   				'options' => $positionlevel,
+	   				'required' => true,
 	   				'empty' => __('Select'),
 	   		)
 	   );

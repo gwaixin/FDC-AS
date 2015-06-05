@@ -53,11 +53,9 @@ class PositionsController extends AppController {
 			if ($this->Position->updatePos($data['Position']['id'], 0)) {
 				$result['result'] = 'success';
 				$result['message'] = 'Position has been removed.';
-				
-				
 			} else {
 				$result['result'] = 'fail';
-				$result['message'] = 'Position has fail to remove.';
+				$result['message'] = $this->Position->validationErrors;//'Position has fail to remove.';
 			}
 			echo json_encode($result);
 		}

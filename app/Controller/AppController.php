@@ -5,7 +5,7 @@ class AppController extends Controller {
 
 	public $components = array(
 		'Session',
-        'Auth' => array(
+		'Auth' => array(
             'loginRedirect' => array('controller' => 'main12321312', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
 						'authError' => 'You must be logged in to view this page.',

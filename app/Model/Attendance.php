@@ -270,7 +270,8 @@ class Attendance extends AppModel {
 		$data = $this->find('all', array(
 			//'fields' => array('*'),
 				'conditions' => $conditions,
-				'group' => $groupby
+				'group' => $groupby,
+				'order'	=> array('date' => 'DESC')
 			)
 		);
 		return $data;

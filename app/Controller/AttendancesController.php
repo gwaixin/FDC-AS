@@ -1,6 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Calendar', 'Lib');
+App::uses('AttendanceStatus', 'Lib');
+
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
 
@@ -27,15 +29,18 @@ class AttendancesController extends AppController {
 		$date = "";
 		$calendar = new Calendar();
 		
+
 		if ($this->request->is('Ajax') ) {
 			$this->layout = 'ajax';
 			$data = $this->request->data;
 			if (!empty($data)) {
 				$date = $data['date'];
+				$focus = date('Y-m-d', strtotime($data['focus']));
 			}
 		}
 
 		$calendar->ini($date);
+		$focus = empty($focus) ? $calendar->currentDate : $focus;
 		$this->set('month', $calendar->month);
 		$this->set('days', $calendar->days);
 		$this->set('today', $calendar->today);
@@ -44,7 +49,7 @@ class AttendancesController extends AppController {
 		$this->set('firstDay', $calendar->firstDay);
 		$this->set('totalDays', $calendar->totalDays);
 		$this->set('currentDate', $calendar->currentDate);
-
+		$this->set('focus', $focus);
 		if ($this->request->is('Ajax')) { 
 			$this->render('view_calendar');
 			return;
@@ -132,6 +137,7 @@ class AttendancesController extends AppController {
 						'total_time'	=>  $employee['attendances']['render_time'],
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
+						'date'			=>  $employee['attendances']['date'],
 						'day'			=>	date('j', strtotime($employee['attendances']['date'])),
 						'id'			=>	$employee['attendances']['id'],
 						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
@@ -287,7 +293,7 @@ class AttendancesController extends AppController {
 
 	public function attendanceHistory($layout) {
 		$this->layout = $layout;
-		$id = $this->params['id'];
+		$id = $this->Session->read('Auth.UserProfile.employee_id');//$this->params['id'];
 		$getMonthly = true;
 		if (empty($id)) {
 			$this->redirect('/');
@@ -301,11 +307,14 @@ class AttendancesController extends AppController {
 
 	public function getAttendanceDetail() {
 		if ($this->request->is('Ajax')) {
-			$this->layout = 'Ajax';
+			$this->layout = 'ajax';
 			$id = $this->request->data['id'];
 			$date = $this->request->data['date'];
 			$history = $this->Attendance->getAttendanceHistory($id, false, $date);
+			$status = new AttendanceStatus();
+			$status->ini();
 			$this->set('history', $history);
+			$this->set('status', $status->status);
 			$this->render('history_detail');
 			return;
 		}

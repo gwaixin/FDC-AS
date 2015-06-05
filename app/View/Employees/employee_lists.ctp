@@ -174,6 +174,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 											'label' => 'Description',
 											'value' => '',
 											'escape' => false,
+											'required' => true,
 											'placeholder' => ''
 									)
 							);
@@ -187,6 +188,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 							'size' => 16,
 							'label' => 'Date Start',
 							'value' => '',
+							'required' => true,
 							'placeholder' => ''
 					)
 			);
@@ -201,6 +203,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		    				'size' => 16,
 		    				'label' => 'Date End',
 		    				'value' => '',
+							'required' => true,
 		    				'placeholder' => ''
 		    		)
 		    );
@@ -214,6 +217,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		    				'size' => 16,
 		    				'label' => 'Salary',
 		    				'value' => '',
+							'required' => true,
 		    				'placeholder' => ''
 		    		)
 		    );
@@ -225,6 +229,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		    				'id' => 'txtDeminise',
 		    				'class' => 'input-block-level',
 		    				'size' => 16,
+							'required' => true,
 		    				'label' => 'Deminise',
 		    				'value' => '',
 		    				'placeholder' => ''
@@ -241,6 +246,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	   				'size' => 16,
 	   				'label' => 'Term',
 	   				'value' => '',
+					'required' => true,
 	   				'placeholder' => ''
 	   		)
 	   );
@@ -253,6 +259,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 						    'name' => 'positions_id',
 							'id' => 'contract-position',
 							'value' => '',
+							'required' => true,
 							'options' => $position,
 							'empty' => __('Select'),
 						)
@@ -263,7 +270,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 	   		array(
 	   				'div' => 'control-group',
 	   				'type'=>'select',
-	   				'required' => false,
+	   				'required' => true,
 	   				'class' => 'input-block-level',
 	   				'label' => 'Position level',
 	   				'name' => 'position_levels_id',
@@ -547,6 +554,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 										 'size' => 16,
 										 'label' => 'First name',
 										 'after' => '',
+										 'required' => true,
 										 'value' => '',
 										 'placeholder' => ''
 									)
@@ -561,6 +569,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 													'size' => 16,
 													'label' => 'Last Name',
 													'value' => '',
+													'required' => true,
 													'placeholder' => ''
 											)
 									);
@@ -574,6 +583,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 														'size' => 16,
 														'label' => 'Middel Name',
 														'value' => '',
+														'required' => true,
 														'placeholder' => ''
 												)
 										);
@@ -587,6 +597,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 								'size' => 16,
 								'label' => 'Nickname',
 								'value' => '',
+								'required' => true,
 								'placeholder' => ''
 						)
 				);
@@ -603,6 +614,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 												'size' => 16,
 												'label' => 'Birth date',
 												'value' => '',
+												'required' => true,
 												'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
 												'placeholder' => ''
 										)
@@ -617,6 +629,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -630,6 +643,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Facebook',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -643,6 +657,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Email',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -653,6 +668,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 										'class' => 'input-block-level',
 										'label' => 'Gender',
 									    'name' => 'gender',
+										'required' => true,
 										'value' => '',
 										'options' => array(
 												'M' => 'MALE',
@@ -672,6 +688,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'type' => 'textarea',
 				    				'label' => 'Address',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -685,6 +702,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact Person',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -698,6 +716,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact Person Number',
 				    				'value' => '',
+									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );

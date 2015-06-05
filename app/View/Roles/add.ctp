@@ -26,6 +26,7 @@
 											'id' => 'txtDescription',
 											'class' => 'input-block-level',
 											'label' => false,
+											'required' => true,
 											'value' => '',
 											'placeholder' => ''
 									)

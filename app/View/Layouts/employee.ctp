@@ -87,7 +87,7 @@
 							<li><a href="/employee/mycontracts"><i class="icon-file"></i> My Contracts</a></li>
 							<li><a href="/employee/myaccounts"><i class="icon-file"></i> Accounts</a></li>
 							<li>
-								<a href="/employee/attendance/<?php echo $this->session->read('Auth.UserProfile.employee_id'); ?>">
+								<a href="/employee/attendance">
 								<i class="icon-calendar"></i> Attendance</a>
 							</li>
 

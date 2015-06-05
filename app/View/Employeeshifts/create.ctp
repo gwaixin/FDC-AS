@@ -19,7 +19,8 @@
 								'placeholder' 	=> 	'Description', 
 								'label' 		=> 	'Shift description',
 								'between' 		=> 	'<div class="control-group">',
-								'after'			=>	'</div>'
+								'after'			=>	'</div>',
+								'required'		=> 	true
 							) 
 						);
 						echo $this->Form->input('f_time_in', 
