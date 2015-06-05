@@ -1,13 +1,12 @@
-
-<table class="table">
+<table class="table table-striped">
 	<thead>
 		<tr>
-			<td>Date</td>
-			<td>Logtime</td>
-			<td>Break</td>
-			<td>Overtime</td>
-			<td>Rendered</td>
-			<td>Status</td>
+			<th>Date</th>
+			<th>Logtime</th>
+			<th>Break</th>
+			<th>Overtime</th>
+			<th>Rendered</th>
+			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -16,6 +15,7 @@
 		$dayCount = date('d', strtotime($val['Attendance']['date']));
 		$month 	= date('M', strtotime($val['Attendance']['date']));
 		$day 	= date('D', strtotime($val['Attendance']['date']));
+		$stat 	= empty($val['Attendance']['status']) ? '' : $status["{$val['Attendance']['status']}"];
 ?>
 	<tr>
 		<td><?php echo "$month $dayCount - $day "; ?></td>
@@ -23,7 +23,7 @@
 		<td><?php echo formatTime($val['Attendance']['break']); ?></td>
 		<td><?php echo $val['Attendance']['over_time'];?></td>
 		<td><?php echo $val['Attendance']['render_time'];?></td>
-		<td><?php echo $val['Attendance']['status']?></td>
+		<td><?php echo ucfirst($stat); ?></td>
 	</tr>
 <?php
 	}

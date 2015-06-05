@@ -116,7 +116,7 @@
     ));
 
 	//EMPLOYEE
-	Router::connect('/employee/attendance/:id', array('controller' => 'Attendances', 'action' => 'attendanceHistory', 'employee'), array('id'));
+	Router::connect('/employee/attendance/*', array('controller' => 'Attendances', 'action' => 'attendanceHistory', 'employee'));
    //
 /**
  * Load all plugin routes. See the CakePlugin documentation on
