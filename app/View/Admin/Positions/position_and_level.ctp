@@ -16,7 +16,8 @@
 											'placeholder' 	=> 	'Description', 
 											'label' 		=> 	'Position description',
 											'between'		=>	'<div class="input-append">',
-											'after'			=> 	'<button class="btn" id="btn-search-position" type="button"><i class="icon-search"></i></button></div>'
+											'after'			=> 	'<button class="btn" id="btn-search-position" type="button"><i class="icon-search"></i></button></div>',
+											'required'		=> 	true
 										) 
 									);
 							?>
@@ -76,7 +77,8 @@
 											'placeholder' 	=> 'Description', 
 											'label' 		=> 'Position level description', 
 											'between'		=> '<div class="input-append">',
-											'after'			=> $after
+											'after'			=> $after,
+											'required'		=> true
 										) 
 									);
 							?>
