@@ -8,8 +8,6 @@
         for ($j = 0; $j < 7; $j++) {
             $class = ''; $id = '';
 
-            //$style = ($days == $today-1 && $month == date('m')) ? 'style="border: 1px solid red"' : '';
-            //$style = ($i>0) ? '':'style="background:#FFF380"';
             $isValidDay = $days < $totalDays && $days > 0;
             $isFirstDay = $firstDay === $week[$j];
 
@@ -17,13 +15,11 @@
                 $class .= "day-head";
             } else if ($i > 0 && $isValidDay || $isFirstDay) {
                 $class = "days";
-                //$id = "day". ($days + 1);
-                if ($days == $today-1 && $month == date('m')) {
+                if ($days == $today-1 && $month == date('m', strtotime($focus))) {
                     $id = "focus-day";
                 }
             }
-			//$class = ($i >0)?'class=""'.' id="day'..'"': '';
-            echo "<td class='$class' id='$id'>";
+			echo "<td class='$class' id='$id'>";
             if ($i > 0) {
                 if (($isValidDay)|| $isFirstDay) {
                     $days += 1;
@@ -44,14 +40,14 @@
 ?>    
 </table>
 
-<input type='hidden' id='yearmonth' value="<?php echo date('Y/m/', strtotime($currentDate)); ?>"/>
+<input type='hidden' id='yearmonth' value="<?php echo date('Y-m', strtotime($currentDate)); ?>"/>
 
 <?php $d->modify('+1 month'); ?>
-<span class='calendar-nav pull-right' title='Next month' date="<?php echo $d->format('Y-m-d'); ?>">
+<span class='calendar-nav pull-right' title='Next month' date="<?php echo $d->format('Y-m'); ?>">
     <i class='fa fa-2x fa-chevron-circle-right'></i>
 </span>
 
 <?php $d->modify('-2 month'); ?>
-<span class='calendar-nav' title='Prev month' date="<?php echo $d->format('Y-m-d'); ?>">
+<span class='calendar-nav' title='Prev month' date="<?php echo $d->format('Y-m'); ?>">
     <i class='fa fa-2x fa-chevron-circle-left'></i>
 </span>

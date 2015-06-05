@@ -12,6 +12,7 @@ var currentDate;
 var currentRequest = "";
 var isMonthly = false;
 var rowArr = [];
+
 $(document).ready(function () {
 	//$('#time-in').timepicker({defaultTime : false});
 	//For dates
@@ -20,12 +21,6 @@ $(document).ready(function () {
 	
 	var currentTime;
 
-	function changeDate() {
-		currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
-		dateObj 	= new Date(currentDate);
-		cMonthDay 	= pad((dateObj.getUTCMonth()+1)) + '-' +pad(dateObj.getDate());
-		cYear 		= dateObj.getUTCFullYear();
-	}
 	//hot table textarea popup
 	var htTextarea;
 	
@@ -151,6 +146,12 @@ $(document).ready(function () {
 	$('#btn-search-monthly').click(function(e) {
 		e.preventDefault();
 		var keyword = $('#keyword').val();
+		
+		if ($('#date').val() != "" && !isDateTime($('#date').val())) {
+			alert("invalid date format");
+			return;
+		}
+		
 		changeDate();
 		currentRequest = {keyword:keyword, monthly:currentDate};
 		isMonthly = true;
@@ -205,17 +206,27 @@ $(document).ready(function () {
 	
 });
 
-function convertToDatetime(val) {
+function changeDate() {
+	currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
+	dateObj 	= new Date(currentDate);
+	cMonthDay 	= pad((dateObj.getUTCMonth()+1)) + '-' +pad(dateObj.getDate());
+	cYear 		= dateObj.getUTCFullYear();
+}
+
+function convertToDatetime(val, rowDate) {
 	var fDate = 0;
+	var splitDateTime = rowDate.split(' ');
+	var splitDate = splitDateTime[0].split('-');
+	
 	switch (val.length) {
 		case 4: 
 			var time = pad(toTime(val));
-			fDate = cYear+'-'+cMonthDay+' '+time;
+			fDate = splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]+' '+time;
 			break;
 		case 8:
 			var month = pad(toMonth(val.substr(0, 4)));
 			var time = pad(toTime(val.substr(4, 8)));
-			fDate = cYear+'-'+month+' '+time;
+			fDate = splitDate[0]+'-'+month+' '+time;
 			break;
 		case 12: 
 			var year = pad(toYear(val.substr(0, 4)));
@@ -395,7 +406,7 @@ function attendanceList() {
 	    		change[0][3] != ''
 	    	) {
 
-	    		var time = colClass == 'break' ? convertToTime(change[0][3]) : convertToDatetime(change[0][3]);
+	    		var time = colClass == 'break' ? convertToTime(change[0][3]) : convertToDatetime(change[0][3], list[rowIndex]['date']);
 	    		if (time === 0) {
 	    			console.log(change[0]);
 	    			change[0][3] = change[0][2];
@@ -649,15 +660,19 @@ $(document).on('click', '.days', function() {
    $('#focus-day').removeAttr('id');
    $(this).attr('id', 'focus-day');
    var day = pad($(this).html());
-   //alert(yearMonth+day);
    var yearMonth = $('#yearmonth').val();
-   currentRequest = {date:(yearMonth+day)};
+   $('#calendar-day').val(day); //this is for focus
+   $('#calendar-yearmonth').val(yearMonth); //this is for focus
+   currentRequest = {date:(yearMonth+'-'+day)};
+   changeDate();
    getAttendanceList(currentRequest);
 });
 
 $(document).on('click', '.calendar-nav', function() {
 	var date = $(this).attr('date');
-    $.post(webroot+'attendances/getCalendar', {date: date}, function(data) {
+	var day = $('#calendar-day').val(); //this is for focus
+	var yearMonth = $('#calendar-yearmonth').val(); //this is for focus
+    $.post(webroot+'attendances/getCalendar', {date: date+'-'+day, focus: yearMonth}, function(data) {
         $("#calendar").html(data);
     });
 });

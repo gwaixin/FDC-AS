@@ -27,15 +27,18 @@ class AttendancesController extends AppController {
 		$date = "";
 		$calendar = new Calendar();
 		
+
 		if ($this->request->is('Ajax') ) {
 			$this->layout = 'ajax';
 			$data = $this->request->data;
 			if (!empty($data)) {
 				$date = $data['date'];
+				$focus = date('Y-m-d', strtotime($data['focus']));
 			}
 		}
 
 		$calendar->ini($date);
+		$focus = empty($focus) ? $calendar->currentDate : $focus;
 		$this->set('month', $calendar->month);
 		$this->set('days', $calendar->days);
 		$this->set('today', $calendar->today);
@@ -44,7 +47,7 @@ class AttendancesController extends AppController {
 		$this->set('firstDay', $calendar->firstDay);
 		$this->set('totalDays', $calendar->totalDays);
 		$this->set('currentDate', $calendar->currentDate);
-
+		$this->set('focus', $focus);
 		if ($this->request->is('Ajax')) { 
 			$this->render('view_calendar');
 			return;
@@ -132,6 +135,7 @@ class AttendancesController extends AppController {
 						'total_time'	=>  $employee['attendances']['render_time'],
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
+						'date'			=>  $employee['attendances']['date'],
 						'day'			=>	date('j', strtotime($employee['attendances']['date'])),
 						'id'			=>	$employee['attendances']['id'],
 						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
