@@ -29,7 +29,6 @@ $(document).ready(function () {
 	var clicked = false;
 
 	function ViewEmployee() {
-		$("#modalAccounts").modal('show');
 		selectedIndex = hot.getSelectedRange().to.row;
 		$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
 		$("#txt-errors").html("");
@@ -361,7 +360,7 @@ $(document).ready(function () {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
 					advancedData[index].picture = data.picture;
-					advancedData[index].btnAction = '<span class="btn btn-default btn-view-employee">VIEW <i class="icon-search"></i></span>'; 
+					advancedData[index].btnAction = '<span class="btn btn-default btn-view-employee"> View <br> Accounts <i class="icon-briefcase"></i></span>'; 
 					advancedData[index].nick_name = data.nick_name;
 					refresh();
 				}
@@ -423,7 +422,7 @@ $(document).ready(function () {
 					}
 					advancedData[selectedIndex]['drug_test'] = $("#drug_test").val();
 					$("#drug_test").val("company_default_password");
-					bootbox.alert("Successfully updated employee info");
+					bootbox.alert("Successfully Updated Employee Accounts");
 				}
 			},'JSON');
 	}
@@ -512,7 +511,7 @@ $(document).ready(function () {
     data: advancedData,
     manualColumnResize: true,
     manualRowResize: true,
-    colHeaders: ["Action","Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
+    colHeaders: ["View","Picture","Name","Employee ID","Nick Name","Company","Position","Position Level", "Shift","Contract", "Role", "Status"],
   	stretchH: 'all',
     columnSorting: true,
     contextMenu: true,

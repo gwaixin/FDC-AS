@@ -97,7 +97,7 @@ class Employee extends AppModel {
     );
 
    public function beforeSave($options  = array()) {
-        if($this->data[$this->alias]['password']) {
+        if(isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = Security::hash($this->data[$this->alias]['password'],'sha1',true);
         }
         return true;

@@ -82,7 +82,16 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 																		'id' => 'btn-search'
 																		)
 																	);
-				?>		
+				?>
+			</div>
+			<div id="guides-container">
+				<legend> Guides </legend>
+					<ul>
+						<li> <span> How to add new row </span> </li>
+						<li> <span> How to edit a row </span> </li>
+						<li> <span> How to Select Shift </span> </li>
+						<li> <span> How to add contract </span> </li>
+					</ul>
 			</div>
 			<div class="add-cont">
 				<a href="#" data-toggle="modal" data-target='#addNewProfile'><i class="fa fa-plus-square"></i> ADD NEW PROFILE</a>
@@ -363,7 +372,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		</div>    		 	
       </div>
       <div class="modal-footer">
-      	<a href="#" class="btn btn-primary btn-contact-edit">Edit</a>
+      	<a href="#" class="btn btn-primary btn-contact-edit" target="blank">Edit</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -376,13 +385,14 @@ var baseUrl = "<?php echo $this->webroot; ?>";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2 class="modal-title" id="myModalLabel"> More Information </h2>
+        <h2 class="modal-title" id="myModalLabel"> ACCOUNTS </h2>
 				<big style="color:red;" id="txt-errors"></big>
        </div>
       <div class="modal-body">
 			    <div class="form-group" id="additional-info-container">
 						<h4 id="lbl-employee"> </h4>
 		        <?php
+		        		echo "Drug Test<br>";
 		        		echo $this->Form->Select('Drug Test',array(
 		        																	'Passed' => 'Passed',
 		        																	'Failed' => 'Failed'
@@ -390,8 +400,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 		        																'empty' => 'Drug Test',
 	        																	'name' => 'drug_test',
 	        																	'id' => 'drug_test',
-	        																	'disabled' => 'disabled',
-	        																	'div' => false
+	        																	'disabled' => 'disabled'
 	        																	)
 	        																);
 		        		echo $this->Form->input('Tin No',array(
@@ -464,19 +473,233 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				  </div>
       </div>
       <div class="modal-footer">
-      	<?php
-      		echo $this->Html->link('Edit Profile','',array(
-      																					'class' => 'btn btn-primary',
-      																					'id' => 'btn-view-profile',
-      																					'target' => 'blank'
-      																				)
-      																			);
-      	?>
 			  <input type="button" value="Edit" class="btn btn-primary" id="btn-submit">
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="myModalLabel"> PROFILE </h2>
+				<big style="color:red;" id="txt-errors"></big>
+       </div>
+      <div class="modal-body">
+			  <div id="profile-container">
+				<?php echo $this->Form->create('Profile',array('type' => 'file', 'class' => 'form-horizontal')); ?>
+					<div id="profile-picture-container">
+						<div id="profile-picture">
+							<img src="<?php echo $this->webroot; ?>img/emptyprofile.jpg" id="img-profile" style="max-width: 230px;max-height:230px;">
+						</div>
+						<?php 			
+							echo $this->Form->file(' ',array('name' => 'file-profile-picture',
+																							 'class' => 'file',
+																							 'id' => 'file-profile',
+																							 'required' => false,
+																							 'accept' => "image/*",'style' => 'display:none;'
+																							)
+																						);
+							echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
+																												'type' => 'button',
+																												'id' => 'btn-browse-profile',
+																												'class' => 'btn btn-success'
+																											)
+																										);
+						?>
+					</div>
+					<table class="table table-striped">
+						<tr> 
+							<td> <b> First Name </b> </td>
+							<td> : </td>
+							<td> 
+								<?php
+									echo $this->Form->input('',array('name' => 'Profile[first_name]',
+																									 'placeholder' => 'Enter First Name',
+																									 'label' => false,
+																									 'div' => false
+																									)
+																								);
+								?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Last Name </b> </td>
+							<td> : </td>
+							<td>
+									<?php
+										echo $this->Form->input('',array('name' => 'Profile[last_name]',
+																										 'placeholder' => 'Enter Las Name',
+																										 'label' => false,
+																									 	'div' => false
+																										)
+																									);
+									?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Middle Name </b> </td>
+							<td> : </td>
+							<td>
+								<?php
+									echo $this->Form->input('',array('name' => 'Profile[middle_name]',
+																									 'placeholder' => 'Enter Middle Name',
+																									 'label' => false,
+																									 'div' => false
+																									)
+																								);
+								?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Nick Name </b> </td>
+							<td> : </td>
+							<td>
+								<?php
+									echo $this->Form->input('',array('name' => 'Profile[nick_name]',
+																									 'placeholder' => 'Enter Nick Name',
+																									 'label' => false,
+																									 'div' => false
+																									)
+																								);
+								?>
+								<i class="icon-warning-sign"></i> Optional
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Birth Date </b> </td>
+							<td> : </td>
+							<td> 
+								<div class="col-xs-6" >
+								    <div class="right-inner-addon">
+								        <?php 
+														echo $this->Form->input('',array('name' => 'Profile[birthdate]',
+																														 'id' => 'birthdate',
+																														 'label' => false,
+																														 'div' => false
+																														)
+																													);
+												?>
+								    </div>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Contact </b> </td>
+							<td> : </td>
+							<td>
+									<?php 
+										echo $this->Form->input('',array('name' => 'Profile[contact]',
+																										 'placeholder' => 'Enter Contact No',
+																										 'label' => false,
+																										 'div' => false
+																										)
+																									);
+									?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Facebook </b> </td>
+							<td> : </td>
+							<td>
+								<?php 
+										echo $this->Form->input('',array('name' => 'Profile[facebook]',
+																										 'placeholder' => 'Enter Facebook',
+																										 'label' => false,
+																										 'div' => false
+																										)
+																									);
+									?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Email </b> </td>
+							<td> : </td>
+							<td>
+								<?php 
+										echo $this->Form->input('',array('name' => 'Profile[email]',
+																										 'placeholder' => 'Enter Email Address',
+																										 'label' => false
+																										)
+																									);
+									?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Gender </b> </td>
+							<td> : </td>
+							<td> 
+								<?php 
+										echo $this->Form->select('',array(
+																										'M' => 'Male',
+																										'F' => 'Female'
+																											),
+																								array(
+																									'name' => 'Profile[gender]',
+																									'empty' => 'Select Gender'
+																									)
+																								);
+								?>
+							</td>
+						</tr>
+							<tr> 
+							<td> <b> Address </b> </td>
+							<td> : </td>
+							<td>  
+								<?php
+									echo $this->Form->textarea('',array(
+																										'name' => 'Profile[address]',
+																										'id' => 'address'
+																									)
+																								);
+								?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Contact Person </b> </td>
+							<td> : </td>
+							<td>
+								<?php
+									echo $this->Form->input('',array(
+																							'name' => 'Profile[contact_person]',
+																							'placeholder' => 'Enter Contact Person',
+																							'label' => false,
+																							'div' => false
+																						)
+																					);
+								?>
+							</td>
+						</tr>
+						<tr> 
+							<td> <b> Contact Person No </b> </td>
+							<td> : </td>
+							<td>
+								<?php 
+										echo $this->Form->input('',array(
+																							'name' => 'Profile[contact_person_no]',
+																							'placeholder' => 'Enter Contact Person No',
+																							'label' => false,
+																							'div' => false
+																						)
+																					);
+									?>
+							</td>
+						</tr>
+					</table>
+					<?php echo $this->Form->end(); ?>
+				</div>
+      </div>
+      <div class="modal-footer">
+			  <input type="button" value="Edit" class="btn btn-primary" id="btn-submit">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="modal fade" id="addNewProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
