@@ -10,6 +10,9 @@ class Position extends AppModel{
 				), 'Rule-2' => array(
 					'rule'	=> '/^[a-z\d\-_\s]+$/i',
 					'message' => 'Position cannot contain special characters.'
+ 				), 'Rule-3'	=> array(
+ 					'rule'	=> array('isDescriptionExist'),
+ 					'message' => 'Description already exist.'
  				)
  			)
  	);
@@ -21,6 +24,14 @@ class Position extends AppModel{
  		if ($this->save()) {
  			return true;
  		}
+ 	}
+
+ 	public function isDescriptionExist() {
+ 		$conditions = array(
+		    'description' => $this->data[$this->alias]['description'],
+		    'id <>' => $this->data[$this->alias]['id']
+		);
+		return !$this->hasAny($conditions);   
  	}
 }
 
