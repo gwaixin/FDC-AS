@@ -5,6 +5,7 @@ class AppController extends Controller {
 
 	public $components = array(
 		'Session',
+		'DebugKit.Toolbar',
         'Auth' => array(
             'loginRedirect' => array('controller' => 'main12321312', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
