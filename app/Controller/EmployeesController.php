@@ -295,7 +295,7 @@ class EmployeesController extends AppController {
 		if(!empty($Profile['Profile']['picture'])) {
 			$Profile['Profile']['picture'] = $this->webroot.'upload/'.$Profile['Profile']['picture'];
 		} else {
-			$Profile['Profile']['picture'] = $this->webroot.'img/emptyprofile.jpeg';
+			$Profile['Profile']['picture'] = $this->webroot.'img/emptyprofile.jpg';
 		}
 		if(!empty($Profile['Profile']['signature'])) {
 			$Profile['Profile']['signature'] = $this->webroot.'upload/'.$Profile['Profile']['signature'];
