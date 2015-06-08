@@ -2,24 +2,6 @@
 	echo $this->Html->css('employee-profile');
 	echo $this->Html->script('employee-profile');
 ?>
-<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-       	<h3> Signature </h3>
-       </div>
-      <div class="modal-body" id="contract-container">
-      	<center>
-	      	<img src="<?php echo $this->webroot."$Profile[signature]"; ?>" id="img-signature">
-	      </center>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
 <div>
 <h3> My Profile </h3>
 
@@ -110,12 +92,7 @@
 			<td> : </td>
 			<td> 
 					<?php
-						echo $this->Form->button('View <span class="icon-search"></span>',array(
-																								'class' => 'btn btn-success',
-																								'data-toggle' => 'modal',
-																								'data-target' => '#modalSignature'
-																							)
-																						);
+						echo "<img src='".$this->webroot.$Profile['signature']."' id='img-signature' style='max-width:100px;max-height:100px;'>";
 					?>
 			</td>
 		</tr>
