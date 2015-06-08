@@ -360,7 +360,7 @@ $(document).ready(function () {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
 					advancedData[index].picture = data.picture;
-					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile" onclick="modalViewProfile('+advancedData[index].employee_id+')"> <i class="icon-user"></i>Profile</a>'; 
+					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalViewProfile" onclick="modalViewProfile('+advancedData[index].employee_id+')"> <i class="icon-user"></i>Profile</a>'; 
 					advancedData[index].nick_name = data.nick_name;
 					refresh();
 				}
