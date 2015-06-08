@@ -62,8 +62,7 @@ $(document).ready(function() {
 																					 'value' => $Profile['first_name'],
 																					 'placeholder' => 'Enter First Name',
 																					 'label' => false,
-																					 'div' => false,
-																					 'required'
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -77,8 +76,7 @@ $(document).ready(function() {
 																						 'value' => $Profile['last_name'],
 																						 'placeholder' => 'Enter Las Name',
 																						 'label' => false,
-																					 	 'div' => false,
-																						 'required'
+																					 	 'div' => false
 																						)
 																					);
 					?>
@@ -92,8 +90,7 @@ $(document).ready(function() {
 																					 'value' => $Profile['middle_name'],
 																					 'placeholder' => 'Enter Middle Name',
 																					 'label' => false,
-																					 'div' => false,
-																					 'required'
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -107,8 +104,7 @@ $(document).ready(function() {
 																					 'value' => $Profile['nick_name'],
 																					 'placeholder' => 'Enter Nick Name',
 																					 'label' => false,
-																					 'div' => false,
-																					 'required'
+																					 'div' => false
 																					)
 																				);
 				?>
@@ -128,8 +124,7 @@ $(document).ready(function() {
 																										 'id' => 'birthdate',
 																										 'value' => $birthdate,
 																										 'label' => false,
-																										 'div' => false,
-																										 'required'
+																										 'div' => false
 																										)
 																									);
 								?>
@@ -145,8 +140,7 @@ $(document).ready(function() {
 																						 'value' => $Profile['contact'],
 																						 'placeholder' => 'Enter Contact No',
 																						 'label' => false,
-																						 'div' => false,
-																						 'required'
+																						 'div' => false
 																						)
 																					);
 					?>
@@ -160,8 +154,7 @@ $(document).ready(function() {
 																						 'value' => $Profile['facebook'],
 																						 'placeholder' => 'Enter Facebook',
 																						 'label' => false,
-																						 'div' => false,
-																						 'required'
+																						 'div' => false
 																						)
 																					);
 					?>
@@ -175,8 +168,7 @@ $(document).ready(function() {
 																						 'value' => $Profile['email'],
 																						 'placeholder' => 'Enter Email Address',
 																						 'label' => false,
-																						 'div' => false,
-																						 'required'
+																						 'div' => false
 																						)
 																					);
 					?>
@@ -193,8 +185,7 @@ $(document).ready(function() {
 																				array(
 																					'name' => 'Profile[gender]',
 																					'empty' => 'Select Gender',
-																					'value' => $Profile['gender'],
-																					'required'
+																					'value' => $Profile['gender']
 																					)
 																				);
 				?>
@@ -207,8 +198,7 @@ $(document).ready(function() {
 					echo $this->Form->textarea('',array(
 																						'name' => 'Profile[address]',
 																						'id' => 'address',
-																						'value' => $Profile['address'],
-																						'required'
+																						'value' => $Profile['address']
 																					)
 																				);
 				?>
@@ -223,8 +213,7 @@ $(document).ready(function() {
 																			'value' => $Profile['contact_person'],
 																			'placeholder' => 'Enter Contact Person ',
 																			'label' => false,
-																			'div' => false,
-																			'required'
+																			'div' => false
 																		)
 																	);
 				?>
@@ -239,8 +228,7 @@ $(document).ready(function() {
 																			'value' => $Profile['contact_person_no'],
 																			'placeholder' => 'Enter Contact Person ',
 																			'label' => false,
-																			'div' => false,
-																			'required'
+																			'div' => false
 																		)
 																	);
 				?>

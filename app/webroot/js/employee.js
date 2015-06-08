@@ -133,27 +133,32 @@ $(document).ready(function () {
 	});
 
 	function getShiftLists() {
+		$('.layout-transparent').show();
 		$.post(baseUrl+'employees/getShiftMasterLists',function(data) {
+			$('.layout-transparent').hide();
 			$("#modalShift .modal-body").html(data);
 			$(".btn-select-shift").click(function(e) {
-				var c = confirm('Are you sure you want to select this shift?');
-				if (c === true) {
-					advancedData[currentSelectedRow].shift = e.target.value;
-					advancedData[currentSelectedRow].shift_id = e.target.id;
-					hot.getCell(currentSelectedRow,5).innerHTML = e.target.value;
-					var emp_id = advancedData[currentSelectedRow].id;
-					var shift_id = e.target.id;
-					$.post(baseUrl+'employees/updateEmployeeShift',{id:emp_id,shift_id:shift_id},
-						function(success) {
-							// hot.validateCells(function(){});
-							if (success) {
-								bootbox.alert('Successfully selected employees shift');
-							} else {
-								bootbox.alert('Failed to update employees shift. Please try again.');
-							}
+				bootbox.confirm('Are you sure you want to select this shift?',function(c) {
+					if(c === true) {
+						advancedData[currentSelectedRow].shift = e.target.value;
+						advancedData[currentSelectedRow].shift_id = e.target.id;
+						hot.getCell(currentSelectedRow,5).innerHTML = e.target.value;
+						var emp_id = advancedData[currentSelectedRow].id;
+						var shift_id = e.target.id;
+						$('.layout-transparent').show();
+						$.post(baseUrl+'employees/updateEmployeeShift',{id:emp_id,shift_id:shift_id},
+							function(success) {
+								$('.layout-transparent').hide();
+								$("#modalShift").modal('hide');
+								// hot.validateCells(function(){});
+								if (success) {
+									bootbox.alert('Successfully selected employees shift');
+								} else {
+									bootbox.alert('Failed to update employees shift. Please try again.');
+								}
 						});
-					$("#modalShift").modal('hide');
-				}
+					}
+				});
 			});
 		});
 	}
@@ -164,7 +169,9 @@ $(document).ready(function () {
 		} else if(advancedData[currentSelectedRow].shift_id.length === 0) {
 			getShiftLists();
 		} else {
+			$('.layout-transparent').show();
 			$.post(baseUrl+'employees/getEmployeeShift',{id:advancedData[currentSelectedRow].shift_id},function(data) {
+				$('.layout-transparent').hide();
 				$("#modalShift .modal-body").html(data);
 				$("#btn-change-shift").click(function() {
 					getShiftLists();
@@ -342,18 +349,19 @@ $(document).ready(function () {
 
 
 	function getEmployees() {
+		$('.layout-transparent').show();
 		$.post(baseUrl + 'employees/getEmployees',{field:$("#cbo-category").val(),value:searchValue,
 																		position_level:$("#cbo-position-level").val()},
 			function(data) {
-
+				$('.layout-transparent').hide();
 				advancedData = data;
 				displayEmployees();
-
 		},'JSON');
 	}
 
 
 	function addEmployee(employee,index) {
+		$('.layout-transparent').show();
 		$.post(baseUrl + 'employees/addEmployee',{employee:employee},
 			function(data) {
 				if (data.success) {
@@ -622,9 +630,12 @@ $(document).ready(function () {
 });
 
 function viewProfile(id) {
+	$('.layout-transparent').show();
 	$.post(baseUrl+'employees/getEmployeeProfile',{id:id},function(data) {
     $("#modalViewProfile #txt-errors").html("");
+    $("#modalViewProfile .modal-body").html("");
 		$("#modalViewProfile .modal-body").html(data);
+		$('.layout-transparent').hide();
 	});
 }
 
@@ -648,6 +659,8 @@ function updateProfile() {
     		bootbox.alert('Successfully Update Employee Profile');
     		if(data.picture.length > 0) {
     			advancedData[currentSelectedRow].picture = data.picture;
+    			advancedData[currentSelectedRow].name = data.name;
+    			advancedData[currentSelectedRow].nick_name = data.nick_name;
     		}
     	} else {
     		for(var x in errors) {

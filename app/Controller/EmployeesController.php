@@ -322,6 +322,8 @@ class EmployeesController extends AppController {
 			$json['picture'] = "";
 		} else {
 			$Profile = $this->Profile->findById($this->request->data['Profile']['id']);
+			$json['name'] = $Profile['Profile']['first_name'].' '.$Profile['Profile']['middle_name'].' '.$Profile['Profile']['last_name'];
+			$json['nick_name'] = $Profile['Profile']['nick_name'];
 			if(!empty($_FILES['file-profile-picture']['name'])) {
 				$json['picture'] = "<img src='".$this->webroot.'upload/'.$Profile['Profile']['picture']."'>";
 			}
