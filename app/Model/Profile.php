@@ -25,6 +25,7 @@ class Profile extends AppModel{
 					),
 					'rule2' => array(
 							'rule' => 'isUnique',
+							'on' => 'create',
             				'message' => 'Email already registered'
 					)
 			),
@@ -39,6 +40,7 @@ class Profile extends AppModel{
 					),
 					'rule2' => array(
 							'rule' => 'isUnique',
+							'on' => 'create',
             				'message' => 'Facebook email already registered'
 					)
 			),

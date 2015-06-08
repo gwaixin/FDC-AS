@@ -162,9 +162,19 @@ $(document).ready(function () {
 	$('#date').datepicker({
 		autoclose: true,
 		viewMode: "months",
-		minViewMode: "months",
-		format: "yyyy-mm"
-	});
+		//minViewMode: "months",
+		format: "yyyy-mm-dd"
+	}).on('changeDate', function(en) {
+      	var date = $('#date').val();
+		var day = date.substr(-2);
+		var yearMonth = date.substr(0, 7);
+		console.log(yearMonth);
+		//console.log(yearMonth+day);
+		updateAttendance(yearMonth, day);
+		updateCalendar(yearMonth, day, yearMonth);
+   	});
+
+
 
 	$('#btn-reset').click(function(e) {
 		e.preventDefault();
@@ -201,10 +211,12 @@ $(document).ready(function () {
     //Tooltips
     $('#auto-overtime').tooltip({placement: 'right'});
     $('.calendar-nav').tooltip({placement: 'bottom'});
-	$('#btn-search-monthly').tooltip({placement: 'right'});
+	$('#btn-search-monthly').tooltip({placement: 'bottom'});
 
 	
+	
 });
+
 
 function changeDate() {
 	currentDate = isDateTime($('#date').val()) ? $('#date').val() : phpDate; 
@@ -661,18 +673,27 @@ $(document).on('click', '.days', function() {
    $(this).attr('id', 'focus-day');
    var day = pad($(this).html());
    var yearMonth = $('#yearmonth').val();
-   $('#calendar-day').val(day); //this is for focus
-   $('#calendar-yearmonth').val(yearMonth); //this is for focus
-   currentRequest = {date:(yearMonth+'-'+day)};
-   changeDate();
-   getAttendanceList(currentRequest);
+   updateAttendance(yearMonth, day);
+   
 });
+
+function updateAttendance(yearMonth, day) {
+	$('#calendar-day').val(day); //this is for focus
+   	$('#calendar-yearmonth').val(yearMonth); //this is for focus
+   	currentRequest = {date:(yearMonth+'-'+day)};
+   	changeDate();
+   	getAttendanceList(currentRequest);
+}
 
 $(document).on('click', '.calendar-nav', function() {
 	var date = $(this).attr('date');
 	var day = $('#calendar-day').val(); //this is for focus
 	var yearMonth = $('#calendar-yearmonth').val(); //this is for focus
-    $.post(webroot+'attendances/getCalendar', {date: date+'-'+day, focus: yearMonth}, function(data) {
+    updateCalendar(date, day, yearMonth);
+});
+
+function updateCalendar(date, day, focus) {
+	$.post(webroot+'attendances/getCalendar', {date: date+'-'+day, focus: focus}, function(data) {
         $("#calendar").html(data);
     });
-});
+}
