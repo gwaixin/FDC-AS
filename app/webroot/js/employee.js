@@ -628,19 +628,19 @@ $(document).ready(function () {
     	  $('.layout-transparent').show();
       },
       success:function(data){
-      	$("#modalProfile #txt-errors").html("");
+      	$("#modalViewProfile #txt-errors").html("");
       	var data = JSON.parse(data);
       	var errors = data.errors;
       	$('.layout-transparent').hide();
       	if(errors.length === 0) {
-      		$("#modalProfile").modal('hide');
+      		$("#modalViewProfile").modal('hide');
       		bootbox.alert('Successfully Update Employee Profile');
       		if(data.picture.length > 0) {
       			advancedData[currentSelectedRow].picture = data.picture;
       		}
       	} else {
       		for(var x in errors) {
-      			$("#modalProfile #txt-errors").append(errors[x][0]+"<br>");
+      			$("#modalViewProfile #txt-errors").append(errors[x][0]+"<br>");
       		}
       	}
 			}
@@ -651,7 +651,7 @@ $(document).ready(function () {
 
 function viewProfile(id) {
 	$.post(baseUrl+'employees/getEmployeeProfile',{id:id},function(data) {
-    $("#modalProfile #txt-errors").html("");
-		$("#modalProfile .modal-body").html(data);
+    $("#modalViewProfile #txt-errors").html("");
+		$("#modalViewProfile .modal-body").html(data);
 	});
 }

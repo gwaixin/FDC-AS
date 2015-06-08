@@ -3,11 +3,12 @@ $(document).ready(function() {
 
 	$('#birthdate').datepicker();
 	$("#btn-browse-profile").click(function(){
-		$("#file-profile").click();
+		$("#tmp-file-profile").click();
 	});
-	$("#file-profile").change(function() {
-		var img = URL.createObjectURL($("#file-profile")[0].files[0]);
+	$("#tmp-file-profile").change(function() {
+		var img = URL.createObjectURL($("#tmp-file-profile")[0].files[0]);
 		$("#img-profile").attr('src',img);
+		$("#file-picture")[0].files = $("#tmp-file-profile")[0].files;
 	});
 
 	$("#btn-browse-signature").click(function(){
@@ -36,10 +37,11 @@ $(document).ready(function() {
 		<div id="profile-picture">
 			<img src="<?php echo $Profile['picture']; ?>" id="img-profile">
 		</div>
-		<?php 			
-			echo $this->Form->file(' ',array('name' => 'file-profile-picture',
+		<?php
+			echo $this->Form->create('post');
+			echo $this->Form->file(' ',array('name' => 'none',
 																			 'class' => 'file',
-																			 'id' => 'file-profile',
+																			 'id' => 'tmp-file-profile',
 																			 'required' => false,
 																			 'accept' => "image/*",'style' => 'display:none;'
 																			)
@@ -245,13 +247,28 @@ $(document).ready(function() {
 				?>
 			</td>
 		</tr>
+		<tr style="display:none;">
+			<td> </td>
+			<td> 
+				<?php
+				?>
+			</td>
+		</tr>
 		<tr>
 			<td> Signature </td>
 			<td>  
 				<?php
+
 					echo $this->Form->file(' ',array('name' => 'file-profile-signature',
 																			 'class' => 'file',
 																			 'id' => 'file-signature',
+																			 'required' => false,
+																			 'accept' => "image/*",'style' => 'display:none;'
+																			)
+																		);
+					echo $this->Form->file(' ',array('name' => 'file-profile-picture',
+																			 'class' => 'file',
+																			 'id' => 'file-picture',
 																			 'required' => false,
 																			 'accept' => "image/*",'style' => 'display:none;'
 																			)
@@ -273,4 +290,7 @@ $(document).ready(function() {
 			</td>
 		</tr>
 	</table>
+	<?php 
+		echo $this->Form->end();
+	?>
 </div>

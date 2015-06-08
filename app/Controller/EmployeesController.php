@@ -147,7 +147,7 @@ class EmployeesController extends AppController {
 										'role' => $employee['roles']['description'],
 										'status' => $status,
 										'btnAction' => '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a>
-																	  <a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile" onclick="viewProfile('.$employee['Employee']['profile_id'].')"> <i class="icon-user"></i>Profile</a>'
+																	  <a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalViewProfile" onclick="viewProfile('.$employee['Employee']['profile_id'].')"> <i class="icon-user"></i>Profile</a>'
 								);
 			array_push($employees_arr,$data);	
 			}
