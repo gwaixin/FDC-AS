@@ -220,10 +220,14 @@ class Profile extends AppModel{
 
 			if(!empty($this->data[$this->alias]['picture']['name'])){
 				$this->data[$this->alias]['picture'] = $this->resize($this->data[$this->alias]['picture'], 250, 0);
+			} else {
+				unset($this->data[$this->alias]['picture']);
 			}
 			
 			if(!empty($this->data[$this->alias]['signature']['name'])){
 				$this->data[$this->alias]['signature'] = $this->resize($this->data[$this->alias]['signature'], 250, 0);
+			} else {
+				unset($this->data[$this->alias]['signature']);
 			}
 			
 		}

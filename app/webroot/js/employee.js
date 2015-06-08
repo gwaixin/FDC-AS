@@ -617,7 +617,7 @@ $(document).ready(function () {
 		});
 	}
 
-	$("#modalProfile form").submit(function(){
+	$("#modalViewProfile form").submit(function(){
 		$.ajax( {
       url: baseUrl+'employees/updateEmployeeProfile',
       type: 'POST',
