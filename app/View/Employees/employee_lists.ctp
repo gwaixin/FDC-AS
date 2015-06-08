@@ -490,7 +490,7 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 </div>
 
 
-<div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
+<div class="modal fade" id="modalViewProfile" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" style="display:none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <?php echo $this->form->create('post',array(

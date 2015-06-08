@@ -305,13 +305,10 @@ class EmployeesController extends AppController {
 	public function updateEmployeeProfile() {
 		$this->autoRender = false;
 		$this->loadModel('Profile');
+		$this->Profile->mode = 1;
 		$this->Profile->id = $this->request->data['Profile']['id'];
-		if (!empty($_FILES['file-profile-picture']['name'])) {
-			$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
-		}
-		if (!empty($_FILES['file-profile-picture']['name'])) {
-			$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
-		}
+		$this->request->data['Profile']['picture'] = $_FILES['file-profile-picture'];
+		$this->request->data['Profile']['signature'] = $_FILES['file-profile-signature'];
 		if($this->request->data['Profile']['birthdate']) {
 			$birthdate = split('/',$this->request->data['Profile']['birthdate']);
 			$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
