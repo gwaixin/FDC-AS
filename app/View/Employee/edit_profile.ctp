@@ -244,6 +244,15 @@ echo $this->Html->script('employee-profile');
 					?>
 			</td>
 		</tr>
+		<tr> 
+			<td> <b> Signature </b> </td>
+			<td> : </td>
+			<td>
+				<?php
+						echo "<img src='".$this->webroot.$Profile['signature']."' id='img-signature' style='max-width:100px;max-height:100px;'>";
+					?>
+			</td>
+		</tr>
 		<tr>
 			<td colspan=2> </td>
 			<td>

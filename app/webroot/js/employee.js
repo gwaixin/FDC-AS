@@ -360,7 +360,7 @@ $(document).ready(function () {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
 					advancedData[index].picture = data.picture;
-					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile" onclick="viewProfile('+advancedData[index].employee_id+')"> <i class="icon-user"></i>Profile</a>'; 
+					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalProfile" onclick="modalViewProfile('+advancedData[index].employee_id+')"> <i class="icon-user"></i>Profile</a>'; 
 					advancedData[index].nick_name = data.nick_name;
 					refresh();
 				}
@@ -616,35 +616,7 @@ $(document).ready(function () {
 			}
 		});
 	}
-
-	$("#modalViewProfile form").submit(function(){
-		$.ajax( {
-      url: baseUrl+'employees/updateEmployeeProfile',
-      type: 'POST',
-      data: new FormData( this ),
-      processData: false,
-      contentType: false,
-      beforeSend: function() {
-    	  $('.layout-transparent').show();
-      },
-      success:function(data){
-      	$("#modalViewProfile #txt-errors").html("");
-      	var data = JSON.parse(data);
-      	var errors = data.errors;
-      	$('.layout-transparent').hide();
-      	if(errors.length === 0) {
-      		$("#modalViewProfile").modal('hide');
-      		bootbox.alert('Successfully Update Employee Profile');
-      		if(data.picture.length > 0) {
-      			advancedData[currentSelectedRow].picture = data.picture;
-      		}
-      	} else {
-      		for(var x in errors) {
-      			$("#modalViewProfile #txt-errors").append(errors[x][0]+"<br>");
-      		}
-      	}
-			}
-	  });
+	$("#modalViewProfile form").submit(function() {
 		return false;
 	});
 });
@@ -654,4 +626,35 @@ function viewProfile(id) {
     $("#modalViewProfile #txt-errors").html("");
 		$("#modalViewProfile .modal-body").html(data);
 	});
+}
+
+function updateProfile() {
+	$.ajax( {
+    url: baseUrl+'employees/updateEmployeeProfile',
+    type: 'POST',
+    data: new FormData( $("#modalViewProfile form")[0] ),
+    processData: false,
+    contentType: false,
+    beforeSend: function() {
+  	  $('.layout-transparent').show();
+    },
+    success:function(data){
+    	$("#modalViewProfile #txt-errors").html("");
+    	var data = JSON.parse(data);
+    	var errors = data.errors;
+    	$('.layout-transparent').hide();
+    	if(errors.length === 0) {
+    		$("#modalViewProfile").modal('hide');
+    		bootbox.alert('Successfully Update Employee Profile');
+    		if(data.picture.length > 0) {
+    			advancedData[currentSelectedRow].picture = data.picture;
+    		}
+    	} else {
+    		for(var x in errors) {
+    			$("#modalViewProfile #txt-errors").append(errors[x][0]+"<br>");
+    		}
+    	}
+		}
+  });
+  return false;
 }

@@ -38,7 +38,6 @@ $(document).ready(function() {
 			<img src="<?php echo $Profile['picture']; ?>" id="img-profile">
 		</div>
 		<?php
-			echo $this->Form->create('post');
 			echo $this->Form->file(' ',array('name' => 'none',
 																			 'class' => 'file',
 																			 'id' => 'tmp-file-profile',
@@ -273,13 +272,8 @@ $(document).ready(function() {
 																			 'accept' => "image/*",'style' => 'display:none;'
 																			)
 																		);
-					echo $this->Form->button('View <span class="icon-search"></span>',array(
-																								'type' => 'button',
-																								'id' => 'btn-view-signature',
-																								'class' => 'btn btn-success'
-																							)
-																						);
-					echo " ";
+					echo "<img src='".$Profile['signature']."' id='img-signature' style='max-width:100px;max-height:100px;'>";
+					echo "<br>";
 					echo $this->Form->button('Browse <span class="icon-edit"></span>',array(
 																								'type' => 'button',
 																								'id' => 'btn-browse-signature',
@@ -290,7 +284,4 @@ $(document).ready(function() {
 			</td>
 		</tr>
 	</table>
-	<?php 
-		echo $this->Form->end();
-	?>
 </div>

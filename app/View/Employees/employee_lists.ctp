@@ -15,24 +15,6 @@
 var baseUrl = "<?php echo $this->webroot; ?>";
 </script>
 
-<div class="modal fade" id="modalSignature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-       	<h3> Signature </h3>
-       </div>
-      <div class="modal-body" id="contract-container">
-      	<center>
-	      	<img src="<?php echo $this->webroot."$Profile[signature]"; ?>" id="img-signature">
-	      </center>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div id="employee-container" class="main-content">
@@ -494,7 +476,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <?php echo $this->form->create('post',array(
-																		'novalidate'  																		
+																		'id' => 'ProfileRegister',
+																		'class' => 'form-horizontal'  																		
 																		)
 																	);
     ?>
@@ -507,7 +490,8 @@ var baseUrl = "<?php echo $this->webroot; ?>";
       </div>
       <div class="modal-footer">
 			  <?php echo $this->form->submit('Update',array(
-			  																'class' => 'btn btn-primary'
+			  																'class' => 'btn btn-primary',
+			  																'onclick' => 'updateProfile()'
 			  															)
 			  														);
 			  ?>
@@ -554,7 +538,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 										 'size' => 16,
 										 'label' => 'First name',
 										 'after' => '',
-										 'required' => true,
 										 'value' => '',
 										 'placeholder' => ''
 									)
@@ -569,7 +552,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 													'size' => 16,
 													'label' => 'Last Name',
 													'value' => '',
-													'required' => true,
 													'placeholder' => ''
 											)
 									);
@@ -583,7 +565,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 														'size' => 16,
 														'label' => 'Middel Name',
 														'value' => '',
-														'required' => true,
 														'placeholder' => ''
 												)
 										);
@@ -597,7 +578,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 								'size' => 16,
 								'label' => 'Nickname',
 								'value' => '',
-								'required' => true,
 								'placeholder' => ''
 						)
 				);
@@ -614,7 +594,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 												'size' => 16,
 												'label' => 'Birth date',
 												'value' => '',
-												'required' => true,
 												'after' => ' <div class="input-group-addon"> <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span></div>',
 												'placeholder' => ''
 										)
@@ -629,7 +608,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -643,7 +621,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Facebook',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -657,7 +634,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Email',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -668,7 +644,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 										'class' => 'input-block-level',
 										'label' => 'Gender',
 									    'name' => 'gender',
-										'required' => true,
 										'value' => '',
 										'options' => array(
 												'M' => 'MALE',
@@ -688,7 +663,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'type' => 'textarea',
 				    				'label' => 'Address',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -702,7 +676,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact Person',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );
@@ -716,7 +689,6 @@ var baseUrl = "<?php echo $this->webroot; ?>";
 				    				'size' => 16,
 				    				'label' => 'Contact Person Number',
 				    				'value' => '',
-									'required' => true,
 				    				'placeholder' => ''
 				    		)
 				    );

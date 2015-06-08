@@ -67,6 +67,7 @@ class EmployeeController extends AppController {
 		$Profile = $this->Profile->findById($this->Session->read('Auth.UserProfile'));
 		$Profile['Profile']['picture'] = 'upload/'.$Profile['Profile']['picture'];
 		$Profile['Profile']['signature'] = 'upload/'.$Profile['Profile']['signature'];
+
 		$this->Set('action',$action);
 		$file = "profile";
 		$errors = array();
