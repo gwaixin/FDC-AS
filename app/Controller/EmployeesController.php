@@ -146,7 +146,7 @@ class EmployeesController extends AppController {
 										'contract_id' => $employee['contract_logs']['id'],
 										'role' => $employee['roles']['description'],
 										'status' => $status,
-										'btnAction' => '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a>
+										'btnAction' => '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts" onclick="viewAccounts()"> <i class="icon-briefcase"></i>Accounts</a>
 																	  <a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalViewProfile" onclick="viewProfile('.$employee['Employee']['profile_id'].')"> <i class="icon-user"></i>Profile</a>'
 								);
 			array_push($employees_arr,$data);	
@@ -326,6 +326,8 @@ class EmployeesController extends AppController {
 			$json['nick_name'] = $Profile['Profile']['nick_name'];
 			if(!empty($_FILES['file-profile-picture']['name'])) {
 				$json['picture'] = "<img src='".$this->webroot.'upload/'.$Profile['Profile']['picture']."'>";
+			} else {
+				$json['picture'] = "";
 			}
 		}
 		echo json_encode($json);
@@ -549,7 +551,7 @@ class EmployeesController extends AppController {
 					$this->loadModel('Profile');
 					$Profile = $this->Profile->findById($employeeInfo['profile_id']);
 					$Profile = $Profile['Profile'];
-					$json['profile_id'] = $employeeInfo['id'];
+					$json['profile_id'] = $employeeInfo['profile_id'];
 					$json['id'] = $employeeInfo['id'];
 					$json['picture'] = "<img src='".$this->webroot."img/emptyprofile.jpg'>";
 					$json['nick_name'] = $Profile['nick_name'];

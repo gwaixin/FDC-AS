@@ -28,29 +28,6 @@ $(document).ready(function () {
 	
 	var clicked = false;
 
-	function ViewEmployee() {
-		selectedIndex = hot.getSelectedRange().to.row;
-		$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
-		$("#txt-errors").html("");
-		$("#edit-last-timein").html('Edit');
-		$("#edit-last-timeout").html('Edit');
-		$("#btn-submit").val('Edit');
-		$("#additional-info-container #txt-errors").html("");
-		$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
-		$("#additional-info-container input").attr('disabled','disabled');
-		$("#additional-info-container select").attr('disabled','disabled');
-		$("#edit-last-timein").attr('disabled','disabled');
-		$("#edit-last-timeout").attr('disabled','disabled');
-		for(var x in $("#additional-info-container input")) {
-			if (!isNaN(parseFloat(x)) && isFinite(x)) {
-				var input = $("#additional-info-container input")[x];
-				input.value = advancedData[selectedIndex][input.name];
-			}
-		}
-		$("#password").val("company_default_password");
-		$("#drug_test").val(advancedData[selectedIndex].drug_test);
-	}
-
 	$("#btn-submit").click(function() {
 		if ($("#btn-submit").val() === 'Edit') {
 			$("#additional-info-container input").removeAttr('disabled');
@@ -364,13 +341,15 @@ $(document).ready(function () {
 		$('.layout-transparent').show();
 		$.post(baseUrl + 'employees/addEmployee',{employee:employee},
 			function(data) {
+				$('.layout-transparent').hide();
 				if (data.success) {
 					advancedData[index].id = data.id;
 					advancedData[index].profile_id = data.profile_id;
 					advancedData[index].picture = data.picture;
-					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalViewProfile" onclick="modalViewProfile('+advancedData[index].employee_id+')"> <i class="icon-user"></i>Profile</a>'; 
+					advancedData[index].btnAction = '<a class="btn btn-default btn-view-employee" data-toggle="modal" data-target="#modalAccounts" onclick="viewAccounts()"> <i class="icon-briefcase"></i>Accounts</a><a class="btn btn-default btn-view-profile" data-toggle="modal" data-target="#modalViewProfile" onclick="viewProfile('+data.profile_id+')"> <i class="icon-user"></i>Profile</a>'; 
 					advancedData[index].nick_name = data.nick_name;
 					refresh();
+					console.log(data.id);
 				}
 			},'JSON');
 	}
@@ -526,7 +505,6 @@ $(document).ready(function () {
     className: "htCenter",
     cells: function (row, col, prop) {
 	    var cellProperties = {};
-	    $(".btn-view-employee").click(ViewEmployee);
 	    if (col === 2) {
     		if(advancedData[row].id !== null) {
 	    		cellProperties.readOnly = true;
@@ -629,6 +607,29 @@ $(document).ready(function () {
 	});
 });
 
+function viewAccounts() {
+	selectedIndex = hot.getSelectedRange().to.row;
+	$("#btn-view-profile").attr('href',baseUrl+myRole+'/employees/profile/'+advancedData[selectedIndex].profile_id);
+	$("#txt-errors").html("");
+	$("#edit-last-timein").html('Edit');
+	$("#edit-last-timeout").html('Edit');
+	$("#btn-submit").val('Edit');
+	$("#additional-info-container #txt-errors").html("");
+	$("#lbl-employee").html('Name : '+advancedData[selectedIndex].name);
+	$("#additional-info-container input").attr('disabled','disabled');
+	$("#additional-info-container select").attr('disabled','disabled');
+	$("#edit-last-timein").attr('disabled','disabled');
+	$("#edit-last-timeout").attr('disabled','disabled');
+	for(var x in $("#additional-info-container input")) {
+		if (!isNaN(parseFloat(x)) && isFinite(x)) {
+			var input = $("#additional-info-container input")[x];
+			input.value = advancedData[selectedIndex][input.name];
+		}
+	}
+	$("#password").val("company_default_password");
+	$("#drug_test").val(advancedData[selectedIndex].drug_test);
+}
+
 function viewProfile(id) {
 	$('.layout-transparent').show();
 	$.post(baseUrl+'employees/getEmployeeProfile',{id:id},function(data) {
@@ -657,10 +658,10 @@ function updateProfile() {
     	if(errors.length === 0) {
     		$("#modalViewProfile").modal('hide');
     		bootbox.alert('Successfully Update Employee Profile');
+  			advancedData[currentSelectedRow].name = data.name;
+  			advancedData[currentSelectedRow].nick_name = data.nick_name;
     		if(data.picture.length > 0) {
     			advancedData[currentSelectedRow].picture = data.picture;
-    			advancedData[currentSelectedRow].name = data.name;
-    			advancedData[currentSelectedRow].nick_name = data.nick_name;
     		}
     	} else {
     		for(var x in errors) {
