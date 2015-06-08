@@ -632,9 +632,9 @@ function viewAccounts() {
 
 function viewProfile(id) {
 	$('.layout-transparent').show();
+  $("#modalViewProfile .modal-body").html("");
 	$.post(baseUrl+'employees/getEmployeeProfile',{id:id},function(data) {
     $("#modalViewProfile #txt-errors").html("");
-    $("#modalViewProfile .modal-body").html("");
 		$("#modalViewProfile .modal-body").html(data);
 		$('.layout-transparent').hide();
 	});
