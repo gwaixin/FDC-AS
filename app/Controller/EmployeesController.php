@@ -316,11 +316,17 @@ class EmployeesController extends AppController {
 			$birthdate = split('/',$this->request->data['Profile']['birthdate']);
 			$this->request->data['Profile']['birthdate'] = $birthdate[2].'-'.$birthdate[0].'-'.$birthdate[1];
 		}
-		$errors = array();
+		$json['errors'] = array();
 		if(!$this->Profile->save($this->request->data['Profile'])) {
-			$errors = $this->Profile->validationErrors;
+			$json['errors'] = $this->Profile->validationErrors;
+			$json['picture'] = "";
+		} else {
+			$Profile = $this->Profile->findById($this->request->data['Profile']['id']);
+			if(!empty($_FILES['file-profile-picture']['name'])) {
+				$json['picture'] = "<img src='".$this->webroot.'upload/'.$Profile['Profile']['picture']."'>";
+			}
 		}
-		echo json_encode($errors);
+		echo json_encode($json);
 	}
 
 	public function getShiftMasterLists() {
