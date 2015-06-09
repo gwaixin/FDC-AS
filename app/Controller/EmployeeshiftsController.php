@@ -150,7 +150,7 @@ class EmployeeshiftsController extends AppController {
 
 	public function getShift() {
 		if ($this->request->is('Ajax')) {
-			$this->layout = 'Ajax';
+			$this->layout = 'ajax';
 			$data = $this->request->data;
 			if ($data) {
 				$this->loadModel('Employeeshift');
