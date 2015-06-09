@@ -35,12 +35,13 @@ class AttendancesController extends AppController {
 			$data = $this->request->data;
 			if (!empty($data)) {
 				$date = $data['date'];
-				$focus = date('Y-m-d', strtotime($data['focus']));
+				//$focus = date('Y-m-d', strtotime($data['focus']));
 			}
 		}
 
 		$calendar->ini($date);
-		$focus = empty($focus) ? $calendar->currentDate : $focus;
+		//$focus = empty($focus) ? $calendar->currentDate : $focus;
+		$focus = $calendar->currentDate;
 		$this->set('month', $calendar->month);
 		$this->set('days', $calendar->days);
 		$this->set('today', $calendar->today);
@@ -134,6 +135,10 @@ class AttendancesController extends AppController {
 						'break'			=>  $employee['attendances']['break'],
 						//'l_time_in' 	=>	$ltimein,
 						//'l_time_out' 	=>	$ltimeout,
+						//'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
+						//'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
+						'shift_id'			=>	$employee['Employee']['employee_shifts_id'],
+						'shift'			=>	$employee['employee_shifts']['description'],
 						'total_time'	=>  $employee['attendances']['render_time'],
 						'over_time'		=>  $employee['attendances']['over_time'],
 						'status'		=>	$status,
@@ -142,8 +147,6 @@ class AttendancesController extends AppController {
 						'id'			=>	$employee['attendances']['id'],
 						'ef_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_in']),
 						'ef_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['f_time_out']),
-						//'el_time_in'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_in']),
-						//'el_time_out'	=>	!$this->Attendance->verifyTimeFormat($employee['employee_shifts']['l_time_out']),
 						'e_ot_start'	=> 	$employee['employee_shifts']['overtime_start'],
 						'estatus'		=> 	$employee['Employee']['status'],
 						'ebreak'		=>	$employee['employee_shifts']['break']
@@ -319,7 +322,7 @@ class AttendancesController extends AppController {
 			return;
 		}
 	}
-	
+
 
 	/* Private Functions */
 	private function getAutoOvertime() {
@@ -401,6 +404,8 @@ class AttendancesController extends AppController {
 		$selectFields = array(
 				'Employee.employee_id',
 				'Employee.status',
+				'Employee.employee_shifts_id',
+				'employee_shifts.description',
 				'profiles.first_name',
 				'profiles.last_name',
 				'profiles.middle_name',

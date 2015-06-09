@@ -162,18 +162,19 @@ $(document).ready(function () {
 	$('#date').datepicker({
 		autoclose: true,
 		viewMode: "months",
-		//minViewMode: "months",
+		minViewMode: "months",
 		format: "yyyy-mm-dd"
 	}).on('changeDate', function(en) {
-      	var date = $('#date').val();
-		var day = date.substr(-2);
-		var yearMonth = date.substr(0, 7);
-		console.log(yearMonth);
-		//console.log(yearMonth+day);
-		updateAttendance(yearMonth, day);
-		updateCalendar(yearMonth, day, yearMonth);
-   	});
+		setTimeout(function() {
+			var date = $('#date').val();
+	      	var day = "01";
+			var yearMonth = date.substr(0, 7);
+			updateAttendance(yearMonth, day);
+			updateCalendar(yearMonth, day);
 
+		}, 50);
+		
+   	});
 
 
 	$('#btn-reset').click(function(e) {
@@ -210,7 +211,7 @@ $(document).ready(function () {
 
     //Tooltips
     $('#auto-overtime').tooltip({placement: 'right'});
-    $('.calendar-nav').tooltip({placement: 'bottom'});
+    $('.calendar-nav').tooltip({placement: 'top'});
 	$('#btn-search-monthly').tooltip({placement: 'bottom'});
 
 	
@@ -223,7 +224,16 @@ function changeDate() {
 	dateObj 	= new Date(currentDate);
 	cMonthDay 	= pad((dateObj.getUTCMonth()+1)) + '-' +pad(dateObj.getDate());
 	cYear 		= dateObj.getUTCFullYear();
+	console.log(dateObj);
+	$('#current-date').find('h4').html(monthNames[dateObj.getUTCMonth()] + ' ' + dateObj.getDate() + ', '+ +dateObj.getUTCFullYear());
 }
+
+var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+];
 
 function convertToDatetime(val, rowDate) {
 	var fDate = 0;
@@ -357,15 +367,16 @@ function attendanceList() {
 	hot = new Handsontable($("#employee-attendance")[0], {
 	    data: list,
 	    height: 396,
-	    colHeaders: ["ID", "NAME", "TIMEIN", "TIMEOUT", "BREAK", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
+	    colHeaders: ["ID", "NAME", "SHIFT", "TIMEIN", "TIMEOUT", "BREAK", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
 	    rowHeaders: false,
 	    stretchH: 'all',
 	    columnSorting: true,
 	    contextMenu: true,
 	    className: "htCenter htMiddle normal-col",
 	    columns: [
-	      {data: 'employee_id', type: 'text', className:'txt-name', readOnly: true},
+	      {data: 'employee_id', type: 'text', className: 'txt-name', readOnly: true},
 		  {data: 'name', type: 'text', readOnly: true},
+		  {data: 'shift', type: 'text', readOnly: true, className: 'shift htCenter htMiddle'},
 	      {data: 'f_time_in', type: 'text', className:'f_time_in time htCenter htMiddle'},
 	      {data: 'f_time_out', type: 'text', className:'f_time_out time htCenter htMiddle'},
 	      {data: 'break', type:'text', className:'break time htCenter htMiddle'},
@@ -667,33 +678,53 @@ function formatDate(date, fmt) {
     });
 }
 
+//Shifts
+$(document).on('click', '.shift', function() {
+	rowIndex = $(this).closest('tr').index();
+	var id = list[rowIndex]['shift_id'];
+	$.post(webroot+'Employeeshifts/getShift', {id:id}, function(data) {
+		$('#modalShift').find('.modal-body').html(data);
+		$('#modalShift').modal('show');
+	});
+	
+});
+
 //For calendar Events
+$(document).on('click', '#choose-calendar', function() {
+	$('#date').datepicker('show');
+});
+
 $(document).on('click', '.days', function() {
    $('#focus-day').removeAttr('id');
    $(this).attr('id', 'focus-day');
    var day = pad($(this).html());
    var yearMonth = $('#yearmonth').val();
    updateAttendance(yearMonth, day);
-   
 });
 
 function updateAttendance(yearMonth, day) {
-	$('#calendar-day').val(day); //this is for focus
-   	$('#calendar-yearmonth').val(yearMonth); //this is for focus
-   	currentRequest = {date:(yearMonth+'-'+day)};
-   	changeDate();
+	//$('#calendar-day').val(day); //this is for focus
+   	//$('#calendar-yearmonth').val(yearMonth); //this is for focus
+   	//currentRequest = {date:(yearMonth+'-'+day)};
+   	$('#form-date').val(yearMonth+'-'+day);
+   	currentRequest = $('#attendance-form').serialize();
    	getAttendanceList(currentRequest);
+   	$('#date').val(yearMonth+'-'+day);
+   	changeDate();
+
 }
 
 $(document).on('click', '.calendar-nav', function() {
 	var date = $(this).attr('date');
-	var day = $('#calendar-day').val(); //this is for focus
-	var yearMonth = $('#calendar-yearmonth').val(); //this is for focus
-    updateCalendar(date, day, yearMonth);
+	var day = "01";
+	//$('#calendar-day').val(); //this is for focus
+	//var yearMonth = $('#calendar-yearmonth').val(); //this is for focus
+	updateAttendance(date, day);
+    updateCalendar(date, day);
 });
 
-function updateCalendar(date, day, focus) {
-	$.post(webroot+'attendances/getCalendar', {date: date+'-'+day, focus: focus}, function(data) {
+function updateCalendar(date, day) {
+	$.post(webroot+'attendances/getCalendar', {date: date+'-'+day}, function(data) {
         $("#calendar").html(data);
     });
 }
