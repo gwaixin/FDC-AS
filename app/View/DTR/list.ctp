@@ -18,6 +18,7 @@
 			<?php
 				}
 			?>
+			<th>Total</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,20 +26,47 @@
 			foreach($dtrBody as $key => $val) {
 		?>
 		<tr>
-			<td>
+			<td class='empName'>
 				<?php echo $val['profile']['first_name'] . ' '. $val['profile']['middle_name'] . ' ' . $val['profile']['last_name'];?>
 			</td>
 			<?php
-				foreach($val['date'] as $key => $val) {
-					$fTimein = empty($val['f_time_in']) ? '' : date('g:i A', strtotime($val['f_time_in']));
-					$fTimeout = empty($val['f_time_out']) ? '' : date('g:i A', strtotime($val['f_time_out']));
-					$overTime = empty($val['over_time']) ? '' : date('H:i', strtotime($val['over_time']));
-					$track = (empty($fTimein) && empty($fTimeout) && empty($overTime)) ? '-----' : "$fTimein - $fTimeout ($overTime)";
+				foreach($val['attendance'] as $akey => $aVal) {
+					$fTimein = empty($aVal['f_time_in']) ? '' : date('g:i A', strtotime($aVal['f_time_in']));
+					$fTimeout = empty($aVal['f_time_out']) ? '' : date('g:i A', strtotime($aVal['f_time_out']));
+					$overTime = empty($aVal['over_time']) ? '' : date('H:i', strtotime($aVal['over_time']));
+					$track = (empty($fTimein) && empty($fTimeout)) ? '-----' : "$fTimein - $fTimeout";
+					$overTimeDis = empty($overTime) ? '' : "($overTime)";
+					$statusClass = '';
+					switch ($aVal['status']) {
+						case 1 : 
+							$statusClass = 'label-success';
+							break;
+						case 2 :
+							$statusClass = 'label-important';
+							break;
+						case 3 :
+							$statusClass = 'label-info';
+							break;
+						case 4 :
+							$statusClass = 'label-warning';
+							break;
+					}
+					$status = "<span class='label $statusClass'> </span>";
 			?>
-			<td><?php echo $track;?></td>
+			<td>
+				<?php echo $track;?> <br/>
+				OT : <b><?php echo $overTimeDis; ?></b>
+				<span class='pull-right'>
+					<?php echo $status; ?>
+				</span>
+			</td>
 			<?php
 				}
 			?>
+			<td>
+				<?php echo $val['total_render']; ?>: RT <br/>
+				<?php echo $val['total_overtime']; ?>: OT
+			</td>
 		</tr>
 		<?php
 			}

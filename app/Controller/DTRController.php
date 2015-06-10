@@ -85,15 +85,24 @@ class DTRController extends AppController {
 				$workingHrs = "00:00:00";
 				$totalHrs = "00:00:00";
 				foreach ($empResult as $key => $val) {
-					$dtrBody[$val['employees']['id']]['date'][] = $val['Attendance'];
+					$dtrBody[$val['employees']['id']]['attendance'][] = $val['Attendance'];
 					$dtrBody[$val['employees']['id']]['profile'] = $val['profiles'];
+					
+					//individual total of render and overtime
+					$render = empty($dtrBody[$val['employees']['id']]['total_render']) ? '00:00:00' : $dtrBody[$val['employees']['id']]['total_render'];
+					$dtrBody[$val['employees']['id']]['total_render'] = $this->sumTime($render, $val['Attendance']['render_time'], '%02d:%02d');
+					
+					$overtime = empty($dtrBody[$val['employees']['id']]['total_overtime']) ? '00:00:00' : $dtrBody[$val['employees']['id']]['total_overtime'];
+					$dtrBody[$val['employees']['id']]['total_overtime'] = $this->sumTime($overtime, $val['Attendance']['over_time'], '%02d:%02d');
 					if ($val['Attendance']['status'] == 2)  { // Absent
 						$absent++;
 					}
+					//get total render, and working time
 					$workingHrs = $this->sumTime($workingHrs, $val['Attendance']['render_time'], '%02d:%02d');
 					$totalHrs = $this->sumTime($totalHrs, $val['Attendance']['total_time'], '%02d:%02d');
 				}
-				
+				//pr($dtrBody);
+				//exit();
 				$empCount = count($dtrBody);
 				$this->set('absent', $absent);
 				$this->set('empCount', $empCount);

@@ -40,7 +40,14 @@
 				?>
 				<option value="0">All Shifts</option>
 			</select>
-			<span class='pull-right'>06/10/2014</span>
+			<br/>
+			<span class="label">pending</span>
+			<span class="label label-success">Present</span>
+			<span class="label label-info">Late</span>
+			<span class="label label-important">Absent</span>
+			<span class="label label-warning">Undertime</span>
+			<br/>
+			<br/>
 			<div id="dtr" style='width:100%; border:1px solid #aaa; overflow: auto;'></div>
 			<div class='clearfix'></div>
 		</div> <!-- End of main content -->
@@ -51,5 +58,11 @@
 	#dtrTable thead {
 		background-color: #222;
 		color: #eee;
+	}
+	#dtrTable tbody {
+		font-size: 11px;
+	}
+	.empName {
+		font-size: 13px;
 	}
 </style>
