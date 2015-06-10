@@ -171,7 +171,7 @@ class AttendancesController extends AppController {
 			$condition = array();
 			
 			foreach ($fieldData as $key => $field) {
-				if (!$field != 'status') {
+				if ($field != 'status') {
 					$updateData[$field] = empty($val) ? $val : "'". date('Y-m-d H:i:s', strtotime($val)) ."'";
 				} else {
 					$updateData[$field] = $val;

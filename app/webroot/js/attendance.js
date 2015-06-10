@@ -367,7 +367,7 @@ function attendanceList() {
 	hot = new Handsontable($("#employee-attendance")[0], {
 	    data: list,
 	    height: 396,
-	    colHeaders: ["ID", "NAME", "SHIFT", "TIMEIN", "TIMEOUT", "BREAK", "RENDERED TIME", "OVERTIME", "STATUS", "DAY"],
+	    colHeaders: ["ID", "NAME", "SHIFT", "TIMEIN", "TIMEOUT", "BREAK", "RENDERED TIME", "OVERTIME", "STATUS"],
 	    rowHeaders: false,
 	    stretchH: 'all',
 	    columnSorting: true,
@@ -385,7 +385,7 @@ function attendanceList() {
 	      {data: 'total_time', type: 'text', className:'htCenter time htMidlle total_time', readOnly: true},
 	      {data: 'over_time', type: 'text', className:'otime htCenter htMidlle', readOnly: true},
 	      {data: 'status', type: 'dropdown', source: statusArr, className:'status htCenter htMidlle'},
-	      {data: 'day', type: 'text', className:'htCenter htMiddle', readOnly: true}
+	     // {data: 'day', type: 'text', className:'htCenter htMiddle', readOnly: true}
 	    ], beforeChange: function(change, sources) {
 
 	    	var instance = hot,
@@ -498,7 +498,7 @@ function attendanceList() {
 
 			data = {id: JSON.stringify(idArr), field: JSON.stringify(fieldArr), value:value};
 			//console.log(JSON.stringify(data));
-
+			console.log(data);
 			updateEmployeeData(data);
 				
 
