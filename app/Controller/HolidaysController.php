@@ -48,7 +48,7 @@ class HolidaysController extends AppController {
 		}
 	}
 
-	public function editHoliday($id) {
+	public function edit($id) {
 		if(isset($id)) {
 			$this->layout = 'admin';
 			$holiday_info= $this->Holiday->find('first',array('conditions'=>array('id'=>$id)));

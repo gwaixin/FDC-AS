@@ -3,6 +3,7 @@
 	echo $this->Html->script('holiday/holiday.js');
 ?>
 <div class="main-content">
+<h2>Edit Holiday Information</h2>
 <form id="edit-holiday-info" >
 	<input type="hidden" name="id" value="<?php echo $holiday_info['Holiday']['id']?>">
 	<table class="table">
@@ -18,7 +19,7 @@
 		<tr>
 			<td>Description</td>
 			<td>
-				<textarea name="description"> <?php echo $holiday_info['Holiday']['description']?></textarea>
+				<textarea name="description"><?php echo $holiday_info['Holiday']['description']?></textarea>
 				<br/>
 				<span class="alert alert-danger error hide" role="alert" id="description"></span>
 			</td>
