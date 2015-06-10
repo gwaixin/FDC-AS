@@ -18,7 +18,8 @@ class AppController extends Controller {
 				     )
 				    )
 					)
-        ), 'Cookie'
+        ), 'Cookie',
+        'RequestHandler'
 	);
 
 	public function beforeFilter() {
@@ -34,7 +35,7 @@ class AppController extends Controller {
 		if ($this->Session->read('Auth.UserProfile')) {
 			if($url !== $this->Session->read('Auth.Rights.role') && $url !== 'users' &&
 				 $url !== 'main' && !$this->request->is('ajax')) {
-				$this->redirect('/'.$this->Session->read('Auth.Rights.role'));
+				//$this->redirect('/'.$this->Session->read('Auth.Rights.role'));
 			}
 		}
 	}
