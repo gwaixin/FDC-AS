@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var date = year + '-' + month + '-01';
 		var shift = $('#shift').val();
 
-		$.post(webroot+'DTR/listDTR', {date: date, shift:shift}, function(data) {
+		$.post(webroot+'Dtr/listDTR', {date: date, shift:shift}, function(data) {
 			$('#dtr').html(data);
 		});
 	}

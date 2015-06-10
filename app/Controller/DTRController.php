@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Calendar', 'Lib');
-class DTRController extends AppController {
+class DtrController extends AppController {
 
 	public function index($layout) {
 		$this->layout = $layout;
