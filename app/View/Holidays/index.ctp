@@ -9,6 +9,7 @@
 
 </style>
 <div class="main-content">
+	<h2>Holiday</h2>
 	<button class="btn btn-default" data-target="#modalHoliday" data-toggle="modal"><i class="icon-plus-sign"></i>Add</button>
 	<table class="table" id="holiday-list">
 		<thead>
@@ -20,7 +21,7 @@
 		<?php foreach($holidays as $value):?>
 		<tr id="<?php echo $value['Holiday']['id']?>">
 			<td><?php echo $value['Holiday']['date']?></td>
-			<td><?php echo $value['Holiday']['description']?></td>
+			<td><?php echo nl2br($value['Holiday']['description'])?></td>
 			<td><?php echo $value['Holiday']['rate']?></td>
 			<td>
 				<?php switch ($value['Holiday']['recurring']) {
