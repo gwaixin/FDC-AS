@@ -28,6 +28,7 @@
 	
 	
 	//ADMIN
+	Router::connect( '/admin/holiday/*', array('controller' => 'holidays', 'action' => 'index'));
 	Router::connect( '/admin/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','admin'));
 	Router::connect( '/admin/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','admin'));
 	Router::connect( '/admin/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','admin'));
@@ -78,6 +79,8 @@
 		array(
         'pass' => array('id')
     ));
+	/*END OF ADMIN*/
+
 
 	//STAFFFFFFFF
 	/**
