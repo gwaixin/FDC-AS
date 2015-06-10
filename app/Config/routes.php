@@ -79,6 +79,8 @@
         'pass' => array('id')
     ));
 
+    Router::connect('/admin/dtr/*', array('controller' => 'dtr', 'action' => 'index', 'admin'));
+
 	//STAFFFFFFFF
 	/**
  * ...and connect the rest of 'Pages' controller's URLs.
