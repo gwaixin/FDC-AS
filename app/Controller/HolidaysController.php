@@ -61,7 +61,7 @@ class HolidaysController extends AppController {
 	public function edit($id) {
 		if(isset($id)) {
 			$this->layout = 'admin';
-			$holiday_info= $this->Holiday->find('first',array('conditions'=>array('id'=>$id)));
+			$holiday_info= $this->Holiday->find('first',array('conditions'=>array('id'=>$id,'status'=>1)));
 			if (count($holiday_info)>0) {
 				$this->set('holiday_info',$holiday_info);
 			} else {
