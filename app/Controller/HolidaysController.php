@@ -55,7 +55,7 @@ class HolidaysController extends AppController {
 			if (count($holiday_info)>0) {
 				$this->set('holiday_info',$holiday_info);
 			} else {
-				echo 'it seems there are errors';
+				$this->layout = '404';
 			}
 		}
 	}

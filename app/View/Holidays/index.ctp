@@ -9,7 +9,7 @@
 
 </style>
 <div class="main-content">
-	<h2>Holiday</h2>
+	<h2>Holiday Management</h2>
 	<button class="btn btn-default" data-target="#modalHoliday" data-toggle="modal"><i class="icon-plus-sign"></i>Add</button>
 	<table class="table" id="holiday-list">
 		<thead>

@@ -101,7 +101,7 @@
 							<li class="divider"></li>
 							<li><a href="<?php echo $this->webroot;?>admin/company/"><i class="fa fa-institution" style='color:black;'></i> Company </a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
-							<li><a href="<?php echo $this->webroot;?>admin/holiday"><i class="icon-time"></i> Holiday</a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/holiday"><i class="icon-time"></i> Holiday Management</a></li>
 							<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 							<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
