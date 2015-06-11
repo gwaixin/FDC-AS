@@ -1,0 +1,21 @@
+#dtrTable thead {
+	background-color: #222;
+	color: #eee;
+}
+#dtrTable tbody {
+	font-size: 11px;
+}
+.empName {
+	font-size: 13px;
+}
+.daily-ot-rt {
+	display: none;
+	position: absolute;
+	background: #222;
+	color: #eee;
+	padding: 1rem;
+	border-radius: 2px;
+}
+.daily-time:hover .daily-ot-rt{
+	display:block;
+}

@@ -55,15 +55,4 @@
 	</div>
 </div>
 <?php echo $this->Html->script('admin/dtr'); ?>
-<style>
-	#dtrTable thead {
-		background-color: #222;
-		color: #eee;
-	}
-	#dtrTable tbody {
-		font-size: 11px;
-	}
-	.empName {
-		font-size: 13px;
-	}
-</style>
+<?php echo $this->Html->css('admin/dtr'); ?>

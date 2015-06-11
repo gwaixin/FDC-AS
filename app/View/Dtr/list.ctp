@@ -37,8 +37,9 @@
 					$fTimein = empty($aVal['f_time_in']) ? '' : date('g:i A', strtotime($aVal['f_time_in']));
 					$fTimeout = empty($aVal['f_time_out']) ? '' : date('g:i A', strtotime($aVal['f_time_out']));
 					$overTime = empty($aVal['over_time']) ? '' : date('H:i', strtotime($aVal['over_time']));
+					$renderTime = empty($aVal['render_time']) ? '' : date('H:i', strtotime($aVal['render_time']));
 					$track = (empty($fTimein) && empty($fTimeout)) ? '-----' : "$fTimein - $fTimeout";
-					$overTimeDis = empty($overTime) ? '' : "($overTime)";
+					$overTimeDis = empty($overTime) ? '' : "$overTime";
 					$statusClass = '';
 					switch ($aVal['status']) {
 						case 1 : 
@@ -56,12 +57,33 @@
 					}
 					$status = "<span class='label $statusClass'> </span>";
 			?>
-			<td>
-				<?php echo $track;?> <br/>
-				OT : <b><?php echo $overTimeDis; ?></b>
+			<td class='daily-time'>
 				<span class='pull-right'>
 					<?php echo $status; ?>
 				</span>
+				<span>
+					<?php echo $track;?>
+				</span> <br/>
+				<div class='daily-ot-rt'>
+				<?php
+					if (!empty($overTimeDis) || !empty($renderTime)) {
+				?>
+					<span>
+						Overtime : <b><?php echo $overTimeDis; ?></b>
+					</span>
+					<br/>
+					<span>
+						Rendertime : <b><?php echo $renderTime; ?></b>
+					</span>
+				
+				<?php
+					} else {
+				?>
+					<span>No Over and Render Time</span>
+				<?php
+					}
+				?>
+				</div>
 			</td>
 			<?php
 					$dayCtr++;
