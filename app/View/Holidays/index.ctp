@@ -40,7 +40,7 @@
 			</td>
 			<td>
 				<button class="btn btn-danger" onclick="deleteHoliday('<?php echo $value['Holiday']['id']?>')">Delete</button>
-				<a href="<?php echo Router::url(array('controller'=>'holidays','action'=>'edit',$value['Holiday']['id']))?>"><button class="btn btn-primary" >Edit</button></a>
+				<a href="/admin/holiday/edit/<?php echo $value['Holiday']['id']?>"><button class="btn btn-primary" >Edit</button></a>
 			</td>
 
 		</tr>
