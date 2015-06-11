@@ -6,7 +6,9 @@
 		<tr>
 			<th>Employees</th>
 			<?php
+				$dayTotal = 0;
 				foreach($dtrHeader as $key => $val) {
+					$dayTotal++;
 			?>
 			<th>
 				<?php 
@@ -24,6 +26,7 @@
 	<tbody>
 		<?php
 			foreach($dtrBody as $key => $val) {
+				$dayCtr = 0;
 		?>
 		<tr>
 			<td class='empName'>
@@ -60,6 +63,14 @@
 					<?php echo $status; ?>
 				</span>
 			</td>
+			<?php
+					$dayCtr++;
+				}
+			?>
+			<?php
+				for(; $dayCtr < $dayTotal; $dayCtr++) {
+			?>
+			<td></td>
 			<?php
 				}
 			?>
