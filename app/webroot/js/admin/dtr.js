@@ -3,10 +3,10 @@ $(document).ready(function() {
 	function changeList() {
 		var year = $('#year').val();
 		var month = $('#month').val();
-		var date = year + '-' + month + '-01';
+		//var date = year + '-' + month + '-01';
 		var shift = $('#shift').val();
 
-		$.post(webroot+'Dtr/listDTR', {date: date, shift:shift}, function(data) {
+		$.post(webroot+'Dtr/listDTR', {month:month, year:year, shift:shift}, function(data) {
 			$('#dtr').html(data);
 		});
 	}

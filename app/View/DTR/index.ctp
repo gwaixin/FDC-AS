@@ -14,6 +14,7 @@
 				<?php
 					}
 				?>
+				<option value='0'>All</option>
 			</select>
 			<select id='year' class='span2'>
 				<?php

@@ -33,13 +33,23 @@ class DtrController extends AppController {
 			if ($data) {
 				$this->loadModel('Attendance');
 
-				$condition = array(
+				/*$condition = array(
 					'MONTH(Attendance.date)' => date('n', strtotime($data['date'])),
 					'YEAR(Attendance.date)' => date('Y', strtotime($data['date']))
-				);
+				);*/
+				$condition = array();
+				if (!empty($data['month'])) {
+					$condition['MONTH(Attendance.date)'] = $data['month'];
+				}
+
+				if (!empty($data['year'])) {
+					$condition['YEAR(Attendance.date)'] = $data['year'];
+				}
+
 				if (!empty($data['shift'])) {
 					$condition['employees.employee_shifts_id'] = $data['shift'];
 				}
+
 				$order = array('Attendance.date' => 'ASC');
 				$join = array(
 					array(

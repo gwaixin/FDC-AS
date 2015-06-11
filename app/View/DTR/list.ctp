@@ -5,7 +5,7 @@
 	<thead>
 		<tr>
 			<th>Employees</th>
-			<?php
+			<?php 
 				$dayTotal = 0;
 				foreach($dtrHeader as $key => $val) {
 					$dayTotal++;
