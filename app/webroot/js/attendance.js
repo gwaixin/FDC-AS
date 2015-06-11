@@ -243,18 +243,18 @@ function convertToDatetime(val, rowDate) {
 	switch (val.length) {
 		case 4: 
 			var time = pad(toTime(val));
-			fDate = splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]+' '+time;
+			fDate = splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]+' '+time+':00';
 			break;
 		case 8:
 			var month = pad(toMonth(val.substr(0, 4)));
 			var time = pad(toTime(val.substr(4, 8)));
-			fDate = splitDate[0]+'-'+month+' '+time;
+			fDate = splitDate[0]+'-'+month+' '+time+':00';
 			break;
 		case 12: 
 			var year = pad(toYear(val.substr(0, 4)));
 			var month = pad(toMonth(val.substr(4, 8)));
 			var time = pad(toTime(val.substr(8, 12)));
-			fDate = year+'-'+month+' '+time;
+			fDate = year+'-'+month+' '+time+':00';
 			break;
 		case 19:
 			fDate = val;
@@ -262,8 +262,9 @@ function convertToDatetime(val, rowDate) {
 		default: alert('Did not follow the allowed format'); 
 	}
 	if (fDate != 0 && !isDateTime(fDate)) {
-		fDate = 0;
+		
 		alert('Invalid time format'); 
+		fDate = 0;
 	}
 	return fDate;
 }
@@ -281,7 +282,7 @@ function convertToTime(val) {
 			break;
 		default: alert('Available format for break HH:mm, HHmm');
 	}
-	if (time != 0 && !isDateTime('2015-11-24 ' + time)) {
+	if (time != 0 && !isDateTime('2015-11-24 ' + time +':00')) {
 		time = 0;
 		alert('Invalid time format');
 	}
@@ -641,15 +642,47 @@ function getTotalTime(row) {
 				hot.render();
 			}
 		});
-	} else {
+	} /*else {
 		if (!isDateTime(list[row][colClass])) {
 			//focusElem.addClass('htInvalid');
 		}
-	}
+	}*/
 }
 
 function isDateTime(date) {
-	var isValid = !!new Date(date).getTime();
+	// var isValid =new Date(date).getTime();
+	// return isValid;
+	if (date == '') {
+		return false;
+	}
+	var matches = date.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/);
+	var isValid = false;
+	if (matches != null) {
+	    // now lets check the date sanity
+	    var year = parseInt(matches[1], 10);
+	    var month = parseInt(matches[2], 10) - 1; // months are 0-11
+	    var day = parseInt(matches[3], 10);
+	    var hour = parseInt(matches[4], 10);
+	    var minute = parseInt(matches[5], 10);
+	    var second = parseInt(matches[6], 10);
+	    var date = new Date(year, month, day, hour, minute, second);
+	    if (
+			date.getFullYear() !== year 	|| 
+			date.getMonth() != month 		|| 
+			date.getDate() !== day 			|| 
+			date.getHours() !== hour 		|| 
+			date.getMinutes() !== minute 	|| 
+			date.getSeconds() !== second
+	    ) {
+	        // invalid
+	    	console.log('test '+date);
+	   		isValid = false;
+	    } else {
+			// valid
+			isValid = true;
+	    }
+
+	}
 	return isValid;
 }
 
