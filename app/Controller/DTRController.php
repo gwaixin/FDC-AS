@@ -32,11 +32,7 @@ class DtrController extends AppController {
 			$data = $this->request->data;
 			if ($data) {
 				$this->loadModel('Attendance');
-
-				/*$condition = array(
-					'MONTH(Attendance.date)' => date('n', strtotime($data['date'])),
-					'YEAR(Attendance.date)' => date('Y', strtotime($data['date']))
-				);*/
+				
 				$condition = array();
 				if (!empty($data['month'])) {
 					$condition['MONTH(Attendance.date)'] = $data['month'];
