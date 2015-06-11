@@ -1,10 +1,20 @@
 <?php 
 class HolidaysController extends AppController {
 	public $uses = array('Holiday');
+	public $components = array('Paginator');
 	public function index() {
+		/*$this->layout = 'admin';
+		$this->Paginator->setting = $this->paginate;
+		$paginate_holidays = $this->Paginator->paginate('Holiday');
+		var_dump($paginate_holidays);
+		$this->set('holidays',$paginate_holidays);*/
+		$this->Paginator->settings = array(
+			'conditions' => array('status' => 1),
+			'limit' => 5
+		);
+		$holidays = $this->Paginator->paginate('Holiday');
 		$this->layout = 'admin';
-		$holidays = $this->Holiday->find('all',array('conditions'=>array('status'=>1)));
-		$this->set('holidays',$holidays);
+		$this->set(compact('holidays'));
 	}
 	public function createHoliday() {
 		$this->autoRender = false;
@@ -55,7 +65,7 @@ class HolidaysController extends AppController {
 			if (count($holiday_info)>0) {
 				$this->set('holiday_info',$holiday_info);
 			} else {
-				echo 'it seems there are errors';
+				$this->layout = '404';
 			}
 		}
 	}
