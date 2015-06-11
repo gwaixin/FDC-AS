@@ -91,6 +91,7 @@
 							
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/dtr/"><i class="icon-list"></i> DTR </a></li>
 
 			          		<li class="divider"></li>
 
