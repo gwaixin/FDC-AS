@@ -47,8 +47,17 @@
 		<?php endforeach;?>
 
 	</table>
-</div>
-
+	<center>
+		<div class="pagination">
+			<ul>
+				<?php echo $this->Paginator->prev('<< prev', array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a')); ?>
+				<?php echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li')); ?>
+				<?php echo $this->Paginator->next('next >>', array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a')); ?>
+			</ul>
+		</div>
+	</center>
+	
+	
 <!-- Modal -->
 <div class="modal hide fade" id="modalHoliday" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
