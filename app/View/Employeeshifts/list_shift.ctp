@@ -47,19 +47,28 @@
 				</tbody>
 			</table>
 			<div class='row'>
-			<?php
+				<div class="pagination">
+					<ul>
+					<?php echo $this->Paginator->prev('« ', array('tag'=>'li'), null, array('class'=>'disabled'));?>
+					
+					<?php
 
-				echo $this->Paginator->numbers(array(
-					'modulus' 	=> 2,   /* Controls the number of page links to display */
-					'first' 	=> '<<',
-					'separator' => '',
-					'last' 		=> '>>',
-					'tag'		=> 'li',
-					'currentClass' 	=> 'active',
-					'currentTag' 	=> 'span',
-					'before' 		=> "<div class='pagination'><ul>", 'after' => '</ul></div>')
-				);
-			?>
+						echo $this->Paginator->numbers(array(
+							'modulus' 	=> 2,   /* Controls the number of page links to display */
+							//'first' 	=> '<<',
+							'separator' => '',
+							//'last' 		=> '>>',
+							'tag'		=> 'li',
+							'currentClass' 	=> 'active',
+							'currentTag' 	=> 'span'
+							//'before' 		=> "<div class='pagination'><ul>", 
+							//'after' 		=> '</ul></div>'
+							)
+						);
+					?>
+					<?php echo $this->Paginator->next('»', array('tag'=>'li',), null, array('class'=>'disabled'));?>
+					</ul>
+				</div>
 			</div>
 
 			<div id="employee-shift-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -27,8 +27,7 @@
 						<div class='span3'>
 							<input type='text' placeholder='Search Employee ID or Name' name='keyword' id='keyword'/>
 						</div>
-						<div class='span5'>
-						</div>
+						<input type='hidden' name='date' id='form-date' value=''/>
 						
 					</div>
 					<div class='control-group'>
@@ -66,28 +65,47 @@
 				<input type='hidden' id='calendar-yearmonth' value='<?php echo date("Y-m", strtotime($focus)); ?>'/>
 			</div>
 			<div  class="span3">
-				<div class="input-append">
-			        <input type='text' placeholder='Date' name='date' id='date' class='span8' value=''/>
-			        <button id='btn-search-monthly' class='btn btn-inverse' data-toggle="tooltip" title='Monthly search'><i class="fa fa-search"></i></button>
-			    </div>
+				<input type='text' id='date' value='' style='visibility:hidden; position:absolute;' value="<?php echo date('Y-m-d', strtotime($currentDate));?>"/>
 				<div id="calendar">
 				<?php
 					echo $this->element('calendar');
 				?>
 				</div>
 			</div>
+			<div id='current-date'>
+				<h4></h4>
+			</div>
 			<div class="clearfix"></div>
 		</div>
+
 		<div id="employee-attendance"></div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal hide fade" id="modalShift" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+	<div class="modal-dialog">
+	    <div class="modal-content">
+		    <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h1>Employee Shift Master</h1>
+	       	</div>
+		</div>
+		<div class="modal-body"></div>
+		<div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+    </div>
+</div>
+
+
 <style>
 .htCore thead tr th b{
 	font-size: 10px;
 	position:absolute;
 	top: -3px;
 }
-.days, .calendar-nav{
+.days, .calendar-nav, .shift{
 	cursor: pointer;
 	transition: color .25s ease-in-out;
 }

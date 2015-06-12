@@ -28,6 +28,8 @@
 	
 	
 	//ADMIN
+	Router::connect( '/admin/holiday', array('controller' => 'holidays', 'action' => 'index'));
+	Router::connect( '/admin/holiday/edit/:id',array('controller'=>'holidays','action'=>'edit',''),array('pass'=>array('id')));
 	Router::connect( '/admin/myprofile', array('controller' => 'employee', 'action' => 'myprofile','view','admin'));
 	Router::connect( '/admin/myprofile/edit', array('controller' => 'employee', 'action' => 'myprofile','edit','admin'));
 	Router::connect( '/admin/mycontracts', array('controller' => 'employee', 'action' => 'mycontracts','admin'));
@@ -78,6 +80,10 @@
 		array(
         'pass' => array('id')
     ));
+	/*END OF ADMIN*/
+
+
+    Router::connect('/admin/dtr/*', array('controller' => 'dtr', 'action' => 'index', 'admin'));
 
 	//STAFFFFFFFF
 	/**

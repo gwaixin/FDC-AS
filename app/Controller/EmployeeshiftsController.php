@@ -148,4 +148,24 @@ class EmployeeshiftsController extends AppController {
 		return $eshift;
 	}
 
+	public function getShift() {
+		if ($this->request->is('Ajax')) {
+			$this->layout = 'ajax';
+			$data = $this->request->data;
+			if ($data) {
+				$this->loadModel('Employeeshift');
+				$shift = $this->Employeeshift->find('first', array(
+						'conditions' => array('id' => $data['id'])
+					)
+				);
+
+				$this->set('shift', $shift);
+				$this->render('shift_detail');
+			} else {
+				echo 'No data';
+			}
+
+		}
+	}
+
 }

@@ -91,6 +91,7 @@
 							
 							<li><a href="<?php echo $this->webroot;?>admin/employees/"><i class="icon-user"></i> Employee</a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/attendances/"><i class="icon-calendar"></i> Attendance </a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/dtr/"><i class="icon-list"></i> DTR </a></li>
 
 			          		<li class="divider"></li>
 
@@ -101,6 +102,7 @@
 							<li class="divider"></li>
 							<li><a href="<?php echo $this->webroot;?>admin/company/"><i class="fa fa-institution" style='color:black;'></i> Company </a></li>
 							<li><a href="<?php echo $this->webroot;?>admin/view_list_shift"><i class="icon-time"></i> Shift schedule</a></li>
+							<li><a href="<?php echo $this->webroot;?>admin/holiday"><i class="icon-time"></i> Holiday Management</a></li>
 							<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 							<li><a href="/users/logout"><i class="icon-share"></i> Logout</a></li>
 						</ul>
