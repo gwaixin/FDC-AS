@@ -544,6 +544,8 @@ class AttendancesController extends AppController {
     private function _importCsvData($dataArray) {
     	$data = array();
     	$arrayError = array();
+    	$timeInError = '';
+    	$timeOutError = '';
     	for($i=0;$i<count($dataArray);$i++) {
     		if($i!=0) {
     			$explodeData = explode(',',$dataArray[$i][0]);
@@ -568,6 +570,7 @@ class AttendancesController extends AppController {
 						$time_in = date('Y-m-d H:i:s',strtotime($explodeData[1]));
 					} else {
 						$time_in = null;
+						$timeInError = 'Time In must not be empty';
 					}
 					
 				}
@@ -579,6 +582,7 @@ class AttendancesController extends AppController {
 						$time_out = date('Y-m-d H:i:s',strtotime($explodeData[2])); 
 					} else {
 						$time_out = null;
+						$timeOutError = 'Time Out must not be empty';
 					}
 					
 				}
@@ -592,7 +596,7 @@ class AttendancesController extends AppController {
 				if($check != null){
 					array_push($arrayError,$check);
 				}
-				if( $check == null && $employeeId != false ) {
+				if( $check == null && $employeeId != false && $time_in != null && $time_out != null ) {
 					
 					$this->Attendance->create();
 					$insertData = array(
@@ -612,6 +616,8 @@ class AttendancesController extends AppController {
 				
     		}
     	}
+    	($timeInError != '') ? array_push($arrayError,$timeInError) : '' ;
+    	($timeOutError !='') ? array_push($arrayError,$timeOutError): '' ;
     	return $arrayError;
 	}
 
