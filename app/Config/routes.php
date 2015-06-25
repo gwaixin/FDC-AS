@@ -80,7 +80,9 @@
 		array(
         'pass' => array('id')
     ));
-	/*END OF ADMIN*/
+    Router::connect('/admin/attendances/downloadAttendance', array('controller' => 'attendances', 'action' => 'downloadAttendance'));
+    Router::connect('/admin/attendances/uploadCsv', array('controller' => 'attendances', 'action' => 'uploadCsv'));
+    /*END OF ADMIN*/
 
 
     Router::connect('/admin/dtr/*', array('controller' => 'dtr', 'action' => 'index', 'admin'));

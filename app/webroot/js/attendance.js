@@ -55,8 +55,6 @@ $(document).ready(function () {
 		}
 	});
 
-	
-
 	//HANDSON TABLE INTIATION AND FUNCTIONS
 	function checkOvertime(set) {
 		if (set) {
@@ -213,6 +211,18 @@ $(document).ready(function () {
     $('#auto-overtime').tooltip({placement: 'right'});
     $('.calendar-nav').tooltip({placement: 'top'});
 	$('#btn-search-monthly').tooltip({placement: 'bottom'});
+
+	$("#uploadCsv").on("change", function(){
+        var files = !!this.files ? this.files : [];
+        var valid_extensions = /(.csv)$/i;   
+       	if (!valid_extensions.test( files[0].type)){ 
+            alert('Invalid File Extension');
+            $('#uploadCsv').val('');
+        }
+
+    });
+
+	
 
 	
 	
@@ -557,10 +567,11 @@ function getAttendanceList(formAttendance) {
 			$('#error').fadeIn(200);
 			currentRequest = "";
 		} else {
-			console.log(data);
 			$('#error').html('');
 			$('#error').hide();
 			list = data;
+			var stringJson = JSON.stringify(data);
+			$('#attendance-data').empty().val(stringJson);
 			attendanceList();
 			if (isMonthly) {
 				hot.alter('insert_row');
@@ -761,3 +772,4 @@ function updateCalendar(date, day) {
         $("#calendar").html(data);
     });
 }
+

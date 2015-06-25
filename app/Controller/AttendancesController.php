@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('Calendar', 'Lib');
 App::uses('AttendanceStatus', 'Lib');
+App::uses('File','Utility');
 
 class AttendancesController extends AppController {
 	public $helpers = array('Html', 'Form');
@@ -9,6 +10,7 @@ class AttendancesController extends AppController {
 
 	public function index($layout) {
 		$this->layout = $layout;
+
 		//if ($date == 0) {
 		$date = date('Y-m-d');	
 		//}
@@ -18,9 +20,33 @@ class AttendancesController extends AppController {
 		$this->set('attendanceStat', $this->getAttendanceStatus());
 		$this->set('autoOvertime', $autoOvertime);
 		$this->set('shifts', $this->getShifts());
-
-		$this->getCalendar();
 		
+		$this->getCalendar();
+		if ($this->request->is('post')) {
+			$filename = strtotime(date('Y-m-d H:i:s')).'.csv';
+			$path =  WWW_ROOT. DS. 'file/uploads';
+			$pathToUpload =  WWW_ROOT. DS. 'file/uploads/'.$filename; 
+			$dataArray = array();
+			if (!file_exists($path)) {
+			    mkdir($path, 0777, true);
+			}
+			if (move_uploaded_file($this->data['Attendances']['file']['tmp_name'],$pathToUpload)) {
+				chmod($pathToUpload,0777);
+				if (($handle = fopen($pathToUpload, "r")) !== FALSE) {
+				   while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+						$dataArray[] =  $data;
+					}
+			    	$data= $this->_importCsvData($dataArray);
+			    	if ($data != null) {
+			    		$this->set('errors',$data);
+
+			    	}
+			    }
+			    fclose($handle);
+			}
+			unlink($pathToUpload);
+
+    	}
 		//pr($this->getShifts());
 		//exit();
 	}
@@ -402,6 +428,7 @@ class AttendancesController extends AppController {
 		);
 		
 		$selectFields = array(
+				'Employee.id',
 				'Employee.employee_id',
 				'Employee.status',
 				'Employee.employee_shifts_id',
@@ -461,6 +488,196 @@ class AttendancesController extends AppController {
 	private function getAttendanceStatus() {
 		return $statusArr = array('pending', 'present', 'absent', 'late', 'undertime');
 	}
+
+	public function downloadAttendance() {
+		$this->autoRender = false;
+		if($this->request->is('post')){
+			$data = $this->request->data['attendance'];
+			$decodeData = json_decode($data,true);
+			$arrayData = array();
+			$val = array('EMPLOYEE ID','TIMEIN','TIMEOUT','BREAK','RENDERED TIME','OVERTIME','STATUS');
+			array_push($arrayData, $val);
+			foreach($decodeData as $value) {
+				$val = array($value['employee_id'],$value['f_time_in'],$value['f_time_out'],$value['ebreak'],$value['total_time'],$value['over_time'],$value['status']);
+				array_push($arrayData, $val);
+			}
+
+			$filename = strtotime(date('Y-m-d H:i:s')).'.csv';
+			$content = $this->_arrayToCsv($arrayData);
+			$this->response->header(array(
+			    'Content-type: application/csv',
+			    'Content-Disposition: attachement; filename="' . $filename . '"',
+			    'Content-Transfer-Encoding: binary',
+			    'Expires: 0',
+				'Cache-Control: must-revalidate, post-check=0, pre-check=0'
+
+			));
+			$this->response->body($content);
+			$this->response->type('csv');
+			
+		}
+	}
+	
+	private function _arrayToCsv( array $fields, $delimiter = ',', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
+        $delimiter_esc = preg_quote($delimiter, '/');
+        $enclosure_esc = preg_quote($enclosure, '/');
+
+        $outputString = "";
+        foreach($fields as $tempFields) {
+            $output = array();
+            foreach ( $tempFields as $field ) {
+                if ($field === null && $nullToMysqlNull) {
+                    $output[] = 'NULL';
+                    continue;
+                }
+
+                // Enclose fields containing $delimiter, $enclosure or whitespace
+                if ( $encloseAll || preg_match( "/(?:${delimiter_esc}|${enclosure_esc}|\s)/", $field ) ) {
+                    $field = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $field) . $enclosure;
+                }
+                $output[] = $field."";
+            }
+            $outputString .= implode( $delimiter, $output )."\r\n";
+        }
+        return $outputString;  
+    }
+    private function _importCsvData($dataArray) {
+    	$data = array();
+    	$arrayError = array();
+    	for($i=0;$i<count($dataArray);$i++) {
+    		if($i!=0) {
+    			$explodeData = explode(',',$dataArray[$i][0]);
+    			switch ($explodeData[6]) {
+					case 'present':
+						$status = 1;
+						break;
+					case 'absent':
+						$status = 2;
+						break;
+					case 'undertime':
+						$status = 3;
+						break;    				
+					default:
+						$status = 0;
+						break;
+				}
+
+				if (preg_match('/"([^"]+)"/', $explodeData[1], $time1)) {
+				    $time_in = date('Y-m-d H:i:s',strtotime($time1[1]));   
+				} else {
+					if ($explodeData[1] != null) {
+						$time_in = date('Y-m-d H:i:s',strtotime($explodeData[1]));
+					} else {
+						$time_in = null;
+					}
+					
+				}
+
+				if (preg_match('/"([^"]+)"/', $explodeData[2], $time2)) {
+				    $time_out = date('Y-m-d H:i:s',strtotime($time2[1]));   
+				} else {
+					if($explodeData[2] != null) {
+						$time_out = date('Y-m-d H:i:s',strtotime($explodeData[2])); 
+					} else {
+						$time_out = null;
+					}
+					
+				}
+
+				$employeeId = $this->_checkEmployeeId($explodeData[0]);
+				if(!$employeeId){
+					array_push($arrayError,'Employee ID not found please check again');
+				}
+				
+				$check = $this->_checkCsvData($employeeId,$time_in);
+				if($check != null){
+					array_push($arrayError,$check);
+				}
+				if( $check == null && $employeeId != false ) {
+					
+					$this->Attendance->create();
+					$insertData = array(
+						'employees_id'	=> $employeeId,
+						'f_time_in' 	=> $time_in,
+						'f_time_out'	=> $time_out,
+						'break'			=> $explodeData[3],
+						'render_time'	=> $explodeData[4],
+						'over_time'		=> ($explodeData[5]!=null)?date('H:i:s',strtotime($explodeData[5])):null,
+						'status'		=> $status,
+						'date'			=> date('Y-m-d',strtotime($time_in))
+					);
+					
+					$this->Attendance->save($insertData);
+					unset($insertData);
+				} 
+				
+    		}
+    	}
+    	return $arrayError;
+	}
+
+    private function _checkCsvData($employee_id,$date) {
+    	$date1 = date('Y-m-d',strtotime($date));
+    	if(strtotime(date('Y-m-d',strtotime($date)))<=strtotime(date('Y-m-d'))){
+    		$this->loadModel('Employee');
+			$selectFields = array(
+				'Attendance.employees_id',
+				'Attendance.date',
+				'Attendance.status',
+				'Employees.employee_id'
+			);
+			$join = array(
+				array(
+						'table' => 'Employees',
+						'type' => 'left',
+						'conditions' => array(
+								'Employees.id = Attendance.employees_id'
+						)
+				)
+			);
+			$attendance = $this->Attendance->find('first',array(
+				'fields'	=>$selectFields,
+				'joins'		=> $join,
+				'conditions'=>array('Attendance.employees_id'=>$employee_id,'date'=>$date1)
+			));
+			if(count($attendance)>0){
+				$error_employee = 'Attendance for employee with the employee id '. $attendance['Employees']['employee_id'].' is already has an attendance';
+				return $error_employee;
+			} else {
+				return;
+			}
+			
+    	} else {
+    		return 'You cannot save attendance ahead of the date';
+    	}
+    	
+    	
+    }
+
+    /*Check if the given Employee ID in csv is correct or valid*/
+
+   	private function _checkEmployeeId($employee_id) {
+   		$this->loadModel('Employee');
+   		$selectFields = array(
+   			'id',
+   			'employee_id',
+   			'status'
+		);
+
+		$checkEmployeeId = $this->Employee->find('first',array(
+			'fields'		=> $selectFields,
+			'conditions'	=> array('employee_id'=>$employee_id,'status'=>2)
+
+		));
+
+		if(count($checkEmployeeId) > 0) {
+			return $checkEmployeeId['Employee']['id'];
+		} else {
+			return false;
+		}
+   	}
+
+
 
 
 }

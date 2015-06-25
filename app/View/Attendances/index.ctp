@@ -1,12 +1,13 @@
-<?php echo $this->Html->css('hot.full.min'); ?>
-<?php echo $this->Html->css('bootstrap-datetimepicker.min'); ?>
-<?php echo $this->Html->css('bootstrap-timepicker.min'); ?>
-
-<?php echo $this->Html->script('hot.full.min'); ?>
-<?php echo $this->Html->script('moment'); ?>
-<?php echo $this->Html->script('bootstrap-datetimepicker'); ?>
-<?php echo $this->Html->script('bootstrap-timepicker.min'); ?>
-<?php echo $this->Html->script('attendance'); ?>
+<?php 
+	echo $this->Html->css('hot.full.min'); 
+	echo $this->Html->css('bootstrap-datetimepicker.min');
+	echo $this->Html->css('bootstrap-timepicker.min');
+	echo $this->Html->script('hot.full.min');
+	echo $this->Html->script('moment');
+	echo $this->Html->script('bootstrap-datetimepicker');
+	echo $this->Html->script('bootstrap-timepicker.min');
+	echo $this->Html->script('attendance');
+?>
 
 <script>
 	var phpDate = '<?php echo date("Y-m-d");?>';
@@ -61,6 +62,37 @@
 						<div id="error" class="alert alert-danger" style="display:none;"><?php echo $this->Session->flash();?></div>
 					</div>
 				</form>
+				<div class="control-group">
+					<form id="form-attendance" method="post" action="/admin/attendances/downloadAttendance">
+						<input type="text" name="attendance"  id="attendance-data" value="" style="display:none;" />
+						<button class="btn" type="submit" id="btn-dl-attendance">Download Attendance CSV</button>
+					</form>
+							
+				</div>
+				<div class="control-group">
+					<?php
+						if(isset($errors)) {
+							foreach($errors as $err) {
+								echo '<div class="alert alert-danger">'.$err.'</div> ';
+							}
+						}
+						
+					?>
+					<?php
+						/* display message saved in session if any */
+						echo $this->Session->flash();
+						/* create form with proper enctype */
+						echo $this->Form->create('Attendances', array('type' => 'file'));
+						/* create file input */
+						echo $this->Form->input('file',array( 'type' => 'file','id'=>'uploadCsv'));
+						/* create submit button and close form */
+						echo $this->Form->input('Upload CSV',array('type'=>'submit','class'=>'btn btn-success'));
+						echo $this->Form->end();
+					?>
+							
+				</div>
+				
+				
 				<input type='hidden' id='calendar-day' value='<?php echo date("d", strtotime($currentDate)); ?>'/>
 				<input type='hidden' id='calendar-yearmonth' value='<?php echo date("Y-m", strtotime($focus)); ?>'/>
 			</div>
@@ -79,8 +111,10 @@
 		</div>
 
 		<div id="employee-attendance"></div>
+		
 	</div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal hide fade" id="modalShift" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
@@ -97,7 +131,6 @@
 		</div>
     </div>
 </div>
-
 
 <style>
 .htCore thead tr th b{
@@ -131,5 +164,5 @@
 #calendar .table {
 	margin-bottom: 5px;
 }
-</style>
 
+</style>
