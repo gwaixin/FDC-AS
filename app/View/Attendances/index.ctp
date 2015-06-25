@@ -73,7 +73,7 @@
 
 					<?php
 						if(isset($errors)) {
-							echo '<div class="alert alert-danger">';
+							echo '<div class="alert alert-danger" id="error-upload-csv">';
 								foreach($errors as $err) {
 									echo $err .'<br/>';
 								}

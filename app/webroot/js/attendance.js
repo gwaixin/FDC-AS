@@ -561,17 +561,24 @@ function getAttendanceList(formAttendance) {
 		if (data == '') {
 			$('#error').html("No data found");
 			$('#error').fadeIn(200);
+			$('#error-upload-csv').hide();
 			currentRequest = "";
 		} else if (typeof data['error'] !== 'undefined') {
 			$('#error').html(data['error']);
 			$('#error').fadeIn(200);
+			$('#form-attendance').hide();
+			$('#AttendancesIndexForm').hide();
 			currentRequest = "";
 		} else {
 			$('#error').html('');
 			$('#error').hide();
+			$('#form-attendance').show();
+			$('#AttendancesIndexForm').show();
 			list = data;
 			var stringJson = JSON.stringify(data);
 			$('#attendance-data').empty().val(stringJson);
+			setTimeout(function(){ $('#error-upload-csv').hide() }, 5000);
+			
 			attendanceList();
 			if (isMonthly) {
 				hot.alter('insert_row');
