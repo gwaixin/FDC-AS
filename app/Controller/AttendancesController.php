@@ -561,7 +561,6 @@ class AttendancesController extends AppController {
 						$status = 0;
 						break;
 				}
-
 				if (preg_match('/"([^"]+)"/', $explodeData[1], $time1)) {
 				    $time_in = date('Y-m-d H:i:s',strtotime($time1[1]));   
 				} else {

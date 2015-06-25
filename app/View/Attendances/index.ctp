@@ -70,22 +70,20 @@
 							
 				</div>
 				<div class="control-group">
+
 					<?php
 						if(isset($errors)) {
-							foreach($errors as $err) {
-								echo '<div class="alert alert-danger">'.$err.'</div> ';
-							}
+							echo '<div class="alert alert-danger">';
+								foreach($errors as $err) {
+									echo $err .'<br/>';
+								}
+							echo '</div> ';
 						}
 						
 					?>
 					<?php
-						/* display message saved in session if any */
-						echo $this->Session->flash();
-						/* create form with proper enctype */
 						echo $this->Form->create('Attendances', array('type' => 'file'));
-						/* create file input */
 						echo $this->Form->input('file',array( 'type' => 'file','id'=>'uploadCsv'));
-						/* create submit button and close form */
 						echo $this->Form->input('Upload CSV',array('type'=>'submit','class'=>'btn btn-success'));
 						echo $this->Form->end();
 					?>
